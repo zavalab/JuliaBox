@@ -1,8 +1,8 @@
 ###### GENERIC CVAR LIBRARY
-# Created by Alex Dowling
+# Created by Alex Dowling (adowling2@wisc.edu)
 # University of Wisconsin-Madison
 # Department of Chemical and Biological Engineering
-# Last Feb. 16th, 2016
+# Last Modified Feb. 17th, 2017
 #
 # This file contains functions to solve multi-stakeholder
 # multi-objective problems using the CVaR framework
@@ -68,6 +68,8 @@ type MOOProbData
 	fNadirTrad
 	fNadirAlt
 	flagUseAltNadir
+	slnSingleObjTrad
+	slnSingleObjAlt
 end
 
 type StakeholderData
@@ -219,6 +221,9 @@ function computeNadirUtopiaPoints(d, flagUseAltNadir)
 	f = getVar(m, :f)
 	nObj = length(f)
 
+	slnsTrad = Array(Solution,nObj)
+	slnsAlt = Array(Solution,nObj)
+
 	fSingleObjTrad = zeros(nObj,nObj)
 	fSingleObjAlt = zeros(nObj,nObj)
 
@@ -230,15 +235,19 @@ function computeNadirUtopiaPoints(d, flagUseAltNadir)
 	
 		fSingleObjTrad[i,:] = s.f
 	
+		slnsTrad[i] = s
+	
 		sStar = solveForNadirPoint(d,i,s.f[i])
 
 		fSingleObjAlt[i,:] = sStar.f
+		
+		slnsAlt[i] = sStar
 	
 	end
 
 	(fUtopiaTrad, fNadirTrad) = determineUtopiaNadir(fSingleObjTrad)
 	(fUtopiaAlt, fNadirAlt) = determineUtopiaNadir(fSingleObjAlt)
 
-	return MOOProbData(nObj, fSingleObjTrad, fSingleObjAlt, fUtopiaTrad, fNadirTrad, fNadirAlt, flagUseAltNadir)
+	return MOOProbData(nObj, fSingleObjTrad, fSingleObjAlt, fUtopiaTrad, fNadirTrad, fNadirAlt, flagUseAltNadir, slnsTrad, slnsAlt)
 
 end

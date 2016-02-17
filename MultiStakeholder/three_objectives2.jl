@@ -1,8 +1,8 @@
 # Example 2
-# Created by Alex Dowling
+# Created by Alex Dowling (adowling2@wisc.edu)
 # University of Wisconsin-Madison
 # Department of Chemical and Biological Engineering
-# Last Modified Feb. 10th, 2016
+# Last Modified Feb. 10th, 2015
 
 using JuMP
 using PyPlot
