@@ -1,5 +1,6 @@
 using PyPlot
 
+close("all")
 
 figure(1)
 t=linspace(0,7,2016)
@@ -7,9 +8,9 @@ WD=readdlm("Electric.dat", ',')
 plot(t,WD)
 xlabel("Time (days)")
 ylabel("Electricity demand (kW)")
-title("Demand of electricity in 7 days")
+grid("on")
+#title("Demand of electricity in 7 days")
 savefig("Bio.pdf")
-
 
 figure(2)
 t=linspace(0,7,2016)
@@ -18,7 +19,8 @@ DHWS=12*A
 plot(t,DHWS)
 xlabel("Time (days)")
 ylabel("Hot water demand (kg)")
-title("Demand of hot water in 7 days")
+grid("on")
+#title("Demand of hot water in 7 days")
 savefig("DHWS.pdf")
 
 figure(3)
@@ -27,7 +29,8 @@ TAMB=readdlm("Temperature.dat",',')
 plot(t,TAMB)
 xlabel("Time (days)")
 ylabel("Temperature (°C)")
-title("Local temperature in 7 days")
+grid("on")
+#title("Local temperature in 7 days")
 savefig("Temp.pdf")
 
 figure(4)
@@ -37,7 +40,10 @@ CostEd=CostE[1:288]*12
 plot(t,CostEd)
 xlabel("Time (h)")
 ylabel("Electricity cost (USD/kWh)")
-title("Cost of electricity")
+grid("on")
+xlim([0,24])
+#title("Cost of electricity")
+PyPlot.tight_layout()
 savefig("Cost.pdf")
 
 figure(5)
@@ -47,8 +53,10 @@ BioCS=readdlm("Bio7csf0123.dat", ',')
 plot(t,BioEP,label="Min CostExt")
 plot(t,BioCS,label="CS")
 xlabel("Time (days)")
-ylabel("Consumption of biogas (kW)")
-title("Consumption of biogas in 7 days")
+ylabel("Biogas Demand (kW)")
+#title("Consumption of biogas in 7 days")
+grid("on")
+ylim([-0.5, 12.5])
 legend(loc="upperleft")
 savefig("Bio.pdf")
 
@@ -59,8 +67,9 @@ GHGTCS=readdlm("GHGT7csf0123.dat", ',')
 plot(t,GHGTEP,label="Min CostExt")
 plot(t,GHGTCS,label="CS")
 xlabel("Time (days)")
-ylabel("carbon dioxide emission(ton)")
-title("Greenhouse gas emission in 7 days")
+ylabel("GHG Emissions (ton)")
+grid("on")
+#title("Greenhouse gas emission in 7 days")
 legend()
 savefig("GHGT.pdf")
 
@@ -71,9 +80,12 @@ SWCS=readdlm("SW7csf0123.dat", ',')
 plot(t,SWEP,label="Min CostExt")
 plot(t,SWCS,label="CS")
 xlabel("Time (days)")
-ylabel("Consumption of water (Kg)")
-title("Consumption of water in 7 days")
+ylabel("Water Demand (kg)")
+#title("Consumption of water in 7 days")
+grid("on")
+ylim([0, 1200])
 legend()
+
 savefig("SW.pdf")
 
 figure(8)
@@ -83,8 +95,9 @@ VSTCS=readdlm("VST7csf0123.dat", ',')
 plot(t,VSTEP,label="Min CostExt")
 plot(t,VSTCS,label="CS")
 xlabel("Time (days)")
-ylabel("Storage level (m3)")
-title("Thermal tank storage level in 7 days")
+ylabel("Storage Level (m3)")
+#title("Thermal tank storage level in 7 days")
+grid("on")
 legend(loc="upper left")
 savefig("VST.pdf")
 
@@ -95,16 +108,18 @@ WCHPCS=readdlm("WCHP7csf0123.dat", ',')
 plot(t,WCHPEP,label="Min CostExt")
 plot(t,WCHPCS,label="CS")
 xlabel("Time (days)")
-ylabel("Generation of electricity from CHP (kW)")
-title("Electricity generation from CHP in 7 days")
+ylabel("CHP Power (kW)")
+#title("Electricity generation from CHP in 7 days")
+grid("on")
+ylim([30, 110])
 legend()
 savefig("WCHP.pdf")
 
 figure(10)
 cost1=3803.372721
 GHGT1=17.05673791
-SW1=474013.7625
-scatter3D(cost1,GHGT1,SW1,color="red",label="Min cost")
+SW1=474.0137625
+scatter3D(cost1,GHGT1,SW1,marker="o")#,color="red",label="Min cost")
 
 cost2=5968.828715
 cost3=5854.619235
@@ -118,20 +133,21 @@ GHGT4=17.05673771
 GHGT5=15.76387189
 GHGT6=13.29304582
 GHGT7=17.05673791
-SW2=462944.8857
-SW3=459728.5287
-SW4=465036.3851
-SW5=459751.4692
-SW6=459728.5287
-SW7=474013.7625
-scatter3D(cost2,GHGT2,SW2,color="green",label="Min GHGT")
-scatter3D(cost3,GHGT3,SW3,color="brown",label="Min SW")
-scatter3D(cost4,GHGT4,SW4,color="yellow",label="Min Cost Ext")
-scatter3D(cost5,GHGT5,SW5,color="pink",label="CS")
-scatter3D(cost6,GHGT6,SW6,color="orange",label="UP")
-scatter3D(cost7,GHGT7,SW7,label="NS")
+SW2=462.9448857
+SW3=459.7285287
+SW4=465.0363851
+SW5=459.7514692
+SW6=459.7285287
+SW7=474.0137625
+scatter3D(cost2,GHGT2,SW2)#,color="green",label="Min GHGT")
+scatter3D(cost3,GHGT3,SW3)#,color="brown",label="Min SW")
+scatter3D(cost4,GHGT4,SW4)#,color="yellow",label="Min Cost Ext")
+scatter3D(cost5,GHGT5,SW5)#,color="pink",label="CS")
+scatter3D(cost6,GHGT6,SW6)#,color="orange",label="UP")
+scatter3D(cost7,GHGT7,SW7)#,label="NS")
 xlabel("Cost (USD)")
-ylabel("Emission (tons CO2)")
-zlabel("Water consumption (kg)")
+ylabel("GHG Emissions (ton)")
+zlabel("Water Demand (ton)")
 legend(loc="upper left")
+grid("on")
 savefig("CS.pdf")
