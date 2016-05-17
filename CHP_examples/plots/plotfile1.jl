@@ -115,7 +115,7 @@ ylim([30, 110])
 legend()
 savefig("WCHP.pdf")
 
-figure(11)
+figure(10)
 cost1=3803.372721
 cost2=5968.828715
 cost3=5854.619235
@@ -137,18 +137,54 @@ SW4=465.0363851
 SW5=459.7514692
 SW6=459.7285287
 SW7=474.0137625
-scatter3D(cost1,GHGT1,SW1,color="red",label="Min cost")
-scatter3D(cost2,GHGT2,SW2,color="green",label="Min GHGT")
-scatter3D(cost3,GHGT3,SW3,color="brown",label="Min SW")
-scatter3D(cost4,GHGT4,SW4,color="yellow",label="Min Cost Ext")
-scatter3D(cost5,GHGT5,SW5,color="pink",label="CS")
-scatter3D(cost6,GHGT6,SW6,color="orange",label="UP")
-scatter3D(cost7,GHGT7,SW7,label="NS")
+scatter3D(cost1,GHGT1,SW1)#color="red",label="Min cost")
+scatter3D(cost2,GHGT2,SW2)#color="green",label="Min GHGT")
+scatter3D(cost3,GHGT3,SW3)#,color="brown",label="Min SW")
+scatter3D(cost4,GHGT4,SW4)#,color="yellow",label="Min Cost Ext")
+scatter3D(cost5,GHGT5,SW5)#,color="pink",label="CS")
+scatter3D(cost6,GHGT6,SW6)#,color="orange",label="UP")
+scatter3D(cost7,GHGT7,SW7)#,label="NS")
 xlabel("Cost (USD)")
 ylabel("GHG Emissions (ton)")
 zlabel("Water Demand (ton)")
 legend(loc="upper left")
 grid("on")
-savefig("CScolor.pdf")
+savefig("CS.pdf")
+
+#figure(11)
+#cost1=3803.372721
+#cost2=5968.828715
+#cost3=5854.619235
+#cost4=3803.419664
+#cost5=4104.061634
+#cost6=3803.372721
+#cost7=5968.828715
+#GHGT1=17.05673791
+#GHGT2=13.29304582
+#GHGT3=14.91733242
+#GHGT4=17.05673771
+#GHGT5=15.76387189
+#GHGT6=13.29304582
+#GHGT7=17.05673791
+#SW1=474.0137625
+#SW2=462.9448857
+#SW3=459.7285287
+#SW4=465.0363851
+#SW5=459.7514692
+#SW6=459.7285287
+#SW7=474.0137625
+#scatter3D(cost1,GHGT1,SW1,color="red",label="Min cost")
+#scatter3D(cost2,GHGT2,SW2,color="green",label="Min GHGT")
+#scatter3D(cost3,GHGT3,SW3,color="brown",label="Min SW")
+#scatter3D(cost4,GHGT4,SW4,color="yellow",label="Min Cost Ext")
+#scatter3D(cost5,GHGT5,SW5,color="pink",label="CS")
+#scatter3D(cost6,GHGT6,SW6,color="orange",label="UP")
+#scatter3D(cost7,GHGT7,SW7,label="NS")
+#xlabel("Cost (USD)")
+#ylabel("GHG Emissions (ton)")
+#zlabel("Water Demand (ton)")
+#legend(loc="upper left")
+#grid("on")
+#savefig("CScolor.pdf")
 
 
