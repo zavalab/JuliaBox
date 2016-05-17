@@ -115,12 +115,12 @@ ylim([30, 110])
 legend()
 savefig("WCHP.pdf")
 
-figure(10)
+figure(11)
 cost1=3803.372721
 cost2=5968.828715
 cost3=5854.619235
 cost4=3803.419664
-cost5=4990.061634
+cost5=4104.061634
 cost6=3803.372721
 cost7=5968.828715
 GHGT1=17.05673791
@@ -137,16 +137,18 @@ SW4=465.0363851
 SW5=459.7514692
 SW6=459.7285287
 SW7=474.0137625
-scatter3D(cost1,GHGT1,SW1,marker="o")#,color="red",label="Min cost")
-scatter3D(cost2,GHGT2,SW2)#,color="green",label="Min GHGT")
-scatter3D(cost3,GHGT3,SW3)#,color="brown",label="Min SW")
-scatter3D(cost4,GHGT4,SW4)#,color="yellow",label="Min Cost Ext")
-scatter3D(cost5,GHGT5,SW5)#,color="pink",label="CS")
-scatter3D(cost6,GHGT6,SW6)#,color="orange",label="UP")
-scatter3D(cost7,GHGT7,SW7)#,label="NS")
+scatter3D(cost1,GHGT1,SW1,color="red",label="Min cost")
+scatter3D(cost2,GHGT2,SW2,color="green",label="Min GHGT")
+scatter3D(cost3,GHGT3,SW3,color="brown",label="Min SW")
+scatter3D(cost4,GHGT4,SW4,color="yellow",label="Min Cost Ext")
+scatter3D(cost5,GHGT5,SW5,color="pink",label="CS")
+scatter3D(cost6,GHGT6,SW6,color="orange",label="UP")
+scatter3D(cost7,GHGT7,SW7,label="NS")
 xlabel("Cost (USD)")
 ylabel("GHG Emissions (ton)")
 zlabel("Water Demand (ton)")
 legend(loc="upper left")
 grid("on")
-savefig("CS.pdf")
+savefig("CScolor.pdf")
+
+
