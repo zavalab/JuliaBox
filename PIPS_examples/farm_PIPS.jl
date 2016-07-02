@@ -27,7 +27,7 @@ demand[1] = 200
 demand[2] = 240
 demand[3] = 0;
 
-NS = 1000;                   # number of scenarios
+NS = 100;                   # number of scenarios
 S = collect(1:NS)          # scenario set
 P = collect(1:3)           # set of crops (1=wheat,2=corn,3=beets)
 
@@ -41,7 +41,6 @@ d = Normal(μ,σ)
 yield[S,3] = rand(d,NS)
 
 
-#=
 m = Model(solver=IpoptSolver())
 @defVar(m, x[S,P] >= 0)    # acres devoted to crops
 @defVar(m, y[S,P] >= 0)    # crops purchase
@@ -55,7 +54,7 @@ m = Model(solver=IpoptSolver())
 @addConstraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
 @setObjective(m, Min, (1/NS)*sum{cost[s], s in S})
 solve(m)
-=#
+
 
 m = NetModel()
 @defVar(m, x[P] >= 0)    # acres devoted to crops

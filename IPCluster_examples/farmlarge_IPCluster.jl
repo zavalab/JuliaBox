@@ -41,7 +41,7 @@ yield[S,NP] = rand(d,NS)
 sellub = zeros(NP)
 d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
-#=
+
 m = Model(solver=IpoptSolver())
 @defVar(m, x[S,P] >= 0)    # acres devoted to crops
 @defVar(m, y[S,P] >= 0)    # crops purchase
@@ -53,7 +53,7 @@ m = Model(solver=IpoptSolver())
 @addConstraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
 @setObjective(m, Min, (1/NS)*sum{cost[s], s in S})
 solve(m)
-=#
+
 
 
 m = StochasticModel(NS)
