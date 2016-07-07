@@ -64,8 +64,8 @@ for i in 1:NS
     bl = Model()
     @variable(bl, y[P] >= 0)    # crops purchase
     @variable(bl, w[P] >= 0)    # crops sold;
-    setupper(w[3], 6000)
-    setupper(y[3], 0)
+    setupperbound(w[3], 6000)
+    setupperbound(y[3], 0)
     @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
     @addNode(m, bl, "s$i")
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
