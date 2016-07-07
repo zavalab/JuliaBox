@@ -1,0 +1,25 @@
+
+Log started (V12.6.1.0) Tue Dec 22 11:08:35 2015
+
+
+Selected objective sense:  MINIMIZE
+Selected objective  name:  OBJ
+Selected RHS        name:  rhs
+Selected bound      name:  BOUND
+
+Problem 'dispatchable-FallWD-15-10.cor' read.
+Read time = 0.28 sec. (8.71 ticks)
+
+Problem name         : dispatchable-FallWD-15-10.cor
+Objective sense      : Minimize
+Variables            :   24739  [Nneg: 5520,  Box: 18994,  Binary: 225]
+Objective nonzeros   :    4584
+Linear constraints   :   26161  [Less: 6361,  Greater: 5400,  Equal: 14400]
+  Nonzeros           :   78609
+  RHS nonzeros       :    7585
+
+Variables            : Min LB: -40000.02        Max UB: 40000.02       
+Objective nonzeros   : Min   : 1.000000         Max   : 2000.000       
+Linear constraints   :
+  Nonzeros           : Min   : 1.000000         Max   : 3333.330       
+  RHS nonzeros       : Min   : 1.000000         Max   : 6061.194       
