@@ -121,7 +121,7 @@ function createGasModel(SCEN)
          @variable(m, 1<=fx[SCEN, LINK, TIMEG, DIS]<=100, start= 100)                                       # link flow profile - [scmx10-4/hr]
         
 	 # compressor equations
-         @NLConstraint(m, powereq[i = SCEN, j = LINK, t = TIMEG; linkDict[j].ltype == "a"], pow[i,j,t] == c4*fin[i,j,t]*((px[i,j,t,1]/(px[i,j,t,1]-dp[i,j,t]))^om-1))
+         @NLconstraint(m, powereq[i = SCEN, j = LINK, t = TIMEG; linkDict[j].ltype == "a"], pow[i,j,t] == c4*fin[i,j,t]*((px[i,j,t,1]/(px[i,j,t,1]-dp[i,j,t]))^om-1))
 
 	 # node balance [mass]
          @constraint(m,nodemeq[k = SCEN, i in NODE, t = TIMEG], sum{       fout[k,j,t], j in LINK ; linkDict[j].endloc==i}
@@ -140,7 +140,7 @@ function createGasModel(SCEN)
 
          # pressure equations for passive and active links
          @constraint(m, press[i = SCEN, j = LINK, t = TIMEGm,k = 1:(Nx-1)], (fx[i,j,t+1,k]-fx[i,j,t,k])/dtG == - linkDict[j].c2*(px[i,j,t+1,k+1]-px[i,j,t+1,k])/linkDict[j].dx - slack[i,j,t+1,k])
-         @NLConstraint(m, slackeq[i = SCEN, j = LINK, t = TIMEG, k = 1:Nx],  slack[i,j,t,k]*px[i,j,t,k] - linkDict[j].c3*fx[i,j,t,k]*fx[i,j,t,k] == 0);
+         @NLconstraint(m, slackeq[i = SCEN, j = LINK, t = TIMEG, k = 1:Nx],  slack[i,j,t,k]*px[i,j,t,k] - linkDict[j].c3*fx[i,j,t,k]*fx[i,j,t,k] == 0);
 	
          # boundary conditions pressure, passive links
          @constraint(m, presspas_start[i = SCEN, j = LINK, t = TIMEG; linkDict[j].ltype == "p"], px[i,j,t,1] ==  p[i,linkDict[j].startloc,t])
