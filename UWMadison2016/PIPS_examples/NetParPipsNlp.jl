@@ -160,7 +160,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	     local_data.firstJineqmat = sparse(local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_data.num_ineqconnect, master_data.n)
              local_data.secondJineqmat = sparse(local_data.secondIineq, local_data.secondJineq, local_data.secondVineq, local_data.num_ineqconnect, local_data.n)	     
 
-             local_data.d = JuMP.JuMPNLPEvaluator(node)
+             local_data.d = JuMP.NLPEvaluator(node)
              initialize(local_data.d, [:Grad,:Jac, :Hess])
              Ijac, Jjac = jac_structure(local_data.d)
 	     Ijaceq = Int[]
