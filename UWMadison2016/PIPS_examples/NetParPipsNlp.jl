@@ -142,7 +142,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	 local_unsym_hessnnz = Int[]
 	 for (idx,node) in enumerate(modelList)
 	     local_data = getData(node)
-             nlp_lb, nlp_ub = JuMP.getConstraintBounds(node)
+             nlp_lb, nlp_ub = JuMP.constraintbounds(node)
 	     local_data.local_m  = length(nlp_lb)
 	     for c in 1:local_data.local_m
                  if nlp_lb[c] == nlp_ub[c]
@@ -229,7 +229,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	 	node = modelList[nodeid+1]
 		local_data = getData(node)
     	 	if(mode == :Values)
-	          	nlp_lb, nlp_ub = JuMP.getConstraintBounds(node)
+	          	nlp_lb, nlp_ub = JuMP.constraintbounds(node)
 			eq_lb=Float64[]
 			eq_ub=Float64[]
 			ineq_lb=Float64[]
