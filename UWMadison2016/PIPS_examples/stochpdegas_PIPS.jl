@@ -190,8 +190,8 @@ IL = NetModel()
 for s in SCENG
    single_scenario = createGasModel(s:s) 
    @addNode(IL, single_scenario, "s$s")
-   @constraint(IL,  nonantdq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] ==  getVar(single_scenario, :dp)[s,j,t])
-   @constraint(IL,  nonantde[j in DEM, t in TIMEG;                            t ==1],   dem[j]==  getVar(single_scenario,:dem)[s,j,t])
+   @constraint(IL,  nonantdq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] ==  getvariable(single_scenario, :dp)[s,j,t])
+   @constraint(IL,  nonantde[j in DEM, t in TIMEG;                            t ==1],   dem[j]==  getvariable(single_scenario,:dem)[s,j,t])
 end
 ParPipsNlp_solve(IL)
 
