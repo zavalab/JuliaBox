@@ -38,6 +38,10 @@ type ProblemData
 
 	maxIn::Array{Float64,2}
 	price::Array{Float64,2}
+	
+	for_pips::Bool
+	flat::Bool
+	
 
 end
 
@@ -95,7 +99,7 @@ function ProblemData(days::Array{Int64,1},nBlocks::Int64, A::Array{Float64,2} = 
 		end
 	end
 
-	return ProblemData(days, nBlocks, daysInBlocks, maxIn, price)
+	return ProblemData(days, nBlocks, daysInBlocks, maxIn, price, false, false)
 
 end
 
@@ -125,9 +129,15 @@ function Solution(m::JuMP.Model, pd::ProblemData)
 
 		dim = [nH, length(d)]
 
-		E_[:,d] = convertToArray2(getvariable(getchildren(m)[i],:E), dim, d)
-		Pin_[:,d] = convertToArray2(getvariable(getchildren(m)[i],:Pin), dim, d)
-		Pout_[:,d] = convertToArray2(getvariable(getchildren(m)[i],:Pout), dim, d)
+		if(pd.flat)
+			bl = m
+		else
+			bl = getchildren(m)[i]
+		end
+		
+		E_[:,d] = convertToArray2(getvariable(bl,:E), dim, d)
+		Pin_[:,d] = convertToArray2(getvariable(bl,:Pin), dim, d)
+		Pout_[:,d] = convertToArray2(getvariable(bl,:Pout), dim, d)
 
 	end
 
@@ -182,9 +192,9 @@ function assemble_stage1!(m::JuMP.Model, pd::ProblemData)
 
 end
 
-function assemble_stage2_block!(m::JuMP.Model, pd::ProblemData, i::Int64, for_pips::Bool, flat::Bool)
+function assemble_stage2_block!(m::JuMP.Model, pd::ProblemData, i::Int64)
 
-	if(flat)
+	if(pd.flat)
 		bl = m
 	else
 		bl = StructuredModel(parent=m, id=i)
@@ -220,7 +230,7 @@ function assemble_stage2_block!(m::JuMP.Model, pd::ProblemData, i::Int64, for_pi
 				E_ = E[t_, d_]
 			end
 	
-			if(for_pips && t_ == 0)
+			if(pd.for_pips && t_ == 0)
 				@NLconstraint(bl, E[t,d] == E_ + Pin[t,d]*etaIn - Pout[t,d]/etaOut)
 			else
 				@constraint(bl, E[t,d] == E_ + Pin[t,d]*etaIn - Pout[t,d]/etaOut)
@@ -232,20 +242,20 @@ function assemble_stage2_block!(m::JuMP.Model, pd::ProblemData, i::Int64, for_pi
 	end
 
 	# Link energy state
-	if(for_pips)
+	if(pd.for_pips)
 		@NLconstraint(bl, E0[i + 1] == E[hours[end],bdays[end]])
 	else
 		@constraint(bl, E0[i + 1] == E[hours[end],bdays[end]])
 	end
 
 	# Compute revenue for block
-	if(for_pips)
+	if(pd.for_pips)
 		@NLconstraint(bl, revenue[i] == sum{Pout[t,d]*pd.price[t,d], t=hours, d=bdays})
 	else
 		@constraint(bl, revenue[i] == sum{Pout[t,d]*pd.price[t,d], t=hours, d=bdays})
 	end
 	
-	if(flat)
+	if(pd.flat)
 		println("Flattened model with Stage 1 and Stage 2, Blocks 1 through ",i,":")
 	else
 		println("Stage 2, Block ",i,":")
@@ -256,24 +266,28 @@ function assemble_stage2_block!(m::JuMP.Model, pd::ProblemData, i::Int64, for_pi
 
 end
 
-function assemble_stage2!(m::JuMP.Model, pd::ProblemData, for_pips::Bool, flat::Bool)
+function assemble_stage2!(m::JuMP.Model, pd::ProblemData)
 
 	# Iterate over each block
 	for i in 1:pd.nBlocks
-		assemble_stage2_block!(m, pd, i, for_pips, flat)
+		assemble_stage2_block!(m, pd, i)
 	end
 
 	return nothing
 
 end
 
-function create_struct_model(pd::ProblemData, for_pips::Bool=false, flat::Bool = false)
+function create_struct_model(pd::ProblemData)
 
 	# Create structured model
-	m = StructuredModel(num_scenarios = pd.nBlocks)
+	if(pd.flat)
+		m = Model()
+	else
+		m = StructuredModel(num_scenarios = pd.nBlocks)
+	end
 
 	assemble_stage1!(m, pd)
-	assemble_stage2!(m, pd, for_pips, flat)
+	assemble_stage2!(m, pd)
 
 	return m
 

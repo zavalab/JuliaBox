@@ -5,7 +5,7 @@ using MPI, DSPsolver
 function solve_with_DSP(solver::ASCIIString, pd::ProblemData)
 
 	# Create structured model
-	m = create_struct_model(pd, false)
+	m = create_struct_model(pd)
 
 
 	DSPsolver.loadProblem(m);

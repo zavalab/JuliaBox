@@ -2,7 +2,9 @@
 
 function solve_with_PIPS(pd::ProblemData,my_solver::ASCIIString="PipsNlp")
 
-	m = create_struct_model(pd, true)
+	pd.for_pips = true
+
+	m = create_struct_model(pd)
 	
 	solve(m, solver=my_solver)
 	
