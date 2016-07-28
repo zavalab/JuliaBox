@@ -18,7 +18,7 @@ end
 
 macro ClusterIPM_ccall(func, args...)
         @unix_only return quote
-                ccall(($func, "/home/cao27/software/IPM/lib/libClusterIPM.so.1.0"), $(args...))
+                ccall(($func, "/opt/IPCluster/lib/libClusterIPM.so.1.0"), $(args...))
         end
 end
 
