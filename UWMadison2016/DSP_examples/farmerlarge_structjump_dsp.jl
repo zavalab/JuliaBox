@@ -59,7 +59,7 @@ end
 #print(getchildren(m)[1])
 #print(getchildren(m)[2])
 
-option = "BD"
+option = "DD"
 
 # load problem to model object
 DSPsolver.loadProblem(m);
