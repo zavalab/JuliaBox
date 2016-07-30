@@ -1,5 +1,5 @@
 push!(LOAD_PATH, pwd())
-using MPI, JuMP, StructJuMP, DSPsolver
+using MPI, JuMP, StructJuMP, DSPsolver, Distributions
 ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
 NS = 1000;                  # number of scenarios
