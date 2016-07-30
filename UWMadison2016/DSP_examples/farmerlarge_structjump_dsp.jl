@@ -95,10 +95,10 @@ end
 
 
 DSPsolver.getSolution(m);
-println(m.colNames)	
-println(m.colVal)
-println(getvalue(getvariable(m,:x)))
-println("w scenario 1 ")
-println(getvalue(getvariable(getchildren(m)[1], :w)))
-println("w scenario 2 ")
-println(getvalue(getvariable(getchildren(m)[2], :w)))
+#println(m.colNames)	
+#println(m.colVal)
+#println(getvalue(getvariable(m,:x)))
+#println("w scenario 1 ")
+#println(getvalue(getvariable(getchildren(m)[1], :w)))
+#println("w scenario 2 ")
+#println(getvalue(getvariable(getchildren(m)[2], :w)))
