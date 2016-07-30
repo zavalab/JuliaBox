@@ -40,7 +40,7 @@ sellub[P] = rand(d,NP)
 m = StructuredModel(num_scenarios=NS);
 
 # first-stage 
-@variable(m, x[i=P] >= 0)
+@variable(m, x[i=P] >= 0, Int)
 @variable(m, s2 >= 0)
 @objective(m, Min, sum{prcost[i] * x[i], i=P})
 @constraint(m, capacity, sum{x[i], i=P} + s2 == 200)
