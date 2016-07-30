@@ -39,18 +39,20 @@ yield[S,3] = rand(d,NS)
 
 # construct problem with JuMP and solve using IPOPT
 m = Model(solver=IpoptSolver())
-@variable(m, x[S,P] >= 0)    # acres devoted to crops
+@variable(m, x[P] >= 0)    # acres devoted to crops
 @variable(m, y[S,P] >= 0)    # crops purchase
 @variable(m, w[S,P] >= 0)    # crops sold;
 @variable(m, cost[s in S])
-@constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
-@constraint(m, cap[s in S], sum{x[s,j], j in P} <= 500)
-@constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j])
+@constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@constraint(m, cap, sum{x[j], j in P} <= 500)
+@constraint(m, bal[s in S,j in P], yield[s,j]*x[j]+y[s,j]-w[s,j] >= demand[j])
 @constraint(m, sellb[s in S], w[s,3] <= 6000)
 @constraint(m, buyb[s in S], y[s,3] <= 0)
-@constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
 @objective(m, Min, (1/NS)*sum{cost[s], s in S})
 solve(m)
+println(getvalue(getvariable(m, :x)))
+println(getvalue(x))
+println(getvalue(w))
 
 # construct problem with PLASMO and solve using PIPSNLP
 m = NetModel()
