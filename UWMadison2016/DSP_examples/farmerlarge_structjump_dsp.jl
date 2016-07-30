@@ -42,7 +42,7 @@ m = StructuredModel(num_scenarios=NS);
 @variable(m, x[i=P] >= 0)
 @variable(m, s2 >= 0)
 @objective(m, Min, sum{prcost[i] * x[i], i=P})
-@constraint(m, capacity, sum{x[i], i=P} + s2 = 200)
+@constraint(m, capacity, sum{x[i], i=P} + s2 == 200)
 
 # second-stage
 for s in 1:NS
