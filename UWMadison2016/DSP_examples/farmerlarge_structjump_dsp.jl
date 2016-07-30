@@ -54,9 +54,9 @@ for i in 1:NS
     @constraint(sb, bal[j=P], yield[i,j]*x[j] + y[j] - w[j] - s[j] == demand[j])
 end
 
-print(m)
-print(getchildren(m)[1])
-print(getchildren(m)[2])
+#print(m)
+#print(getchildren(m)[1])
+#print(getchildren(m)[2])
 
 option = "BD"
 
