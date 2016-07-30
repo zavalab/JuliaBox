@@ -66,5 +66,5 @@ for i in 1:NS
     @addNode(m, bl, "s$i")
 end
 ParPipsNlp_solve(m)
-println(getvalue(getvariable(m, :x)))
-println(getvalue(getvariable(getNode(m,"s1"), :w)))
+#println(getvalue(getvariable(m, :x)))
+#println(getvalue(getvariable(getNode(m,"s1"), :w)))
