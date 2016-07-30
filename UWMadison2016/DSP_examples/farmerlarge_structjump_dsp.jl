@@ -2,6 +2,7 @@ push!(LOAD_PATH, pwd())
 using MPI, JuMP, StructJuMP, DSPsolver, Distributions
 ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
+srand(123)
 NS = 200;                   # number of scenarios
 NP = 10;                    # number of products
 S = collect(1:NS)           # scenario set
@@ -58,7 +59,7 @@ end
 #print(getchildren(m)[1])
 #print(getchildren(m)[2])
 
-option = "BD"
+option = "DE"
 
 # load problem to model object
 DSPsolver.loadProblem(m);
