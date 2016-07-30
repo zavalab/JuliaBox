@@ -52,7 +52,6 @@ m = Model(solver=IpoptSolver())
 @setObjective(m, Min, (1/NS)*sum{cost[s], s in S})
 solve(m)
 
-
 # construct problemw with PLASMO and solve using PIPSNLP
 m = NetModel()
 @defVar(m, x[P] >= 0)    # acres devoted to crops
