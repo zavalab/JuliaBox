@@ -24,18 +24,19 @@ demand[1] = 200
 demand[2] = 240
 demand[3] = 0;
 
-NS = 100;                  # number of scenarios
+NS = 5;                  # number of scenarios
 S = collect(1:NS)          # scenario set
 P = collect(1:3)           # set of crops (1=wheat,2=corn,3=beets)
 
 # assign random data
-yield = zeros(length(S),3)
-yield[S,1] = 2.5
-yield[S,2] = 3.0
-srand(123)
-μ = 20; σ = 5
-d = Normal(μ,σ)
-yield[S,3] = rand(d,NS)
+yield = zeros(length(S),3) # yields
+yield[S,1] = 2.5;
+yield[S,2] = 3.0;
+yield[1,3] = 10;
+yield[2,3] = 15;
+yield[3,3] = 20;
+yield[4,3] = 25;
+yield[5,3] = 30
 
 # construct problem with JuMP and solve using IPOPT
 m = Model(solver=IpoptSolver())
