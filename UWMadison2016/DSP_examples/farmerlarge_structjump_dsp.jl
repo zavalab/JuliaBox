@@ -1,4 +1,6 @@
-# Farmer example from Birge and Louveaux book.
+push!(LOAD_PATH, pwd())
+using MPI, JuMP, StructJuMP, DSPsolver
+ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
 NS = 1000;                  # number of scenarios
 NP = 100;                   # number of products
@@ -34,10 +36,6 @@ d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
 
 #Model Expression
-push!(LOAD_PATH, pwd())
-using MPI, JuMP, StructJuMP, DSPsolver
-# CREATE STOCHASTIC MODEL
-ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 m = StructuredModel(num_scenarios=NS);
 
 # first-stage 
