@@ -45,13 +45,13 @@ m = StructuredModel(num_scenarios=NS);
 @constraint(m, capacity, sum{x[i], i=P} + s2 == 200)
 
 # second-stage
-for s in 1:NS
-    sb = StructuredModel(parent=m, id=s, prob=1/NS);
+for i in 1:NS
+    sb = StructuredModel(parent=m, id=i, prob=1/NS);
     @variable(sb, y[P] >= 0)
     @variable(sb, 0<= w[j in P] <= sellub[j in P])
     @variable(sb, s[P] >= 0)
     @objective(sb, Min, sum{pcost[j]*y[j]-scost[j]*w[j], j=P})
-    @constraint(sb, bal[j=P], yield[s,j]*x[j] + y[j] - w[j] - s[j] == demand[j])
+    @constraint(sb, bal[j=P], yield[i,j]*x[j] + y[j] - w[j] - s[j] == demand[j])
 end
 
 print(m)
