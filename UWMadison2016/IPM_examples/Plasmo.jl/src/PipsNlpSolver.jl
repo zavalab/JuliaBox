@@ -204,7 +204,7 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
     flag = data.flag
     assert(rowid == colid)
 	
-	mode = (col_lb_ptr == C_NULL) ? (:Structure) : (:Values)
+	mode = (col_lb_ptr == C_NULL&&col_ub_ptr==C_NULL&&row_lb_ptr==C_NULL&&row_ub_ptr==C_NULL) ? (:Structure) : (:Values)
     #@show flag
     if flag == 0
         #@show mode
@@ -398,7 +398,7 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
     ncol = prob.model.get_num_cols(colid) 
     #@show prob
     # Determine mode
-    mode = (e_values_ptr == C_NULL && i_values_ptr == C_NULL) ? (:Structure) : (:Values)
+    mode = (e_row_ptr == C_NULL &&e_col_ptr == C_NULL&&e_values_ptr == C_NULL && i_values_ptr == C_NULL&&i_row_ptr == C_NULL &&i_col_ptr == C_NULL) ? (:Structure) : (:Values)
     if flag == 0
         if(mode == :Structure)
         	e_values = pointer_to_array(e_values_ptr,0)
