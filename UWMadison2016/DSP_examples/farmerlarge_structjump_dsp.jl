@@ -3,7 +3,7 @@ using MPI, JuMP, StructJuMP, DSPsolver, Distributions
 ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
 srand(123)
-NS = 200;                   # number of scenarios
+NS = 100;                   # number of scenarios
 NP = 10;                    # number of products
 S = collect(1:NS)           # scenario set
 P = collect(1:NP)           # set of crops (1=wheat,2=corn,3=beets)
