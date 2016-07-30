@@ -67,6 +67,8 @@ for i in 1:NS
     @addNode(m, bl, "s$i")
 end
 ClusterIPM_solve(m)
-println(getvariable(getVar(m, :x)))
-println(sum(getvariable(getVar(m, :x))))
+println(getvalue(getvariable(m,:x)))
+println(getvalue(getvariable(getNode(m,"s1"),:w)))
+
+
 
