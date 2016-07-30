@@ -70,4 +70,4 @@ end
 ParPipsNlp_solve(m)
 println(getvalue(getvariable(m, :x)))
 println(getvalue(getvariable(getNode(m,"s1"), :w)))
-println(getvalue(getvariable(getNode(m,"s2”), :w)))
+println(getvalue(getvariable(getNode(m,"s2"), :w)))
