@@ -2,7 +2,7 @@ push!(LOAD_PATH, pwd())
 using MPI, JuMP, StructJuMP, DSPsolver, Distributions
 ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
-NS = 1000;                   # number of scenarios
+NS = 200;                   # number of scenarios
 NP = 10;                    # number of products
 S = collect(1:NS)           # scenario set
 P = collect(1:NP)           # set of crops (1=wheat,2=corn,3=beets)
@@ -72,7 +72,7 @@ DSPsolver.setDblParam("SCIP/GAP_TOL",0.0);
 if option == "DE"
    DSPsolver.solve(DSP_SOLVER_DE);
 elseif option == "BD"
-       DSPsolver.setIntParam("BD/NUM_CORES",2);
+       DSPsolver.setIntParam("BD/NUM_CORES",8);
        DSPsolver.solve(DSP_SOLVER_BD);
 elseif option == "DD"
        DSPsolver.setIntParam("DD/FEAS_CUTS",1);
