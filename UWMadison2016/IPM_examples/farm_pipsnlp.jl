@@ -39,34 +39,35 @@ yield[S,3] = rand(d,NS)
 
 # construct problem with JuMP and solve using IPOPT
 m = Model(solver=IpoptSolver())
-@defVar(m, x[S,P] >= 0)    # acres devoted to crops
-@defVar(m, y[S,P] >= 0)    # crops purchase
-@defVar(m, w[S,P] >= 0)    # crops sold;
-@defVar(m, cost[s in S])
-@addConstraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
-@addConstraint(m, cap[s in S], sum{x[s,j], j in P} <= 500)
-@addConstraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j])
-@addConstraint(m, sellb[s in S], w[s,3] <= 6000)
-@addConstraint(m, buyb[s in S], y[s,3] <= 0)
-@addConstraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
-@setObjective(m, Min, (1/NS)*sum{cost[s], s in S})
+@variable(m, x[S,P] >= 0)    # acres devoted to crops
+@variable(m, y[S,P] >= 0)    # crops purchase
+@variable(m, w[S,P] >= 0)    # crops sold;
+@variable(m, cost[s in S])
+@constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@constraint(m, cap[s in S], sum{x[s,j], j in P} <= 500)
+@constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j])
+@constraint(m, sellb[s in S], w[s,3] <= 6000)
+@constraint(m, buyb[s in S], y[s,3] <= 0)
+@constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
+@objective(m, Min, (1/NS)*sum{cost[s], s in S})
 solve(m)
 
-# construct problemw with PLASMO and solve using PIPSNLP
+# construct problem with PLASMO and solve using PIPSNLP
 m = NetModel()
-@defVar(m, x[P] >= 0)    # acres devoted to crops
-@addConstraint(m, cap, sum{x[j], j in P}  <= 500)
-@setObjective(m, Min, sum{prcost[j]*x[j], j in P})
+@variable(m, x[P] >= 0)    # acres devoted to crops
+@constraint(m, cap, sum{x[j], j in P}  <= 500)
+@objective(m, Min, sum{prcost[j]*x[j], j in P})
 for i in 1:NS
     bl = Model()
-    @defVar(bl, y[P] >= 0)    # crops purchase
-    @defVar(bl, w[P] >= 0)    # crops sold;
-    setUpper(w[3], 6000)
-    setUpper(y[3], 0)
-    @setObjective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
+    @variable(bl, y[P] >= 0)    # crops purchase
+    @variable(bl, w[P] >= 0)    # crops sold;
+    setupperbound(w[3], 6000)
+    setupperbound(y[3], 0)
+    @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
     @addNode(m, bl, "s$i")
-    @addConstraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
+    @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
 end
 ParPipsNlp_solve(m)
 println(getvalue(getvariable(m, :x)))
 println(getvalue(getvariable(getNode(m,"s1"), :w)))
+println(getvalue(getvariable(getNode(m,"s2”), :w)))
