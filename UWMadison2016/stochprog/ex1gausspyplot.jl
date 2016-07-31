@@ -4,7 +4,6 @@ using JuMP
 using Distributions 
 using Ipopt
 using PyPlot
-set_default_plot_size(20cm, 15cm)
 
 # Generate random data: 
 N = 1000
