@@ -1,17 +1,15 @@
 # Farmer example from Birge and Louveaux book.
+# Kibaek Kim and Victor M. Zavala
+# University of Wisconsin-Madison and ANL, 2015
 
 # Model Data
-# STOCHASTIC MODELING FRAMEWORK
-
 NS = 3;                        # number of scenarios
 probability = [1/3, 1/3, 1/3]; # probability
-
 
 # FIRST-STAGE MODEL
 CROPS = 1:3; # set of crops (wheat, corn and sugar beets, resp.)
 Cost = [150 230 260]; # cost of planting crops
 Budget = 500; # budget capacity
-
 
 # SECOND-STAGE MODELS
 PURCH = 1:2; # set of crops to purchase (wheat and corn, resp.)
@@ -29,7 +27,6 @@ Minreq = [200 240 0;
           200 240 0;
           200 240 0]; # minimum crop requirement
 println("")
-
 
 #Model Expression
 push!(LOAD_PATH, pwd())
@@ -53,7 +50,6 @@ m = StructuredModel(num_scenarios=NS);
 
 
 # SECOND-STAGE MODELS
-
 for s in 1:NS
     # stochastic block
     sb = StructuredModel(parent=m, id = s, prob = probability[s]);
@@ -78,7 +74,9 @@ print(m)
 print(getchildren(m)[1])
 print(getchildren(m)[2])
 
+# call DSP to solve problem
 
+# select algorithmic strategy (BD=benders, DD=dual decomp, DE=deterministic equivalent)
 option = "BD"
 
 # load problem to model object

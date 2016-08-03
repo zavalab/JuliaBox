@@ -1,3 +1,7 @@
+# Example on how to use JUMP+Ipopt and PLASMO+PIPS-NLP
+# Yankai Cao, Victor M. Zavala
+# University of Wisconsin-Madison, 2016
+
 push!(LOAD_PATH, pwd())
 using JuMP 
 using Distributions 
@@ -24,7 +28,7 @@ demand[1] = 200
 demand[2] = 240
 demand[3] = 0;
 
-NS = 5;                  # number of scenarios
+NS = 5;                    # number of scenarios
 S = collect(1:NS)          # scenario set
 P = collect(1:3)           # set of crops (1=wheat,2=corn,3=beets)
 
@@ -40,9 +44,9 @@ yield[5,3] = 30
 
 # construct problem with JuMP and solve using IPOPT
 m = Model(solver=IpoptSolver())
-@variable(m, x[P] >= 0)    # acres devoted to crops
-@variable(m, y[S,P] >= 0)    # crops purchase
-@variable(m, w[S,P] >= 0)    # crops sold;
+@variable(m, x[P] >= 0)    
+@variable(m, y[S,P] >= 0)    
+@variable(m, w[S,P] >= 0)    
 @variable(m, cost[s in S])
 @constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
 @constraint(m, cap, sum{x[j], j in P} <= 500)
@@ -56,21 +60,32 @@ println(getvalue(x))
 println(getvalue(w))
 
 # construct problem with PLASMO and solve using PIPSNLP
+
+# this creates a graph model
 m = NetModel()
-@variable(m, x[P] >= 0)    # acres devoted to crops
+
+# add variables, objective, and constraints to parent node (first-stage)
+@variable(m, x[P] >= 0)    
 @constraint(m, cap, sum{x[j], j in P}  <= 500)
 @objective(m, Min, sum{prcost[j]*x[j], j in P})
+
+# add variables, objective, and constraints to child nodes (second-stage)
 for i in 1:NS
     bl = Model()
-    @variable(bl, y[P] >= 0)    # crops purchase
-    @variable(bl, w[P] >= 0)    # crops sold;
+    @variable(bl, y[P] >= 0)    
+    @variable(bl, w[P] >= 0)   
     setupperbound(w[3], 6000)
     setupperbound(y[3], 0)
     @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
+    # add children to parent
     @addNode(m, bl, "s$i")
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
 end
+
+# call PIPSNLP for solution
 ParPipsNlp_solve(m)
+
+# access solution and display results
 println(getvalue(getvariable(m, :x)))
 println(getvalue(getvariable(getNode(m,"s1"), :w)))
 println(getvalue(getvariable(getNode(m,"s2"), :w)))

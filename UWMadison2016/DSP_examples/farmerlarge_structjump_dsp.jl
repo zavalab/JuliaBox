@@ -1,9 +1,13 @@
+# Large farmer problem example for DSP
+# Yankai Cao and Victor M. Zavala
+# University of Wisconsin-Madison, 2016
+
 push!(LOAD_PATH, pwd())
 using MPI, JuMP, StructJuMP, DSPsolver, Distributions
 ENV["LD_LIBRARY_PATH"] = "DSP/lib"
 
 srand(123)
-NS = 100;                   # number of scenarios
+NS = 1000;                  # number of scenarios
 NP = 10;                    # number of products
 S = collect(1:NS)           # scenario set
 P = collect(1:NP)           # set of crops (1=wheat,2=corn,3=beets)
@@ -59,7 +63,7 @@ end
 #print(getchildren(m)[1])
 #print(getchildren(m)[2])
 
-option = "DD"
+option = "DE"
 
 # load problem to model object
 DSPsolver.loadProblem(m);
@@ -95,7 +99,7 @@ if option == "DD"
 end
 
 
-DSPsolver.getSolution(m);
+#DSPsolver.getSolution(m);
 #println(m.colNames)	
 #println(m.colVal)
 #println(getvalue(getvariable(m,:x)))

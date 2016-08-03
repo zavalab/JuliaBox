@@ -1,3 +1,7 @@
+# Example on using linking constraints in PLASMO
+# Yankai Cao and Victor M. Zavala
+# University of Wisconsin-Madison, 2016
+
 push!(LOAD_PATH, pwd())
 using JuMP 
 using Distributions 
@@ -5,8 +9,8 @@ using Ipopt
 using Plasmo
 
 srand(123)
-NS = 2;                    # number of scenarios
-NP = 10;
+NS = 100;                   # number of scenarios
+NP = 1000;
 S = collect(1:NS)           # scenario set
 P = collect(1:NP)           # set of crops (1=wheat,2=corn,3=beets)
 
@@ -38,6 +42,7 @@ sellub = zeros(NP)
 d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
 
+# create plasmo model
 m = NetModel()
 @variable(m, x[P] >= 0)    # acres devoted to crops
 @variable(m, s2 >= 0)
@@ -56,9 +61,11 @@ for i in 1:NS
 end
 
 # impose expected value constraint on cost
-@constraint(m, sum{getvariable(getNode(m,"s$i"), :cost)   , i in 1:NS} >= 50000) 
+@constraint(m, sum{getvariable(getNode(m,"s$i"), :cost), i in 1:NS} >= 50000) 
 ParPipsNlp_solve(m)
-println(getvalue(getvariable(m, :x)))
-println(getvalue(getvariable(getNode(m,"s1"), :w)))
-println(getvalue(getvariable(getNode(m,"s1"), :cost)))
-println(getvalue(getvariable(getNode(m,"s2"), :cost)))
+
+# access solution
+#println(getvalue(getvariable(m, :x)))
+#println(getvalue(getvariable(getNode(m,"s1"), :w)))
+#println(getvalue(getvariable(getNode(m,"s1"), :cost)))
+#println(getvalue(getvariable(getNode(m,"s2"), :cost)))

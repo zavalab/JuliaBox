@@ -1,3 +1,7 @@
+# Large farm problem to test scalability of PIPS-NLP
+# Yankai Cao and Victor M. Zavala
+# University of Wisconsin-Madison, 2016
+
 push!(LOAD_PATH, pwd())
 using JuMP 
 using Distributions 
@@ -37,22 +41,10 @@ yield[S,NP] = rand(d,NS)
 sellub = zeros(NP)
 d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
-#=
-m = Model(solver=IpoptSolver())
-@variable(m, x[S,P] >= 0)    # acres devoted to crops
-@variable(m, y[S,P] >= 0)    # crops purchase
-@variable(m, 0<=w[S,j in P] <= sellub[j in P])    # crops sold;
-@variable(m, cost[s in S])
-@constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P}) 
-@constraint(m, cap[s in S], sum{x[s,j], j in P} <= 200)
-@constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j]) 
-@constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
-@objective(m, Min, (1/NS)*sum{cost[s], s in S})
-solve(m)
-=#
 
+# create PLASMO model and solve with PIPS-NLP
 m = NetModel()
-@variable(m, x[P] >= 0)    # acres devoted to crops
+@variable(m, x[P] >= 0)    
 @variable(m, s2 >= 0)
 @constraint(m, cap, (sum{x[j], j in P} + s2) == 200)
 @objective(m, Min, sum{prcost[j]*x[j], j in P})
