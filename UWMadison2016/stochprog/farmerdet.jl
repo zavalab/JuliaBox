@@ -4,7 +4,7 @@ using Ipopt
 
 # Model parameters
 
-NS = 5;                    # number of scenarios
+NS = 5;                  # number of scenarios
 S = collect(1:NS);       # scenario set
 P = collect(1:3);        # set of crops (1=wheat,2=corn,3=beets)
 
@@ -29,7 +29,7 @@ demand[1] = 200;
 demand[2] = 240;
 demand[3] = 0;
 
-# assign random data (set first all equal to mean forecast)
+# assign random data (first set all equal to mean forecast)
 yield = zeros(length(S),3) # yields
 yield[S,1] = 2.5;
 yield[S,2] = 3.0;

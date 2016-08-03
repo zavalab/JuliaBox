@@ -5,7 +5,7 @@ using Ipopt
 
 # Model parameters
 
-NS = 5;                    # number of scenarios
+NS = 5;                  # number of scenarios
 S = collect(1:NS);       # scenario set
 P = collect(1:3);        # set of crops (1=wheat,2=corn,3=beets)
 
@@ -41,14 +41,14 @@ yield[3,3] = 20;
 yield[4,3] = 25;
 yield[5,3] = 30
 
-# Model 
+# Model (with exact probabilistic constraint - mixed-integer formulation)
 
 m = Model(solver=CbcSolver())
 
-@variable(m, x[S,P] >= 0)    # acres devoted to crops
-@variable(m, y[S,P] >= 0)    # crops purchase
-@variable(m, w[S,P] >= 0)    # crops sold;
-@variable(m, cost[s in S])   # per scenario cost
+@variable(m, x[S,P] >= 0)     # acres devoted to crops
+@variable(m, y[S,P] >= 0)     # crops purchase
+@variable(m, w[S,P] >= 0)     # crops sold;
+@variable(m, cost[s in S])    # per scenario cost
 @variable(m,probcost[s in S]) # per scenario cost for probabilistic constraint
 @variable(m,wp[S], Bin)       # indicator variables for probabilistic constraint
 
@@ -68,8 +68,7 @@ alphap=NS # number of constraints allowed to be violated
 
 solve(m)
 
-# Results (with probabilistic constraint)
-
+# Results 
 println(getvalue(cost))
 println("")
 println(getvalue(wp))
@@ -78,8 +77,7 @@ println(getvalue(probcost))
 println("")
 println("obj ",getobjectivevalue(m))
 
-# Model (with cvar)
-
+# Model (with cvar approximation)
 mp = Model(solver=CbcSolver())
 
 @variable(mp, x[S,P] >= 0)     # acres devoted to crops
@@ -109,7 +107,7 @@ alpha=5/NS  # alpha largest constraints in CVaR
 
 solve(mp)
 
-# Results (with CVaR)
+# Results 
 println(getvalue(cost))
 println("")
 println(getvalue(probcost))
@@ -121,8 +119,10 @@ println("")
 println("obj ",getobjectivevalue(mp))
 
 # Model (with sigmoid approximation SVar)
+
+# smoothing parameters
 b= 10
-c= 1e-3
+c= 0.001
 
 mp = Model(solver=IpoptSolver(print_level=0))
 
@@ -139,7 +139,7 @@ alpha=5/NS  # alpha largest constraints in CVaR
 @constraint(mp, cap[s in S], sum{x[s,j], j in P} <= 500)
 @constraint(mp, bal[s in S,j in 1:2], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j]) 
 @constraint(mp, probeq1[s in S], probcost[s] == -(yield[s,3]*x[s,3]+y[s,3]-w[s,3] - demand[3])) 
-@NLconstraint(mp,phidef[s in S], (1+b)/(b+exp(-c*probcost[s])) <= phi[s] )
+@NLconstraint(mp,phidef[s in S], (1+b) <= (b+exp(-c*probcost[s]))*phi[s] )
 @constraint(mp, (1.0/NS)*sum{phi[s], s in S} <= alpha )
 
 @constraint(mp, sellb[s in S], w[s,3] <= 6000)
@@ -150,7 +150,7 @@ alpha=5/NS  # alpha largest constraints in CVaR
 
 solve(mp)
 
-# Results (with Sigmoid)
+# Results 
 println(getvalue(cost))
 println("")
 println(getvalue(probcost))

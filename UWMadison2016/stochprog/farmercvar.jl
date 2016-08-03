@@ -41,7 +41,7 @@ yield[4,3] = 25;
 yield[5,3] = 30;
 
 # set cvar probability level
-alpha = 5/5;              # probability level cvar
+alpha = 4/5;              
 
 # Model 
 m = Model(solver=IpoptSolver(print_level=0))

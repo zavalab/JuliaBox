@@ -4,7 +4,7 @@ using Ipopt
 
 # Model parameters
 
-NS = 5;                    # number of scenarios
+NS = 5;                  # number of scenarios
 S = collect(1:NS);       # scenario set
 P = collect(1:3);        # set of crops (1=wheat,2=corn,3=beets)
 
@@ -53,6 +53,40 @@ m = Model(solver=IpoptSolver(print_level=0))
 @constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j]) 
 @constraint(m, sellb[s in S], w[s,3] <= 6000)
 @constraint(m, buyb[s in S], y[s,3] <= 0)
+
+@constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j]) # non-anticipativity constraints
+
+@objective(m, Min, (1/NS)*sum{cost[s], s in S})
+
+solve(m)
+
+# Results
+println(getvalue(x))
+println("")
+println(getvalue(y))
+println("")
+println(getvalue(w))
+println("")
+println(getvalue(cost))
+println("")
+println("obj: ", getobjectivevalue(m))
+
+# Model 
+m = Model(solver=IpoptSolver(print_level=0))
+
+@variable(m, x[S,P] >= 0)    # acres devoted to crops
+@variable(m, y[S,P] >= 0)    # crops purchase
+@variable(m, w[S,P] >= 0)    # crops sold;
+@expression(m, Cost[s in S], sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@variable(m, cost[s in S])
+
+@constraint(m, varcost[s in S], cost[s] == Cost[s]) 
+@constraint(m, cap[s in S], sum{x[s,j], j in P} <= 500)
+@constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j]) 
+@constraint(m, sellb[s in S], w[s,3] <= 6000)
+@constraint(m, buyb[s in S], y[s,3] <= 0)
+
+#@constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j]) # non-anticipativity constraints
 
 @objective(m, Min, (1/NS)*sum{cost[s], s in S})
 

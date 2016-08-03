@@ -5,6 +5,7 @@ using Distributions
 using Ipopt
 using PyPlot
 
+# select number of scenarios
 N = [10, 100, 1000]
 storeobj = [];
 
@@ -58,7 +59,7 @@ for i in N
     
     # Model parameters: 
 
-    NS = i;                    # number of scenarios  (CHECK THIS PART: is it always going to be 1000 or N?)
+    NS = i;                    # number of scenarios  
     S = collect(1:NS)          # scenario set
     P = collect(1:3)           # set of crops (1=wheat,2=corn,3=beets)
 
@@ -170,12 +171,11 @@ for i in N
 end
 
 # Plot confidence intervals
-
 # get critical values
 M = 5
 srand(0)
 α = 0.05
-pd = rand(Normal(),1000)  # check this part! (it is running similar to matlab at least, I checked)
+pd = rand(Normal(),1000)  
 z = quantile(pd, 1 - α/2);
 
 Um = zeros(3); Uv = zeros(3)
@@ -225,5 +225,3 @@ xlabel(L"log_{10}(N)")
 ylabel(L"Cost")
 axis([0.5,3.5,-125000,-95000])
 savefig("inferencefarmer.pdf") 
-
-

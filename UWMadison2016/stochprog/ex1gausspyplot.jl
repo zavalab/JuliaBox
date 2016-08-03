@@ -5,7 +5,8 @@ using Distributions
 using Ipopt
 using PyPlot
 
-# Generate random data: 
+# Generate random data:
+# Greek chracters (e.g., \mu and then hitting tab key)
 N = 1000
 srand(0)
 μ = 0; σ = 2; 
@@ -19,7 +20,7 @@ xlabel(L"\xi")
 ylabel(L"p(\xi)")
 savefig("ex1data.pdf")
 
-# ex1gauss.mod 
+# declare function that solves optimization model using input data
 function ex1GaussModel(xip)
     m = Model(solver=IpoptSolver(print_level=0))
     @variable(m, x)
@@ -33,7 +34,6 @@ end
 # solve problems with data points
 solex1gauss = zeros(N)
 solxex1gauss = zeros(N)
-
 for i=1:N 
     (solex1gauss[i], solxex1gauss[i]) = ex1GaussModel(R[i])
 end 
@@ -53,24 +53,20 @@ xlabel(L"x^*(\xi)")
 ylabel(L"p(x^*(\xi))")
 savefig("ex1solxgauss.pdf")
 
-# ex1gausscons.mod
-
+# define new model but now with constraints
 function ex1GaussConsModel(xip)
     m = Model(solver=IpoptSolver(print_level=0))
     @variable(m, -1 <= x <= 1)
     @objective(m, Min, (x-xip)^2 - x*xip)
-    
     solve(m)
     obj = getobjectivevalue(m)
     x = getvalue(x)
-    
     return obj,x
 end
         
 # solve problems with data points
 solex1gausscons = zeros(N)
 solxex1gausscons = zeros(N)
-
 for i=1:N 
     (solex1gausscons[i], solxex1gausscons[i]) = ex1GaussConsModel(R[i])
 end 

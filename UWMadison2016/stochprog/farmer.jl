@@ -37,7 +37,7 @@ yield[1,3] = 10;
 yield[2,3] = 15;
 yield[3,3] = 20;
 yield[4,3] = 25;
-yield[5,3] = 30
+yield[5,3] = 30;
 
 # Create Model (standard)
 m = Model(solver=IpoptSolver(print_level=0))
