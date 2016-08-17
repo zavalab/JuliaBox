@@ -15,7 +15,7 @@ function convert_to_c_idx(indicies)
 end
 
 
-type ModelData
+type ClusterData
     d
     n::Int
     m::Int
@@ -55,7 +55,7 @@ type ModelData
     x_sol::Vector{Float64}
     coreid::Int
 end
-ModelData() = ModelData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], Float64[],Int[],Int[],Float64[], Int[], Int[], Float64[], 0, 0, Float64[],Float64[],Float64[],Float64[], Int[], Int[],nothing, nothing, nothing, nothing, Int[],Int[], Float64[], Int[], Int[], Float64[],Float64[], 0)
+ClusterData() = ClusterData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], Float64[],Int[],Int[],Float64[], Int[], Int[], Float64[], 0, 0, Float64[],Float64[],Float64[],Float64[], Int[], Int[],nothing, nothing, nothing, nothing, Int[],Int[], Float64[], Int[], Int[], Float64[],Float64[], 0)
 
 
 function getData(m::JuMP.Model)
@@ -74,7 +74,7 @@ function ClusterIPM_solve(master::JuMP.Model)
          modelList = [master; leafModelList]
 
 	 for (idx,node) in enumerate(modelList)
-            node.ext[:Data] = ModelData()
+            node.ext[:Data] = ClusterData()
 	 end
 
 	 f, master_linear_lb, master_linear_ub = JuMP.prepProblemBounds(master)

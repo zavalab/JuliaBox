@@ -125,6 +125,7 @@ function organizeData(raw_data)
         end
         return getData(master_index)
 end
+
 end
 
 include("NetParPipsNlp.jl")

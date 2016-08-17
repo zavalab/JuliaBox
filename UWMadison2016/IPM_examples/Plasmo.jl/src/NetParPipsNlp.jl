@@ -51,21 +51,23 @@ type ModelData
     linkVineq::Vector{Float64}
     x_sol::Vector{Float64}
     coreid::Int
+    loaded::Bool
+    local_unsym_hessnnz::Int
 end
-ModelData() = ModelData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], Float64[],Int[],Int[],Float64[], Int[], Int[], Float64[], 0, 0, Float64[],Float64[],Float64[],Float64[], Int[], Int[],nothing, nothing, nothing, nothing, Int[],Int[], Float64[], Int[], Int[], Float64[],Float64[], 0)
+ModelData() = ModelData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], Float64[],Int[],Int[],Float64[], Int[], Int[], Float64[], 0, 0, Float64[],Float64[],Float64[],Float64[], Int[], Int[],nothing, nothing, nothing, nothing, Int[],Int[], Float64[], Int[], Int[], Float64[],Float64[], 0, false, 0)
 
 
 function getData(m::JuMP.Model)
     if haskey(m.ext, :Data)
         return m.ext[:Data]
     else
-        error("This functionality is only available")
+        error("This functionality is only available to model with extension data")
     end
 end
 
 
 function ParPipsNlp_solve(master::JuMP.Model)
-         children = getchildren(master)
+         children = Plasmo.getchildren(master)
 	 leafModelList = children
 	 scen = length(children)
          modelList = [master; leafModelList]
@@ -186,14 +188,12 @@ function ParPipsNlp_solve(master::JuMP.Model)
                    end
 		end
 	    end
-
          end
 	 removeConnection(master)
 	 master_data = getData(master)
  
-	 net_m = 0
-	 net_n = 0
-	 local_unsym_hessnnz = Int[]
+
+	#=
 	 for (idx,node) in enumerate(modelList)
 	     local_data = getData(node)
              nlp_lb, nlp_ub = JuMP.constraintbounds(node)
@@ -208,8 +208,6 @@ function ParPipsNlp_solve(master::JuMP.Model)
              local_data.m  = local_data.local_m + local_data.num_eqconnect + local_data.num_ineqconnect
              local_data.n = node.numCols
 	     local_data.x_sol = zeros(Float64,local_data.n)
-             net_m += local_data.m
-             net_n += local_data.n	                  
 	     local_data.firstJeqmat = sparse(local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_data.num_eqconnect, master_data.n)
 	     local_data.secondJeqmat = sparse(local_data.secondIeq, local_data.secondJeq, local_data.secondVeq, local_data.num_eqconnect, local_data.n)
 	     local_data.firstJineqmat = sparse(local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_data.num_ineqconnect, master_data.n)
@@ -240,13 +238,11 @@ function ParPipsNlp_solve(master::JuMP.Model)
              end
 	     node.ext[:Ijaceq] = Ijaceq
              node.ext[:Jjaceq] = Jjaceq
-	     node.ext[:Ijacineq] = Ijacineq
              node.ext[:Jjacineq] = Jjacineq
 	     node.ext[:jac_eq_index] = jac_eq_index
 	     node.ext[:jac_ineq_index] = jac_ineq_index
 
              Ihess, Jhess = hesslag_structure(local_data.d)
-
              Hmap = Bool[]
              node_Hrows = Int[]
              node_Hcols = Int[]
@@ -265,9 +261,11 @@ function ParPipsNlp_solve(master::JuMP.Model)
              node.ext[:Hcols] = node_Hcols
              node.ext[:Hmap] = Hmap
              local_hessnnz = length(mat.rowval)
-             push!(local_unsym_hessnnz, length(Ihess))
+             local_data.local_unsym_hessnnz = length(Ihess)
              local_data.hessnnz = local_hessnnz             
          end
+	 =#
+
 
 	 function str_init_x0(nodeid, x0)
           	node = modelList[nodeid+1]
@@ -281,9 +279,145 @@ function ParPipsNlp_solve(master::JuMP.Model)
 
 	 
 	 function str_prob_info(nodeid,flag, mode,col_lb,col_ub,row_lb,row_ub)
+	 	#println("str_pro_info   ", nodeid, "  ", mode)
 	        if flag == 0
 	 	    node = modelList[nodeid+1]
 		    local_data = getData(node)
+
+		    if(!local_data.loaded)
+		        #println("inside load")
+			#tic()
+		        local_data.loaded = true
+			nlp_lb, nlp_ub = JuMP.constraintbounds(node)
+             		local_data.local_m  = length(nlp_lb)
+
+			newRowId = Array(Int, local_data.local_m)
+			eqId = 1
+			ineqId = 1 			
+             		for c in 1:local_data.local_m
+                 	    if nlp_lb[c] == nlp_ub[c]
+                     	        push!(local_data.eq_idx, c)
+				newRowId[c] = eqId
+				eqId +=  1
+                 	    else
+				push!(local_data.ineq_idx, c)
+				newRowId[c] = ineqId
+				ineqId += 1
+                 	    end
+             		end
+             		local_data.m  = local_data.local_m + local_data.num_eqconnect + local_data.num_ineqconnect
+             		local_data.n = node.numCols
+             		local_data.x_sol = zeros(Float64,local_data.n)
+             		local_data.firstJeqmat = sparse(local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_data.num_eqconnect, master_data.n)
+	          	local_data.secondJeqmat = sparse(local_data.secondIeq, local_data.secondJeq, local_data.secondVeq, local_data.num_eqconnect, local_data.n)
+             		local_data.firstJineqmat = sparse(local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_data.num_ineqconnect, master_data.n)
+             		local_data.secondJineqmat = sparse(local_data.secondIineq, local_data.secondJineq, local_data.secondVineq, local_data.num_ineqconnect, local_data.n)
+			
+			#tic()
+             		local_data.d = JuMP.NLPEvaluator(node)
+			initialize(local_data.d, [:Grad,:Jac, :Hess])
+			#println("Create NLP evaluator:   ",  toq(), " (s)")
+
+			#tic()			
+             		Ijac, Jjac = jac_structure(local_data.d)
+			#println("get jac structure:   ",  toq(), " (s)")
+			#tic()
+			#=
+			jaceq_nnz = 0
+			jacineq_nnz = 0
+			for i in 1:length(Ijac)
+                            c = Ijac[i]
+                            if nlp_lb[c] == nlp_ub[c]
+                     	        jaceq_nnz += 1
+                            else
+				jacineq_nnz += 1
+                            end
+                        end
+                        Ijaceq = Array(Int, jaceq_nnz) 
+                        Jjaceq = Array(Int, jaceq_nnz)
+                        Ijacineq = Array(Int, jacineq_nnz)
+                        Jjacineq = Array(Int, jacineq_nnz)
+			jac_eq_index = Array(Int, jaceq_nnz)
+                        jac_ineq_index = Array(Int, jacineq_nnz)
+			jaceq_nnz = 0
+                        jacineq_nnz = 0
+                        for i in 1:length(Ijac)
+                            c = Ijac[i]
+                            if nlp_lb[c] == nlp_ub[c]
+                                modifiedrow = find(local_data.eq_idx .== c)[1]
+				Ijaceq[jaceq_nnz+1] = modifiedrow
+				Jjaceq[jaceq_nnz+1] = Jjac[i]
+				jac_eq_index[jaceq_nnz+1] = i				
+				jaceq_nnz += 1
+                            else
+                                modifiedrow = find(local_data.ineq_idx .== c)[1]
+				Ijacineq[jacineq_nnz+1] = modifiedrow
+				Jjacineq[jacineq_nnz+1] = Jjac[i]
+				jac_ineq_index[jacineq_nnz+1] = i    
+				jacineq_nnz += 1
+                            end
+                        end
+			=#
+
+                        Ijaceq = Int[]
+                        Jjaceq = Int[]
+                        Ijacineq = Int[]
+                        Jjacineq = Int[]
+                        jac_eq_index = Int[]
+                        jac_ineq_index = Int[]
+                        for i in 1:length(Ijac)
+                            c = Ijac[i]
+                            if nlp_lb[c] == nlp_ub[c]
+                                modifiedrow = newRowId[c] 
+                                push!(Ijaceq, modifiedrow)
+                                push!(Jjaceq, Jjac[i])
+                                push!(jac_eq_index, i)
+                            else
+                                modifiedrow = newRowId[c] 
+                                push!(Ijacineq, modifiedrow)
+                                push!(Jjacineq, Jjac[i])
+                                push!(jac_ineq_index,i)
+                            end
+                        end
+
+            		node.ext[:Ijaceq] = Ijaceq
+             		node.ext[:Jjaceq] = Jjaceq
+		        node.ext[:Ijacineq] = Ijacineq
+             		node.ext[:Jjacineq] = Jjacineq
+             		node.ext[:jac_eq_index] = jac_eq_index
+             		node.ext[:jac_ineq_index] = jac_ineq_index
+			#println("formulate jac structure:   ",  toq(), " (s)")
+
+			#tic()
+             		Ihess, Jhess = hesslag_structure(local_data.d)
+			#println("get hessian:   ",  toq(), " (s)")
+
+			#tic()
+             		Hmap = Bool[]
+             		node_Hrows = Int[]
+             		node_Hcols = Int[]
+             		for i in 1:length(Ihess)
+                    	    if Jhess[i] <= Ihess[i]
+                       	        push!(node_Hrows, Ihess[i])
+                       		push!(node_Hcols, Jhess[i])
+                       		push!(Hmap, true)
+                    	    else
+                                push!(Hmap, false)
+                            end
+                        end
+             		val = ones(Float64,length(node_Hrows))
+             		mat = sparse(node_Hrows,node_Hcols,val, local_data.n, local_data.n)
+             		node.ext[:Hrows] = node_Hrows
+             		node.ext[:Hcols] = node_Hcols
+             		node.ext[:Hmap] = Hmap
+             		local_hessnnz = length(mat.rowval)
+             		local_data.local_unsym_hessnnz = length(Ihess)
+             		local_data.hessnnz = local_hessnnz
+
+			#println("formulate hes:   ",  toq(), " (s)")
+			#println("Load data time:   ",  toq(), " (s)")
+		    end
+
     	 	    if(mode == :Values)
 	               	nlp_lb, nlp_ub = JuMP.constraintbounds(node)			
 			eq_lb=Float64[]
@@ -318,6 +452,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                         original_copy([eqlink_lb; ineqlink_lb], row_lb)
                         original_copy([eqlink_ub; ineqlink_ub], row_ub)
                     end		    
+		    #println("nlink:    ",nlink)
                     return (0, nlink)			
 		end
 	 end
@@ -339,6 +474,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                 local_scl = (node.objSense == :Min) ? 1.0 : -1.0
                 f = local_scl*eval_f(local_d,local_x)
 		#println(f)
+		#println("exit str_eval_f")
                 return f
         end
 
@@ -361,6 +497,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		    new_inq_g[1:end] = [local_g[local_data.ineq_idx]; local_data.firstJineqmat*x0+local_data.secondJineqmat*x1]
 		   #println(new_eq_g)
 		   #println(new_inq_g)
+		   #println("exit eval_g")	
 		    return Int32(1)
          end
 
@@ -401,6 +538,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		    assert(false)
                 end
 		#println(new_grad_f)
+		#println("exit eval_grad_f")
                 return Int32(1)
          end
 
@@ -420,10 +558,10 @@ function ParPipsNlp_solve(master::JuMP.Model)
 
 	 function str_eval_jac_g(rowid,colid,flag, x0,x1,mode,e_rowidx,e_colptr,e_values,i_rowidx,i_colptr,i_values)
 	       	#println("inside eval_jac")
-                #println(rowid,colid)
+                #println(rowid,colid, mode)
                 #println(x0)
                 #println(x1)
-	       if flag == 0	     
+	       if flag != 1	     
 	           node = modelList[rowid+1]
 	       	   local_data = getData(node)
 	       	   local_m_eq = length(local_data.eq_idx)
@@ -436,17 +574,16 @@ function ParPipsNlp_solve(master::JuMP.Model)
                     	   Iineq=[node.ext[:Ijacineq];local_data.secondIineq + local_m_ineq]
                      	   Jineq=[node.ext[:Jjacineq];local_data.secondJineq]
                      	   Vineq=ones(Float64, length(Iineq))
-			   #println(rowid, colid)
 			   #println(local_m_eq) 
 		           #println(local_data.num_eqconnect)
 			   eqmat = sparse(Ieq, Jeq, Veq, local_m_eq + local_data.num_eqconnect, local_data.n)
                      	   ineqmat = sparse(Iineq, Jineq, Vineq, local_m_ineq + local_data.num_ineqconnect, local_data.n)			
-			   return(length(eqmat.rowval), length(ineqmat.rowval))
 		       else
 			   eqmat = sparse(local_m_eq + local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_m_eq + local_data.num_eqconnect, master_data.n)
                      	   ineqmat = sparse(local_m_ineq + local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_m_ineq + local_data.num_ineqconnect, master_data.n)
+			end
+			   #println("size   ", length(eqmat.rowval),"    ", length(ineqmat.rowval))
 			   return(length(eqmat.rowval), length(ineqmat.rowval))
-		       end
 	           else
 		       if rowid == colid
  		           if colid ==  0
@@ -466,26 +603,10 @@ function ParPipsNlp_solve(master::JuMP.Model)
                        	   Vineq=[local_values[jac_ineq_index];local_data.secondVineq]
 		       	   eqmat = sparseKeepZero(Ieq, Jeq, Veq, local_m_eq + local_data.num_eqconnect, local_data.n)
 		       	   ineqmat = sparseKeepZero(Iineq, Jineq, Vineq, local_m_ineq + local_data.num_ineqconnect, local_data.n)
-
-#=
-			   if length(eqmat.nzval) > 0
-                              array_copy(eqmat.rowval,e_rowidx)
-                              array_copy(eqmat.colptr,e_colptr)
-                              original_copy(eqmat.nzval,e_values)
-                       	   end
-                       	   if length(ineqmat.nzval) > 0
-                              array_copy(ineqmat.rowval,i_rowidx)
-                              array_copy(ineqmat.colptr,i_colptr)
-                              original_copy(ineqmat.nzval, i_values)
-                            end
-=#
-
 		       else
 			   eqmat = sparseKeepZero(local_m_eq + local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_m_eq + local_data.num_eqconnect, master_data.n)
                      	   ineqmat = sparseKeepZero(local_m_ineq + local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_m_ineq + local_data.num_ineqconnect, master_data.n)
 		       end   		 
-
-
 		       if length(eqmat.nzval) > 0
 		       	  array_copy(eqmat.rowval,e_rowidx)
                        	  array_copy(eqmat.colptr,e_colptr)
@@ -496,20 +617,13 @@ function ParPipsNlp_solve(master::JuMP.Model)
                        	  array_copy(ineqmat.colptr,i_colptr)
                        	  original_copy(ineqmat.nzval, i_values)
 		       end
-		       
-
-#		   e_values = - e_values
-#		   i_values = - i_values	   
                	   end
-
 		   #println("inside eval_jac")
                    #println(rowid,colid)
                    #println(x0)
                    #println(x1)
 		   #println(mode,e_rowidx,e_colptr,e_values)
 	       	   #println(i_rowidx,i_colptr,i_values)
-
-
 	       else
 	           node = modelList[rowid+1]
                	   local_data = getData(node)
@@ -537,6 +651,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		       end
                	   end
 	       end
+	       #println("exit eval_jac")
                return Int32(1)
          end
 	 
@@ -573,15 +688,12 @@ function ParPipsNlp_solve(master::JuMP.Model)
                    else
                          local_x = x1
                    end
-  		   local_unsym_values = Array(Float64, local_unsym_hessnnz[rowid+1])
+  		   local_unsym_values = Array(Float64, local_data.local_unsym_hessnnz)
 		   node_val = ones(Float64,length(node_Hrows))
                    local_scl = (node.objSense == :Min) ? 1.0 : -1.0
-
-
 		   local_m_eq = length(local_data.eq_idx)
                    local_m_ineq = length(local_data.ineq_idx)
 		   local_lambda = zeros(Float64, local_data.local_m)
-
 		   for i in 1:local_m_eq
 		       local_lambda[local_data.eq_idx[i]] = lambda[i]
 		   end
@@ -595,7 +707,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                    eval_hesslag(local_data.d, local_unsym_values, local_x, obj_factor*local_scl, local_lambda)
 		   	#println(local_unsym_values)		      
                    local_sym_index=1
-                   for i in 1:local_unsym_hessnnz[rowid+1]
+                   for i in 1:local_data.local_unsym_hessnnz
                        if node_Hmap[i]
                           node_val[local_sym_index] = local_unsym_values[i]
                           local_sym_index +=1
@@ -632,6 +744,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	       #println("rowidx,colptr,values")
 	       #println(rowidx,colptr,values)
             end
+	    #println("exit eval_h")
             return Int32(1)
          end
 
@@ -640,7 +753,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	 if(MPI.Comm_rank(comm) == 0)
             tic()
          end
-    	 println("[$(MPI.Comm_rank(comm))/$(MPI.Comm_size(comm))] create problem ")
+    	 #println("[$(MPI.Comm_rank(comm))/$(MPI.Comm_size(comm))] create problem ")
          # @show comm
     	 model = FakeModel(:Min,0, scen,
          str_init_x0, str_prob_info, str_eval_f, str_eval_g, str_eval_grad_f, str_eval_jac_g, str_eval_h,str_write_solution)
@@ -663,6 +776,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	    println("Solution time:   ",  toq(), " (s)")
 	 end
 
+	 
 	 for (idx,node) in enumerate(modelList)
 	     local_data = getData(node)
 	     if idx != 1
@@ -672,18 +786,38 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		     coreid[1] = sc
 	        end
 		MPI.Bcast!(coreid, length(coreid), root, comm)
-		MPI.Bcast!(local_data.x_sol,local_data.n, coreid[1], comm)
+		n = zeros(Int, 1)
+		n[1] = local_data.n
+		MPI.Bcast!(n,      length(n),      coreid[1], comm)
+		if r != coreid[1]
+		     local_data.n = n[1]
+		     local_data.x_sol = zeros(Float64,local_data.n)
+		end
+		MPI.Bcast!(local_data.x_sol, local_data.n, coreid[1], comm)		
 		node.colVal = local_data.x_sol
 	     else
 		node.colVal = local_data.x_sol
 	     end
-	 end
+	     #println("rank:  ",r, "   scen:", idx, "  sol:  ",node.colVal)
+	 end	
 	 MPI.Finalize()
-         return Int32(1)
+
+	 status = :Unknown
+	 if ret == 0 
+	    status = :Solve_Succeeded
+	 elseif ret == 1
+	    status = :Not_Finished
+	 elseif	ret == 2
+	    status = :Maximum_Iterations_Exceeded
+	 elseif	ret == 3
+	    stauts = :Infeasible_Problem_Detected
+	 elseif ret == 4
+	    status = :Restoration_needed
+	 else
+	 end
+
+         return status
 end
-
-
-
 
 function exchange(a,b)
 	 temp = a
@@ -691,7 +825,6 @@ function exchange(a,b)
          b=temp 
 	 return (a,b)
 end
-
 
 function sparseKeepZero{Tv,Ti<:Integer}(I::AbstractVector{Ti},
                                 J::AbstractVector{Ti},
@@ -802,8 +935,6 @@ function sparseKeepZero{Tv,Ti<:Integer}(I::AbstractVector{Ti},
 
     return SparseMatrixCSC(nrow, ncol, RpT, RiT, RxT)
 end
-
-
 
 function removeConnection(master::JuMP.Model)
     numconnectRows = length(master.linconstr)

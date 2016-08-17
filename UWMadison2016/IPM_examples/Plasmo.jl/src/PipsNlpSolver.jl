@@ -163,7 +163,7 @@ export  ModelInterface, FakeModel,
 ###########################################################################
 
 function str_init_x0_wrapper(x0_ptr::Ptr{Float64}, cbd::Ptr{CallBackData})
-	# @show " julia - str_init_x0_wrapper "
+    #	 @show " julia - str_init_x0_wrapper "
     # @show cbd
     data = unsafe_load(cbd)
     # @show data
@@ -185,6 +185,7 @@ function str_init_x0_wrapper(x0_ptr::Ptr{Float64}, cbd::Ptr{CallBackData})
     if prob.prof
         prob.t_jl_init_x0 += toq()
     end
+    #@show "exit  julia - str_init_x0_wrapper "
     return Int32(1)
 end
 
@@ -206,7 +207,7 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
 	
 	mode = (col_lb_ptr == C_NULL&&col_ub_ptr==C_NULL&&row_lb_ptr==C_NULL&&row_ub_ptr==C_NULL) ? (:Structure) : (:Values)
     #@show flag
-    if flag == 0
+    if flag != 1
         #@show mode
     	if(mode==:Structure)
             col_lb = pointer_to_array(col_lb_ptr,0)
@@ -256,7 +257,8 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
     		prob.model.set_num_ineq_cons(colid,nineq) 
     	end
     else
-        @assert flag ==1
+	#println("prob_info: ",mode,flag)
+        @assert flag == 1
         if mode == :Structure
             col_lb = pointer_to_array(col_lb_ptr,0)
             col_ub = pointer_to_array(col_ub_ptr,0)
@@ -275,6 +277,7 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
             prob.model.str_prob_info(colid,flag,mode,col_lb,col_ub,row_lb,row_ub)
         end
     end
+    # @show "exit  julia - str_prob_info_wrapper "
 	return Int32(1)
 end
 # Objective (eval_f)
@@ -304,6 +307,7 @@ function str_eval_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, obj_ptr:
     # Fill out the pointer
     unsafe_store!(obj_ptr, new_obj)
     # Done
+    # @show "exit julia - eval_f_wrapper "
     return Int32(1)
 end
 
@@ -335,6 +339,7 @@ function str_eval_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, eq_g_ptr
         prob.t_jl_eval_g += toq()
     end
     # Done
+    # @show " exit julia - eval_g_wrapper "
     return Int32(1)
 end
 
@@ -369,6 +374,7 @@ function str_eval_grad_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, gra
         new_grad_f *= -1.0
     end
     # Done
+    # @show " julia -  eval_grad_f_wrapper "
     return Int32(1)
 end
 
@@ -399,7 +405,8 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
     #@show prob
     # Determine mode
     mode = (e_row_ptr == C_NULL &&e_col_ptr == C_NULL&&e_values_ptr == C_NULL && i_values_ptr == C_NULL&&i_row_ptr == C_NULL &&i_col_ptr == C_NULL) ? (:Structure) : (:Values)
-    if flag == 0
+    #@show mode
+    if flag != 1
         if(mode == :Structure)
         	e_values = pointer_to_array(e_values_ptr,0)
     		e_colptr = pointer_to_array(e_col_ptr,0)
@@ -474,6 +481,7 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
         end
     end
     # Done
+    #@show "exit julia -  eval_jac_g_wrapper "
     return Int32(1)
 end
 
@@ -546,6 +554,7 @@ function str_eval_h_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, lambda_p
         end
     end
     # @show prob.n_iter
+    # @show "exit  julia - eval_h_wrapper "
     return Int32(1)
 end
 
