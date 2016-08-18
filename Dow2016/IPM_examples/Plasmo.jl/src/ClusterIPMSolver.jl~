@@ -1,26 +1,30 @@
-#
-# Wrapper for the paralel/structured PIPS-NLP interface
-#
-
-module PipsNlpSolver  
+module ClusterIPMSolver  
 import MPI
 
-try
-  sharedLib=ENV["PIPS_NLP_PAR_SHARED_LIB"]
-  
-  # Explicitly check if the file exists. dlopen sometimes does not throw an 
-  # error for invalid filenames, resulting in a seg fault)
-  if(!isfile(sharedLib))
-    error(string("The specified shared library ([", sharedLib, "]) does not exist"))
-  end  
-  global const libparpipsnlp=Libdl.dlopen(get(ENV,"PIPS_NLP_PAR_SHARED_LIB",""))
-catch 
-  warn("Could not load PIPS-NLP shared library. Make sure the ENV variable 'PIPS_NLP_PAR_SHARED_LIB' points to its location, usually in the PIPS repo at PIPS/build_pips/PIPS-NLP/libparpipsnlp.so")
-  rethrow()
+# Check if JuMP 
+if Pkg.installed("JuMP") == nothing
+        Pkg.add("JuMP")
 end
+using JuMP
+
+macro checked_lib(libname, path)
+    (Libdl.dlopen_e(path) == C_NULL) && error("Unable to load \n\n$libname ($path)\n\n")
+    quote const $(esc(libname)) = $path end
+end
+
+# Load dependencies
+@checked_lib libcoinhsl "/home/cao27/software/IPM/src/ThirdParty/coinhsl/lib/lib/libcoinhsl.so"
+@checked_lib libclusteripm "/home/cao27/software/IPM/lib/libClusterIPM.so.1.0"
+
+macro ClusterIPM_ccall(func, args...)
+        @unix_only return quote
+                ccall(($func, "/home/cao27/software/IPM/lib/libClusterIPM.so.1.0"), $(args...))
+        end
+end
+
 abstract ModelInterface
 #######################
-type FakeModel <: ModelInterface
+type InternalModel <: ModelInterface
     sense::Symbol
     status::Int
     nscen::Int
@@ -54,7 +58,7 @@ type FakeModel <: ModelInterface
     str_write_solution::Function
            
 
-    function FakeModel(sense::Symbol,status::Int,nscen::Int, str_init_x0, str_prob_info, str_eval_f, str_eval_g,str_eval_grad_f,str_eval_jac_g, str_eval_h, str_write_solution)
+    function InternalModel(sense::Symbol,status::Int,nscen::Int, str_init_x0, str_prob_info, str_eval_f, str_eval_g,str_eval_grad_f,str_eval_jac_g, str_eval_h, str_write_solution)
         instance = new(sense,status,nscen,Dict{Int,Int}(),Dict{Int,Int}(),Dict{Int,Int}(),Dict{Int,Int}())
         instance.str_init_x0 = str_init_x0
         instance.str_prob_info = str_prob_info 
@@ -114,7 +118,7 @@ end
 #######################
 
 
-type PipsNlpProblemStruct
+type ClusterIPM
     ref::Ptr{Void}
     model::ModelInterface
     comm::MPI.Comm
@@ -136,13 +140,13 @@ type PipsNlpProblemStruct
     t_jl_str_total::Float64
     t_jl_eval_total::Float64
     
-    function PipsNlpProblemStruct(comm, model, prof)
+    function ClusterIPM(comm, model, prof)
         prob = new(C_NULL, model, comm, prof,-3
             ,0.0,0.0,0.0,0.0,0.0
             ,0.0,0.0,0.0,0.0,0.0
             ,0.0,0.0
             )
-        finalizer(prob, freeProblemStruct)
+        finalizer(prob, freeProblemCluster)
         
         return prob
     end
@@ -155,20 +159,20 @@ immutable CallBackData
     flag::Cint  #this wrapper ignore this flag as it is only for problems without linking constraint 
 end
 
-export  ModelInterface, FakeModel,
-        createProblemStruct, solveProblemStruct
+export  ModelInterface, InternalModel,
+        createProblemCluster, solveProblemCluster
 
 ###########################################################################
 # Callback wrappers
 ###########################################################################
 
 function str_init_x0_wrapper(x0_ptr::Ptr{Float64}, cbd::Ptr{CallBackData})
-    #	 @show " julia - str_init_x0_wrapper "
+	# @show " julia - str_init_x0_wrapper "
     # @show cbd
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     # @show prob
     # data = unsafe_pointer_to_objref(cbd)::CallBackData
     # out = Array(Ptr{CallBackData},1)
@@ -185,7 +189,6 @@ function str_init_x0_wrapper(x0_ptr::Ptr{Float64}, cbd::Ptr{CallBackData})
     if prob.prof
         prob.t_jl_init_x0 += toq()
     end
-    #@show "exit  julia - str_init_x0_wrapper "
     return Int32(1)
 end
 
@@ -196,7 +199,7 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
     data = unsafe_load(cbd)
     #@show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     # @show prob
     # data = unsafe_pointer_to_objref(cbd)::CallBackData
     # out = Array(Ptr{CallBackData},1)
@@ -205,9 +208,9 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
     flag = data.flag
     assert(rowid == colid)
 	
-	mode = (col_lb_ptr == C_NULL&&col_ub_ptr==C_NULL&&row_lb_ptr==C_NULL&&row_ub_ptr==C_NULL) ? (:Structure) : (:Values)
+	mode = (col_lb_ptr == C_NULL) ? (:Structure) : (:Values)
     #@show flag
-    if flag != 1
+    if flag == 0
         #@show mode
     	if(mode==:Structure)
             col_lb = pointer_to_array(col_lb_ptr,0)
@@ -257,8 +260,7 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
     		prob.model.set_num_ineq_cons(colid,nineq) 
     	end
     else
-	#println("prob_info: ",mode,flag)
-        @assert flag == 1
+        @assert flag ==1
         if mode == :Structure
             col_lb = pointer_to_array(col_lb_ptr,0)
             col_ub = pointer_to_array(col_ub_ptr,0)
@@ -277,7 +279,6 @@ function str_prob_info_wrapper(n_ptr::Ptr{Cint}, col_lb_ptr::Ptr{Float64}, col_u
             prob.model.str_prob_info(colid,flag,mode,col_lb,col_ub,row_lb,row_ub)
         end
     end
-    # @show "exit  julia - str_prob_info_wrapper "
 	return Int32(1)
 end
 # Objective (eval_f)
@@ -287,7 +288,7 @@ function str_eval_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, obj_ptr:
     # @show data
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     rowid = data.row_node_id
     colid = data.col_node_id
     assert(rowid == colid)
@@ -307,7 +308,6 @@ function str_eval_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, obj_ptr:
     # Fill out the pointer
     unsafe_store!(obj_ptr, new_obj)
     # Done
-    # @show "exit julia - eval_f_wrapper "
     return Int32(1)
 end
 
@@ -317,7 +317,7 @@ function str_eval_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, eq_g_ptr
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     rowid = data.row_node_id
     colid = data.col_node_id
     assert(rowid == colid)
@@ -339,7 +339,6 @@ function str_eval_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, eq_g_ptr
         prob.t_jl_eval_g += toq()
     end
     # Done
-    # @show " exit julia - eval_g_wrapper "
     return Int32(1)
 end
 
@@ -351,7 +350,7 @@ function str_eval_grad_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, gra
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     rowid = data.row_node_id
     colid = data.col_node_id
     n0 = prob.model.get_num_cols(0)
@@ -374,7 +373,6 @@ function str_eval_grad_f_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, gra
         new_grad_f *= -1.0
     end
     # Done
-    # @show " julia -  eval_grad_f_wrapper "
     return Int32(1)
 end
 
@@ -389,7 +387,7 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     rowid = data.row_node_id
     colid = data.col_node_id
     flag = data.flag
@@ -404,9 +402,8 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
     ncol = prob.model.get_num_cols(colid) 
     #@show prob
     # Determine mode
-    mode = (e_row_ptr == C_NULL &&e_col_ptr == C_NULL&&e_values_ptr == C_NULL && i_values_ptr == C_NULL&&i_row_ptr == C_NULL &&i_col_ptr == C_NULL) ? (:Structure) : (:Values)
-    #@show mode
-    if flag != 1
+    mode = (e_values_ptr == C_NULL && i_values_ptr == C_NULL) ? (:Structure) : (:Values)
+    if flag == 0
         if(mode == :Structure)
         	e_values = pointer_to_array(e_values_ptr,0)
     		e_colptr = pointer_to_array(e_col_ptr,0)
@@ -428,12 +425,12 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
         	e_nz = unsafe_load(e_nz_ptr)
         	e_values = pointer_to_array(e_values_ptr,e_nz)
         	e_rowidx = pointer_to_array(e_row_ptr, e_nz)
-        	e_colptr = pointer_to_array(e_col_ptr, ncol+1)
+        	e_colptr = pointer_to_array(e_col_ptr, e_nz)
         	i_nz = unsafe_load(i_nz_ptr)
         	# @show "values - ",(e_nz,i_nz), ncol
         	i_values = pointer_to_array(i_values_ptr,i_nz)
         	i_rowidx = pointer_to_array(i_row_ptr, i_nz)
-        	i_colptr = pointer_to_array(i_col_ptr, ncol+1)
+        	i_colptr = pointer_to_array(i_col_ptr, i_nz)
             # @show x0
             # @show x1 
             if prob.prof
@@ -466,11 +463,11 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
             e_nz = unsafe_load(e_nz_ptr)
             e_values = pointer_to_array(e_values_ptr,e_nz)
             e_rowidx = pointer_to_array(e_row_ptr, e_nz)
-            e_colptr = pointer_to_array(e_col_ptr, ncol+1)
+            e_colptr = pointer_to_array(e_col_ptr, e_nz)
             i_nz = unsafe_load(i_nz_ptr)
             i_values = pointer_to_array(i_values_ptr,i_nz)
             i_rowidx = pointer_to_array(i_row_ptr, i_nz)
-            i_colptr = pointer_to_array(i_col_ptr, ncol+1)
+            i_colptr = pointer_to_array(i_col_ptr, i_nz)
             if prob.prof
                 tic()
             end
@@ -481,7 +478,6 @@ function str_eval_jac_g_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64},
         end
     end
     # Done
-    #@show "exit julia -  eval_jac_g_wrapper "
     return Int32(1)
 end
 
@@ -492,7 +488,7 @@ function str_eval_h_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, lambda_p
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     # @show prob.prof
     rowid = data.row_node_id
     colid = data.col_node_id
@@ -533,7 +529,7 @@ function str_eval_h_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, lambda_p
     	nz = unsafe_load(nz_ptr)
     	values = pointer_to_array(values_ptr, nz)
     	rowidx = pointer_to_array(row_ptr, nz)
-    	colptr = pointer_to_array(col_ptr, ncol+1)
+    	colptr = pointer_to_array(col_ptr, nz)
     	# @show "value - ", nz
         if prob.prof
             tic()
@@ -554,7 +550,6 @@ function str_eval_h_wrapper(x0_ptr::Ptr{Float64}, x1_ptr::Ptr{Float64}, lambda_p
         end
     end
     # @show prob.n_iter
-    # @show "exit  julia - eval_h_wrapper "
     return Int32(1)
 end
 
@@ -563,7 +558,7 @@ function str_write_solution_wrapper(x_ptr::Ptr{Float64}, y_eq_ptr::Ptr{Float64},
     data = unsafe_load(cbd)
     # @show data
     userdata = data.prob
-    prob = unsafe_pointer_to_objref(userdata)::PipsNlpProblemStruct
+    prob = unsafe_pointer_to_objref(userdata)::ClusterIPM
     rowid = data.row_node_id
     colid = data.col_node_id
     @assert rowid == colid
@@ -588,8 +583,8 @@ end
 # C function wrappers
 ###########################################################################
 
-function createProblemStruct(comm::MPI.Comm, model::ModelInterface, prof::Bool)
-	# println(" createProblemStruct  -- julia")
+function createProblemCluster(comm::MPI.Comm, model::ModelInterface, prof::Bool)
+	# println(" createProblemCluster  -- julia")
 	str_init_x0_cb = cfunction(str_init_x0_wrapper, Cint, (Ptr{Float64}, Ptr{CallBackData}) )
     str_prob_info_cb = cfunction(str_prob_info_wrapper, Cint, (Ptr{Cint}, Ptr{Float64}, Ptr{Float64}, Ptr{Cint}, Ptr{Float64}, Ptr{Float64}, Ptr{CallBackData}) )
     str_eval_f_cb = cfunction(str_eval_f_wrapper,Cint, (Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{CallBackData}) )
@@ -603,14 +598,13 @@ function createProblemStruct(comm::MPI.Comm, model::ModelInterface, prof::Bool)
     str_write_solution_cb = cfunction(str_write_solution_wrapper, Cint, (Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{CallBackData}))
     
     # println(" callback created ")
-    prob = PipsNlpProblemStruct(comm, model, prof)
+    prob = ClusterIPM(comm, model, prof)
     # @show prob
-    ret = ccall(Libdl.dlsym(libparpipsnlp,:CreatePipsNlpProblemStruct),Ptr{Void},
+    ret = @ClusterIPM_ccall("createClusterIPM", Ptr{Void},
             (MPI.Comm, 
             Cint, Ptr{Void}, Ptr{Void}, 
 	    Ptr{Void}, Ptr{Void}, Ptr{Void}, 
 	    Ptr{Void}, Ptr{Void}, Ptr{Void},Any
-            # ,Ptr{Void}, Ptr{Void}  #comply with link interface from yankai
             ),
             comm, 
             model.get_num_scen(),
@@ -623,61 +617,33 @@ function createProblemStruct(comm::MPI.Comm, model::ModelInterface, prof::Bool)
             str_eval_h_cb,
             str_write_solution_cb,
             prob
-            # ,Ptr{Void}(0), Ptr{Void}(0)
             )
-    # println(" ccall CreatePipsNlpProblemStruct done ")
+    # println(" ccall CreateClusterIPM done ")
     # @show ret   
     
-    if ret == C_NULL
-        error("PIPS-NLP: Failed to construct problem.")
-    else
-        prob.ref = ret
-    end
+    prob.ref = ret
     # @show prob
-    # println("end createProblemStruct - julia")
+    # println("end createProblemCluster - julia")
     return prob
 end
 
-function solveProblemStruct(prob::PipsNlpProblemStruct)
-    # println("solveProblemStruct - julia")
-    # @show prob
-    
-    ret = ccall(Libdl.dlsym(libparpipsnlp,:PipsNlpSolveStruct), Cint, 
+function solveProblemCluster(prob::ClusterIPM)
+     println("solveProblemCluster - julia")
+    ret = @ClusterIPM_ccall("ClusterIPM_Solve", Cint, 
             (Ptr{Void},),
             prob.ref)
-    # @show ret
-    prob.model.set_status(Int(ret))
-
-    prob.t_jl_eval_total = report_total_now(prob)
-    # @show prob
-    return prob.model.get_status()
 end
 
-function freeProblemStruct(prob::PipsNlpProblemStruct)
-    # @show "freeProblemStruct"
-    ret = ccall(Libdl.dlsym(libparpipsnlp,:FreePipsNlpProblemStruct),
+function freeProblemCluster(prob::ClusterIPM)
+    # @show "freeProblemCluster"
+    ret = @ClusterIPM_ccall("freeClusterIPM",
             Void, (Ptr{Void},),
             prob.ref)
     # @show ret
     return ret
 end
 
-function report_total_now(prob::PipsNlpProblemStruct)
-    total = 0.0
-    total += prob.t_jl_init_x0 
-    total += prob.t_jl_str_prob_info 
-    total += prob.t_jl_eval_f 
-    total += prob.t_jl_eval_g 
-    total += prob.t_jl_eval_grad_f 
-    total += prob.t_jl_eval_jac_g 
-    total += prob.t_jl_str_eval_jac_g 
-    total += prob.t_jl_eval_h 
-    total += prob.t_jl_str_eval_h 
-    total += prob.t_jl_write_solution 
-    return total
-end
-
-function t_reset(prob::PipsNlpProblemStruct)
+function t_reset(prob)
     total = report_total_now(prob)
     prob.t_jl_init_x0  = 0.0
     prob.t_jl_str_prob_info  = 0.0
@@ -692,7 +658,20 @@ function t_reset(prob::PipsNlpProblemStruct)
     return total
 end
 
+
+function report_total_now(prob)
+    total = 0.0
+    total += prob.t_jl_init_x0
+    total += prob.t_jl_str_prob_info
+    total += prob.t_jl_eval_f
+    total += prob.t_jl_eval_g
+    total += prob.t_jl_eval_grad_f
+    total += prob.t_jl_eval_jac_g
+    total += prob.t_jl_str_eval_jac_g
+    total += prob.t_jl_eval_h
+    total += prob.t_jl_str_eval_h
+    total += prob.t_jl_write_solution
+    return total
 end
 
-
-
+end
