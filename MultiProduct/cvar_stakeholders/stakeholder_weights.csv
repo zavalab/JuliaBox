@@ -1,0 +1,6 @@
+#Stakeholder,weight1,weight2
+sh1,100,0
+sh2,0,100
+sh3,50,50
+sh4,33,67
+sh5,67,33

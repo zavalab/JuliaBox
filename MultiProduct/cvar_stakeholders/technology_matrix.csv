@@ -1,0 +1,10 @@
+# TECHS,tech_alias,tech_cap (kg/day),tech_invcost ($),tech_refprod,operating_cost($/yr)
+t1,Struvite_recovery (500AU),18143.68,364000,p1,586000
+t2,Struvite_recovery (1500 AU),54431.04,704000,p1,1130000
+t3,Struvite_recovery (3000 AU),108862.08,1070000,p1,1720000
+t4,biogas_generation (500 AU),18143.68,574509,p1,586000
+t5,biogas_generation (1500 AU),54431.04,1013795,p1,1130000
+t6,biogas_generation (3000 AU),108862.08,1672723,p1,1720000
+t7,Combined (500 AU),18143.68,938509,p1,1172000
+t8,Combined (1500 AU),54431.04,1717795,p1,2260000
+t9,Combined (3000 AU),108862.08,2742723,p1,3440000
