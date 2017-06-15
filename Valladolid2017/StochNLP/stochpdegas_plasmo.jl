@@ -95,7 +95,7 @@ cT = 1e6             # terminal constraint cost [-]
 cs =   0             # supply cost [$/scmx10-4]
 
 # set data
-include("set_data_paper.jl")
+include("set_PDEGas_data.jl")
 NODE = keys(nodeDict)
 LINK = keys(linkDict)
 SUP =  keys(supDict)
