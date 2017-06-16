@@ -1,4 +1,4 @@
-# optimal PID controller tuning
+# optimal PID controller tuning in Plasmo
 # Victor M. Zavala
 # UW-Madison, 2017
 
@@ -6,7 +6,7 @@ push!(LOAD_PATH,pwd())
 using Ipopt
 using Plasmo
 using JuMP
-using Gadfly
+#using Gadfly
 MPI.Init()  # Initialize MPI
 
 # sets
@@ -95,10 +95,10 @@ end
 MPI.Finalize()
 
 
-plot(x=T, y=x[1,:]')
+#plot(x=T, y=x[1,:]')
 
-plot(x=T, y=x[2,:]')
+#plot(x=T, y=x[2,:]')
 
-plot(x=T, y=x[3,:]')
+#plot(x=T, y=x[3,:]')
 
 
