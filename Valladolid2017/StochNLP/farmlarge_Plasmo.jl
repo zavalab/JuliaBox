@@ -1,4 +1,4 @@
-# Example on using linking constraints in PLASMO
+# Large farm problem to test scalability of PIPS-NLP
 # Yankai Cao and Victor M. Zavala
 # University of Wisconsin-Madison, 2016
 
@@ -7,10 +7,11 @@ using JuMP
 using Distributions 
 using Ipopt
 using Plasmo
+MPI.Init()  # Initialize MPI
 
 srand(123)
-NS = 100;                   # number of scenarios
-NP = 1000;
+NS = 1000;                  # number of scenarios
+NP = 100;                   # number of products
 S = collect(1:NS)           # scenario set
 P = collect(1:NP)           # set of crops (1=wheat,2=corn,3=beets)
 
@@ -42,9 +43,9 @@ sellub = zeros(NP)
 d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
 
-# create plasmo model
+# create PLASMO model and solve with PIPS-NLP
 m = NetModel()
-@variable(m, x[P] >= 0)    # acres devoted to crops
+@variable(m, x[P] >= 0)    
 @variable(m, s2 >= 0)
 @constraint(m, cap, (sum{x[j], j in P} + s2) == 200)
 @objective(m, Min, sum{prcost[j]*x[j], j in P})
@@ -54,18 +55,12 @@ for i in 1:NS
     @variable(bl, 0<=w[j in P] <= sellub[j in P])    # crops sold
     @variable(bl, s[P] >= 0)
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
-    @variable(bl, cost)
-    @constraint(bl, cost ==sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
-    @objective(bl, Min, 1.0/NS*cost)
+    @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
     @addNode(m, bl, "s$i")
 end
-
-# impose expected value constraint on cost
-@constraint(m, sum{getvariable(getNode(m,"s$i"), :cost), i in 1:NS} >= 50000) 
 ParPipsNlp_solve(m)
 
-# access solution
 #println(getvalue(getvariable(m, :x)))
 #println(getvalue(getvariable(getNode(m,"s1"), :w)))
-#println(getvalue(getvariable(getNode(m,"s1"), :cost)))
-#println(getvalue(getvariable(getNode(m,"s2"), :cost)))
+
+MPI.Finalize()

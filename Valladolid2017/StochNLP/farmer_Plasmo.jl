@@ -7,7 +7,9 @@ using JuMP
 using Distributions 
 using Ipopt
 using Plasmo
+MPI.Init()  # Initialize MPI
 
+# set data
 prcost = zeros(3)
 prcost[1] = 150
 prcost[2] = 230
@@ -59,9 +61,7 @@ println(getvalue(getvariable(m, :x)))
 println(getvalue(x))
 println(getvalue(w))
 
-# construct problem with PLASMO and solve using PIPSNLP
-
-# this creates a graph model
+# construct problem with PLASMO and solve using PIPS-NLP or Ipopt
 m = NetModel()
 
 # add variables, objective, and constraints to parent node (first-stage)
@@ -82,10 +82,15 @@ for i in 1:NS
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
 end
 
+# call Ipopt for solution
+Ipopt_solve(m)
+
 # call PIPSNLP for solution
-ParPipsNlp_solve(m)
+#ParPipsNlp_solve(m)
 
 # access solution and display results
 println(getvalue(getvariable(m, :x)))
 println(getvalue(getvariable(getNode(m,"s1"), :w)))
 println(getvalue(getvariable(getNode(m,"s2"), :w)))
+
+MPI.Finalize()
