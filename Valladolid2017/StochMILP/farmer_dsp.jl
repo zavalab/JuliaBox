@@ -1,5 +1,5 @@
 using JuMP, Dsp, MPI;
-MPI.init()
+MPI.Init()
 
 # Model parameters
 
@@ -42,26 +42,36 @@ yield[5,3] = 30;
 m = Model(NS)
 
 @variable(m, x[P] >= 0)    # acres devoted to crops
+@constraint(m, cap, sum(x[j] for j in P) <= 500)
 
 for s = 1:NS
-
     q = Model(m,s,1/NS)
     @variable(q, y[P] >= 0)    # crops purchase
     @variable(q, w[P] >= 0)    # crops sold
     @variable(q, cost)         # per scenario cost
-    @constraint(q, varcost, cost == sum{prcost[j]*x[j] + pcost[j]*y[j] - scost[j]*w[j], j in P}) 
-    @constraint(q, cap, sum{x[j], j in P} <= 500)
+    @constraint(q, varcost, cost == sum(prcost[j]*x[j] + pcost[j]*y[j] - scost[j]*w[j] for  j in P)) 
     @constraint(q, bal[j in P], yield[s,j]*x[j]+y[j]-w[j] >= demand[j]) 
     @constraint(q, sellb, w[3] <= 6000)
     @constraint(q, buyb, y[3] <= 0)
     @objective(q, Min, cost)
 end
 
-solve(m, solve_type = :Dual)
+# Dsp solve types
+solve_types = [:Dual, :Benders]
 
-MPI.Finalize();
+status = solve(m, solve_type = solve_types[2])
 
 # Results
 println(getvalue(x))
 println("")
-println(getobjectivevalue(m))
+# get the children models
+ch= m.ext[:DspBlocks].children
+
+for s in 1:length(ch)
+    println(getvalue(ch[s][:cost]))
+end
+
+println("")
+println("obj ", getobjectivevalue(m))
+
+MPI.Finalize();
