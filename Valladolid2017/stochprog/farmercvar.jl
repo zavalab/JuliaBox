@@ -51,18 +51,18 @@ m = Model(solver=IpoptSolver(print_level=0))
 @variable(m, w[S,P] >= 0)    # crops sold;
 @variable(m, phi[S] >= 0)    # cvar auxiliary variable
 @variable(m, VaR)            # cvar auxiliary variable
-@expression(m, Cost[s in S], sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@expression(m, Cost[s in S], sum(prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j] for j in P))
 @variable(m, cost[s in S])
 
 @constraint(m, varcost[s in S], cost[s] == Cost[s]) 
-@constraint(m, cap[s in S], sum{x[s,j], j in P} <= 500)
+@constraint(m, cap[s in S], sum(x[s,j] for j in P) <= 500)
 @constraint(m, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j])
 @constraint(m, sellb[s in S], w[s,3] <= 6000)
 @constraint(m, buyb[s in S], y[s,3] <= 0)
 @constraint(m, nonant[s in S,j in P], x[1,j] == x[s,j])
 @constraint(m, cvar[s in S], cost[s]-VaR <= phi[s])
 
-@objective(m, Min, VaR + (1/NS)*sum{(1/alpha)*phi[s], s in S})
+@objective(m, Min, VaR + (1/NS)*sum((1/alpha)*phi[s] for s in S))
  
 solve(m)
 

@@ -40,18 +40,18 @@ mp = Model(solver=IpoptSolver(print_level=0))
 
 @variable(mp, x[S,P] >= 0)    # acres devoted to crops
 @variable(mp, y[S,P] >= 0)    # crops purchase
-@variable(mp, w[S,P] >= 0)    # crops sold;
-@expression(mp, Cost[s in S], sum{prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@variable(mp, w[S,P] >= 0)    # crops sold
+@expression(mp, Cost[s in S], sum(prcost[j]*x[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j] for j in P))
 @variable(mp, cost[s in S])
 
 @constraint(mp, varcost[s in S], cost[s] == Cost[s]) 
-@constraint(mp, cap[s in S], sum{x[s,j], j in P} <= 500)
+@constraint(mp, cap[s in S], sum(x[s,j] for j in P) <= 500)
 @constraint(mp, bal[s in S,j in P], yield[s,j]*x[s,j]+y[s,j]-w[s,j] >= demand[j]) 
 @constraint(mp, sellb[s in S], w[s,3] <= 6000)
 @constraint(mp, buyb[s in S], y[s,3] <= 0)
 @constraint(mp, nonant[s in S,j in P], x[1,j] == x[s,j])
 
-@objective(mp, Min, (1/NS)*sum{cost[s], s in S})
+@objective(mp, Min, (1/NS)*sum(cost[s] for s in S))
 
 solve(mp)
 
@@ -68,16 +68,16 @@ yield[5,3] = 30;
 m = Model(solver=IpoptSolver(print_level=0))
 
 @variable(m, y[S,P] >= 0)    # crops purchase
-@variable(m, w[S,P] >= 0)    # crops sold;
+@variable(m, w[S,P] >= 0)    # crops sold
 @variable(m, cost[s in S])
 
-@expression(m, Cost[s in S], sum{prcost[j]*xs[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
+@expression(m, Cost[s in S], sum(prcost[j]*xs[s,j] + pcost[j]*y[s,j] - scost[j]*w[s,j] for j in P))
 @constraint(m, varcost[s in S], cost[s] == Cost[s]) 
 @constraint(m, bal[s in S,j in P], yield[s,j]*xs[s,j]+y[s,j]-w[s,j] >= demand[j]) 
 @constraint(m, sellb[s in S], w[s,3] <= 6000)
 @constraint(m, buyb[s in S], y[s,3] <= 0)
 
-@objective(m, Min, (1/NS)*sum{cost[s], s in S})
+@objective(m, Min, (1/NS)*sum(cost[s] for s in S))
 
 solve(m)
 
