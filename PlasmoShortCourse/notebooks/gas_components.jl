@@ -72,15 +72,15 @@ function gasnode(data::NodeData)
     @variable(m,fdeliver[demands,time_grid] >= 0,start = 100)
     @constraint(m, flowLimit[d = demands,t = time_grid], fdeliver[d,t] <= demand[d,t])
 
-    @variable(m,total_delivered[time_grid] >= 0)
-    @variable(m,total_supplied[time_grid] >= 0)
+    @variable(m,total_delivered[time_grid] >= 0,start = 100)
+    @variable(m,total_supplied[time_grid] >= 0,start = 100)
     @constraint(m,sum_deliver[t = time_grid],total_delivered[t] == sum(fdeliver[d,t] for d in demands))
     @constraint(m,sum_supply[t = time_grid],total_supplied[t] == sum(fgen[s,t] for s in supplies))
 
-    @variable(m,delivercost[demands]) #each demand has a deliver cost (revenue)
-    @variable(m,total_delivercost)
-    @variable(m,supplycost[supplies])
-    @variable(m,total_supplycost)
+    @variable(m,delivercost[demands],start = 10) #each demand has a deliver cost (revenue)
+    @variable(m,total_delivercost,start = 100)
+    @variable(m,supplycost[supplies],start = 10)
+    @variable(m,total_supplycost,start = 100)
 
     @constraint(m,[d = demands],delivercost[d] == sum(data.demand_cost*fdeliver[d,t] for t = time_grid))
     @constraint(m, integratedDemandCost, total_delivercost == sum(delivercost[d] for d = demands))
@@ -90,46 +90,46 @@ function gasnode(data::NodeData)
     @objective(m, Min, total_delivercost + total_supplycost)
     return m
 end
-# ####################################
-# # Supply Component
-# ####################################
-# type SupplyData
-#     time_grid
-#     cost
-#     fgen_lower
-#     fgen_upper
-# end
-#
-# function gassupply(data::SupplyData)
-#     cost = data.cost
-#     time_grid = data.time_grid
-#     m = Model()
-#     @variable(m, data.fgen_lower <= fgen[time_grid] <= data.fgen_upper, start = 10)
-#     @variable(m, gencost[time_grid])
-#     @constraint(m,costconstraint[t = time_grid], gencost[t] == cost*fgen[t])
-#     return m
-# end
-# ####################################
-# # Demand Component
-# ####################################
-# type DemandData
-#     time_grid
-#     cost
-# end
-#
-# function gasdemand(data::DemandData)
-#     cost = data.cost
-#     time_grid = data.time_grid
-#     m = Model()
-#     @variable(m,fdeliver[time_grid] >= 0, start = 100)
-#     @variable(m, demandcost)
-#     @variable(m, fdemand[time_grid] >= 0)
-#     @constraint(m, flowLimit[t = time_grid], fdeliver[t] <= fdemand[t])
-#     @constraint(m, integratedGasCost, demandcost == sum(cost*fdeliver[t] for t = time_grid))
-#     @objective(m, Min, demandcost)
-#     return m
-# end
-#
+####################################
+# Supply Component
+####################################
+type SupplyData
+    time_grid
+    cost
+    fgen_lower
+    fgen_upper
+end
+
+function gassupply(data::SupplyData)
+    cost = data.cost
+    time_grid = data.time_grid
+    m = Model()
+    @variable(m, data.fgen_lower <= fgen[time_grid] <= data.fgen_upper, start = 10)
+    @variable(m, gencost[time_grid])
+    @constraint(m,costconstraint[t = time_grid], gencost[t] == cost*fgen[t])
+    return m
+end
+####################################
+# Demand Component
+####################################
+type DemandData
+    time_grid
+    cost
+end
+
+function gasdemand(data::DemandData)
+    cost = data.cost
+    time_grid = data.time_grid
+    m = Model()
+    @variable(m,fdeliver[time_grid] >= 0, start = 100)
+    @variable(m, demandcost)
+    @variable(m, fdemand[time_grid] >= 0)
+    @constraint(m, flowLimit[t = time_grid], fdeliver[t] <= fdemand[t])
+    @constraint(m, integratedGasCost, demandcost == sum(cost*fdeliver[t] for t = time_grid))
+    @objective(m, Min, demandcost)
+    return m
+end
+
 # ############################################
 # Gas pipeline components
 ############################################
@@ -179,7 +179,7 @@ macro isothermaleuler(m)
     expr = quote
         @variable(m, slack2[time_grid,x_grid] >= 0, start = 10)  #auxiliary variable
         @variable(m, slack3[time_grid,x_grid] >= 0, start = 10)  #auxiliary variable
-        @variable(m, slack[time_grid,x_grid] >= 0, start = 10)  #auxiliary variable for friction loss term
+        @variable(m, slack[time_grid,x_grid] >= 0, start = 10)   #auxiliary variable for friction loss term
         @NLconstraint(m, slackeq[t = time_grid, x = x_grid],  slack[t,x]*px[t,x] - c3*fx[t,x]*fx[t,x] == 0)
         @NLconstraint(m, slackeq2[t = time_grid, x = x_grid],  slack2[t,x]*px[t,x] - 2*c1*fx[t,x] == 0)
         @NLconstraint(m, slackeq3[t = time_grid, x = x_grid],  slack3[t,x]*px[t,x]*px[t,x] - c1*fx[t,x]*fx[t,x] == 0)
@@ -219,6 +219,7 @@ macro simoneapprox(m)
     end
     return esc(expr)
 end
+#TODO
 #Working on this
 macro simonesteadystatestart(m)
     expr = quote
@@ -464,47 +465,6 @@ function simoneactivelink(pdata::PipeData,cdata::CompData)
     @linepackeqns(m)
     return m
 end
-###################################################
-# Coupling functions for gas network
-###################################################
-#coupling functions - gas node
-#coupling assumes equal time grid points for now
-#couple a gas junction to its supplies and demands
-# function couplegasjunction!(m::JuMP.Model,node::Node)
-#     #graph = node.graph
-#     graph = getgraph(node) #couple in the node's graph context
-#     supply = getnodevariable(node,:supply)
-#     deliver = getnodevariable(node,:deliver)
-#
-#     #couple supply and delivery to junction variables for supply and delivery
-#     @constraint(m,fsup[t = time_grid], supply[t]  ==  sum(getnodevariable(neighbors_in(graph,node)[i],:fgen)[t] for i = 1:n_neighbors_in(graph,node)))
-#     #@constraint(m,fsup[t = time_grid], supply[t]  ==  sum(getnodevardict(neighbors_in(graph,node)[i])[:fgen][t] for i = 1:n_neighbors_in(graph,node)))
-#     @constraint(m,fdel[t = time_grid], deliver[t] ==  sum(getnodevariable(neighbors_out(graph,node)[i],:fdeliver)[t] for i = 1:n_neighbors_out(graph,node)))
-# end
-#
-# #couple a gas junction to other junctions
-# function couplegasnode!(m::JuMP.Model,node::Node)
-#     topgraph = node.graph.parent.graph  #couple in the higher graph context (I will have syntax to do this better soon)
-#     #graph = getgraph(node)
-#     #topgraph = getparentgraph(graph)
-#     supply1 = getnodevariable(node,:supply)
-#     deliver1 = getnodevariable(node,:deliver)
-#     links_in = edges_in(topgraph,node)  #the links coming in at the higher level graph
-#     links_out = edges_out(topgraph,node)
-#
-#     flow = @constraint(m,[t = time_grid], 0 == sum(getnodevariable(links_in[i],:fout)[t] for i = 1:length(links_in)) -
-#     sum(getnodevariable(links_out[i],:fin)[t] for i = 1:length(links_out)) + supply1[t] - deliver1[t])
-# end
-#
-# #couple a link to two junctions
-# function couplelink!(m::JuMP.Model,edge::Edge)
-#     node_from = getconnectedfrom(edge)
-#     node_to = getconnectedto(edge)
-#     pin = getnodevariable(edge,:pin)
-#     pout = getnodevariable(edge,:pout)
-#     @constraint(m,pressure_in[t = time_grid],pin[t] == getnodevariable(node_from,:pressure)[t])
-#     @constraint(m,pressure_out[t = time_grid],pout[t] == getnodevariable(node_to,:pressure)[t])
-# end
 
 #####################################################################################################################################
 # These are convenience types for creating gas network systems.  They use the PLASMO Graph types and coupling functions.
