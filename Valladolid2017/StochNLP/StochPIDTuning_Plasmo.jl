@@ -10,7 +10,7 @@ using JuMP
 MPI.Init()  # Initialize MPI
 
 # sets
-NS=3;       # Number of scenarios 
+NS=3;       # Number of scenarios
  N=100;     # Number of timesteps
 Tf=10;      # Final time
  h=Tf/N;    # Time step
@@ -29,7 +29,7 @@ x0=zeros(NS);  # initial state
 Kd=zeros(NS);  # disturbance gain
 tau=zeros(NS); # time constaint
 xsp=zeros(NS); # set-point
-d=zeros(NS);   # disturbance 
+d=zeros(NS);   # disturbance
 
   K[1] =  1.0;
  x0[1] =  0.0;
@@ -53,27 +53,27 @@ xsp[3] =  1.0;
   d[3] = -1.0;
 
 # define scenario model
-include("createPIDmodel.jl")  
+include("createPIDmodel.jl")
 
 # create two-stage graph model
-PID=NetModel()
+PID=GraphModel()
 
-# add variables to parent node 
+# add variables to parent node
 @variable(PID, -10<= Kc <=10)
 @variable(PID,-100<=tauI<=100)
 @variable(PID,-100<=tauD<=1000)
 
 # create array of children models
 PIDch=Array(JuMP.Model, NS)
-for s in 1:NS           
+for s in 1:NS
            # get scenario model
            PIDch[s] = get_scenario_model(s)
            # add children to parent node
            @addNode(PID, PIDch[s], "tag$s")
            # link children to parent variables
-           @constraint(PID, getvariable(PIDch[s],:Kc)==Kc)
-           @constraint(PID, getvariable(PIDch[s],:tauI)==tauI)
-           @constraint(PID, getvariable(PIDch[s],:tauD)==tauD)    
+           @constraint(PID, PIDch[s][:Kc]==Kc)
+           @constraint(PID, PIDch[s][:tauI]==tauI)
+           @constraint(PID, PIDch[s][:tauD]==tauD)
 end
 
 # solve with Ipopt
@@ -88,7 +88,7 @@ println(getvalue(tauD))
 x=zeros(NS,N)
 for s in 1:NS
     for j=1:N
-    x[s,j]=getvalue(getvariable(PIDch[s],:x)[j]) 
+    x[s,j]=getvalue(PIDch[s][:x][j])
     end
 end
 
@@ -100,5 +100,3 @@ MPI.Finalize()
 #plot(x=T, y=x[2,:]')
 
 #plot(x=T, y=x[3,:]')
-
-

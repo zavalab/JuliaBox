@@ -2,7 +2,7 @@
 using Ipopt
 using JuMP
 
-# sets 
+# sets
  N=100;
 Tf=10;
  h=Tf/N;
@@ -32,7 +32,7 @@ m = Model(solver=IpoptSolver())
 @variable(m, int[T])
 @variable(m,cost[T])
 
-# variables (controller design) 
+# variables (controller design)
 @variable(m, -10<= Kc <=10)
 @variable(m,-100<=tauI<=100)
 @variable(m,-100<=tauD<=1000)
@@ -46,9 +46,9 @@ m = Model(solver=IpoptSolver())
 @constraint(m, eqcost[t in T], cost[t]==(10*(x[t]-xsp)^2 + 0.01*u[t]^2));
 
 # objective function
-@objective(m, Min, (1/N)*sum{cost[t], t in T});
+@objective(m, Min, (1/N)*sum(cost[t] for t in T));
 
-# solve problem 
+# solve problem
 solve(m)
 
 # display results

@@ -4,8 +4,8 @@
 
 module Plasmo
 import JuMP
-export NetModel, @addNode, getNode, @Linkingconstraint
-export getparent, getchildren 
+export NetModel, GraphModel, @addNode, getNode, @Linkingconstraint
+export getparent, getchildren
 export Ipopt_solve
 export PipsNlp_solve
 using Base.Meta
@@ -13,9 +13,9 @@ using Base.Meta
 type NetData
     children::Vector{JuMP.Model}
     parent
-    childrenDict::Dict{ASCIIString, JuMP.Model}
+    childrenDict::Dict{String, JuMP.Model}
 end
-NetData() = NetData(JuMP.Model[], nothing, Dict{ASCIIString, JuMP.Model}())
+NetData() = NetData(JuMP.Model[], nothing, Dict{String, JuMP.Model}())
 
 
 function NetModel(buildType="serial")
@@ -25,6 +25,8 @@ function NetModel(buildType="serial")
     m.ext[:linkingId] = []
     return m
 end
+
+GraphModel() = NetModel()
 
 function getNet(m::JuMP.Model)
     if haskey(m.ext, :Net)
@@ -50,7 +52,7 @@ function getchildren(m::JuMP.Model)
     end
 end
 
-function getNode(m::JuMP.Model, modelname::ASCIIString)
+function getNode(m::JuMP.Model, modelname::String)
     if !haskey(getNet(m).childrenDict, modelname)
         error("No model with name $modelname")
     elseif getNet(m).childrenDict[modelname] === nothing
@@ -61,7 +63,7 @@ function getNode(m::JuMP.Model, modelname::ASCIIString)
 end
 
 
-function registermodel(m::JuMP.Model, modelname::ASCIIString, value::JuMP.Model)
+function registermodel(m::JuMP.Model, modelname::String, value::JuMP.Model)
     if haskey(getNet(m).childrenDict, modelname)
         getNet(m).childrenDict[modelname] = nothing # indicate duplicate
         error("Multiple models with name $modelname")
@@ -75,14 +77,14 @@ macro Linkingconstraint(m, args...)
       	  id_start = length($(m).linconstr) + 1
           @constraint($(m),$(args...))
 	  id_end = length($(m).linconstr)
-	  $(m).ext[:linkingId] = [$(m).ext[:linkingId]; id_start:id_end]   
+	  $(m).ext[:linkingId] = [$(m).ext[:linkingId]; id_start:id_end]
       end
       return esc(expr)
 end
 
 macro addNode(m, node)
     if isa(node, Symbol)
-       return quote       	    
+       return quote
     	   if haskey($(esc(node)).ext, :Net)
 	        getNet($(esc(node))).parent = $(esc(m))
     	   else
@@ -111,4 +113,3 @@ end
 end
 include("NetParPipsNlp.jl")
 include("NetIpopt.jl")
-

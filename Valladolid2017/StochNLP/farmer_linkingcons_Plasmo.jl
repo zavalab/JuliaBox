@@ -3,8 +3,8 @@
 # University of Wisconsin-Madison, 2016
 
 push!(LOAD_PATH, pwd())
-using JuMP 
-using Distributions 
+using JuMP
+using Distributions
 using Ipopt
 using Plasmo
 MPI.Init()  # Initialize MPI
@@ -44,11 +44,11 @@ d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
 
 # create plasmo model
-m = NetModel()
+m = GraphModel()
 @variable(m, x[P] >= 0)    # acres devoted to crops
 @variable(m, s2 >= 0)
-@constraint(m, cap, (sum{x[j], j in P} + s2) == 200)
-@objective(m, Min, sum{prcost[j]*x[j], j in P})
+@constraint(m, cap, (sum(x[j] for j in P) + s2) == 200)
+@objective(m, Min, sum(prcost[j]*x[j] for j in P))
 for i in 1:NS
     bl = Model()
     @variable(bl, y[P] >= 0)    # crops purchase
@@ -56,13 +56,13 @@ for i in 1:NS
     @variable(bl, s[P] >= 0)
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
     @variable(bl, cost)
-    @constraint(bl, cost ==sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
+    @constraint(bl, cost ==sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     @objective(bl, Min, 1.0/NS*cost)
     @addNode(m, bl, "s$i")
 end
 
 # impose expected value constraint on cost
-@constraint(m, sum{getvariable(getNode(m,"s$i"), :cost), i in 1:NS} >= 50000)
+@constraint(m, sum(getNode(m,"s$i")[:cost] for i in 1:NS) >= 50000)
 
 # solve with Ipopt
 Ipopt_solve(m)
@@ -76,4 +76,4 @@ Ipopt_solve(m)
 #println(getvalue(getvariable(getNode(m,"s1"), :cost)))
 #println(getvalue(getvariable(getNode(m,"s2"), :cost)))
 
-MPI.Finalize()  
+MPI.Finalize()

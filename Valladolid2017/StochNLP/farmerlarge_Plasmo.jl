@@ -3,8 +3,8 @@
 # University of Wisconsin-Madison, 2016
 
 push!(LOAD_PATH, pwd())
-using JuMP 
-using Distributions 
+using JuMP
+using Distributions
 using Ipopt
 using Plasmo
 MPI.Init()  # Initialize MPI
@@ -44,18 +44,18 @@ d = Uniform(2000,8000)
 sellub[P] = rand(d,NP)
 
 # create PLASMO model and solve with PIPS-NLP
-m = NetModel()
-@variable(m, x[P] >= 0)    
+m = GraphModel()
+@variable(m, x[P] >= 0)
 @variable(m, s2 >= 0)
-@constraint(m, cap, (sum{x[j], j in P} + s2) == 200)
-@objective(m, Min, sum{prcost[j]*x[j], j in P})
+@constraint(m, cap, (sum(x[j] for j in P) + s2) == 200)
+@objective(m, Min, sum(prcost[j]*x[j] for j in P))
 for i in 1:NS
     bl = Model()
     @variable(bl, y[P] >= 0)    # crops purchase
     @variable(bl, 0<=w[j in P] <= sellub[j in P])    # crops sold
     @variable(bl, s[P] >= 0)
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
-    @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
+    @objective(bl, Min, 1.0/NS*sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     @addNode(m, bl, "s$i")
 end
 ParPipsNlp_solve(m)

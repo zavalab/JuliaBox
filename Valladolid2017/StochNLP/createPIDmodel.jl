@@ -1,14 +1,14 @@
 function get_scenario_model(s)
 
 m=Model()
-    
+
 # variables (states and inputs)
 @variable(m,-2.5<=x[T]<=2.5)
 @variable(m,-2.0<=u[T]<=2.0)
 @variable(m, int[T])
 @variable(m,cost[T])
-    
-# variables (controller design) 
+
+# variables (controller design)
 @variable(m, -10<= Kc <=10)
 @variable(m,-100<=tauI<=100)
 @variable(m,-100<=tauD<=1000)
@@ -22,8 +22,8 @@ m=Model()
 @constraint(m, eqcost[t in T], cost[t]==(10*(x[t]-xsp[s])^2 + 0.01*u[t]^2));
 
 # objective function
-@objective(m, Min, (1/(N*NS))*sum{cost[t], t in T});
-    
+@objective(m, Min, (1/(N*NS))*sum(cost[t] for t in T));
+
 return m
-    
+
 end

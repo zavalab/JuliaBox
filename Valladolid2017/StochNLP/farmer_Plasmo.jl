@@ -3,8 +3,8 @@
 # University of Wisconsin-Madison, 2016
 
 push!(LOAD_PATH, pwd())
-using JuMP 
-using Distributions 
+using JuMP
+using Distributions
 using Ipopt
 using Plasmo
 MPI.Init()  # Initialize MPI
@@ -46,37 +46,37 @@ yield[5,3] = 30
 
 # construct problem with JuMP and solve using IPOPT
 m = Model(solver=IpoptSolver())
-@variable(m, x[P] >= 0)    
-@variable(m, y[S,P] >= 0)    
-@variable(m, w[S,P] >= 0)    
+@variable(m, x[P] >= 0)
+@variable(m, y[S,P] >= 0)
+@variable(m, w[S,P] >= 0)
 @variable(m, cost[s in S])
-@constraint(m, varcost[s in S], cost[s] == sum{prcost[j]*x[j] + pcost[j]*y[s,j] - scost[j]*w[s,j], j in P})
-@constraint(m, cap, sum{x[j], j in P} <= 500)
+@constraint(m, varcost[s in S], cost[s] == sum(prcost[j]*x[j] + pcost[j]*y[s,j] - scost[j]*w[s,j] for j in P))
+@constraint(m, cap, sum(x[j] for j in P) <= 500)
 @constraint(m, bal[s in S,j in P], yield[s,j]*x[j]+y[s,j]-w[s,j] >= demand[j])
 @constraint(m, sellb[s in S], w[s,3] <= 6000)
 @constraint(m, buyb[s in S], y[s,3] <= 0)
-@objective(m, Min, (1/NS)*sum{cost[s], s in S})
+@objective(m, Min, (1/NS)*sum(cost[s] for s in S))
 solve(m)
-println(getvalue(getvariable(m, :x)))
+println(getvalue(m[:x]))
 println(getvalue(x))
 println(getvalue(w))
 
 # construct problem with PLASMO and solve using PIPS-NLP or Ipopt
-m = NetModel()
+m = GraphModel()
 
 # add variables, objective, and constraints to parent node (first-stage)
-@variable(m, x[P] >= 0)    
-@constraint(m, cap, sum{x[j], j in P}  <= 500)
-@objective(m, Min, sum{prcost[j]*x[j], j in P})
+@variable(m, x[P] >= 0)
+@constraint(m, cap, sum(x[j] for j in P)  <= 500)
+@objective(m, Min, sum(prcost[j]*x[j] for j in P))
 
 # add variables, objective, and constraints to child nodes (second-stage)
 for i in 1:NS
     bl = Model()
-    @variable(bl, y[P] >= 0)    
-    @variable(bl, w[P] >= 0)   
+    @variable(bl, y[P] >= 0)
+    @variable(bl, w[P] >= 0)
     setupperbound(w[3], 6000)
     setupperbound(y[3], 0)
-    @objective(bl, Min, 1.0/NS*sum{pcost[j]*y[j] - scost[j]*w[j], j in P})
+    @objective(bl, Min, 1.0/NS*sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     # add children to parent
     @addNode(m, bl, "s$i")
     @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
@@ -89,8 +89,8 @@ Ipopt_solve(m)
 #ParPipsNlp_solve(m)
 
 # access solution and display results
-println(getvalue(getvariable(m, :x)))
-println(getvalue(getvariable(getNode(m,"s1"), :w)))
-println(getvalue(getvariable(getNode(m,"s2"), :w)))
+println(getvalue(m[ :x]))
+println(getvalue(getNode(m,"s1")[:w]))
+println(getvalue(getNode(m,"s2")[:w]))
 
 MPI.Finalize()

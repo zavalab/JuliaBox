@@ -27,10 +27,10 @@ type LinkData                        # set of links
      diam::Float64                   # link diameter - mm
      length::Float64                 # link length - km
      ltype::ASCIIString              # link type, passive or active
-     c1                              # aux constant 
-     c2                              # aux constant 
-     c3                              # aux constant 
-     dx                              # spatial grid spacing - [m]     
+     c1                              # aux constant
+     c2                              # aux constant
+     c3                              # aux constant
+     dx                              # spatial grid spacing - [m]
      lam                             # friction coefficient - []
      A                               # pipe transveral area - [m^2]
 end
@@ -105,16 +105,16 @@ DEM =  keys(demDict)
 include("createPDEGasModel.jl")
 
 # create two-stage graph model
-IL = NetModel()
+IL = GraphModel()
 @variable(IL, dp[j = LINK; linkDict[j].ltype == "a"], start= 10)   # compressor boost - [bar]
 @variable(IL, dem[DEM],    start=100)                              # demand flow - [scmx10-4/hr]
 
 # create array of children models
 for s in SCENG
-   gasch = createPDEGasModel(s) 
+   gasch = createPDEGasModel(s)
    @addNode(IL,gasch, "children$s")
-   @constraint(IL,coupledq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == getvariable(gasch, :dp)[j,t])
-   @constraint(IL,couplede[j in DEM, t in TIMEG;                            t ==1],  dem[j] == getvariable(gasch,:dem)[j,t])
+   @constraint(IL,coupledq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
+   @constraint(IL,couplede[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
 end
 
 # solve with IPOPT

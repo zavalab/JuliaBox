@@ -1,5 +1,5 @@
 function createGasModel(s)
-     m = Model(solver=IpoptSolver())		 
+     m = Model(solver=IpoptSolver())
          @variable(m, nodeDict[j].pmin<=p[j in NODE, TIMEG]<=nodeDict[j].pmax, start= 50)         # node pressure - [bar]
          @variable(m, 0<=dp[j = LINK,  TIMEG; linkDict[j].ltype == "a"]<=100, start= 10)          # compressor boost - [bar]
          @variable(m, 1<=fin[LINK, TIMEG]<=500, start= 100)                                       # flow in pipe - [scmx10-4/hr]
@@ -11,7 +11,7 @@ function createGasModel(s)
          # define spatio-temporal variables
          @variable(m, 10<=px[LINK, TIMEG, DIS]<=100, start= 50)                             # link pressure profile - [bar]
          @variable(m, 1<=fx[LINK, TIMEG, DIS]<=100, start= 100)                             # link flow profile - [scmx10-4/hr]
-        
+
     # compressor equations
          @NLconstraint(m, powereq[j = LINK, t = TIMEG; linkDict[j].ltype == "a"], pow[j,t] == c4*fin[j,t]*(((p[linkDict[j].startloc,t] + dp[j,t])/(p[linkDict[j].startloc,t]))^om-1))
 
@@ -21,7 +21,7 @@ function createGasModel(s)
                                                                  + sum{        sG[j,t],  j in SUP ; supDict[j].loc == i }
                                                                  - sum{       dem[j,t],  j in DEM ; demDict[j].loc == i }
                                                                  ==0)
-         
+
     # flow equations for passive and active links
          @constraint(m, flow[j = LINK, t = TIMEGm, k = 1:(Nx-1)], (px[j,t+1,k]-px[j,t,k])/dtG + linkDict[j].c1*(fx[j,t+1,k+1]-fx[j,t+1,k])/(linkDict[j].dx)==0)
 
@@ -30,7 +30,7 @@ function createGasModel(s)
          @constraint(m, flow_end[j = LINK, t = TIMEG], fx[j,t,Nx]==fout[j,t])
 
      # pressure equations for passive and active links
-     @constraint(m, press[j = LINK, t = TIMEGm,k = 1:(Nx-1)], (fx[j,t+1,k]-fx[j,t,k])/dtG == 
+     @constraint(m, press[j = LINK, t = TIMEGm,k = 1:(Nx-1)], (fx[j,t+1,k]-fx[j,t,k])/dtG ==
         - linkDict[j].c2*(px[j,t+1,k+1]-px[j,t+1,k])/linkDict[j].dx - slack[j,t+1,k])
      @NLconstraint(m, slackeq[j = LINK, t = TIMEG, k = 1:Nx],  slack[j,t,k]*px[j,t,k] - linkDict[j].c3*fx[j,t,k]*fx[j,t,k] == 0);
 
@@ -49,14 +49,14 @@ function createGasModel(s)
      @constraint(m, dispress[j in LINK,t in TIMEG; linkDict[j].ltype=="a"],  p[linkDict[j].startloc,t]+dp[j,t] <= nodeDict[linkDict[j].startloc].pmax)
 
      # line pack constraints
-         @constraint(m, line_packT,  sum{sum{fx[j,Nt,k], k in DIS}*linkDict[j].dx, j in LINK} >= sum{ sum{fx[j,1,k],k in DIS}*linkDict[j].dx, j = LINK})
- 
+         @constraint(m, line_packT,  sum(sum(fx[j,Nt,k] for k in DIS)*linkDict[j].dx for j in LINK) >= sum(sum(fx[j,1,k] for k in DIS)*linkDict[j].dx for j = LINK))
+
      # ss constraints
          @constraint(m, flow_ss[j = LINK, t =0, k = 1:(Nx-1)], (fx[j,t+1,k+1]-fx[j,t+1,k])==0)
          @constraint(m, pres_ss[j = LINK, t =0, k = 1:(Nx-1)],  - linkDict[j].c2*(px[j, t+1,k+1]-px[j,t+1,k])/linkDict[j].dx - slack[j,t+1,k] == 0)
 
-         @objective(m, Min, 1e-3*(1.0/S)*sum{ce*pow[j,t]*(dtG/3600),j = LINK,t = TIMEG; linkDict[j].ltype == "a"}
-                           +1e-3*(1.0/S)*sum{cd*(dem[j,t]-demDict[j].stochd[s,t])^2,j in DEM, t in TIMEG})
-   
+         @objective(m, Min, 1e-3*(1.0/S)*sum(ce*pow[j,t]*(dtG/3600) for j = LINK , t = TIMEG if linkDict[j].ltype == "a")
+                           +1e-3*(1.0/S)*sum(cd*(dem[j,t]-demDict[j].stochd[s,t])^2 for j in DEM, t in TIMEG))
+
     return m
 end
