@@ -113,8 +113,8 @@ IL = GraphModel()
 for s in SCENG
    gasch = createPDEGasModel(s)
    @addNode(IL,gasch, "children$s")
-   @constraint(IL,coupledq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
-   @constraint(IL,couplede[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
+   @constraint(IL,[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
+   @constraint(IL,[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
 end
 
 # solve with IPOPT

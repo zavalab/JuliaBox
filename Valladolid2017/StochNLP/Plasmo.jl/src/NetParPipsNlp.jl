@@ -61,13 +61,6 @@ end
 ModelData() = ModelData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], Float64[],Int[],Int[],Float64[], Int[], Int[], Float64[], 0, 0, Float64[],Float64[],Float64[],Float64[], Int[], Int[],nothing, nothing, nothing, nothing, Int[],Int[], Float64[], Int[], Int[], Float64[],Float64[], 0, false, 0)
 
 
-function getData(m::JuMP.Model)
-    if haskey(m.ext, :Data)
-        return m.ext[:Data]
-    else
-        error("This functionality is only available to model with extension data")
-    end
-end
 
 
 function ParPipsNlp_solve(master::JuMP.Model)
@@ -82,7 +75,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	 end
 
 	 f, master_linear_lb, master_linear_ub = JuMP.prepProblemBounds(master)
-	 linkingId = master.ext[:linkingId] 
+	 linkingId = master.ext[:linkingId]
 	 nlinkeq = 0
 	 nlinkineq = 0
 	 eqlink_lb = Float64[]
@@ -97,9 +90,9 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	    node = nothing
 
 	    if in(c, linkingId)
-	        allconnect = true	       
+	        allconnect = true
 	    else
-		for (it,ind) in enumerate(coeffs)	    
+		for (it,ind) in enumerate(coeffs)
 	    	    if (!connect) && (vars[it].m) != master
                        connect = true
 		       node = vars[it].m
@@ -110,7 +103,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		    end
 	        end
 	    end
-	
+
 	    if (connect) && (!allconnect)
 	        local_data = getData(node)
 		if master_linear_lb[c] == master_linear_ub[c]
@@ -122,7 +115,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		   secondVeq = local_data.secondVeq
 		   push!(local_data.eqconnect_lb, master_linear_lb[c])
 		   push!(local_data.eqconnect_ub, master_linear_ub[c])
-		   local_data.num_eqconnect += 1		
+		   local_data.num_eqconnect += 1
 		   row = local_data.num_eqconnect
 	           for (it,ind) in enumerate(coeffs)
 		       if (vars[it].m) == master
@@ -134,8 +127,8 @@ function ParPipsNlp_solve(master::JuMP.Model)
                       	  push!(secondJeq, vars[it].col)
                       	  push!(secondVeq, ind)
 		       else
-		          error("only support connection between first stage variables and second stage variables from one specific scenario")	
-		       end		
+		          error("only support connection between first stage variables and second stage variables from one specific scenario")
+		       end
                    end
 		else
 		   firstIineq = local_data.firstIineq
@@ -168,7 +161,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                 if master_linear_lb[c] == master_linear_ub[c]
 		   nlinkeq = nlinkeq + 1
 		   push!(eqlink_lb, master_linear_lb[c])
-		   push!(eqlink_ub, master_linear_ub[c])		  
+		   push!(eqlink_ub, master_linear_ub[c])
                    row = nlinkeq
                    for (it,ind) in enumerate(coeffs)
                        node = vars[it].m
@@ -200,28 +193,28 @@ function ParPipsNlp_solve(master::JuMP.Model)
          end
 	 removeConnection(master)
 	 master_data = getData(master)
- 	
-	 
+
+
 	 if haskey(master.ext, :nlinkeq)
 	      nlinkeq =  master.ext[:nlinkeq]
 	 end
 	 if haskey(master.ext, :nlinkineq)
               nlinkineq =  master.ext[:nlinkineq]
-	 end     
+	 end
 	 if haskey(master.ext, :eqlink_lb)
-	      eqlink_lb = copy(master.ext[:eqlink_lb])	 
-	      eqlink_ub = copy(master.ext[:eqlink_lb])     	      
+	      eqlink_lb = copy(master.ext[:eqlink_lb])
+	      eqlink_ub = copy(master.ext[:eqlink_lb])
 	 end
 	 if haskey(master.ext, :eqlink_ub)
-              eqlink_lb = copy(master.ext[:eqlink_ub])		
-	      eqlink_ub = copy(master.ext[:eqlink_ub])	
+              eqlink_lb = copy(master.ext[:eqlink_ub])
+	      eqlink_ub = copy(master.ext[:eqlink_ub])
          end
 	 if haskey(master.ext, :ineqlink_lb)
               ineqlink_lb = copy(master.ext[:ineqlink_lb])
          end
          if haskey(master.ext, :ineqlink_ub)
               ineqlink_ub = copy(master.ext[:ineqlink_ub])
-         end	   
+         end
 	 for (idx,node) in enumerate(modelList)
 	       local_data = getData(node)
 	       if haskey(node.ext, :linkIineq)
@@ -257,17 +250,17 @@ function ParPipsNlp_solve(master::JuMP.Model)
              	if any(isnan,node.colVal)
                 	local_initval[isnan(node.colVal)] = 0
                 	local_initval = min(max(node.colLower,local_initval),node.colUpper)
-        	end  
+        	end
 		original_copy(local_initval,x0)
 	 end
 
-	 
+
 	 function str_prob_info(nodeid,flag, mode,col_lb,col_ub,row_lb,row_ub)
 	 	#comm = MPI.COMM_WORLD
 	        if flag != 1
 	 	    node = modelList[nodeid+1]
 		    local_data = getData(node)
-		    
+
 		    if(!local_data.loaded)
 		        local_data.loaded = true
 
@@ -285,7 +278,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 
 			newRowId = Array(Int, local_data.local_m)
 			eqId = 1
-			ineqId = 1 			
+			ineqId = 1
              		for c in 1:local_data.local_m
                  	    if nlp_lb[c] == nlp_ub[c]
                      	        push!(local_data.eq_idx, c)
@@ -317,12 +310,12 @@ function ParPipsNlp_solve(master::JuMP.Model)
                         for i in 1:length(Ijac)
                             c = Ijac[i]
                             if nlp_lb[c] == nlp_ub[c]
-                                modifiedrow = newRowId[c] 
+                                modifiedrow = newRowId[c]
                                 push!(Ijaceq, modifiedrow)
                                 push!(Jjaceq, Jjac[i])
                                 push!(jac_eq_index, i)
                             else
-                                modifiedrow = newRowId[c] 
+                                modifiedrow = newRowId[c]
                                 push!(Ijacineq, modifiedrow)
                                 push!(Jjacineq, Jjac[i])
                                 push!(jac_ineq_index,i)
@@ -360,7 +353,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		    end
 
     	 	    if(mode == :Values)
-	               	nlp_lb, nlp_ub = JuMP.constraintbounds(node)			
+	               	nlp_lb, nlp_ub = JuMP.constraintbounds(node)
 			eq_lb=Float64[]
 			eq_ub=Float64[]
 			ineq_lb=Float64[]
@@ -372,11 +365,11 @@ function ParPipsNlp_solve(master::JuMP.Model)
 			    else
 			       push!(ineq_lb, nlp_lb[i])
 			       push!(ineq_ub, nlp_ub[i])
-			    end	
-			end	
-				
+			    end
+			end
+
 			if nodeid !=  0
-			   eq_lb = [eq_lb; local_data.eqconnect_lb] 
+			   eq_lb = [eq_lb; local_data.eqconnect_lb]
 			   eq_ub = [eq_ub; local_data.eqconnect_ub]
 			   ineq_lb = [ineq_lb; local_data.ineqconnect_lb]
 			   ineq_ub = [ineq_ub; local_data.ineqconnect_ub]
@@ -392,13 +385,13 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		    if(mode == :Values)
                         original_copy([eqlink_lb; ineqlink_lb], row_lb)
                         original_copy([eqlink_ub; ineqlink_ub], row_ub)
-                    end	
-		    
+                    end
+
                     return (0, nlinkeq + nlinkineq)
 		end
 	 end
 
-	 
+
 	 function str_eval_f(nodeid,x0,x1)
 	 	node = modelList[nodeid+1]
                 local_data = getData(node)
@@ -406,7 +399,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		if nodeid ==  0
                    local_x = x0
 		else
-		   local_x = x1	
+		   local_x = x1
 		end
                 local_scl = (node.objSense == :Min) ? 1.0 : -1.0
                 f = local_scl*eval_f(local_d,local_x)
@@ -478,7 +471,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
          end
 
 	 function str_eval_jac_g(rowid,colid,flag, x0,x1,mode,e_rowidx,e_colptr,e_values,i_rowidx,i_colptr,i_values)
-	       if flag != 1	     
+	       if flag != 1
 	           node = modelList[rowid+1]
 	       	   local_data = getData(node)
 	       	   local_m_eq = length(local_data.eq_idx)
@@ -492,7 +485,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                      	   Jineq=[node.ext[:Jjacineq];local_data.secondJineq]
                      	   Vineq=ones(Float64, length(Iineq))
 			   eqmat = sparse(Ieq, Jeq, Veq, local_m_eq + local_data.num_eqconnect, local_data.n)
-                     	   ineqmat = sparse(Iineq, Jineq, Vineq, local_m_ineq + local_data.num_ineqconnect, local_data.n)			
+                     	   ineqmat = sparse(Iineq, Jineq, Vineq, local_m_ineq + local_data.num_ineqconnect, local_data.n)
 		       else
 			   eqmat = sparse(local_m_eq + local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_m_eq + local_data.num_eqconnect, master_data.n)
                      	   ineqmat = sparse(local_m_ineq + local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_m_ineq + local_data.num_ineqconnect, master_data.n)
@@ -520,7 +513,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		       else
 			   eqmat = sparseKeepZero(local_m_eq + local_data.firstIeq, local_data.firstJeq, local_data.firstVeq, local_m_eq + local_data.num_eqconnect, master_data.n)
                      	   ineqmat = sparseKeepZero(local_m_ineq + local_data.firstIineq, local_data.firstJineq, local_data.firstVineq, local_m_ineq + local_data.num_ineqconnect, master_data.n)
-		       end   		 
+		       end
 		       if length(eqmat.nzval) > 0
 		       	  array_copy(eqmat.rowval,e_rowidx)
                        	  array_copy(eqmat.colptr,e_colptr)
@@ -561,12 +554,12 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	       end
                return Int32(1)
          end
-	 
+
 	 function str_eval_h(rowid,colid,x0,x1,obj_factor,lambda,mode,rowidx,colptr,values)
 	    node = modelList[colid+1]
 	    local_data = getData(node)
             if mode == :Structure
-	       if rowid == colid 
+	       if rowid == colid
 	       	   node_Hrows  = node.ext[:Hrows]
                    node_Hcols = node.ext[:Hcols]
 		   node_val = ones(Float64,length(node_Hrows))
@@ -583,7 +576,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		  return 0
 	       end
             else
-		if rowid==colid 
+		if rowid==colid
 		   node_Hmap = node.ext[:Hmap]
                    node_Hrows  = node.ext[:Hrows]
                    node_Hcols = node.ext[:Hcols]
@@ -604,7 +597,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		   for i in 1:local_m_ineq
 		       local_lambda[local_data.ineq_idx[i]] = lambda[i+local_m_eq]
 		   end
-		                
+
                    eval_hesslag(local_data.d, local_unsym_values, local_x, obj_factor*local_scl, local_lambda)
                    local_sym_index=1
                    for i in 1:local_data.local_unsym_hessnnz
@@ -612,7 +605,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
                           node_val[local_sym_index] = local_unsym_values[i]
                           local_sym_index +=1
                        end
-                   end		   
+                   end
 		   node_Hrows,node_Hcols = exchange(node_Hrows,node_Hcols)
 
 
@@ -661,7 +654,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 	    println("Solution time:   ",  toq(), " (s)")
 	 end
 
-	 
+
 	 for (idx,node) in enumerate(modelList)
 	     local_data = getData(node)
 	     if idx != 1
@@ -678,16 +671,16 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		     local_data.n = n[1]
 		     local_data.x_sol = zeros(Float64,local_data.n)
 		end
-		MPI.Bcast!(local_data.x_sol, local_data.n, coreid[1], comm)		
+		MPI.Bcast!(local_data.x_sol, local_data.n, coreid[1], comm)
 		node.colVal = local_data.x_sol
 	     else
 		node.colVal = local_data.x_sol
 	     end
-	 end	
+	 end
 	 #MPI.Finalize()
 
 	 status = :Unknown
-	 if ret == 0 
+	 if ret == 0
 	    status = :Solve_Succeeded
 	 elseif ret == 1
 	    status = :Not_Finished
@@ -706,7 +699,7 @@ end
 function exchange(a,b)
 	 temp = a
          a=b
-         b=temp 
+         b=temp
 	 return (a,b)
 end
 
@@ -827,7 +820,7 @@ function removeConnection(master::JuMP.Model)
             coeffs = master.linconstr[row].terms.coeffs
             vars   = master.linconstr[row].terms.vars
 	    for (it,ind) in enumerate(coeffs)
-	    	if (vars[it].m) != master 
+	    	if (vars[it].m) != master
 		   push!(deleterow, row)
 		   break
 		end
