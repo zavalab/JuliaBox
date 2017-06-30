@@ -57,7 +57,7 @@ m = Model(solver=IpoptSolver(tol = 1e-4, max_iter = 100,linear_solver ="mumps",m
 @NLconstraint(m, cons, x1^2 + x2 == 1 ) 
 @NLconstraint(m,costcons[p in P],cost[p]== W[p,1]*(x1-1)^2 + W[p,2]*(x2-x1)^2)
 @NLconstraint(m,cvarcons[p in P],cost[p] - VaR <= phi[p])
-@NLobjective(m, Min, VaR+(1/(alpha*nStake))*sum{phi[p],p in P})
+@NLobjective(m, Min, VaR+(1/(alpha*nStake))*sum(phi[p] for p in P))
    
 # solve model and get solution
 solve(m)
