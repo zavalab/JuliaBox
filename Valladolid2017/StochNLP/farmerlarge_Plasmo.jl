@@ -5,7 +5,7 @@
 push!(LOAD_PATH, pwd())
 
 import MPI
-MPI.Init()
+#MPI.Init()
 
 using JuMP
 using Distributions
