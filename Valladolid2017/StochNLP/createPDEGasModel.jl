@@ -1,4 +1,4 @@
-function createGasModel(s)
+function createPDEGasModel(s)
      m = Model(solver=IpoptSolver())
          @variable(m, nodeDict[j].pmin<=p[j in NODE, TIMEG]<=nodeDict[j].pmax, start= 50)         # node pressure - [bar]
          @variable(m, 0<=dp[j = LINK,  TIMEG; linkDict[j].ltype == "a"]<=100, start= 10)          # compressor boost - [bar]
