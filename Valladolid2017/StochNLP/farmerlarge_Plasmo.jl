@@ -3,11 +3,14 @@
 # University of Wisconsin-Madison, 2016
 
 push!(LOAD_PATH, pwd())
+
+MPI.Init() 
+
 using JuMP
 using Distributions
 using Ipopt
 using Plasmo
-MPI.Init()  # Initialize MPI
+ # Initialize MPI
 
 srand(123)
 NS = 1000;                  # number of scenarios
