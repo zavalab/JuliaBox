@@ -268,7 +268,7 @@ function ParPipsNlp_solve(master::JuMP.Model)
 		        local_data.loaded = true
 
 			if (nodeid > 0)
-			   println(haskey(node.ext, :warmStart))
+			   #println(haskey(node.ext, :warmStart))
                 	   if haskey(node.ext, :warmStart)
 				if node.ext[:warmStart] == true
                       	      	   solve(node)
