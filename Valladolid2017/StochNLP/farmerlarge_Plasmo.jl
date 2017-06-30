@@ -63,7 +63,7 @@ for i in 1:NS
     @objective(bl, Min, 1.0/NS*sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     @addNode(m, bl, "s$i")
 end
-#ParPipsNlp_solve(m)
+ParPipsNlp_solve(m)
 
 #println(getvalue(getvariable(m, :x)))
 #println(getvalue(getvariable(getNode(m,"s1"), :w)))
