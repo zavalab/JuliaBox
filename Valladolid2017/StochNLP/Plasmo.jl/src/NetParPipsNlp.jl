@@ -64,7 +64,7 @@ ModelData() = ModelData(nothing,0,0,0,0,0,Int[],Int[], Float64[], Int[], Int[], 
 
 
 function ParPipsNlp_solve(master::JuMP.Model)
-    MPI.Init()
+    #MPI.Init()
          children = Plasmo.getchildren(master)
 	 leafModelList = children
 
