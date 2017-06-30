@@ -74,7 +74,9 @@ function ParPipsNlp_solve(master::JuMP.Model)
             node.ext[:Data] = ModelData()
 	 end
 
-	 f, master_linear_lb, master_linear_ub = JuMP.prepProblemBounds(master)
+     f = JuMP.prepAffObjective(master)
+     master_linear_lb, master_linear_ub = JuMP.prepConstrBounds(master)
+	 #f, master_linear_lb, master_linear_ub = JuMP.prepProblemBounds(master)
 	 linkingId = master.ext[:linkingId]
 	 nlinkeq = 0
 	 nlinkineq = 0
