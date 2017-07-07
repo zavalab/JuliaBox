@@ -79,7 +79,7 @@ for i in 1:NS
     @objective(bl, Min, 1.0/NS*sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     # add children to parent
     @addNode(m, bl, "s$i")
-    @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
+    @constraint(m, [j in P], yield[i,j]*x[j]+y[j]-w[j] >= demand[j])
 end
 
 # call Ipopt for solution

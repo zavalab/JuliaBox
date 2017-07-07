@@ -3,11 +3,16 @@
 # University of Wisconsin-Madison, 2016
 
 push!(LOAD_PATH, pwd())
+
+#import MPI
+
+
 using JuMP
 using Distributions
 using Ipopt
 using Plasmo
-MPI.Init()  # Initialize MPI
+ # Initialize MPI
+MPI.Init()
 
 srand(123)
 NS = 1000;                  # number of scenarios
@@ -54,7 +59,7 @@ for i in 1:NS
     @variable(bl, y[P] >= 0)    # crops purchase
     @variable(bl, 0<=w[j in P] <= sellub[j in P])    # crops sold
     @variable(bl, s[P] >= 0)
-    @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
+    @constraint(m, [j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
     @objective(bl, Min, 1.0/NS*sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     @addNode(m, bl, "s$i")
 end

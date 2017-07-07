@@ -1,4 +1,4 @@
-function createGasModel(s)
+function createPDEGasModel(s)
      m = Model(solver=IpoptSolver())
          @variable(m, nodeDict[j].pmin<=p[j in NODE, TIMEG]<=nodeDict[j].pmax, start= 50)         # node pressure - [bar]
          @variable(m, 0<=dp[j = LINK,  TIMEG; linkDict[j].ltype == "a"]<=100, start= 10)          # compressor boost - [bar]
@@ -16,10 +16,10 @@ function createGasModel(s)
          @NLconstraint(m, powereq[j = LINK, t = TIMEG; linkDict[j].ltype == "a"], pow[j,t] == c4*fin[j,t]*(((p[linkDict[j].startloc,t] + dp[j,t])/(p[linkDict[j].startloc,t]))^om-1))
 
     # node balance [mass]
-         @constraint(m,nodemeq[i in NODE, t = TIMEG], sum{       fout[j,t], j in LINK ; linkDict[j].endloc==i}
-                                                                 - sum{       fin[j,t],  j in LINK ; linkDict[j].startloc==i}
-                                                                 + sum{        sG[j,t],  j in SUP ; supDict[j].loc == i }
-                                                                 - sum{       dem[j,t],  j in DEM ; demDict[j].loc == i }
+         @constraint(m,nodemeq[i in NODE, t = TIMEG], sum(       fout[j,t] for j in LINK if linkDict[j].endloc==i)
+                                                                 - sum(       fin[j,t] for  j in LINK if linkDict[j].startloc==i)
+                                                                 + sum(        sG[j,t] for  j in SUP if supDict[j].loc == i )
+                                                                 - sum(       dem[j,t] for  j in DEM if demDict[j].loc == i )
                                                                  ==0)
 
     # flow equations for passive and active links

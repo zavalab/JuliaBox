@@ -111,5 +111,15 @@ macro addNode(m, node, nodename)
 end
 
 end
+
+function getData(m::JuMP.Model)
+    if haskey(m.ext, :Data)
+        return m.ext[:Data]
+    else
+        error("This functionality is only available to model with extension data")
+    end
+end
+
+
 include("NetParPipsNlp.jl")
 include("NetIpopt.jl")

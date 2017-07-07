@@ -21,12 +21,12 @@ dtG = 0                              # temporal grid spacing - [s]
 
 # links
 type LinkData                        # set of links
-     name::ASCIIString
-     startloc::ASCIIString           # start node
-     endloc::ASCIIString             # end node
+     name::String
+     startloc::String           # start node
+     endloc::String             # end node
      diam::Float64                   # link diameter - mm
      length::Float64                 # link length - km
-     ltype::ASCIIString              # link type, passive or active
+     ltype::String              # link type, passive or active
      c1                              # aux constant
      c2                              # aux constant
      c3                              # aux constant
@@ -34,33 +34,33 @@ type LinkData                        # set of links
      lam                             # friction coefficient - []
      A                               # pipe transveral area - [m^2]
 end
-linkDict = Dict{ASCIIString, LinkData}()
+linkDict = Dict{String, LinkData}()
 
 # nodes
 type NodeData
-     name::ASCIIString
+     name::String
      pmin::Float64                # min pessure - bar
      pmax::Float64                # max pressure - bar
 end
-nodeDict = Dict{ASCIIString, NodeData}()
+nodeDict = Dict{String, NodeData}()
 
 # supply
 type SupplyData                   # set of suppliers
-     name::ASCIIString
-     loc::ASCIIString             # supply location
+     name::String
+     loc::String             # supply location
      min::Float64                 # min supply - scmx106/day
      max::Float64                 # max supply - scmx106/day
 end
-supDict = Dict{ASCIIString, SupplyData}()
+supDict = Dict{String, SupplyData}()
 
 # demand
 type DemandData                    # set of suppliers
-     name::ASCIIString
-     loc::ASCIIString              # demand location
+     name::String
+     loc::String              # demand location
      d::Float64                    # base demand - scmx106/day
      stochd                        # stochastic demands - [scmx10-4/hr]
 end
-demDict = Dict{ASCIIString, DemandData}()
+demDict = Dict{String, DemandData}()
 
 # physical data
 eps= 0.025            # pipe rugosity - [mm]
@@ -113,8 +113,8 @@ IL = GraphModel()
 for s in SCENG
    gasch = createPDEGasModel(s)
    @addNode(IL,gasch, "children$s")
-   @constraint(IL,coupledq[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
-   @constraint(IL,couplede[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
+   @constraint(IL,[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
+   @constraint(IL,[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
 end
 
 # solve with IPOPT

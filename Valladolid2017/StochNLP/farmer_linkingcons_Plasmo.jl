@@ -54,7 +54,7 @@ for i in 1:NS
     @variable(bl, y[P] >= 0)    # crops purchase
     @variable(bl, 0<=w[j in P] <= sellub[j in P])    # crops sold
     @variable(bl, s[P] >= 0)
-    @constraint(m, bal[j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
+    @constraint(m, [j in P], yield[i,j]*x[j]+y[j]-w[j] - s[j] == demand[j])
     @variable(bl, cost)
     @constraint(bl, cost ==sum(pcost[j]*y[j] - scost[j]*w[j] for j in P))
     @objective(bl, Min, 1.0/NS*cost)

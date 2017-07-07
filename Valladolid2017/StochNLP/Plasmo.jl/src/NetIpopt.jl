@@ -17,13 +17,13 @@ end
 IpoptModelData() = IpoptModelData(nothing,0,0,0,0,0,0)
 
 
-function getData(m::JuMP.Model)
-    if haskey(m.ext, :Data)
-        return m.ext[:Data]
-    else
-        error("This functionality is only available")
-    end
-end
+# function getData(m::JuMP.Model)
+#     if haskey(m.ext, :Data)
+#         return m.ext[:Data]
+#     else
+#         error("This functionality is only available")
+#     end
+# end
 
 function setLeafModelList(master::JuMP.Model)
 	 numLeaf = 0
@@ -53,7 +53,7 @@ function setUpModelList(master::JuMP.Model)
              modelList = [modelList; child_modelList]
          end
 	 modelList = [modelList; master]
-         return modelList 
+         return modelList
 end
 
 
@@ -70,7 +70,7 @@ function Ipopt_solve(master::JuMP.Model)
          net_n = 0
          net_hessnnz = 0
          net_jacnnz = 0
-	 
+
          for (idx,node) in enumerate(modelList)
 	     node.ext[:Data] = IpoptModelData()
              local_data = getData(node)
@@ -98,7 +98,7 @@ function Ipopt_solve(master::JuMP.Model)
          numconnectRows = 0
 	 for (idx,node) in enumerate(upModelList)
 	     connectRows = getConnectRows(node)
-	     s = 1	
+	     s = 1
              for c in connectRows
              	 coeffs = node.linconstr[c].terms.coeffs
              	 vars   = node.linconstr[c].terms.vars
@@ -112,14 +112,14 @@ function Ipopt_solve(master::JuMP.Model)
 	     numconnectRows += length(connectRows)
 	     local_data = getData(node)
              local_data.numconnectRows = length(connectRows)
-	     local_data.m = local_data.m - local_data.numconnectRows	  
-	     deleteat!(node.linconstr,connectRows)   
+	     local_data.m = local_data.m - local_data.numconnectRows
+	     deleteat!(node.linconstr,connectRows)
 	 end
 	 Mcon = sparse(Icon, Jcon, Vcon, numconnectRows, net_n)
 
 	 for (idx,node) in enumerate(modelList)
-	    local_data = getData(node) 
-            local_data.d = JuMP.JuMPNLPEvaluator(node)
+	    local_data = getData(node)
+            local_data.d = JuMP.NLPEvaluator(node)
             initialize(local_data.d, [:Grad,:Jac, :Hess])
             Ihess, Jhess = hesslag_structure(local_data.d)
             local_data.hessnnz = length(Ihess)
