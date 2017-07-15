@@ -12,7 +12,7 @@ MPI.Init()  # Initialize MPI
 TF=24*3600                           # horizon time - [s]
 Nt=24                                # number of temporal grid points
 Nx=3                                 # number of spatial grid points
-S=3                                  # number of scenarios
+S=4                                  # number of scenarios
 TIMEG=1:Nt                           # set of temporal grid points
 TIMEGm=1:Nt-1                        # set of temporal grid points minus 1
 DIS=1:Nx                             # set of spatial grid points
