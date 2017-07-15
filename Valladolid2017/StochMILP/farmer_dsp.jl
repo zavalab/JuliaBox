@@ -59,7 +59,7 @@ end
 # Dsp solve types
 solve_types = [:Dual, :Benders]
 
-status = solve(m, solve_type = solve_types[1])
+status = solve(m, solve_type = solve_types[2])
 
 # Results
 println(getvalue(x))
