@@ -1,7 +1,6 @@
 
 using JuMP, Dsp, MPI
 
-println("Hola")
 # Comment out this line if you want to run in serial
 MPI.Init()
 
@@ -22,8 +21,7 @@ for s = 1:3
 end
 
 solve_types = [:Dual, :Benders, :Extensive]
-solve(m) 
-#solve_type = solve_types[1])# param = "myparam.txt")
+status = solve(m, solve_type = solve_types[2])
 
 getobjectivevalue(m)
 
