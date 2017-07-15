@@ -83,10 +83,10 @@ for i in 1:NS
 end
 
 # call Ipopt for solution
-Ipopt_solve(m)
+#Ipopt_solve(m)
 
 # call PIPSNLP for solution
-#ParPipsNlp_solve(m)
+ParPipsNlp_solve(m)
 
 # access solution and display results
 println(getvalue(m[ :x]))

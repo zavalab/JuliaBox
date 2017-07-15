@@ -118,9 +118,9 @@ for s in SCENG
 end
 
 # solve with IPOPT
-Ipopt_solve(IL)
+#Ipopt_solve(IL)
 
 # solve with PIPS-NLP
-#ParPipsNlp_solve(IL)
+ParPipsNlp_solve(IL)
 
 MPI.Finalize()

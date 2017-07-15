@@ -65,10 +65,10 @@ end
 @constraint(m, sum(getNode(m,"s$i")[:cost] for i in 1:NS) >= 50000)
 
 # solve with Ipopt
-Ipopt_solve(m)
+#Ipopt_solve(m)
 
 # solve with PIPS-NLP
-#ParPipsNlp_solve(m)
+ParPipsNlp_solve(m)
 
 # access solution
 #println(getvalue(getvariable(m, :x)))
