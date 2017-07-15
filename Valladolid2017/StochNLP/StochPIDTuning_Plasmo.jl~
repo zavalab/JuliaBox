@@ -77,10 +77,7 @@ for s in 1:NS
 end
 
 # solve with Ipopt
-#Ipopt_solve(PID)
-
-# solve with PIPS-NLP
-ParPipsNlp_solve(PID)
+Ipopt_solve(PID)
 
 # get controller parameters
 println(getvalue(Kc))
