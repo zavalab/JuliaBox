@@ -23,7 +23,7 @@ NodeChildren = Dict(); # Dictionary: Keys: Node ids, Values: Corresponding child
 
 # Filling up all dictionaries to create scenario tree
 curnodeid = 1; # Current node id
-push!(Nodes,curnodeid);
+push!(Nodes,curnodeid); # append new entry to vector
 NodeStage[curnodeid] = 1;
 StageNodes[1] = [curnodeid];
 NodeChildren[1] = Vector();
@@ -53,9 +53,9 @@ function getLeafs(n) # This function gives the node ids at the last stage which 
 	return tmp;
 end
 
-Scens = getLeafs(1); # Scens contains all node ids at last stage (originating from root node)
+Scens = getLeafs(1); # Scens contains all node ids at last stage (originating from root node n=1)
 NScen = length(Scens); # Total number of scenarios in the tree (number of nodes in final stage of the tree)
-ScensSeq = Dict(); # Local node ids at every stage for node in last stage 
+ScensSeq = Dict(); # Dictionary: Keys: scenario ids, Values: Local node ids (1:NS) at every stage for node in last stage 
 for s in Scens
   ScensSeq[s] = Vector(T);
   ScensSeq[s][1] = 1;
@@ -83,10 +83,9 @@ end
 #print(getLeafs(364)) # get leafs of node 364
 #ScensSeq[122]
 
-# Hourly load data
-load_scens = [-1 0 1]; # three scenarios of random profile: low, average and high
+# disturbance data
+load_scens = [-1 0 1]; # three scenarios of random disturbance profile: low, average and high
 
-# Load data averaged over stages (4-hour intervals)
 L = Matrix(T,NS); # Define an empty matrix
 for s in 1:NS
   L[1,s] = mean(load_scens);
@@ -95,7 +94,7 @@ for s in 1:NS
   end
 end
 
-# plot load tree pathways
+# plot disturbance tree pathways
 figure()
 grid()
 Lmat=zeros(T,length(Scens))
@@ -110,7 +109,7 @@ for s in 1:length(Scens)
 plot(1:T,Lmat[:,s],color="blue")        
 end
 xlabel("Time (hour)", size=18)
-ylabel("Load (kW)", size=18)
+ylabel("Disturbance (-)", size=18)
 tick_params(labelsize=15)
 savefig("disturbance_profile_tree.pdf")
 
