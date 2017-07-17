@@ -1,3 +1,4 @@
+
 using JuMP
 using Ipopt
 
@@ -26,12 +27,12 @@ function solve_upperbound(x,rhs,pr,S)
     m=Model(solver=IpoptSolver(print_level=0));
     @variable(m,y[S]>=0)
     @constraint(m,cons[s in S], x+y[s]>=rhs[s])
-    @objective(m,Min,sum{pr[s]*(2*x+3*y[s]), s in S})
+    @objective(m,Min,sum(pr[s]*(2*x+3*y[s]) for  s in S))
     solve(m)  
     return(getobjectivevalue(m))
 end
 
-Nit=4       # number of iterations
+Nit=3       # number of iterations
 lam=0       # initial dual variable
 x=zeros(NS) # container for first-stage
 D=zeros(NS) # container for dual function values
@@ -67,3 +68,5 @@ for it=1:Nit
     # update duals
     lam=lam-alpha*(err)
 end
+
+

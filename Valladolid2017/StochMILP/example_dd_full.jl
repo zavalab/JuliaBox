@@ -1,3 +1,4 @@
+
 using JuMP
 using Ipopt
 
@@ -10,7 +11,7 @@ rhs[2]=700
 pr[1]=0.6
 pr[2]=0.4
 
-m=Model(solver=IpoptSolver());
+m=Model(solver=IpoptSolver(print_level=0));
 @variable(m,x[S]>=0)
 @variable(m,y[S]>=0)
 @constraint(m,cons[s in S], x[s]+y[s]>=rhs[s])
@@ -19,12 +20,14 @@ m=Model(solver=IpoptSolver());
 solve(m)   
 
 print(getvalue(x))
+print('\n')
 print(getobjectivevalue(m))
+print('\n')
 print(getdual(nonant))
 
 #solve with dualized constraint
 lam=getdual(nonant)
-m=Model(solver=IpoptSolver());
+m=Model(solver=IpoptSolver(print_level=0));
 @variable(m,x[S]>=0)
 @variable(m,y[S]>=0)
 @constraint(m,cons[s in S], x[s]+y[s]>=rhs[s])
@@ -32,4 +35,7 @@ m=Model(solver=IpoptSolver());
 solve(m)  
 
 print(getvalue(x))
+print('\n')
 print(getobjectivevalue(m))
+
+
