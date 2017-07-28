@@ -1,9 +1,8 @@
+using JuMP, Plasmo 
 
-using JuMP, Plasmo, MPI
-
-println("Hola")
 # Comment out this line if you want to run in serial
-MPI.Init()
+# using MPI
+# MPI.Init()
 
 xi = [[7,7] [11,11] [13,13]]
 
@@ -28,9 +27,17 @@ end
 
 solve_types = [:Dual, :Benders, :Extensive]
 status = dsp_solve(graph,master_node,children_nodes,solve_type = solve_types[2])  #probabilities are 1/NS by default
-#solve_type = solve_types[1])# param = "myparam.txt")
 
+# get cost
 getobjectivevalue(master)
 
+# get first-stage variables
+println(getvalue(master[:x]))
+
+# get recourse veriables
+for node in children_nodes
+    println(getvalue(node[:y]))
+end
+
 # Comment out this line if you want to run in serial
-MPI.Finalize()
+# MPI.Finalize()
