@@ -1,12 +1,11 @@
-# Example on how to use JUMP+Ipopt and PLASMO+PIPS-NLP
-# Yankai Cao, Victor M. Zavala
+# Example on how to use JUMP+Ipopt and PLASMO+Ipopt
+# Yankai Cao, Jordan Jalving, Victor M. Zavala
 # University of Wisconsin-Madison, 2016
 
 using JuMP
 using Distributions
 using Ipopt
 using Plasmo
-MPI.Init()  # Initialize MPI
 
 # set data
 prcost = zeros(3)
@@ -56,11 +55,10 @@ m = Model(solver=IpoptSolver())
 @constraint(m, buyb[s in S], y[s,3] <= 0)
 @objective(m, Min, (1/NS)*sum(cost[s] for s in S))
 solve(m)
-println(getvalue(m[:x]))
 println(getvalue(x))
 println(getvalue(w))
 
-# construct problem with PLASMO and solve using PIPS-NLP or Ipopt
+# construct problem with PLASMO and solve using Ipopt
 graph = GraphModel()
 master = Model()
 master_node = add_node(graph,master)
@@ -88,14 +86,9 @@ end
 # call Ipopt for solution
 graph.solver = IpoptSolver()
 solve(graph)
-#Ipopt_solve(m)
-
-# call PIPSNLP for solution
-#ParPipsNlp_solve(m)
 
 # access solution and display results
-println(getvalue(m[ :x]))
-println(getvalue(getnode(graph,2)[:w]))
-println(getvalue(getnode(graph,3)[:w]))
-
-MPI.Finalize()
+println(getvalue(x))
+for i in 1:NS
+    println(getvalue(getindex(child_nodes[i],:w))) 
+end

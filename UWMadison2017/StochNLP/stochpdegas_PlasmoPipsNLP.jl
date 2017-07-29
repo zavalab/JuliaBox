@@ -104,26 +104,22 @@ DEM =  keys(demDict)
 include("createPDEGasModel.jl")
 
 # create two-stage graph model
-
-IL = GraphModel()
+gas = GraphModel()
 master = Model()
-add_node(IL,master)
+master_node=add_node(gas,master)
 @variable(master, dp[j = LINK; linkDict[j].ltype == "a"], start= 10)   # compressor boost - [bar]
 @variable(master, dem[DEM],    start=100)                              # demand flow - [scmx10-4/hr]
 
 # create array of children models
+child_nodes = Array{Plasmo.NodeOrEdge}(S)
 for s in SCENG
-   gasch = createPDEGasModel(s)
-   child = add_node(IL,gasch)
-
-   @linkconstraint(IL,[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
-   @linkconstraint(IL,[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
+    gasch = createPDEGasModel(s)
+    child = add_node(gas,gasch)
+    child_nodes[s]=child
+    @linkconstraint(gas,[j in LINK,t in TIMEG; linkDict[j].ltype =="a" && t ==1],   dp[j] == gasch[:dp][j,t])
+    @linkconstraint(gas,[j in DEM, t in TIMEG;                            t ==1],  dem[j] == gasch[:dem][j,t])
 end
-# solve with IPOPT
-#Ipopt_solve(IL)
-IL.solver = IpoptSolver()
-solve(IL)
-# solve with PIPS-NLP
-#ParPipsNlp_solve(IL)
+# solve with PipsNLP
+pipsnlp_solve(gas,master_node,child_nodes)
 
 MPI.Finalize()
