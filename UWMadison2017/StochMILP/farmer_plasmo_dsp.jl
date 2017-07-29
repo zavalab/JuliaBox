@@ -1,4 +1,6 @@
-using JuMP, Plasmo, MPI;
+
+using JuMP, Plasmo, MPI
+
 MPI.Init()
 
 # Model parameters
@@ -63,19 +65,18 @@ end
 
 # Dsp solve types
 solve_types = [:Dual, :Benders]
-
-#status = dsp_solve(graph, solve_type = solve_types[1])
 status = dsp_solve(graph,master_node,children_nodes,solve_type = solve_types[2])  #probabilities are 1/NS by default
+
 # Results
 println(getvalue(x))
 println("")
 
-
 for node in children_nodes
     println(getvalue(node[:cost]))
 end
-
 println("")
 println("obj ", getobjectivevalue(master))
 
 MPI.Finalize();
+
+
