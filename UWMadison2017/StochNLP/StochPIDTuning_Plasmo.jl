@@ -1,15 +1,15 @@
-# optimal PID controller tuning in Plasmo
+
+# optimal PID controller tuning
 # Victor M. Zavala
 # UW-Madison, 2017
 
 using Ipopt
 using Plasmo
 using JuMP
-#using Gadfly
 MPI.Init()  # Initialize MPI
 
 # sets
-NS=3;       # Number of scenarios
+NS=3;       # Number of scenarios 
  N=100;     # Number of timesteps
 Tf=10;      # Final time
  h=Tf/N;    # Time step
@@ -28,7 +28,7 @@ x0=zeros(NS);  # initial state
 Kd=zeros(NS);  # disturbance gain
 tau=zeros(NS); # time constaint
 xsp=zeros(NS); # set-point
-d=zeros(NS);   # disturbance
+d=zeros(NS);   # disturbance 
 
   K[1] =  1.0;
  x0[1] =  0.0;
@@ -51,35 +51,37 @@ tau[3] =  1.0;
 xsp[3] =  1.0;
   d[3] = -1.0;
 
-# define scenario model
-include("createPIDmodel.jl")
+include("createPIDmodel.jl")  #scenario model building function
 
-# create two-stage graph model
+# create two-stage graph moddel
 PID=GraphModel()
 master = Model()
-add_node(PID,master)
-# add variables to parent node
+master_node = add_node(PID,master)
+
+# add variables to parent node 
 @variable(master, -10<= Kc <=10)
 @variable(master,-100<=tauI<=100)
 @variable(master,-100<=tauD<=1000)
 
 # create array of children models
-PIDch=Array{JuMP.Model}(NS)
-for s in 1:NS
-       # get scenario model
-       PIDch[s] = get_scenario_model(s)
-       # add children to parent node
-       child = add_node(PID,PIDch[s])
-       # link children to parent variables
-       @linkconstraint(PID, PIDch[s][:Kc]==Kc)
-       @linkconstraint(PID, PIDch[s][:tauI]==tauI)
-       @linkconstraint(PID, PIDch[s][:tauD]==tauD)
+PIDch=Array{NodeOrEdge}(NS)
+for s in 1:NS           
+           # get scenario model
+           bl = get_scenario_model(s)
+           child = add_node(PID,bl)
+           # add children to parent node
+           PIDch[s] = child
+           # link children to parent variables
+           @linkconstraint(PID, bl[:Kc]==Kc)
+           @linkconstraint(PID, bl[:tauI]==tauI)
+           @linkconstraint(PID, bl[:tauD]==tauD)    
 end
 
 # solve with Ipopt
 PID.solver = IpoptSolver()
 solve(PID)
 #Ipopt_solve(PID)
+#pipsnlp_solve(PID,master,PIDch)
 
 # get controller parameters
 println(getvalue(Kc))
@@ -90,7 +92,7 @@ println(getvalue(tauD))
 x=zeros(NS,N)
 for s in 1:NS
     for j=1:N
-    x[s,j]=getvalue(PIDch[s][:x][j])
+    x[s,j]=getvalue(getindex(PIDch[s],:x)[j]) 
     end
 end
 
@@ -102,3 +104,5 @@ MPI.Finalize()
 #plot(x=T, y=x[2,:]')
 
 #plot(x=T, y=x[3,:]')
+
+
