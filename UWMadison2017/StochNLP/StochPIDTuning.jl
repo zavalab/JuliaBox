@@ -6,7 +6,7 @@
 # call libraries
 using Ipopt
 using JuMP
-#using Gadfly
+using PyPlot
 
 # sets
 NS=3;
@@ -29,7 +29,7 @@ x0=zeros(NS);  # initial state
 Kd=zeros(NS);  # disturbance gain
 tau=zeros(NS); # time constaint
 xsp=zeros(NS); # set-point
-d=zeros(NS);   # disturbance
+d=zeros(NS);   # disturbance 
 
   K[1] =  1.0;
  x0[1] =  0.0;
@@ -61,7 +61,7 @@ m = Model(solver=IpoptSolver())
 @variable(m, int[T,S])
 @variable(m,cost[T,S])
 
-# variables (controller design)
+# variables (controller design) 
 @variable(m, -10<= Kc <=10)
 @variable(m,-100<=tauI<=100)
 @variable(m,-100<=tauD<=1000)
@@ -77,7 +77,7 @@ m = Model(solver=IpoptSolver())
 # objective function
 @objective(m, Min, (1/(N*NS))*sum(cost[t,s] for t in T,s in S));
 
-# solve problem
+# solve problem 
 solve(m)
 
 # display results
@@ -89,12 +89,15 @@ println(getvalue(tauD))
 x=zeros(NS,N)
 for s in 1:NS
     for j=1:N
-    x[s,j]=getvalue(m[:x][j,s]) 
+       x[s,j]=getvalue(getindex(m,:x)[j,s]) 
     end
 end
 
-#plot(x=T, y=x[1,:]')
+plot(T, x[1,:]);
+plot(T, x[2,:]);
+plot(T, x[3,:]);
+xlabel("Time")
+ylabel("x(t)")
+grid("on")
 
-#plot(x=T, y=x[2,:]')
 
-#plot(x=T, y=x[3,:]')

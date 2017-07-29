@@ -1,7 +1,6 @@
 
-using JuMP, Plasmo,MPI
+using JuMP, Plasmo, Cbc
 
-MPI.Init()
 xi = [[7,7] [11,11] [13,13]]
 
 # create empty Plasmo model
@@ -23,8 +22,9 @@ for s = 1:3
     @linkconstraint(graph, 6 * y[1] + y[2] + 3 * y[3] + 2 * y[4] <= xi[2,s] - master[:x][2])
 end
 
-solve_types = [:Dual, :Benders, :Extensive]
-status = dsp_solve(graph,master_node,children_nodes,solve_type = solve_types[2])  #probabilities are 1/NS by default
+# solve Plasmo model using Cbc solver
+graph.solver=CbcSolver()
+solve(graph)
 
 # get optimal objective value
 getobjectivevalue(master)
@@ -34,9 +34,7 @@ println(getvalue(master[:x]))
 
 # get recourse veriables
 for node in children_nodes
-   println(getvalue(node[:y]))
+    println(getvalue(node[:y]))
 end
-
-MPI.Finalize()
 
 
