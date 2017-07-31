@@ -1,3 +1,4 @@
+
 ##Facility location problem
 ##Modeled in JuMP, Solver = Gurobi
 
@@ -6,6 +7,7 @@ println("READING MODEL");
 
 using JuMP
 using Cbc
+using PyPlot
 
 ## Import Data
 customer_matrix = readcsv("Customer.csv");           # Customers information
@@ -101,3 +103,90 @@ end
 end
 println("\n");
 println("Expected Total Annual Cost(\$):\n	", getobjectivevalue(m));
+println("Transport Cost(\$):\n	", getvalue(transcost));
+println("Penalty Cost(\$):\n	", getvalue(penalty));              
+                                                                                                                
+for s in scenario                                                                                                     
+for i in source
+for j in customer
+    if getvalue(f[i, j, s]) > 0
+      println("	", "Flow between source ", i," and consumer ", j, " in scenario ", s, " is: ", getvalue(f[i, j, s]));
+    end
+end
+end  
+end
+
+# visualize solution first scenario
+for i in source
+for t in facility
+    plot([Xs[i]],[Ys[i]],"bo")
+    if getvalue(y[i, t]) >= 0.5
+      plot([Xs[i]],[Ys[i]],"ro")
+    end
+end
+end
+grid("on")
+for j in customer
+      plot([Xc[j]],[Yc[j]],"ko",label=j)
+end
+for s in 1:1
+for i in source
+for j in customer
+    if getvalue(f[i, j, s]) > 0
+      plot([Xs[i],Xc[j]],[Ys[i],Yc[j]],"k--")
+    end
+end
+end  
+end
+xlabel("X[km]")
+ylabel("Y[km]");
+
+# visualize solution second scenario
+for i in source
+for t in facility
+    plot([Xs[i]],[Ys[i]],"bo")
+    if getvalue(y[i, t]) >= 0.5
+      plot([Xs[i]],[Ys[i]],"ro")
+    end
+end
+end
+grid("on")
+for j in customer
+      plot([Xc[j]],[Yc[j]],"ko")
+end
+for s in 2:2
+for i in source
+for j in customer
+    if getvalue(f[i, j, s]) > 0
+      plot([Xs[i],Xc[j]],[Ys[i],Yc[j]],"k--")
+    end
+end
+end  
+end
+xlabel("X[km]")
+ylabel("Y[km]");
+
+# visualize solution third scenario
+for i in source
+for t in facility
+    plot([Xs[i]],[Ys[i]],"bo")
+    if getvalue(y[i, t]) >= 0.5
+      plot([Xs[i]],[Ys[i]],"ro")
+    end
+end
+end
+grid("on")
+for j in customer
+      plot([Xc[j]],[Yc[j]],"ko")
+end
+for s in 3:3
+for i in source
+for j in customer
+    if getvalue(f[i, j, s]) > 0
+      plot([Xs[i],Xc[j]],[Ys[i],Yc[j]],"k--")
+    end
+end
+end  
+end
+xlabel("X[km]")
+ylabel("Y[km]");
