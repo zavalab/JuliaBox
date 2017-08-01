@@ -201,7 +201,6 @@ cfL = Lm - Lv;
 
 # Plotting:
 errorbar([1,2,3],Um, yerr=Uv, fmt="b-");
-hold("on")
 errorbar([1,2,3],Lm, yerr=Lv, fmt="r-");
 grid("on")
 xlabel(L"log_{10}(N)")

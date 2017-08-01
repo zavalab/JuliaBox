@@ -130,6 +130,7 @@ gas_cost = 1000        # value of gas delivered
 
 solve(m)
 
+d_profile=zeros(NS,24)
 for s=S
     for t=time_grid
 d_profile[s,t] = getvalue(ddeliver[s,t])
