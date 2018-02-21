@@ -1,0 +1,45 @@
+Investment Cost ($),3.0600000000000212e7
+Transportation Cost ($/day),54.436559999978776
+Operating Cost ($/yr),1.5300000000000133e6
+Revenue from Products ($/day),8819.58239999979
+Return on Investment (%),0.45515761960753687
+Payback Period (yrs),219.7041106028847
+Total Technologies Installed,3.0000000000000253
+Percentage of Manure Unprocessed (%),89.30798252628678
+Total Manure recovered (kg/day),1.877369000000007e7
+Total Electricity recovered (kWh/day),48997.679999998836
+Total Biogas recovered (Nm3/day),0.0
+Total Biomethane recovered (Nm3/day),0.0
+Total Liq.Biomethane recovered (gal/day),0.0
+Total Cake1 recovered (kg/day),0.0
+Total Cake2 recovered (kg/day),0.0
+Total Cake3 recovered (kg/day),0.0
+Total Struvite recovered (kg/day),0.0
+Total Struvite+Solids recovered (kg/day),0.0
+Total Digestate_AD recovered (kg/day),2.2213030799997826e6
+Total Digestate1 recovered (kg/day),0.0
+Total Digestate2 recovered (kg/day),0.0
+Total Digestate3 recovered (kg/day),0.0
+Total Digestate4 recovered (kg/day),0.0
+Total Digestate5 recovered (kg/day),0.0
+Mass-Distance for Manure (kg km/day),340228.4999998673
+Mass-Distance for Electricity (kWh km/day),6.644085407999909e6
+Mass-Distance for Biogas (Nm3 km/day),0.0
+Mass-Distance for Biomethane (Nm3 km/day),0.0
+Mass-Distance for Liq.Biomethane (gal km/day),0.0
+Mass-Distance for Cake1 (kg km/day),0.0
+Mass-Distance for Cake2 (kg km/day),0.0
+Mass-Distance for Cake3 (kg km/day),0.0
+Mass-Distance for Struvite (kg km/day),0.0
+Mass-Distance for Struvite+Solids (kg km/day),0.0
+Mass-Distance for Digestate_AD (kg km/day),0.0
+Mass-Distance for Digestate1 (kg km/day),0.0
+Mass-Distance for Digestate2 (kg km/day),0.0
+Mass-Distance for Digestate3 (kg km/day),0.0
+Mass-Distance for Digestate4 (kg km/day),0.0
+Mass-Distance for Digestate5 (kg km/day),0.0
+Percentage of Manure Moved ,7.646690569417375
+CO2 emissions	(g/day),698431.3907999772
+Objective Value ($/day),-381.584196164129
+epsilon,value_analysis_lbm
+

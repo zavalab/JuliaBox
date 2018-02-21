@@ -1,0 +1,46 @@
+Investment Cost ($),4.497499999999778e8
+Transportation Cost ($/day),28397.129471999986
+Operating Cost ($/yr),1.3761000000004489e7
+Revenue from Products ($/day),62699.76920000611
+Revenue from RINs ($/day),156749.4230000139
+Return on Investment (%),7.445359176370332
+Payback Period (yrs),13.431185471531641
+Total Technologies Installed,38.9999999999819
+Percentage of Manure Unprocessed (%),3.7845346313146964
+Total Manure recovered (kg/day),795557.9999990934
+Total Electricity recovered (kWh/day),0.0
+Total Biogas recovered (Nm3/day),-7.547234012564726e-8
+Total Biomethane recovered (Nm3/day),0.0
+Total Liq.Biomethane recovered (gal/day),62699.76920000559
+Total Cake1 recovered (kg/day),2.810343168430074e-7
+Total Cake2 recovered (kg/day),-1.5693827317311213e-10
+Total Cake3 recovered (kg/day),-1.2731908949521873e-9
+Total Struvite recovered (kg/day),0.0
+Total Struvite+Solids recovered (kg/day),0.0
+Total Digestate_AD recovered (kg/day),1.9989090935596433e7
+Total Digestate1 recovered (kg/day),-3.9099691232621347e-7
+Total Digestate2 recovered (kg/day),-2.039727721305991e-7
+Total Digestate3 recovered (kg/day),-2.210858244391585e-7
+Total Digestate4 recovered (kg/day),-1.243446920009758e-7
+Total Digestate5 recovered (kg/day),-9.989747441731954e-8
+Mass-Distance for Manure (kg km/day),1.774820591999999e8
+Mass-Distance for Electricity (kWh km/day),0.0
+Mass-Distance for Biogas (Nm3 km/day),2.546301858615568e-5
+Mass-Distance for Biomethane (Nm3 km/day),0.0
+Mass-Distance for Liq.Biomethane (gal km/day),0.0
+Mass-Distance for Cake1 (kg km/day),0.0
+Mass-Distance for Cake2 (kg km/day),0.0
+Mass-Distance for Cake3 (kg km/day),0.0
+Mass-Distance for Struvite (kg km/day),0.0
+Mass-Distance for Struvite+Solids (kg km/day),0.0
+Mass-Distance for Digestate_AD (kg km/day),0.0
+Mass-Distance for Digestate1 (kg km/day),0.0
+Mass-Distance for Digestate2 (kg km/day),0.0
+Mass-Distance for Digestate3 (kg km/day),0.0
+Mass-Distance for Digestate4 (kg km/day),0.0
+Mass-Distance for Digestate5 (kg km/day),0.0
+Percentage of Manure Moved ,46.92477153729133
+CO2 emissions	(g/day),1.774820592000254e7
+Objective Value ($/day),-91741.1038239012
+epsilon,rin_2.5
+

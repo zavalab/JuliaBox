@@ -1,0 +1,46 @@
+Investment Cost ($),3.4781999999998236e8
+Transportation Cost ($/day),29073.26403199867
+Operating Cost ($/yr),1.7390999999997016e7
+Revenue from Products ($/day),18330.56487999732
+Revenue from RECs ($/day),458264.1219999937
+Return on Investment (%),-1783.0373988441459
+Payback Period (yrs),-0.05608407320274101
+Total Technologies Installed,43.99999999999831
+Percentage of Manure Unprocessed (%),0.0
+Total Manure recovered (kg/day),8.445798576173217e-11
+Total Electricity recovered (kWh/day),458264.1219999937
+Total Biogas recovered (Nm3/day),0.0
+Total Biomethane recovered (Nm3/day),0.0
+Total Liq.Biomethane recovered (gal/day),0.0
+Total Cake1 recovered (kg/day),-3.380484066523478e-8
+Total Cake2 recovered (kg/day),2.5084616819471646e-11
+Total Cake3 recovered (kg/day),-4.217304999167041e-8
+Total Struvite recovered (kg/day),-1.2345646431495726e-9
+Total Struvite+Solids recovered (kg/day),3.791064252646279e-12
+Total Digestate_AD recovered (kg/day),2.0775340906992693e7
+Total Digestate1 recovered (kg/day),-3.800640775522044e-7
+Total Digestate2 recovered (kg/day),-3.7891120781524987e-7
+Total Digestate3 recovered (kg/day),-3.969842221874464e-7
+Total Digestate4 recovered (kg/day),-4.03427587839274e-7
+Total Digestate5 recovered (kg/day),-4.121233675571596e-7
+Mass-Distance for Manure (kg km/day),1.81707900199988e8
+Mass-Distance for Electricity (kWh km/day),1.1356909628922486e8
+Mass-Distance for Biogas (Nm3 km/day),0.0
+Mass-Distance for Biomethane (Nm3 km/day),0.0
+Mass-Distance for Liq.Biomethane (gal km/day),0.0
+Mass-Distance for Cake1 (kg km/day),0.0
+Mass-Distance for Cake2 (kg km/day),0.0
+Mass-Distance for Cake3 (kg km/day),3.6620022747024087e-6
+Mass-Distance for Struvite (kg km/day),-6.15152779444693e-8
+Mass-Distance for Struvite+Solids (kg km/day),3.788602569643847e-11
+Mass-Distance for Digestate_AD (kg km/day),0.0
+Mass-Distance for Digestate1 (kg km/day),0.0
+Mass-Distance for Digestate2 (kg km/day),0.0
+Mass-Distance for Digestate3 (kg km/day),0.0
+Mass-Distance for Digestate4 (kg km/day),0.0
+Mass-Distance for Digestate5 (kg km/day),0.0
+Percentage of Manure Moved ,47.349082763237746
+CO2 emissions	(g/day),2.952769964892164e7
+Objective Value ($/day),-352228.27216307144
+epsilon,rec_1000
+

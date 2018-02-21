@@ -1,0 +1,49 @@
+# TECHS,tech_alias,tech_cap (kg/day),tech_invcost ($),tech_refprod,operating_cost($/yr)
+t1,AD + Cleaning + Generator (1000 AU),74920,2197521,p1,109876
+t2,AD + Cleaning   (1000 AU),74920,1699662,p1,76081
+t3,AD + Cleaning + Liquefaction  (1000 AU),74920,3244243,p1,98831
+t4,AD + Filter  (1000 AU),74920,1084793,p1,460582
+t5,AD + Centrifuge  (1000 AU),74920,1559293,p1,701422
+t6,AD + Coag-Floc  (1000 AU),74920,2368300,p1,600319
+t7,AD + FBR  (1000 AU),74920,1984347,p1,1048812
+t8,AD + CSTR  (1000 AU),74920,2180109,p1,1120169
+t9,AD + Cleaning + Generator (5000 AU),374600,6460154,p1,323008
+t10,AD + Cleaning (5000 AU),374600,4509821,p1,211976
+t11,AD + Cleaning + Liquefaction (5000 AU),374600,9050495,p1,278855
+t12,AD + Filter  (5000 AU),374600,2702188,p1,1335476
+t13,AD + Centrifuge (5000 AU),374600,4089633,p1,2039696
+t14,AD + Coag-Floc (5000 AU),374600,6455184,p1,1744069
+t15,AD + FBR (5000 AU),374600,5332500,p1,3055471
+t16,AD + CSTR (5000 AU),374600,5904912,p1,3264119
+t17,AD (1000 AU),74920,1080207,p1,25925
+t18,AD (5000 AU),374600,2688778,p1,64531
+t19,AD + Filter + Cleaning + Generator (5000 AU),374600,6473563,p1,1593953
+t20,AD + Filter + Cleaning  (5000 AU),374600,4523230,p1,1482921
+t21,AD + Filter + Cleaning + Liquefaction (5000 AU),374600,9063905,p1,1549800
+t22,AD + Centrifuge + Cleaning + Generator (5000 AU),374600,7861009,p1,2298173
+t23,AD + Centrifuge + Cleaning  (5000 AU),374600,5910676,p1,2187142
+t24,AD + Centrifuge + Cleaning + Liquefaction (5000 AU),374600,10451350,p1,2254020
+t25,AD + Coag. Floc. + Cleaning + Generator (5000 AU),374600,10226560,p1,2002546
+t26,AD + Coag. Floc. + Cleaning  (5000 AU),374600,8276226,p1,1891514
+t27,AD + Coag. Floc. + Cleaning + Liquefaction (5000 AU),374600,12816901,p1,1958393
+t28,AD + FBR + Cleaning + Generator (5000 AU),374600,9103876,p1,3313948
+t29,AD + FBR + Cleaning  (5000 AU),374600,7153542,p1,3202917
+t30,AD + FBR + Cleaning + Liquefaction (5000 AU),374600,11694217,p1,3269795
+t31,AD + CSTR + Cleaning + Generator (5000 AU),374600,9676288,p1,3522596
+t32,AD + CSTR + Cleaning  (5000 AU),374600,7725955,p1,3411565
+t33,AD + CSTR + Cleaning + Liquefaction (5000 AU),374600,12266629,p1,3478443
+t34,AD + Filter + Cleaning + Generator (1000 AU),7.49E+04,2202107,p1,544533
+t35,AD + Filter + Cleaning  (1000 AU),7.49E+04,1704248,p1,510738
+t36,AD + Filter + Cleaning + Liquefaction (1000 AU),7.49E+04,3248829,p1,533488
+t37,AD + Centrifuge + Cleaning + Generator (1000 AU),7.49E+04,2676606,p1,785373
+t38,AD + Centrifuge + Cleaning  (1000 AU),7.49E+04,2178748,p1,751578
+t39,AD + Centrifuge + Cleaning + Liquefaction (1000 AU),7.49E+04,3723328,p1,774328
+t40,AD + Coag. Floc. + Cleaning + Generator (1000 AU),7.49E+04,3485613,p1,684270
+t41,AD + Coag. Floc. + Cleaning  (1000 AU),7.49E+04,2987755,p1,650475
+t42,AD + Coag. Floc. + Cleaning + Liquefaction (1000 AU),7.49E+04,4532335,p1,673224
+t43,AD + FBR + Cleaning + Generator (1000 AU),7.49E+04,3101661,p1,1132763
+t44,AD + FBR + Cleaning  (1000 AU),7.49E+04,2603803,p1,1098968
+t45,AD + FBR + Cleaning + Liquefaction (1000 AU),7.49E+04,4148383,p1,1121718
+t46,AD + CSTR + Cleaning + Generator (1000 AU),7.49E+04,3297423,p1,1204120
+t47,AD + CSTR + Cleaning  (1000 AU),7.49E+04,2799565,p1,1170325
+t48,AD + CSTR + Cleaning + Liquefaction (1000 AU),7.49E+04,4344145,p1,1193074

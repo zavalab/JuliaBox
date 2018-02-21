@@ -1,0 +1,17 @@
+# Product,Cost Value,Description,,Units,
+p1,0,#,Manure,usd/kg,This allows the model to not treat any manure without any penalty
+p2,0.04,#,Electricity,usd/Kwh,ref: project_phoenix.pdf _ Amount paid by utilities
+p3,0.0478,#,Biogas,Usd/scm,"end use is not market sale, but for heating purposes. Based on value reported in project_phoenix.pdf"
+p4,0.15,#,Biomethane,usd/scm,ref: project_phoenix.pdf _USD 2.25 per MMBtu
+p5,1,#,Liq. Biomethane,usd/gal,ref: project_phoenix.pdf_ Value of lng
+p6,0.015,#,Cake1,usd/kg,Calculated by Edgar
+p7,0.0049,#,Cake2,usd/kg,Calculated by Edgar
+p8,0.0125,#,Cake3,usd/kg,Calculated by Edgar
+p9,0.8,#,Struvite,usd/kg,Market Sale
+p10,0.335,#,Struvite+Solids,usd/kg,Market Sale
+p11,0,#,Digestate_AD,usd/kg,No penalty for the case on economic analysis
+p12,0,#,Digestate1,usd/kg,No penalty for the case on economic analysis
+p13,0,#,Digestate2,usd/kg,No penalty for the case on economic analysis
+p14,0,#,Digestate3,usd/kg,No penalty for the case on economic analysis
+p15,0,#,Digestate4,usd/kg,No penalty for the case on economic analysis
+p16,0,#,Digestate5,usd/kg,No penalty for the case on economic analysis
