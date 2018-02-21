@@ -1,0 +1,46 @@
+Investment Cost ($),2.778e8
+Transportation Cost ($/day),48363.297984000514
+Operating Cost ($/yr),7.732e7
+Revenue from Products ($/day),52078.41662200007
+Revenue from P Credit ($/day),714987.8461315208
+Return on Investment (%),-10069.605262008325
+Payback Period (yrs),-0.009930875878252211
+Total Technologies Installed,33.0
+Percentage of Manure Unprocessed (%),0.2078369120067313
+Total Manure recovered (kg/day),43689.9999999798
+Total Electricity recovered (kWh/day),0.0
+Total Biogas recovered (Nm3/day),260122.24000000025
+Total Biomethane recovered (Nm3/day),0.0
+Total Liq.Biomethane recovered (gal/day),0.0
+Total Cake1 recovered (kg/day),503537.32000000053
+Total Cake2 recovered (kg/day),0.0
+Total Cake3 recovered (kg/day),2.5673211000000024e6
+Total Struvite recovered (kg/day),0.0
+Total Struvite+Solids recovered (kg/day),0.0
+Total Digestate_AD recovered (kg/day),0.0
+Total Digestate1 recovered (kg/day),3.568851660000004e6
+Total Digestate2 recovered (kg/day),0.0
+Total Digestate3 recovered (kg/day),1.4092452000000011e7
+Total Digestate4 recovered (kg/day),0.0
+Total Digestate5 recovered (kg/day),0.0
+Mass-Distance for Manure (kg km/day),3.0227061240000296e8
+Mass-Distance for Electricity (kWh km/day),0.0
+Mass-Distance for Biogas (Nm3 km/day),1.7332177103200018e8
+Mass-Distance for Biomethane (Nm3 km/day),0.0
+Mass-Distance for Liq.Biomethane (gal km/day),0.0
+Mass-Distance for Cake1 (kg km/day),0.0
+Mass-Distance for Cake2 (kg km/day),0.0
+Mass-Distance for Cake3 (kg km/day),0.0
+Mass-Distance for Struvite (kg km/day),0.0
+Mass-Distance for Struvite+Solids (kg km/day),0.0
+Mass-Distance for Digestate_AD (kg km/day),0.0
+Mass-Distance for Digestate1 (kg km/day),0.0
+Mass-Distance for Digestate2 (kg km/day),0.0
+Mass-Distance for Digestate3 (kg km/day),0.0
+Mass-Distance for Digestate4 (kg km/day),0.0
+Mass-Distance for Digestate5 (kg km/day),0.0
+Percentage of Manure Moved ,62.59424611905381
+CO2 emissions	(kg/day),47559.238343200326
+Objective Value ($/day),-468812.5538106162
+epsilon,p_credit_44.08
+
