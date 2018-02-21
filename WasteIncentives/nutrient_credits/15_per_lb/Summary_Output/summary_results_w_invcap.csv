@@ -1,0 +1,46 @@
+Investment Cost ($),1.5448e8
+Transportation Cost ($/day),44322.03976000022
+Operating Cost ($/yr),6.338e7
+Revenue from Products ($/day),50628.67509088003
+Revenue from P Credit ($/day),484343.73088008986
+Return on Investment (%),69.90120641313045
+Payback Period (yrs),1.4305904737749375
+Total Technologies Installed,32.0
+Percentage of Manure Unprocessed (%),0.9199530571148702
+Total Manure recovered (kg/day),193385.9999999825
+Total Electricity recovered (kWh/day),0.0
+Total Biogas recovered (Nm3/day),258266.0096000002
+Total Biomethane recovered (Nm3/day),0.0
+Total Liq.Biomethane recovered (gal/day),0.0
+Total Cake1 recovered (kg/day),2.362065388800001e6
+Total Cake2 recovered (kg/day),0.0
+Total Cake3 recovered (kg/day),228206.3200000002
+Total Struvite recovered (kg/day),0.0
+Total Struvite+Solids recovered (kg/day),0.0
+Total Digestate_AD recovered (kg/day),0.0
+Total Digestate1 recovered (kg/day),1.6741283414400015e7
+Total Digestate2 recovered (kg/day),0.0
+Total Digestate3 recovered (kg/day),1.252662400000001e6
+Total Digestate4 recovered (kg/day),0.0
+Total Digestate5 recovered (kg/day),0.0
+Mass-Distance for Manure (kg km/day),2.770127485000012e8
+Mass-Distance for Electricity (kWh km/day),0.0
+Mass-Distance for Biogas (Nm3 km/day),1.710777301955201e8
+Mass-Distance for Biomethane (Nm3 km/day),0.0
+Mass-Distance for Liq.Biomethane (gal km/day),0.0
+Mass-Distance for Cake1 (kg km/day),0.0
+Mass-Distance for Cake2 (kg km/day),0.0
+Mass-Distance for Cake3 (kg km/day),0.0
+Mass-Distance for Struvite (kg km/day),0.0
+Mass-Distance for Struvite+Solids (kg km/day),0.0
+Mass-Distance for Digestate_AD (kg km/day),0.0
+Mass-Distance for Digestate1 (kg km/day),0.0
+Mass-Distance for Digestate2 (kg km/day),0.0
+Mass-Distance for Digestate3 (kg km/day),0.0
+Mass-Distance for Digestate4 (kg km/day),0.0
+Mass-Distance for Digestate5 (kg km/day),0.0
+Percentage of Manure Moved ,59.47881885459938
+CO2 emissions	(kg/day),44809.04786955213
+Objective Value ($/day),-295844.88675891486
+epsilon,p_credit_33.06
+
