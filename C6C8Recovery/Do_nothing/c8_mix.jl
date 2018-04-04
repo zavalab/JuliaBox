@@ -5,7 +5,7 @@
 using JuMP
 using Gurobi
 
-m = Model(solver=GurobiSolver(Threads = 1,MIPGap = 5e-2, NodefileStart=0.25, TimeLimit = 600));
+m = Model(solver=GurobiSolver(Threads = 1,MIPGap = 1e-2, NodefileStart=0.25, TimeLimit = 1600));
 #MIPGap = 1e-2; #Default value is 1e-6. #Not larger than 3e-2
 
 #Importing Data
@@ -396,8 +396,8 @@ end
 #at most one capacity in each tech can be installed
 #@constraint(m, onetech[i in [NODE2;NODE3;NODE4],pr in ["p1";"p2";"p3"]], sum{y[t,i], t in TECH_PROD[pr]} <= 1);
 #at most one tech can be installed
-@constraint(m, notech11[i in NODES], sum(y[t,i] for t in TECH_BgALL) <=1);
-@constraint(m, notech33[i in NODES], sum(y[t,i] for t in TECH_C8ALL) <=1);
+@constraint(m, notech11[i in NODES], sum(y[t,i] for t in TECH_BgALL) <=0);
+@constraint(m, notech33[i in NODES], sum(y[t,i] for t in TECH_C8ALL) <=0);
 #@constraint(m, notech22[i in NODES], sum(y[t,i] for t in [TECH2;TECH3;TECH4;TECH5;TECH7;TECH8;TECH10;TECH11;TECH12;TECH13] i in NODES) ==0 );
                                     
 #eliminate self-flow
