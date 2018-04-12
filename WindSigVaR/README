@@ -1,0 +1,13 @@
+Please run the following files with Julia:
+
+task.jl
+
+
+which will call the following files:
+AS.jl
+CVar.jl
+svar.jl
+smooth.jl
+
+
+Results are saved on the corresponding task.out 
