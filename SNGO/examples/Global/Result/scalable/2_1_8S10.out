@@ -1,0 +1,1480 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+WARNING: Ipopt finished with status Restoration_Failed
+WARNING: Not solved to optimality, status: Error
+WARNING: Solver does not appear to support hot-starts. Model will be built from scratch.
+WARNING: Ipopt finished with status Restoration_Failed
+WARNING: Not solved to optimality, status: Error
+WARNING: Ipopt finished with status Restoration_Failed
+WARNING: Not solved to optimality, status: Error
+WARNING: Ipopt finished with status Restoration_Failed
+WARNING: Not solved to optimality, status: Error
+WARNING: Nonlinear solver does not provide dual solutions
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: UserLimit
+No. of first stage variables  5
+No. of second stage variables 24
+No. of second stage constraints 10
+No. of scenarios  10
+No. of total variables 195
+No. of total constraints 136
+No. of binary variables 0
+No. of continuous variables 195
+U:   126706.05130846312
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+preprocess:   1.982000335 (s)
+extensive:   0.137858924 (s)
+No. of nonlinear variables  195
+No. of nonlinear Terms  195
+preprocessex:   0.154283514 (s)
+U:   99273.35959665215
+additional  variables:  195
+relax:   0.206617027 (s)
+ iter  left  lev   bVarId       bvlb             bvub             LB              UB            gap   
+remaining 1   -1.0e10
+1      0      1                                        -10000000000.0000 9.9273e+04     10073295.9114 % 
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [8.0, 8.0, 8.0, 8.0, 24.0]
+after initial feasibility reduction [0.0, 0.0, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 8.0, 6.86781]     time:   2.068841053 (s)
+firstId   1   xl   0.0   xu   2.666666665402205    true
+firstId   1   xl   5.333333330804409   xu   7.999999996206615    true
+firstId   2   xl   0.0   xu   2.666666666376141    true
+firstId   2   xl   5.333333332752282   xu   7.999999999128423    true
+firstId   3   xl   0.0   xu   2.6666666666666665    true
+firstId   3   xl   5.333333333333334   xu   8.0    true
+firstId   4   xl   0.0   xu   2.6666666666666665    true
+firstId   4   xl   5.333333333333334   xu   8.0    true
+firstId   5   xl   1.3073175984953337e-10   xu   2.2892698737781196    true
+firstId   5   xl   4.578539747425507   xu   6.867809621072895    true
+after probing [0.0, 0.0, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 8.0, 6.86781]
+probing time:   1.179166165 (s)true
+added con      0
+iterative relax time:   0.011484372 (s)Optimal    59379.15130037805
+relaxed_LB  59379.15130037805
+Relax Lower time:   0.660841164   (s)
+reduction_relax0
+hello  UB   99273.35959665215  relaxed_LB  59379.15130037805 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    15989.999899939141
+  scenario :  1   WS  scip statusOptimal  obj 15638.999909849552 lb  15573.486081180059  0.873379463 (s) 
+inside local_ws
+scenariocopy:   Optimal    3452.413661558882
+  scenario :  2   WS  scip statusOptimal  obj 2627.000000050722 lb  2627.000000050722  0.212633277 (s) 
+inside local_ws
+scenariocopy:   Optimal    9902.40184235977
+  scenario :  3   WS  scip statusOptimal  obj 6095.949747637239 lb  6094.65079364244  0.221383423 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238194368
+  scenario :  4   WS  scip statusOptimal  obj 9534.372801463407 lb  9534.372801463407  0.221855327 (s) 
+inside local_ws
+scenariocopy:   Optimal    2628.2704230681497
+  scenario :  5   WS  scip statusOptimal  obj 2628.2703951792946 lb  2628.2703951792946  0.270560479 (s) 
+inside local_ws
+scenariocopy:   Optimal    9251.706807987743
+  scenario :  6   WS  scip statusOptimal  obj 6495.994243425834 lb  6495.994243425834  0.064775363 (s) 
+inside local_ws
+scenariocopy:   Optimal    5520.130766683961
+  scenario :  7   WS  scip statusOptimal  obj 5520.131015932295 lb  5520.131015932295  0.273684649 (s) 
+inside local_ws
+scenariocopy:   Optimal    13126.213962105085
+  scenario :  8   WS  scip statusOptimal  obj 8318.491540451696 lb  8318.491540451696  0.147372193 (s) 
+inside local_ws
+scenariocopy:   Optimal    15772.568839672243
+  scenario :  9   WS  scip statusOptimal  obj 9878.569180169756 lb  9878.569180169756  0.178484099 (s) 
+inside local_ws
+scenariocopy:   Optimal    7417.204528318184
+  scenario :  10   WS  scip statusOptimal  obj 7253.254162140282 lb  7242.713275608646  0.211873964 (s) 
+inside ws_lower2.778848167  (s) 
+WS_status:  Optimal
+scenario   1  LB  15573.486081180059
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 73913.67932710415
+WS Lower time:   3.125086181 (s)
+FLB: -1.0e10
+node L:73913.67932710415
+global L:73913.67932710415
+local_UB  Optimal138835.46601760032
+scenario   1    WSfix  scip status       Optimal  obj 16251.00000024753 lb  16185.618193783212
+scenario   2    WSfix  scip status       Optimal  obj 5378.999999574858 lb  5378.999999574858
+scenario   3    WSfix  scip status       Optimal  obj 6095.950843020692 lb  6094.65079364244
+scenario   4    WSfix  scip status       Optimal  obj 9534.373543536021 lb  9534.372801463407
+scenario   5    WSfix  scip status       Optimal  obj 3949.999999586608 lb  3949.999999586608
+scenario   6    WSfix  scip status       Optimal  obj 6495.994646462587 lb  6495.994243425834
+scenario   7    WSfix  scip status       Optimal  obj 6529.667947185833 lb  6523.187671488096
+scenario   8    WSfix  scip status       Optimal  obj 8318.491818717022 lb  8318.491540451696
+scenario   9    WSfix  scip status       Optimal  obj 9878.569180169765 lb  9878.569180169765
+scenario   10    WSfix  scip status       Optimal  obj 7253.254592528974 lb  7242.713275608646
+WSfix_status  Optimal  WSfix_UB 79686.3025710299
+node U:79686.3025710299
+upper time:   1.924737244 (s)
+UB:  79686.3025710299
+before multiplier medium feasibility reduction [0.0, 0.0, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 8.0, 6.19393]
+after multiplier medium feasibility reduction [0.0, 0.0, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 5.37726, 2.5377]
+before select[0.0, 0.0, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 5.37726, 2.5377]
+added con      0
+iterative relax time:   0.008776384 (s)Optimal    73913.67932710449
+relaxed_LB  73913.67932710449
+added con      0
+iterative relax time:   0.010470595 (s)Optimal    74407.82997920163
+relaxed_LB  74407.82997920163
+added con      0
+iterative relax time:   0.007941038 (s)Optimal    73913.67932710421
+relaxed_LB  73913.67932710421
+added con      0
+iterative relax time:   0.008581239 (s)Optimal    73913.67932710418
+relaxed_LB  73913.67932710418
+added con      0
+iterative relax time:   0.008265475 (s)Optimal    73913.67932710417
+relaxed_LB  73913.67932710417
+added con      0
+iterative relax time:   0.008606406 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.008080641 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.009583689 (s)Optimal    75934.22551277443
+relaxed_LB  75934.22551277443
+added con      0
+iterative relax time:   0.007698224 (s)Optimal    73913.67932710423
+relaxed_LB  73913.67932710423
+added con      0
+iterative relax time:   0.009560985 (s)Optimal    75546.53180857419
+relaxed_LB  75546.53180857419
+i  1    0.0    7.999999992778521    3.9999999963892603
+improve_left:  3.346940502524376e-10   improve_right:  494.1506520974799 score 74.12259781490647
+LB_status_left  Optimal  obj_left  73913.67932710449  LB_status_right  74407.82997920163
+i  2    0.0    7.999999998267687    3.9999999991338435
+improve_left:  5.820766091346741e-11   improve_right:  2.9103830456733704e-11 score 3.3469405025243757e-11
+LB_status_left  Optimal  obj_left  73913.67932710421  LB_status_right  73913.67932710418
+i  3    0.0    8.0    4.0
+improve_left:  1.4551915228366852e-11   improve_right:  0.0 score 2.1827872842550277e-12
+LB_status_left  Optimal  obj_left  73913.67932710417  LB_status_right  73913.67932710415
+i  4    0.0    5.3772598425356195    2.6886299212678098
+improve_left:  0.0   improve_right:  2020.546185670275 score 303.08192785054126
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  75934.22551277443
+i  5    1.3073175984953337e-10    2.5377006406852884    1.2688503204080102
+improve_left:  7.275957614183426e-11   improve_right:  1632.8524814700359 score 244.92787222056722
+LB_status_left  Optimal  obj_left  73913.67932710423  LB_status_right  75546.53180857419
+bVarId:  4max_score  303.08192785054126
+after select[0.0, 0.0, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 5.37726, 2.5377]
+var select time:   0.79292556 (s)
+bVarId:  4  bValue: 2.6886299212678098        0.0          5.3772598425356195   node_LB  73913.67932710449
+left 73913.67932710449   73913.67932710449
+right 75934.22551277443   75934.22551277443
+remaining 1   73913.67932710449
+remaining 2   75934.22551277443
+2      1      2      4      0.0000         2.6886e+00     7.3914e+04     7.9686e+04     7.8100  %
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 2.5377]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 2.39319]     time:   0.081285448 (s)
+added con      0
+iterative relax time:   0.007822423 (s)Optimal    73913.67932710424
+relaxed_LB  73913.67932710424
+Relax Lower time:   0.031481784   (s)
+reduction_relax0
+hello  UB   79686.3025710299  relaxed_LB  73913.67932710424 relaxed_status   Optimal
+  in bounds  
+obj  15573.486081180059
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+inside local_ws
+scenariocopy:   Optimal    2626.9999737793673
+  scenario :  2   WS  scip statusOptimal  obj 2627.000000370686 lb  2627.000000050722  0.050009603 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429919242
+  scenario :  3   WS  scip statusOptimal  obj 6095.9508450512485 lb  6094.65079364244  0.130848685 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238193393
+  scenario :  4   WS  scip statusOptimal  obj 9534.373544918268 lb  9534.372801463407  0.135838635 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361879077
+  scenario :  6   WS  scip statusOptimal  obj 6495.994648096848 lb  6495.994243425834  0.094240548 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721867
+  scenario :  8   WS  scip statusOptimal  obj 8318.491820198307 lb  8318.491540451696  0.082045623 (s) 
+inside local_ws
+scenariocopy:   Optimal    9878.569081383637
+  scenario :  9   WS  scip statusOptimal  obj 9878.577790360992 lb  9878.569180169756  2.581494017 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319623798
+  scenario :  10   WS  scip statusOptimal  obj 7253.254593159316 lb  7242.713275608646  0.243354824 (s) 
+inside ws_lower3.359877589  (s) 
+WS_status:  Optimal
+scenario   1  LB  15573.486081180059
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 73913.67932710415
+WS Lower time:   3.61270298 (s)
+FLB: -1.0e10
+node L:73913.67932710424
+global L:73913.67932710424
+scenario   1    WSfix  scip status       Optimal  obj 16251.00000024753 lb  16176.334490459762
+scenario   2    WSfix  scip status       Optimal  obj 5378.999999274761 lb  5378.999999274761
+scenario   3    WSfix  scip status       Optimal  obj 6095.950843020692 lb  6094.65079364244
+scenario   4    WSfix  scip status       Optimal  obj 9534.373543536021 lb  9534.372801463407
+scenario   5    WSfix  scip status       Optimal  obj 3949.999999271652 lb  3949.999999271652
+scenario   6    WSfix  scip status       Optimal  obj 6495.994646462587 lb  6495.994243425834
+scenario   7    WSfix  scip status       Optimal  obj 6529.66794691528 lb  6523.187671177362
+scenario   8    WSfix  scip status       Optimal  obj 8318.491818717022 lb  8318.491540451696
+scenario   9    WSfix  scip status       Optimal  obj 9878.569180169765 lb  9878.569180169765
+scenario   10    WSfix  scip status       Optimal  obj 7253.254592528974 lb  7242.713275608646
+WSfix_status  Optimal  WSfix_UB 79686.3025701443
+node U:79686.3025701443
+upper time:   0.896630355 (s)
+UB:  79686.3025701443
+before multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 2.39319]
+after multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 2.38781]
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 2.68863, 2.38781]
+added con      0
+iterative relax time:   0.008305863 (s)Optimal    73913.67932710462
+relaxed_LB  73913.67932710462
+added con      0
+iterative relax time:   0.009737174 (s)Optimal    75418.34903745074
+relaxed_LB  75418.34903745074
+added con      0
+iterative relax time:   0.008307879 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      2
+relaxed_LB_trial       74468.29804238131
+added con      2
+relaxed_LB_trial       74468.29804238131
+added con      2
+relaxed_LB_trial       74468.29804238131
+iterative relax time:   0.073288389 (s)Optimal    74468.29804238131
+relaxed_LB  74468.29804238131
+added con      0
+iterative relax time:   0.008662743 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.009798322 (s)Optimal    74407.82998612587
+relaxed_LB  74407.82998612587
+added con      0
+iterative relax time:   0.00806102 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.008067089 (s)Optimal    73913.67932710481
+relaxed_LB  73913.67932710481
+added con      0
+iterative relax time:   0.010021227 (s)Optimal    73997.91353757212
+relaxed_LB  73997.91353757212
+added con      0
+iterative relax time:   0.007962193 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+i  1    1.3073175984953337e-10    2.387813001827214    1.1939065009789729
+improve_left:  3.7834979593753815e-10   improve_right:  1504.6697103464976 score 225.70045655229623
+LB_status_left  Optimal  obj_left  73913.67932710462  LB_status_right  75418.34903745074
+i  2    0.0    2.6886299209760116    1.3443149604880058
+improve_left:  0.0   improve_right:  554.6187152770726 score 83.1928072915609
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  74468.29804238131
+i  3    0.0    7.999999987762209    3.9999999938811044
+improve_left:  0.0   improve_right:  494.1506590216304 score 74.12259885324455
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  74407.82998612587
+i  4    3.2466444208631776e-10    7.999999996850848    3.9999999985877563
+improve_left:  0.0   improve_right:  5.675246939063072e-10 score 8.512870408594608e-11
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  73913.67932710481
+i  5    0.0    7.999999999394847    1.0000000019927686
+improve_left:  84.2342104678828   improve_right:  0.0 score 12.63513157018242
+LB_status_left  Optimal  obj_left  73997.91353757212  LB_status_right  73913.67932710415
+bVarId:  5max_score  225.70045655229623
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 2.68863, 2.38781]
+var select time:   0.275706284 (s)
+bVarId:  5  bValue: 1.1939065009789729        1.3073175984953337e-10          2.387813001827214   node_LB  73913.67932710462
+left 73913.67932710462   73913.67932710462
+right 75418.34903745074   75418.34903745074
+remaining 1   75934.22551277443
+remaining 2   73913.67932710462
+remaining 3   75418.34903745074
+3      2      3      5      0.0000         1.1939e+00     7.3914e+04     7.9686e+04     7.8100  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 1.19391]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 1.19391]     time:   0.077482771 (s)
+added con      0
+iterative relax time:   0.007990344 (s)Optimal    73913.67932710462
+relaxed_LB  73913.67932710462
+Relax Lower time:   0.02912632   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  73913.67932710462 relaxed_status   Optimal
+  in bounds  
+obj  15573.486081180059
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+inside local_ws
+scenariocopy:   Optimal    2626.9999737793664
+  scenario :  2   WS  scip statusOptimal  obj 2627.0000005031798 lb  2627.000000050722  0.051791812 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429919217
+  scenario :  3   WS  scip statusOptimal  obj 6095.950845555083 lb  6094.65079364244  0.123141486 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238193304
+  scenario :  4   WS  scip statusOptimal  obj 9534.373545224995 lb  9534.372801463407  0.133805591 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361879077
+  scenario :  6   WS  scip statusOptimal  obj 6495.994648444265 lb  6495.994243425834  0.09253719 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721852
+  scenario :  8   WS  scip statusOptimal  obj 8318.49182052002 lb  8318.491540451696  0.086759791 (s) 
+inside local_ws
+scenariocopy:   Optimal    9878.569081383637
+  scenario :  9   WS  scip statusOptimal  obj 9878.571202840156 lb  9878.569180169756  0.246982753 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319623805
+  scenario :  10   WS  scip statusOptimal  obj 7253.254592527915 lb  7242.713275608646  0.233503854 (s) 
+inside ws_lower1.011420822  (s) 
+WS_status:  Optimal
+scenario   1  LB  15573.486081180059
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 73913.67932710415
+WS Lower time:   1.034930137 (s)
+FLB: -1.0e10
+node L:73913.67932710462
+global L:73913.67932710462
+scenario   1    WSfix  scip status       Infeasible  obj NaN lb  -1.0e20
+node U:1.0e10
+upper time:   0.435547013 (s)
+UB:  79686.3025701443
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 2.68863, 1.19391]
+added con      0
+iterative relax time:   0.009838751 (s)Optimal    73913.67932710535
+relaxed_LB  73913.67932710535
+added con      0
+iterative relax time:   0.012742115 (s)Optimal    74468.29805430515
+relaxed_LB  74468.29805430515
+added con      0
+iterative relax time:   0.056829021 (s)Optimal    73913.67932710426
+relaxed_LB  73913.67932710426
+added con      0
+iterative relax time:   0.010664032 (s)Optimal    74386.0449900517
+relaxed_LB  74386.0449900517
+added con      0
+iterative relax time:   0.008273799 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.010456504 (s)Optimal    74407.82998648632
+relaxed_LB  74407.82998648632
+added con      0
+iterative relax time:   0.010588704 (s)Optimal    73997.91353777658
+relaxed_LB  73997.91353777658
+added con      0
+iterative relax time:   0.007937727 (s)Optimal    73913.67932710424
+relaxed_LB  73913.67932710424
+added con      0
+iterative relax time:   0.008237921 (s)Optimal    73913.67932710417
+relaxed_LB  73913.67932710417
+added con      0
+iterative relax time:   0.00943422 (s)Optimal    74041.69048959987
+relaxed_LB  74041.69048959987
+i  1    0.0    2.6886299209760116    1.3443149604880058
+improve_left:  7.275957614183426e-10   improve_right:  554.6187272005336 score 83.1928090806985
+LB_status_left  Optimal  obj_left  73913.67932710535  LB_status_right  74468.29805430515
+i  2    1.3073175984953337e-10    1.1939065009789729    0.5969532505548524
+improve_left:  0.0   improve_right:  472.3656629470788 score 70.85484944206182
+LB_status_left  Optimal  obj_left  73913.67932710426  LB_status_right  74386.0449900517
+i  3    0.0    7.999999986812899    3.9999999934064494
+improve_left:  0.0   improve_right:  494.150659381703 score 74.12259890725545
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  74407.82998648632
+i  4    0.0    7.9999999991654756    1.0000000023789966
+improve_left:  84.23421067195886   improve_right:  0.0 score 12.635131600793828
+LB_status_left  Optimal  obj_left  73997.91353777658  LB_status_right  73913.67932710424
+i  5    3.2466444208631776e-10    7.999999996545682    6.999998848340232
+improve_left:  0.0   improve_right:  128.01116249525512 score 19.201674374288267
+LB_status_left  Optimal  obj_left  73913.67932710417  LB_status_right  74041.69048959987
+bVarId:  4max_score  83.1928090806985
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 2.68863, 1.19391]
+var select time:   0.261956824 (s)
+bVarId:  4  bValue: 1.3443149604880058        0.0          2.6886299209760116   node_LB  73913.67932710535
+left 73913.67932710535   73913.67932710535
+right 74468.29805430515   74468.29805430515
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   73913.67932710535
+remaining 4   74468.29805430515
+4      3      4      4      0.0000         1.3443e+00     7.3914e+04     7.9686e+04     7.8100  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 1.34431, 1.19391]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 1.34431, 1.19391]     time:   0.081194325 (s)
+added con      0
+iterative relax time:   0.008403256 (s)Optimal    73913.67932710536
+relaxed_LB  73913.67932710536
+Relax Lower time:   0.030326231   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  73913.67932710536 relaxed_status   Optimal
+  in bounds  
+obj  15573.486081180059
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+  in bounds  
+obj  9878.569180169756
+inside local_ws
+scenariocopy:   Optimal    2626.9999737793655
+  scenario :  2   WS  scip statusOptimal  obj 2627.000000684035 lb  2627.000000050722  0.049649072 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429919184
+  scenario :  3   WS  scip statusOptimal  obj 6095.950845907337 lb  6094.65079364244  0.125750973 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238193244
+  scenario :  4   WS  scip statusOptimal  obj 9534.373545456698 lb  9534.372801463407  0.132329524 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361879084
+  scenario :  6   WS  scip statusOptimal  obj 6495.994648706782 lb  6495.994243425834  0.091055525 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721849
+  scenario :  8   WS  scip statusOptimal  obj 8318.491820760095 lb  8318.491540451696  0.082577181 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319621758
+  scenario :  10   WS  scip statusOptimal  obj 7253.254594876792 lb  7242.713275608646  0.231192381 (s) 
+inside ws_lower0.755577539  (s) 
+WS_status:  Optimal
+scenario   1  LB  15573.486081180059
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 73913.67932710415
+WS Lower time:   0.778994937 (s)
+FLB: -1.0e10
+node L:73913.67932710536
+global L:73913.67932710536
+node U:1.0e10
+upper time:   0.333828419 (s)
+UB:  79686.3025701443
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 1.34431, 1.19391]
+added con      0
+iterative relax time:   0.009240875 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.009934666 (s)Optimal    74386.04498845956
+relaxed_LB  74386.04498845956
+added con      0
+iterative relax time:   0.039162875 (s)Optimal    73913.67932710417
+relaxed_LB  73913.67932710417
+added con      0
+iterative relax time:   0.011075846 (s)Optimal    74407.82998598444
+relaxed_LB  74407.82998598444
+added con      0
+iterative relax time:   0.00807042 (s)Optimal    73913.67932710487
+relaxed_LB  73913.67932710487
+added con      0
+iterative relax time:   0.009561351 (s)Optimal    73990.09965846236
+relaxed_LB  73990.09965846236
+added con      0
+iterative relax time:   0.010011138 (s)Optimal    73997.91353780782
+relaxed_LB  73997.91353780782
+added con      0
+iterative relax time:   0.008012701 (s)Optimal    73913.67932710433
+relaxed_LB  73913.67932710433
+added con      0
+iterative relax time:   0.00837599 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+added con      0
+iterative relax time:   0.009504473 (s)Optimal    74041.69048913637
+relaxed_LB  74041.69048913637
+i  1    1.3073175984953337e-10    1.1939065009789729    0.5969532505548524
+improve_left:  0.0   improve_right:  472.3656613541971 score 70.85484920312956
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  74386.04498845956
+i  2    0.0    7.9999999854103985    3.9999999927051992
+improve_left:  0.0   improve_right:  494.15065887907986 score 74.12259883186198
+LB_status_left  Optimal  obj_left  73913.67932710417  LB_status_right  74407.82998598444
+i  3    0.0    1.3443149604880058    0.6721574802440029
+improve_left:  0.0   improve_right:  76.4203313570033 score 11.463049703550496
+LB_status_left  Optimal  obj_left  73913.67932710487  LB_status_right  73990.09965846236
+i  4    0.0    7.99999999885369    1.0000000026831675
+improve_left:  84.23421070245968   improve_right:  0.0 score 12.63513160536895
+LB_status_left  Optimal  obj_left  73997.91353780782  LB_status_right  73913.67932710433
+i  5    3.2466444208631776e-10    7.999999996099246    6.999998848116994
+improve_left:  0.0   improve_right:  128.01116203100537 score 19.201674304650805
+LB_status_left  Optimal  obj_left  73913.67932710415  LB_status_right  74041.69048913637
+bVarId:  1max_score  74.12259883186198
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][8.0, 8.0, 8.0, 1.34431, 1.19391]
+var select time:   0.238904781 (s)
+bVarId:  1  bValue: 3.9999999927051992        0.0          7.9999999854103985   node_LB  73913.67932710536
+left 73913.67932710536   73913.67932710536
+right 74407.82998598444   74407.82998598444
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   73913.67932710536
+remaining 5   74407.82998598444
+5      4      5      1      0.0000         4.0000e+00     7.3914e+04     7.9686e+04     7.8100  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 1.19391]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 1.19391]     time:   0.080397208 (s)
+added con      0
+iterative relax time:   0.008963527 (s)Optimal    73913.67932710415
+relaxed_LB  73913.67932710415
+Relax Lower time:   0.030306821   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  73913.67932710415 relaxed_status   Optimal
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+  in bounds  
+obj  9878.569180169756
+inside local_ws
+scenariocopy:   Optimal    16030.531054096116
+  scenario :  1   WS  scip statusOptimal  obj 15989.99993859828 lb  15915.01243606222  0.269031807 (s) 
+inside local_ws
+scenariocopy:   Optimal    2626.9999737793637
+  scenario :  2   WS  scip statusOptimal  obj 2627.0000007945796 lb  2627.000000050722  0.04786003 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429919168
+  scenario :  3   WS  scip statusOptimal  obj 6095.950846335168 lb  6094.65079364244  0.127915596 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.37323819317
+  scenario :  4   WS  scip statusOptimal  obj 9534.373545712093 lb  9534.372801463407  0.079190693 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361879083
+  scenario :  6   WS  scip statusOptimal  obj 6495.994649018819 lb  6495.994243425834  0.089353429 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.49158372185
+  scenario :  8   WS  scip statusOptimal  obj 8318.491821031343 lb  8318.491540451696  0.087374365 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319621671
+  scenario :  10   WS  scip statusOptimal  obj 7253.254592526715 lb  7242.713275608646  0.229238238 (s) 
+inside ws_lower0.973373239  (s) 
+WS_status:  Optimal
+scenario   1  LB  15915.01243606222
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 74255.2056819863
+WS Lower time:   0.997213737 (s)
+FLB: -1.0e10
+node L:74255.2056819863
+global L:74255.2056819863
+node U:1.0e10
+upper time:   0.524028613 (s)
+UB:  79686.3025701443
+before multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 1.19391]
+after multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 1.19391]
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][4.0, 8.0, 8.0, 1.34431, 1.19391]
+added con      0
+iterative relax time:   0.00959301 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.010213881 (s)Optimal    74699.23801764805
+relaxed_LB  74699.23801764805
+added con      0
+iterative relax time:   0.008582633 (s)Optimal    74255.20568198824
+relaxed_LB  74255.20568198824
+added con      0
+iterative relax time:   0.020624888 (s)Optimal    74413.28322780423
+relaxed_LB  74413.28322780423
+added con      0
+iterative relax time:   0.00902633 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.010169934 (s)Optimal    74331.62601183594
+relaxed_LB  74331.62601183594
+added con      0
+iterative relax time:   0.010475529 (s)Optimal    74386.24903104783
+relaxed_LB  74386.24903104783
+added con      0
+iterative relax time:   0.008840849 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.00879026 (s)Optimal    74255.20568198632
+relaxed_LB  74255.20568198632
+added con      0
+iterative relax time:   0.010269472 (s)Optimal    74383.2168534183
+relaxed_LB  74383.2168534183
+i  1    1.3073175984953337e-10    1.1939065003358926    0.5969532502333122
+improve_left:  0.0   improve_right:  444.0323356617446 score 66.60485034926168
+LB_status_left  Optimal  obj_left  74255.2056819863  LB_status_right  74699.23801764805
+i  2    0.0    3.9999999927051992    1.9999999963525996
+improve_left:  1.9354047253727913e-9   improve_right:  158.07754581792688 score 23.711631874334124
+LB_status_left  Optimal  obj_left  74255.20568198824  LB_status_right  74413.28322780423
+i  3    0.0    1.344314953135913    0.6721574765679565
+improve_left:  0.0   improve_right:  76.42032984962862 score 11.463049477444292
+LB_status_left  Optimal  obj_left  74255.2056819863  LB_status_right  74331.62601183594
+i  4    0.0    7.999999985706974    1.000000001428631
+improve_left:  131.04334906152508   improve_right:  0.0 score 19.65650235922876
+LB_status_left  Optimal  obj_left  74386.24903104783  LB_status_right  74255.2056819863
+i  5    3.2466444208631776e-10    7.999999995281988    6.999998847821359
+improve_left:  1.4551915228366852e-11   improve_right:  128.01117143199372 score 19.201675714811426
+LB_status_left  Optimal  obj_left  74255.20568198632  LB_status_right  74383.2168534183
+bVarId:  5max_score  66.60485034926168
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][4.0, 8.0, 8.0, 1.34431, 1.19391]
+var select time:   0.233663082 (s)
+bVarId:  5  bValue: 0.5969532502333122        1.3073175984953337e-10          1.1939065003358926   node_LB  74255.20568198824
+left 74255.20568198824   74255.20568198824
+right 74699.23801764805   74699.23801764805
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   74407.82998598444
+remaining 5   74255.20568198824
+remaining 6   74699.23801764805
+6      5      6      5      0.0000         5.9695e-01     7.4255e+04     7.9686e+04     7.3141  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 0.596953]     time:   0.077452843 (s)
+added con      0
+iterative relax time:   0.007767251 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+Relax Lower time:   0.02807505   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  74255.2056819863 relaxed_status   Optimal
+  in bounds  
+obj  15915.01243606222
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+  in bounds  
+obj  9878.569180169756
+inside local_ws
+scenariocopy:   Optimal    2626.9999737800167
+  scenario :  2   WS  scip statusOptimal  obj 2627.0000171720317 lb  2627.000000050722  0.048096576 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.95042991826
+  scenario :  3   WS  scip statusOptimal  obj 6095.950847313505 lb  6094.65079364244  0.119917667 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238193193
+  scenario :  4   WS  scip statusOptimal  obj 9534.373546306826 lb  9534.372801463407  0.079158183 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361881994
+  scenario :  6   WS  scip statusOptimal  obj 6495.994649727913 lb  6495.994243425834  0.084577732 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721658
+  scenario :  8   WS  scip statusOptimal  obj 8318.491821667743 lb  8318.491540451696  0.076863978 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319623797
+  scenario :  10   WS  scip statusOptimal  obj 7253.254595887216 lb  7242.713275608646  0.207762923 (s) 
+inside ws_lower0.655658935  (s) 
+WS_status:  Optimal
+scenario   1  LB  15915.01243606222
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 74255.2056819863
+WS Lower time:   0.677722758 (s)
+FLB: -1.0e10
+node L:74255.2056819863
+global L:74255.2056819863
+scenario   1    WSfix  scip status       Infeasible  obj NaN lb  -1.0e20
+node U:1.0e10
+upper time:   0.28728058 (s)
+UB:  79686.3025701443
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][4.0, 8.0, 8.0, 1.34431, 0.596953]
+added con      0
+iterative relax time:   0.007887917 (s)Optimal    74255.20568199203
+relaxed_LB  74255.20568199203
+added con      0
+iterative relax time:   0.008718952 (s)Optimal    74413.28323142977
+relaxed_LB  74413.28323142977
+added con      0
+iterative relax time:   0.007597103 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.03796936 (s)Optimal    74348.97246215293
+relaxed_LB  74348.97246215293
+added con      0
+iterative relax time:   0.007947148 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.008757804 (s)Optimal    74331.6260160559
+relaxed_LB  74331.6260160559
+added con      0
+iterative relax time:   0.009121173 (s)Optimal    74386.24903123527
+relaxed_LB  74386.24903123527
+added con      0
+iterative relax time:   0.007722218 (s)Optimal    74255.2056819863
+relaxed_LB  74255.2056819863
+added con      0
+iterative relax time:   0.007551032 (s)Optimal    74255.2056819873
+relaxed_LB  74255.2056819873
+added con      0
+iterative relax time:   0.008772974 (s)Optimal    74383.21684277164
+relaxed_LB  74383.21684277164
+i  1    0.0    3.9999999927051992    1.9999999963525996
+improve_left:  5.718902684748173e-9   improve_right:  158.0775494434638 score 23.711632421380635
+LB_status_left  Optimal  obj_left  74255.20568199203  LB_status_right  74413.28323142977
+i  2    1.3073175984953337e-10    0.5969532502333122    0.298476625182022
+improve_left:  0.0   improve_right:  93.76678016662481 score 14.065017024993722
+LB_status_left  Optimal  obj_left  74255.2056819863  LB_status_right  74348.97246215293
+i  3    0.0    1.344314953135913    0.6721574765679565
+improve_left:  0.0   improve_right:  76.42033406959672 score 11.463050110439507
+LB_status_left  Optimal  obj_left  74255.2056819863  LB_status_right  74331.6260160559
+i  4    0.0    7.999999970429505    1.0000000004347387
+improve_left:  131.0433492489683   improve_right:  0.0 score 19.656502387345245
+LB_status_left  Optimal  obj_left  74386.24903123527  LB_status_right  74255.2056819863
+i  5    3.2466444208631776e-10    7.999999994378851    6.999998847256821
+improve_left:  9.89530235528946e-10   improve_right:  128.01116078533232 score 19.20167411864095
+LB_status_left  Optimal  obj_left  74255.2056819873  LB_status_right  74383.21684277164
+bVarId:  1max_score  23.711632421380635
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][4.0, 8.0, 8.0, 1.34431, 0.596953]
+var select time:   0.217471907 (s)
+bVarId:  1  bValue: 1.9999999963525996        0.0          3.9999999927051992   node_LB  74255.20568199203
+left 74255.20568199203   74255.20568199203
+right 74413.28323142977   74413.28323142977
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   74407.82998598444
+remaining 5   74699.23801764805
+remaining 6   74255.20568199203
+remaining 7   74413.28323142977
+7      6      7      1      0.0000         2.0000e+00     7.4255e+04     7.9686e+04     7.3141  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 8.0, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 8.0, 1.34431, 0.596953]     time:   0.075138609 (s)
+added con      0
+iterative relax time:   0.007339111 (s)Optimal    74255.20568199203
+relaxed_LB  74255.20568199203
+Relax Lower time:   0.027248933   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  74255.20568199203 relaxed_status   Optimal
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+  in bounds  
+obj  9878.569180169756
+inside local_ws
+scenariocopy:   Optimal    16210.999908270856
+  scenario :  1   WS  scip statusOptimal  obj 16210.999941871069 lb  16149.24782601431  0.218447358 (s) 
+inside local_ws
+scenariocopy:   Optimal    2626.9999737800163
+  scenario :  2   WS  scip statusOptimal  obj 2627.0000174930183 lb  2627.000000050722  0.046907888 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429918207
+  scenario :  3   WS  scip statusOptimal  obj 6095.95084789924 lb  6094.65079364244  0.115156571 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238193077
+  scenario :  4   WS  scip statusOptimal  obj 9534.373546682737 lb  9534.372801463407  0.114768318 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.9943618819925
+  scenario :  6   WS  scip statusOptimal  obj 6495.994650170227 lb  6495.994243425834  0.125742289 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721698
+  scenario :  8   WS  scip statusOptimal  obj 8318.49182205308 lb  8318.491540451696  0.099138423 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.2543196237975
+  scenario :  10   WS  scip statusOptimal  obj 7253.254594171485 lb  7242.713275608646  0.276561142 (s) 
+inside ws_lower1.036249048  (s) 
+WS_status:  Optimal
+scenario   1  LB  16149.24782601431
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  6495.994243425834
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 74489.4410719384
+WS Lower time:   1.058494217 (s)
+FLB: -1.0e10
+node L:74489.4410719384
+global L:74407.82998598444
+node U:1.0e10
+upper time:   0.266455282 (s)
+UB:  79686.3025701443
+before multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 8.0, 1.34431, 0.596953]
+after multiplier medium feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 8.0, 1.34431, 0.596953]
+before select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][2.0, 8.0, 8.0, 1.34431, 0.596953]
+added con      0
+iterative relax time:   0.008104772 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.009055275 (s)Optimal    74583.20785300234
+relaxed_LB  74583.20785300234
+added con      0
+iterative relax time:   0.007955433 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.009065742 (s)Optimal    74565.86140259038
+relaxed_LB  74565.86140259038
+added con      0
+iterative relax time:   0.007958503 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.008339932 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.009308912 (s)Optimal    74631.45235299051
+relaxed_LB  74631.45235299051
+added con      0
+iterative relax time:   0.008213654 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.00827212 (s)Optimal    74489.4410719384
+relaxed_LB  74489.4410719384
+added con      0
+iterative relax time:   0.009068967 (s)Optimal    74617.45223505505
+relaxed_LB  74617.45223505505
+i  1    1.3073175984953337e-10    0.5969532502333122    0.298476625182022
+improve_left:  0.0   improve_right:  93.76678106393956 score 14.065017159590933
+LB_status_left  Optimal  obj_left  74489.4410719384  LB_status_right  74583.20785300234
+i  2    0.0    1.344314953135913    0.6721574765679565
+improve_left:  0.0   improve_right:  76.42033065197757 score 11.463049597796635
+LB_status_left  Optimal  obj_left  74489.4410719384  LB_status_right  74565.86140259038
+i  3    0.0    1.9999999963525996    0.9999999981762998
+improve_left:  0.0   improve_right:  0.0 score 0.0
+LB_status_left  Optimal  obj_left  74489.4410719384  LB_status_right  74489.4410719384
+i  4    0.0    7.999999968193676    1.0000000006987624
+improve_left:  142.01128105210955   improve_right:  0.0 score 21.301692157816433
+LB_status_left  Optimal  obj_left  74631.45235299051  LB_status_right  74489.4410719384
+i  5    3.2466444208631776e-10    7.999999991410063    6.999998846608516
+improve_left:  0.0   improve_right:  128.011163116651 score 19.20167446749765
+LB_status_left  Optimal  obj_left  74489.4410719384  LB_status_right  74617.45223505505
+bVarId:  3max_score  21.301692157816433
+after select[0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10][2.0, 8.0, 8.0, 1.34431, 0.596953]
+var select time:   0.207800411 (s)
+bVarId:  3  bValue: 1.0000000006987624        0.0          7.999999968193676   node_LB  74489.4410719384
+left 74631.45235299051   74631.45235299051
+right 74489.4410719384   74489.4410719384
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   74407.82998598444
+remaining 5   74699.23801764805
+remaining 6   74413.28323142977
+remaining 7   74631.45235299051
+remaining 8   74489.4410719384
+8      7      5      1      4.0000         8.0000e+00     7.4408e+04     7.9686e+04     7.0940  %
+before feasibility reduction [4.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 8.0, 8.0, 1.34431, 1.19391]
+after initial feasibility reduction [4.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 4.0, 4.0, 0.353152, 0.150498]     time:   0.153256875 (s)
+added con      0
+iterative relax time:   0.012855545 (s)Optimal    78834.57495164094
+relaxed_LB  78834.57495164094
+after multiplier feasibility reduction [4.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [8.0, 4.0, 4.0, 0.353152, 0.1483]
+Relax Lower time:   0.135441865   (s)
+reduction_relax0.01460152223670752
+hello  UB   79686.3025701443  relaxed_LB  78834.57495164094 relaxed_status   Optimal
+  in bounds  
+obj  15573.486081180059
+inside local_ws
+scenariocopy:   Optimal    4434.9998771615
+  scenario :  2   WS  scip statusOptimal  obj 3992.9999960450477 lb  3992.9999960450477  0.235284206 (s) 
+inside local_ws
+scenariocopy:   Optimal    9311.741276567158
+  scenario :  3   WS  scip statusOptimal  obj 8231.999997075613 lb  8231.999997075613  0.17029256 (s) 
+inside local_ws
+scenariocopy:   Infeasible    NaN
+  scenario :  4   WS  scip statusInfeasible  obj 0 lb  1.0e20  0.206879309 (s) 
+inside ws_lower0.657788376  (s) 
+WS_status:  Infeasible
+WS_status  Infeasible  WS_LB 0
+WS Lower time:   0.682622735 (s)
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   74699.23801764805
+remaining 5   74413.28323142977
+remaining 6   74631.45235299051
+remaining 7   74489.4410719384
+9      6      7      1      2.0000         4.0000e+00     7.4413e+04     7.9686e+04     7.0861  %
+before feasibility reduction [2.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [4.0, 8.0, 8.0, 1.34431, 0.596953]
+after initial feasibility reduction [2.0, 3.24664e-10, 0.0, 6.76944e-10, 1.30732e-10]   [4.0, 6.0, 6.0, 1.34431, 0.596953]     time:   0.156304039 (s)
+added con      1
+relaxed_LB_trial       75424.70086026231
+added con      1
+relaxed_LB_trial       75424.70086026231
+added con      1
+relaxed_LB_trial       75424.70086026231
+iterative relax time:   0.042196882 (s)Optimal    75424.70086026231
+relaxed_LB  75424.70086026231
+after multiplier feasibility reduction [2.0, 3.24664e-10, 0.0, 6.76944e-10, 1.30732e-10]   [4.0, 6.0, 6.0, 1.34431, 0.596953]
+Relax Lower time:   0.12066223   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  75424.70086026231 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    15989.999900632516
+  scenario :  1   WS  scip statusOptimal  obj 15990.000000467133 lb  15915.01243606222  0.054790563 (s) 
+inside local_ws
+scenariocopy:   Optimal    3698.9998733090692
+  scenario :  2   WS  scip statusOptimal  obj 3452.4138666902227 lb  3451.5600135316927  0.235400925 (s) 
+inside local_ws
+scenariocopy:   Optimal    7851.84584851053
+  scenario :  3   WS  scip statusOptimal  obj 7220.191474865205 lb  7214.572037660616  0.218365814 (s) 
+inside local_ws
+scenariocopy:   Optimal    10835.863150056748
+  scenario :  4   WS  scip statusOptimal  obj 10835.86271120405 lb  10835.86271120405  0.240543413 (s) 
+inside local_ws
+scenariocopy:   Optimal    2929.5829809556585
+  scenario :  5   WS  scip statusOptimal  obj 2929.582902849444 lb  2925.303413596796  0.237814221 (s) 
+inside local_ws
+scenariocopy:   Optimal    8156.539651886713
+  scenario :  6   WS  scip statusOptimal  obj 8123.071811749902 lb  8114.023548748441  0.125323372 (s) 
+inside local_ws
+scenariocopy:   Optimal    6292.128746645266
+  scenario :  7   WS  scip statusOptimal  obj 6292.12896041081 lb  6290.376995897675  0.243774643 (s) 
+inside local_ws
+scenariocopy:   Optimal    9680.545334948301
+  scenario :  8   WS  scip statusOptimal  obj 9680.54532596798 lb  9679.427524839342  0.169692857 (s) 
+inside local_ws
+scenariocopy:   Optimal    10116.349508534966
+  scenario :  9   WS  scip statusOptimal  obj 10116.349857405883 lb  10116.349857405883  0.205939397 (s) 
+inside local_ws
+scenariocopy:   Optimal    9119.385707602347
+  scenario :  10   WS  scip statusOptimal  obj 8846.093280389907 lb  8846.093280389907  0.195272442 (s) 
+inside ws_lower1.974283395  (s) 
+WS_status:  Optimal
+scenario   1  LB  15915.01243606222
+scenario   2  LB  3451.5600135316927
+scenario   3  LB  7214.572037660616
+scenario   4  LB  10835.86271120405
+scenario   5  LB  2925.303413596796
+scenario   6  LB  8114.023548748441
+scenario   7  LB  6290.376995897675
+scenario   8  LB  9679.427524839342
+scenario   9  LB  10116.349857405883
+scenario   10  LB  8846.093280389907
+WS_status  Optimal  WS_LB 83388.58181933663
+WS Lower time:   1.999866442 (s)
+FLB: -1.0e10
+node L:83388.58181933663
+global L:74468.29805430515
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74468.29805430515
+remaining 4   74699.23801764805
+remaining 5   74631.45235299051
+remaining 6   74489.4410719384
+10     5      4      4      1.3443         2.6886e+00     7.4468e+04     7.9686e+04     7.0070  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 1.34431, 1.30732e-10]   [8.0, 8.0, 8.0, 2.68863, 1.19391]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 1.34431, 1.30732e-10]   [6.65569, 6.65569, 6.65569, 2.68863, 1.19391]     time:   0.183376751 (s)
+added con      0
+iterative relax time:   0.010141127 (s)Optimal    74877.872506697
+relaxed_LB  74877.872506697
+after multiplier feasibility reduction [0.0, 3.24664e-10, 0.0, 1.34431, 1.30732e-10]   [6.65569, 6.65569, 6.65569, 2.68863, 1.19391]
+Relax Lower time:   0.077382696   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  74877.872506697 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    16940.77962386955
+  scenario :  1   WS  scip statusOptimal  obj 16940.779642857924 lb  16897.504521717467  0.219677064 (s) 
+inside local_ws
+scenariocopy:   Optimal    3339.8367924614636
+  scenario :  2   WS  scip statusOptimal  obj 3339.836916862877 lb  3324.285312499838  0.219057839 (s) 
+inside local_ws
+scenariocopy:   Optimal    7369.437489709994
+  scenario :  3   WS  scip statusOptimal  obj 6829.721436817966 lb  6826.543487487002  0.197847656 (s) 
+inside local_ws
+scenariocopy:   Optimal    10958.1756068042
+  scenario :  4   WS  scip statusOptimal  obj 10958.175186308523 lb  10922.524738206088  0.18794693 (s) 
+inside local_ws
+scenariocopy:   Optimal    3477.7202405462494
+  scenario :  5   WS  scip statusOptimal  obj 3477.7194541618633 lb  3461.750465101046  0.246971534 (s) 
+inside local_ws
+scenariocopy:   Optimal    7405.330531986715
+  scenario :  6   WS  scip statusOptimal  obj 7405.330440945945 lb  7405.330440945945  0.06807638 (s) 
+inside local_ws
+scenariocopy:   Optimal    5921.219281129381
+  scenario :  7   WS  scip statusOptimal  obj 5921.219505922727 lb  5891.9388218411605  1.334489601 (s) 
+inside local_ws
+scenariocopy:   Optimal    9218.357276494211
+  scenario :  8   WS  scip statusOptimal  obj 9218.357258048733 lb  9218.357258048733  0.157765392 (s) 
+inside local_ws
+scenariocopy:   Optimal    10767.23925169992
+  scenario :  9   WS  scip statusOptimal  obj 10767.239602448622 lb  10721.41646779379  0.246875061 (s) 
+inside local_ws
+scenariocopy:   Optimal    8271.471914404881
+  scenario :  10   WS  scip statusOptimal  obj 8271.471780768294 lb  8250.78186877153  0.204695412 (s) 
+inside ws_lower3.125535532  (s) 
+WS_status:  Optimal
+scenario   1  LB  16897.504521717467
+scenario   2  LB  3324.285312499838
+scenario   3  LB  6826.543487487002
+scenario   4  LB  10922.524738206088
+scenario   5  LB  3461.750465101046
+scenario   6  LB  7405.330440945945
+scenario   7  LB  5891.9388218411605
+scenario   8  LB  9218.357258048733
+scenario   9  LB  10721.41646779379
+scenario   10  LB  8250.78186877153
+WS_status  Optimal  WS_LB 82920.4333824126
+WS Lower time:   3.148469235 (s)
+FLB: -1.0e10
+node L:82920.4333824126
+global L:74489.4410719384
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74699.23801764805
+remaining 4   74631.45235299051
+remaining 5   74489.4410719384
+11     4      8      3      1.0000         8.0000e+00     7.4489e+04     7.9686e+04     6.9766  %
+before feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 8.0, 8.0, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 7.0, 8.0, 1.34431, 0.596953]     time:   0.217184499 (s)
+added con      1
+relaxed_LB_trial       74570.19591369182
+added con      1
+relaxed_LB_trial       74570.19591369182
+added con      1
+relaxed_LB_trial       74570.19591369182
+iterative relax time:   0.029785033 (s)Optimal    74570.19591369182
+relaxed_LB  74570.19591369182
+after multiplier feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 7.0, 8.0, 1.34431, 0.596953]
+Relax Lower time:   0.095965525   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  74570.19591369182 relaxed_status   Optimal
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+inside local_ws
+scenariocopy:   Optimal    16265.999912179484
+  scenario :  1   WS  scip statusOptimal  obj 16265.999945835129 lb  16192.073933245578  0.195659735 (s) 
+inside local_ws
+scenariocopy:   Optimal    2626.9999737800044
+  scenario :  2   WS  scip statusOptimal  obj 2627.000019786951 lb  2627.000000050722  0.045748827 (s) 
+inside local_ws
+scenariocopy:   Optimal    6863.93721397005
+  scenario :  3   WS  scip statusOptimal  obj 6786.664333993911 lb  6758.572818539394  0.486569702 (s) 
+inside local_ws
+scenariocopy:   Optimal    9993.1181988286
+  scenario :  4   WS  scip statusOptimal  obj 9993.11776126641 lb  9976.31275906731  0.207547161 (s) 
+inside local_ws
+scenariocopy:   Optimal    7044.033133224637
+  scenario :  6   WS  scip statusOptimal  obj 7044.033034978756 lb  7044.033034978756  0.05876847 (s) 
+inside local_ws
+scenariocopy:   Optimal    8807.51846440788
+  scenario :  8   WS  scip statusOptimal  obj 8807.518438976442 lb  8790.765127688299  0.19290802 (s) 
+inside local_ws
+scenariocopy:   Optimal    10411.23490115295
+  scenario :  9   WS  scip statusOptimal  obj 10411.235250226651 lb  10365.627531245791  0.277501761 (s) 
+inside local_ws
+scenariocopy:   Optimal    7830.320019983176
+  scenario :  10   WS  scip statusOptimal  obj 7830.319880517459 lb  7814.114874956317  0.223397187 (s) 
+inside ws_lower1.734158614  (s) 
+WS_status:  Optimal
+scenario   1  LB  16192.073933245578
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6758.572818539394
+scenario   4  LB  9976.31275906731
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  7044.033034978756
+scenario   7  LB  5520.131015932295
+scenario   8  LB  8790.765127688299
+scenario   9  LB  10365.627531245791
+scenario   10  LB  7814.114874956317
+WS_status  Optimal  WS_LB 77716.90149088376
+WS Lower time:   1.757850111 (s)
+FLB: -1.0e10
+node L:77716.90149088376
+global L:74631.45235299051
+node U:1.0e10
+upper time:   0.318831912 (s)
+UB:  79686.3025701443
+before multiplier medium feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 7.0, 8.0, 1.34431, 0.596953]
+after multiplier medium feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 7.0, 8.0, 1.34431, 0.596953]
+before select[0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10][2.0, 7.0, 8.0, 1.34431, 0.596953]
+added con      0
+iterative relax time:   0.008540319 (s)Optimal    77716.90149088422
+relaxed_LB  77716.90149088422
+added con      0
+iterative relax time:   0.007957285 (s)Optimal    77716.90149088773
+relaxed_LB  77716.90149088773
+added con      0
+iterative relax time:   0.007952059 (s)Optimal    77716.90149088386
+relaxed_LB  77716.90149088386
+added con      0
+iterative relax time:   0.00834907 (s)Optimal    77716.9014908839
+relaxed_LB  77716.9014908839
+added con      0
+iterative relax time:   0.008297485 (s)Optimal    77716.9014908838
+relaxed_LB  77716.9014908838
+added con      0
+iterative relax time:   0.007954937 (s)Optimal    77716.9014908838
+relaxed_LB  77716.9014908838
+added con      0
+iterative relax time:   0.009451647 (s)Optimal    77977.19401752061
+relaxed_LB  77977.19401752061
+added con      0
+iterative relax time:   0.007958213 (s)Optimal    77716.90149088376
+relaxed_LB  77716.90149088376
+added con      0
+iterative relax time:   0.007915657 (s)Optimal    77716.9014908855
+relaxed_LB  77716.9014908855
+added con      0
+iterative relax time:   0.009682262 (s)Optimal    77865.2252645225
+relaxed_LB  77865.2252645225
+i  1    1.3073175984953337e-10    0.5969532501263171    0.2984766251285244
+improve_left:  4.656612873077393e-10   improve_right:  3.9726728573441505e-9 score 9.917130228132008e-10
+LB_status_left  Optimal  obj_left  77716.90149088422  LB_status_right  77716.90149088773
+i  2    0.0    1.344314953135913    0.6721574765679565
+improve_left:  1.0186340659856796e-10   improve_right:  1.4551915228366852e-10 score 1.0841176845133305e-10
+LB_status_left  Optimal  obj_left  77716.90149088386  LB_status_right  77716.9014908839
+i  3    0.0    1.9999999959543324    0.9999999979771662
+improve_left:  4.3655745685100555e-11   improve_right:  4.3655745685100555e-11 score 4.3655745685100555e-11
+LB_status_left  Optimal  obj_left  77716.9014908838  LB_status_right  77716.9014908838
+i  4    1.0000000006987624    7.999999962950783    1.8750000346917741
+improve_left:  260.29252663685475   improve_right:  0.0 score 39.04387899552821
+LB_status_left  Optimal  obj_left  77977.19401752061  LB_status_right  77716.90149088376
+i  5    3.2466444208631776e-10    6.999999999301238    5.37499994344188
+improve_left:  1.7462298274040222e-9   improve_right:  148.3237736387382 score 22.248566047295025
+LB_status_left  Optimal  obj_left  77716.9014908855  LB_status_right  77865.2252645225
+bVarId:  3max_score  39.04387899552821
+after select[0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10][2.0, 7.0, 8.0, 1.34431, 0.596953]
+var select time:   0.209379168 (s)
+bVarId:  3  bValue: 1.8750000346917741        1.0000000006987624          7.999999962950783   node_LB  77716.9014908855
+left 77977.19401752061   77977.19401752061
+right 77716.9014908855   77716.9014908855
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74699.23801764805
+remaining 4   74631.45235299051
+remaining 5   77977.19401752061
+remaining 6   77716.9014908855
+12     5      8      3      0.0000         1.0000e+00     7.4631e+04     7.9686e+04     6.7731  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 1.0, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.65569, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 1.0, 1.34431, 0.596953]     time:   0.137997913 (s)
+added con      0
+iterative relax time:   0.01078515 (s)Optimal    75764.71471914176
+relaxed_LB  75764.71471914176
+after multiplier feasibility reduction [0.0, 3.65569, 0.0, 0.0, 1.30732e-10]   [2.0, 8.0, 1.0, 1.34431, 0.596953]
+Relax Lower time:   0.083167582   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  75764.71471914176 relaxed_status   Optimal
+  in bounds  
+obj  16149.24782601431
+  in bounds  
+obj  9878.569180169756
+inside local_ws
+scenariocopy:   Optimal    5279.99988574477
+  scenario :  2   WS  scip statusOptimal  obj 5279.999957260294 lb  5254.399999915423  0.23903845 (s) 
+inside local_ws
+scenariocopy:   Optimal    6095.950429931814
+  scenario :  3   WS  scip statusOptimal  obj 6095.950850323041 lb  6094.65079364244  0.07675205 (s) 
+inside local_ws
+scenariocopy:   Optimal    9534.373238192291
+  scenario :  4   WS  scip statusOptimal  obj 9534.373548157566 lb  9534.372801463407  0.132720773 (s) 
+inside local_ws
+scenariocopy:   Optimal    3895.9998773950156
+  scenario :  5   WS  scip statusOptimal  obj 3895.999951332978 lb  3882.3752593677027  0.138887626 (s) 
+inside local_ws
+scenariocopy:   Optimal    6495.994361881983
+  scenario :  6   WS  scip statusOptimal  obj 6495.994651914606 lb  6495.994243425834  0.062307094 (s) 
+inside local_ws
+scenariocopy:   Optimal    6496.075147164682
+  scenario :  7   WS  scip statusOptimal  obj 6475.667918939623 lb  6443.847318022907  0.217747481 (s) 
+inside local_ws
+scenariocopy:   Optimal    8318.491583721734
+  scenario :  8   WS  scip statusOptimal  obj 8318.491823634156 lb  8318.491540451696  0.070829536 (s) 
+inside local_ws
+scenariocopy:   Optimal    7253.254319626685
+  scenario :  10   WS  scip statusOptimal  obj 7253.254594210475 lb  7242.713275608646  0.210190847 (s) 
+inside ws_lower1.191697112  (s) 
+WS_status:  Optimal
+scenario   1  LB  16149.24782601431
+scenario   2  LB  5254.399999915423
+scenario   3  LB  6094.65079364244
+scenario   4  LB  9534.372801463407
+scenario   5  LB  3882.3752593677027
+scenario   6  LB  6495.994243425834
+scenario   7  LB  6443.847318022907
+scenario   8  LB  8318.491540451696
+scenario   9  LB  9878.569180169756
+scenario   10  LB  7242.713275608646
+WS_status  Optimal  WS_LB 79294.66223808212
+WS Lower time:   1.222553643 (s)
+FLB: -1.0e10
+node L:79294.66223808212
+global L:74699.23801764805
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   74699.23801764805
+remaining 4   77977.19401752061
+remaining 5   77716.9014908855
+13     4      6      5      0.5970         1.1939e+00     7.4699e+04     7.9686e+04     6.6762  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 0.596953]   [4.0, 8.0, 8.0, 1.34431, 1.19391]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 0.596953]   [4.0, 8.0, 8.0, 1.34431, 1.19391]     time:   0.151522031 (s)
+added con      0
+iterative relax time:   0.010371831 (s)Optimal    74956.35962728002
+relaxed_LB  74956.35962728002
+after multiplier feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 0.596953]   [4.0, 8.0, 8.0, 1.34431, 1.19391]
+Relax Lower time:   0.077445901   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  74956.35962728002 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    16074.501844314318
+  scenario :  1   WS  scip statusOptimal  obj 16028.939421556714 lb  15951.45505400266  0.219065514 (s) 
+inside local_ws
+scenariocopy:   Optimal    3330.853228607591
+  scenario :  2   WS  scip statusOptimal  obj 3330.8533580690905 lb  3330.8533524578042  0.212480778 (s) 
+inside local_ws
+scenariocopy:   Optimal    6804.565701316106
+  scenario :  3   WS  scip statusOptimal  obj 6804.565633047267 lb  6772.885957564671  0.192657499 (s) 
+inside local_ws
+scenariocopy:   Optimal    9981.077288830327
+  scenario :  4   WS  scip statusOptimal  obj 9981.076840530812 lb  9943.520265904777  0.193254072 (s) 
+inside local_ws
+scenariocopy:   Optimal    3433.3743220354395
+  scenario :  5   WS  scip statusOptimal  obj 3427.708296094556 lb  3415.3941390100226  0.246304906 (s) 
+inside local_ws
+scenariocopy:   Optimal    7199.847714265035
+  scenario :  6   WS  scip statusOptimal  obj 7199.847594009015 lb  7199.847594009015  0.086999488 (s) 
+inside local_ws
+scenariocopy:   Optimal    6223.9841190672205
+  scenario :  7   WS  scip statusOptimal  obj 6223.984367534616 lb  6194.513766752254  0.278224252 (s) 
+inside local_ws
+scenariocopy:   Optimal    9022.344936094078
+  scenario :  8   WS  scip statusOptimal  obj 9022.34489101544 lb  9022.34489101544  0.108580572 (s) 
+inside local_ws
+scenariocopy:   Optimal    10213.26440216352
+  scenario :  9   WS  scip statusOptimal  obj 10213.264216092943 lb  10176.411622414387  0.200628003 (s) 
+inside local_ws
+scenariocopy:   Optimal    8058.358218584485
+  scenario :  10   WS  scip statusOptimal  obj 8058.358059069756 lb  8044.767613334861  0.235313954 (s) 
+inside ws_lower2.016233384  (s) 
+WS_status:  Optimal
+scenario   1  LB  15951.45505400266
+scenario   2  LB  3330.8533524578042
+scenario   3  LB  6772.885957564671
+scenario   4  LB  9943.520265904777
+scenario   5  LB  3415.3941390100226
+scenario   6  LB  7199.847594009015
+scenario   7  LB  6194.513766752254
+scenario   8  LB  9022.34489101544
+scenario   9  LB  10176.411622414387
+scenario   10  LB  8044.767613334861
+WS_status  Optimal  WS_LB 80051.99425646588
+WS Lower time:   2.038897939 (s)
+FLB: -1.0e10
+node L:80051.99425646588
+global L:75418.34903745074
+remaining 1   75934.22551277443
+remaining 2   75418.34903745074
+remaining 3   77977.19401752061
+remaining 4   77716.9014908855
+14     3      3      5      1.1939         2.3878e+00     7.5418e+04     7.9686e+04     5.6590  %
+before feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.19391]   [8.0, 8.0, 8.0, 2.68863, 2.38781]
+after initial feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.19391]   [6.5162, 8.0, 8.0, 1.48588, 1.89191]     time:   0.172231842 (s)
+added con      0
+iterative relax time:   0.011278536 (s)Optimal    76363.53116553569
+relaxed_LB  76363.53116553569
+after multiplier feasibility reduction [0.0, 3.24664e-10, 0.0, 0.0, 1.19391]   [6.5162, 8.0, 8.0, 1.48588, 1.89191]
+Relax Lower time:   0.092631733   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  76363.53116553569 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    15870.37299161994
+  scenario :  1   WS  scip statusOptimal  obj 15870.373015939274 lb  15804.544188417902  0.131162379 (s) 
+inside local_ws
+scenariocopy:   Optimal    4016.8889204342026
+  scenario :  2   WS  scip statusOptimal  obj 4016.889044904335 lb  4005.343444875296  0.217979106 (s) 
+inside local_ws
+scenariocopy:   Optimal    7589.001114060562
+  scenario :  3   WS  scip statusOptimal  obj 7589.001047656597 lb  7589.001047656597  0.194599378 (s) 
+inside local_ws
+scenariocopy:   Optimal    10655.192210218107
+  scenario :  4   WS  scip statusOptimal  obj 10655.192211389542 lb  10655.192211389542  0.139253588 (s) 
+inside local_ws
+scenariocopy:   Optimal    4217.809734780032
+  scenario :  5   WS  scip statusOptimal  obj 4184.257711894077 lb  4163.767902974403  0.23454007 (s) 
+inside local_ws
+scenariocopy:   Optimal    7885.883406079254
+  scenario :  6   WS  scip statusOptimal  obj 7885.883287622485 lb  7885.883287622485  0.060552633 (s) 
+inside local_ws
+scenariocopy:   Optimal    6910.019810893965
+  scenario :  7   WS  scip statusOptimal  obj 6910.020060640849 lb  6878.365298772265  0.249482591 (s) 
+inside local_ws
+scenariocopy:   Optimal    9708.38062793095
+  scenario :  8   WS  scip statusOptimal  obj 9708.380584649309 lb  9708.380584649309  0.169029027 (s) 
+inside local_ws
+scenariocopy:   Optimal    10536.5566787318
+  scenario :  9   WS  scip statusOptimal  obj 10536.557038930143 lb  10515.99439610605  0.214474446 (s) 
+inside local_ws
+scenariocopy:   Optimal    8842.79363133585
+  scenario :  10   WS  scip statusOptimal  obj 8807.09384961127 lb  8764.33687234214  0.182646358 (s) 
+inside ws_lower1.841555689  (s) 
+WS_status:  Optimal
+scenario   1  LB  15804.544188417902
+scenario   2  LB  4005.343444875296
+scenario   3  LB  7589.001047656597
+scenario   4  LB  10655.192211389542
+scenario   5  LB  4163.767902974403
+scenario   6  LB  7885.883287622485
+scenario   7  LB  6878.365298772265
+scenario   8  LB  9708.380584649309
+scenario   9  LB  10515.99439610605
+scenario   10  LB  8764.33687234214
+WS_status  Optimal  WS_LB 85970.80923480599
+WS Lower time:   1.86809382 (s)
+FLB: -1.0e10
+node L:85970.80923480599
+global L:75934.22551277443
+remaining 1   75934.22551277443
+remaining 2   77977.19401752061
+remaining 3   77716.9014908855
+15     2      2      4      2.6886         5.3773e+00     7.5934e+04     7.9686e+04     4.9412  %
+before feasibility reduction [0.0, 0.0, 0.0, 2.68863, 1.30732e-10]   [8.0, 8.0, 8.0, 5.37726, 2.5377]
+after initial feasibility reduction [0.0, 0.0, 0.0, 2.68863, 1.30732e-10]   [5.16538, 5.31137, 5.31137, 4.18305, 0.648788]     time:   0.187824186 (s)
+added con      0
+iterative relax time:   0.012566058 (s)Optimal    77167.01233988442
+relaxed_LB  77167.01233988442
+after multiplier feasibility reduction [0.0, 0.0, 0.0, 2.68863, 1.30732e-10]   [5.16538, 5.31137, 5.31137, 4.18305, 0.648788]
+Relax Lower time:   0.092567464   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  77167.01233988442 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    18384.522971458977
+  scenario :  1   WS  scip statusOptimal  obj 18302.204456225605 lb  18243.77647621466  0.229436702 (s) 
+inside local_ws
+scenariocopy:   Optimal    3918.9421847617577
+  scenario :  2   WS  scip statusOptimal  obj 3918.942307847627 lb  3918.942307847627  0.23363123 (s) 
+inside local_ws
+scenariocopy:   Optimal    8530.879213876238
+  scenario :  3   WS  scip statusOptimal  obj 7091.942307877367 lb  7091.942307877367  0.180454369 (s) 
+inside local_ws
+scenariocopy:   Infeasible    NaN
+  scenario :  4   WS  scip statusInfeasible  obj 0 lb  1.0e20  0.214735962 (s) 
+inside ws_lower0.913133178  (s) 
+WS_status:  Infeasible
+WS_status  Infeasible  WS_LB 0
+WS Lower time:   0.938844532 (s)
+remaining 1   77977.19401752061
+remaining 2   77716.9014908855
+16     1      9      3      1.8750         8.0000e+00     7.7717e+04     7.9686e+04     2.5341  %
+before feasibility reduction [0.0, 3.24664e-10, 1.875, 0.0, 1.30732e-10]   [2.0, 7.0, 8.0, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.24664e-10, 1.875, 0.0, 1.30732e-10]   [2.0, 6.125, 8.0, 1.34431, 0.596953]     time:   0.156688606 (s)
+added con      0
+iterative relax time:   0.008424819 (s)Optimal    77716.9014908838
+relaxed_LB  77716.9014908838
+Relax Lower time:   0.032596379   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  77716.9014908838 relaxed_status   Optimal
+  in bounds  
+obj  2628.2703951792946
+  in bounds  
+obj  5520.131015932295
+inside local_ws
+scenariocopy:   Optimal    16445.156162198957
+  scenario :  1   WS  scip statusOptimal  obj 16445.156244059104 lb  16363.377046430269  0.271224406 (s) 
+inside local_ws
+scenariocopy:   Optimal    2626.99997377996
+  scenario :  2   WS  scip statusOptimal  obj 2627.00002289711 lb  2627.000000050722  0.050290861 (s) 
+inside local_ws
+scenariocopy:   Optimal    6786.664297703637
+  scenario :  3   WS  scip statusOptimal  obj 6786.664452517837 lb  6758.572818539394  0.209217434 (s) 
+inside local_ws
+scenariocopy:   Optimal    10328.895047877973
+  scenario :  4   WS  scip statusOptimal  obj 10328.894606580414 lb  10282.16634691452  0.204395421 (s) 
+inside local_ws
+scenariocopy:   Optimal    7610.651897170519
+  scenario :  6   WS  scip statusOptimal  obj 7604.9419821484125 lb  7587.445967860575  0.171445208 (s) 
+inside local_ws
+scenariocopy:   Optimal    9169.791994250241
+  scenario :  8   WS  scip statusOptimal  obj 9169.791980358388 lb  9132.770028202947  0.188622805 (s) 
+inside local_ws
+scenariocopy:   Optimal    10811.69272979078
+  scenario :  9   WS  scip statusUserLimit  obj 10811.693075628556 lb  10365.627531245791  157.473889086 (s) 
+inside local_ws
+scenariocopy:   Optimal    8269.627519208825
+  scenario :  10   WS  scip statusOptimal  obj 8269.627388355042 lb  8257.465900214112  0.205983679 (s) 
+inside ws_lower158.819482518  (s) 
+WS_status:  Optimal
+scenario   1  LB  16363.377046430269
+scenario   2  LB  2627.000000050722
+scenario   3  LB  6758.572818539394
+scenario   4  LB  10282.16634691452
+scenario   5  LB  2628.2703951792946
+scenario   6  LB  7587.445967860575
+scenario   7  LB  5520.131015932295
+scenario   8  LB  9132.770028202947
+scenario   9  LB  10365.627531245791
+scenario   10  LB  8257.465900214112
+WS_status  Optimal  WS_LB 79522.82705056992
+WS Lower time:   158.843362081 (s)
+FLB: -1.0e10
+node L:79522.82705056992
+global L:77977.19401752061
+remaining 1   77977.19401752061
+17     0      9      3      1.0000         1.8750e+00     7.7977e+04     7.9686e+04     2.1918  %
+before feasibility reduction [0.0, 3.24664e-10, 1.0, 0.0, 1.30732e-10]   [2.0, 7.0, 1.875, 1.34431, 0.596953]
+after initial feasibility reduction [0.0, 3.32284, 1.0, 3.08728e-10, 1.30732e-10]   [2.0, 7.0, 1.875, 1.34431, 0.595486]     time:   0.531905 (s)
+added con      0
+iterative relax time:   0.010041528 (s)Optimal    78861.61145725775
+relaxed_LB  78861.61145725775
+Relax Lower time:   0.075072954   (s)
+reduction_relax0
+hello  UB   79686.3025701443  relaxed_LB  79686.3025701443 relaxed_status   Infeasible
+all node solved
+Solution time:   213.087758089 (s)
+relax_LB_time_total:   1.7203406319999996 (s)
+global_LB_time_total:   183.78570548500002 (s)
+local_UB_time_total:   8.421634466 (s)
+global_UB_time_total:   2.3027919889999997 (s)
+BT_time_total:   9.201677492000002 (s)
+VS_time_total:   2.437808017 (s)
+solved nodes:  17
+17                                                    7.8897e+04     7.9686e+04     1.0000  % 
+first stage sol   [0.0, 8.0, 2.75788e-9, 0.0, 1.30732e-10]
+LB_UB_list   Any[[73913.7, 79686.3, 2.0, 2.0], [73913.7, 79686.3, 1.0, 2.0], [73913.7, 79686.3, 1.0, 1.0], [73913.7, 79686.3, 1.0, 1.0], [74255.2, 79686.3, 2.0, 1.0], [74255.2, 79686.3, 1.0, 1.0], [74407.8, 79686.3, 2.0, 1.0], [74413.3, 79686.3, 2.0, 1.0], [74468.3, 79686.3, 2.0, 1.0], [74489.4, 79686.3, 2.0, 1.0], [74631.5, 79686.3, 2.0, 1.0], [74699.2, 79686.3, 2.0, 1.0], [75418.3, 79686.3, 2.0, 1.0], [75934.2, 79686.3, 2.0, 1.0], [77167.0, 79686.3, 2.0, 1.0], [78897.3, 79686.3, 2.0, 1.0], [77977.2, 79686.3, 1.0, 1.0]]

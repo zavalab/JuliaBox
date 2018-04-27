@@ -1,0 +1,183 @@
+WARNING: Method definition getData(JuMP.Model) in module Main at /home/cao27/SINGO/Plasmo.jl/src/NetParPipsNlp.jl:65 overwritten at /home/cao27/SINGO/Plasmo.jl/src/NetIpopt.jl:21.
+WARNING: Method definition findnode(Any, Any) in module Main at /home/cao27/SINGO/Param/../preprocess.jl:312 overwritten at /home/cao27/SINGO/Param/../preprocessex.jl:369.
+presolving:
+(round 1, fast)       93 del vars, 93 del conss, 0 add conss, 89 chg bounds, 0 chg sides, 0 chg coeffs, 471 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       93 del vars, 93 del conss, 0 add conss, 147 chg bounds, 0 chg sides, 0 chg coeffs, 471 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       93 del vars, 93 del conss, 0 add conss, 159 chg bounds, 0 chg sides, 0 chg coeffs, 471 upgd conss, 0 impls, 0 clqs
+(round 4, medium)     93 del vars, 93 del conss, 0 add conss, 159 chg bounds, 0 chg sides, 0 chg coeffs, 472 upgd conss, 0 impls, 0 clqs
+presolving (5 rounds: 5 fast, 2 medium, 1 exhaustive):
+ 93 deleted vars, 93 deleted constraints, 0 added constraints, 160 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 989 variables (0 bin, 0 int, 0 impl, 989 cont) and 987 constraints
+      1 constraints of type <linear>
+    470 constraints of type <abspower>
+    516 constraints of type <quadratic>
+Presolving Time: 0.01
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |    60 |     - |6580k|-1.004300e-05 |      --      |    Inf 
+q     1 |     0 |    60 |     - |7446k|-1.004300e-05 | 1.421616e+01 |    Inf 
+Exception of type: TOO_FEW_DOF in file "IpIpoptApplication.cpp" at line 887:
+ Exception message: status != TOO_FEW_DEGREES_OF_FREEDOM evaluated false: Too few degrees of freedom (rethrown)!
+Exception of type: TOO_FEW_DOF in file "IpIpoptApplication.cpp" at line 887:
+ Exception message: status != TOO_FEW_DEGREES_OF_FREEDOM evaluated false: Too few degrees of freedom (rethrown)!
+      1 |     0 |   139 |     - |7865k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |   139 |     - |7865k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |   577 |     - |7931k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |   745 |     - |8023k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |   892 |     - |8101k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |  1015 |     - |8168k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |  1121 |     - |8225k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |  9866 |     - |8226k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 |  9988 |     - |8295k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 | 10320 |     - |8468k|-1.004300e-05 | 1.421616e+01 |    Inf 
+      1 |     0 | 10427 |     - |8505k| 2.542512e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10473 |     - |8531k| 5.255491e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10596 |     - |8588k| 7.132961e-03 | 1.421616e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 10625 |     - |6847k| 7.132961e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10661 |     - |6870k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10682 |     - |6880k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10711 |     - |6893k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10734 |     - |6904k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10749 |     - |6911k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10772 |     - |6806k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10784 |     - |6813k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10791 |     - |6816k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10806 |     - |6822k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10812 |     - |6825k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10820 |     - |6828k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10831 |     - |6801k| 7.329892e-03 | 1.421616e+01 |  Large 
+      1 |     0 | 10841 |     - |6806k| 1.304447e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10846 |     - |6808k| 1.304447e-02 | 1.421616e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 10856 |     - |6814k| 2.007291e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10857 |     - |6815k| 2.007291e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10866 |     - |6818k| 2.083741e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10867 |     - |6810k| 2.083741e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10872 |     - |6813k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10873 |     - |6813k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10875 |     - |6814k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10876 |     - |6815k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10877 |     - |6815k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10877 |     - |6815k| 2.099101e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 10965 |     - |6834k| 3.544530e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11017 |     - |6859k| 3.929466e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11035 |     - |6870k| 4.222406e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11049 |     - |6877k| 4.222406e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11067 |     - |6885k| 4.908976e-02 | 1.421616e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 11077 |     - |6890k| 4.908976e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11092 |     - |6886k| 5.630120e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11096 |     - |6888k| 5.630120e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11106 |     - |6895k| 5.815305e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11113 |     - |6896k| 6.435031e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11118 |     - |6899k| 6.473434e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11127 |     - |6900k| 6.948547e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11132 |     - |6887k| 7.039351e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11198 |     - |6922k| 7.324201e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11201 |     - |6923k| 7.332801e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11203 |     - |6924k| 7.332801e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11251 |     - |6948k| 7.349048e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11288 |     - |6968k| 7.350892e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11289 |     - |6936k| 7.350892e-02 | 1.421616e+01 |  Large 
+      1 |     0 | 11301 |     - |6942k| 7.351380e-02 | 1.421616e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     2 | 11301 |     - |6943k| 7.351380e-02 | 1.421616e+01 |  Large 
+    100 |    65 |142097 |1409.5 |  26M| 4.598091e-01 | 1.421616e+01 |2991.75%
+    200 |   101 |249871 |1242.8 |  37M| 8.110250e-01 | 1.421616e+01 |1652.86%
+    300 |   137 |372963 |1238.8 |  48M| 1.011120e+00 | 1.421616e+01 |1305.98%
+    400 |   163 |468932 |1168.9 |  55M| 2.002643e+00 | 1.421616e+01 | 609.87%
+    500 |   175 |583896 |1165.0 |  64M| 4.391272e+00 | 1.421616e+01 | 223.74%
+    600 |   193 |709969 |1181.0 |  72M| 6.252528e+00 | 1.421616e+01 | 127.37%
+    700 |   207 |805912 |1149.3 |  81M| 7.703423e+00 | 1.421616e+01 |  84.54%
+    800 |   209 |913724 |1140.4 |  87M| 8.655211e+00 | 1.421616e+01 |  64.25%
+    900 |   203 |  1000k|1109.8 |  92M| 9.240916e+00 | 1.421616e+01 |  53.84%
+   1000 |   187 |  1072k|1071.2 |  94M| 9.844110e+00 | 1.421616e+01 |  44.41%
+   1100 |   171 |  1160k|1054.0 |  94M| 1.025155e+01 | 1.421616e+01 |  38.67%
+   1200 |   179 |  1284k|1069.3 |  98M| 1.096742e+01 | 1.421616e+01 |  29.62%
+   1300 |   177 |  1382k|1062.2 |  97M| 1.146028e+01 | 1.421616e+01 |  24.05%
+   1400 |   187 |  1492k|1065.2 | 102M| 1.225340e+01 | 1.421616e+01 |  16.02%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   1500 |   179 |  1560k|1039.3 |  98M| 1.266727e+01 | 1.421616e+01 |  12.23%
+   1600 |   177 |  1627k|1016.0 |  96M| 1.311758e+01 | 1.421616e+01 |   8.37%
+   1700 |   167 |  1684k| 989.9 |  95M| 1.334303e+01 | 1.421616e+01 |   6.54%
+   1800 |   167 |  1778k| 986.9 |  90M| 1.362834e+01 | 1.421616e+01 |   4.31%
+   1900 |   167 |  1851k| 973.6 |  88M| 1.381784e+01 | 1.421616e+01 |   2.88%
+y  1990 |   124 |  1934k| 971.3 |  77M| 1.394218e+01 | 1.416480e+01 |   1.60%
+   2000 |   134 |  1963k| 981.2 |  78M| 1.394218e+01 | 1.416480e+01 |   1.60%
+y  2050 |    29 |  1976k| 963.2 |  44M| 1.400760e+01 | 1.404847e+01 |   0.29%
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 299.92
+Solving Nodes      : 2050
+Primal Bound       : +1.40484681567061e+01 (3 solutions)
+Dual Bound         : +1.40076025849697e+01
+Gap                : 0.29 %
+  [quadratic] <quadcons>: <_var1081_>[C] -10000<_var1070_>[C]^2 >= -0;
+violation: left hand side is violated by 0.00703917227905348 (scaled: 0.00703917227905348)
+best solution is not feasible in original problem
+j:   11
+npiece:   47
+[0.0,0.5]
+[0.5,1.0]
+[1.0,1.5]
+[1.5,2.0]
+[2.0,2.5]
+[2.5,3.0]
+[3.0,3.5]
+[3.5,4.0]
+[4.0,4.5]
+[4.5,5.0]
+[5.0,5.5]
+[5.5,6.0]
+[6.0,6.5]
+[6.5,7.0]
+[7.0,7.5]
+[7.5,8.0]
+[8.0,8.5]
+[8.5,9.0]
+[9.0,9.5]
+[9.5,10.0]
+[10.0,10.5]
+[10.5,11.0]
+[11.0,11.5]
+[11.5,12.0]
+[12.0,12.5]
+[12.5,13.0]
+[13.0,13.5]
+[13.5,14.0]
+[14.0,14.5]
+[14.5,15.0]
+[15.0,15.5]
+[15.5,16.0]
+[16.0,16.5]
+[16.5,17.0]
+[17.0,17.5]
+[17.5,18.0]
+[18.0,18.5]
+[18.5,19.0]
+[19.0,19.5]
+[19.5,20.0]
+[20.0,20.5]
+[20.5,21.0]
+[21.0,21.5]
+[21.5,22.0]
+[22.0,22.5]
+[22.5,23.0]
+[23.0,23.5]
+WARNING: NLP resolve is now enabled by default. The EnableNLPResolve() method will be removed in a future release.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{qcoeffs[definedB[j]] * definedBilinearVars[j],j in 1:length(definedB)} with sum(qcoeffs[definedB[j]] * definedBilinearVars[j] for j in 1:length(definedB)).
+WARNING: Replace sum{qcoeffs[newB[j]] * bilinearVars_local_con[j],j in 1:length(newB)} with sum(qcoeffs[newB[j]] * bilinearVars_local_con[j] for j in 1:length(newB)).
+WARNING: Replace sum{(y[j,numOfDisc * (i - 1)] - (data[j].abundance[1])[i]) ^ 2,i = 1:lt0} with sum((y[j,numOfDisc * (i - 1)] - (data[j].abundance[1])[i]) ^ 2 for i = 1:lt0).
+WARNING: Replace sum{(y[numOfDisc * (i - 1)] - (data[j].abundance[1])[i + ind_start]) ^ 2,i = 1:length(t)} with sum((y[numOfDisc * (i - 1)] - (data[j].abundance[1])[i + ind_start]) ^ 2 for i = 1:length(t)).
+WARNING: Replace sum{(y[numOfDisc * (i - 1)] - (data[j].abundance[1])[i + ind_start]) ^ 2,i = 2:length(t)} with sum((y[numOfDisc * (i - 1)] - (data[j].abundance[1])[i + ind_start]) ^ 2 for i = 2:length(t)).
+WARNING: A variable named x is already attached to this model. If creating variables programmatically, consider using the anonymous variable syntax x = @variable(m, [1:N], ...).

@@ -1,0 +1,176 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+No. of first stage variables  5
+No. of second stage variables 39
+No. of second stage constraints 21
+No. of scenarios  100
+No. of total variables 3405
+No. of total constraints 2100
+No. of binary variables 0
+No. of continuous variables 3405
+U:   210978.18257788348
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+preprocess:   3.238682061 (s)
+extensive:   0.148941143 (s)
+No. of nonlinear variables  0
+No. of nonlinear Terms  0
+preprocessex:   0.061052338 (s)
+U:   210978.18257788348
+additional  variables:  0
+relax:   0.33101545 (s)
+ iter  left  lev   bVarId       bvlb             bvub             LB              UB            gap   
+remaining 1   -1.0e10
+1      0      1                                        -10000000000.0000 2.1098e+05     4739926.5915 % 
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [3.1, 13.6, 7.5, 1.1, 1.1]
+after initial feasibility reduction [0.0, 2.77132e-10, 0.0, 0.0, 0.0]   [3.1, 13.6, 7.5, 1.1, 1.1]     time:   3.451661032 (s)
+firstId   1   xl   0.0   xu   1.0333333333333334    true
+firstId   1   xl   2.0666666666666664   xu   3.1    true
+firstId   2   xl   2.771317180729968e-10   xu   4.5333333335180885    true
+firstId   2   xl   9.066666666759044   xu   13.6    true
+firstId   3   xl   0.0   xu   2.5    true
+firstId   3   xl   5.0   xu   7.5    true
+firstId   4   xl   0.0   xu   0.3666666666666667    true
+firstId   4   xl   0.7333333333333334   xu   1.1    true
+firstId   5   xl   0.0   xu   0.3666666666666667    true
+firstId   5   xl   0.7333333333333334   xu   1.1    true
+after probing [0.0, 2.77132e-10, 0.0, 0.0, 0.0]   [3.1, 13.6, 7.5, 1.1, 1.1]
+probing time:   12.69304076 (s)true
+added con      500
+relaxed_LB_trial       79183.98433000805
+added con      500
+relaxed_LB_trial       99217.73018715877
+added con      500
+relaxed_LB_trial       117826.9079131631
+added con      500
+relaxed_LB_trial       140216.2880955552
+added con      500
+relaxed_LB_trial       154592.20876016893
+added con      500
+relaxed_LB_trial       173857.569130527
+added con      500
+relaxed_LB_trial       192144.6509478429
+added con      500
+relaxed_LB_trial       205222.1877114006
+added con      500
+relaxed_LB_trial       209921.91986349452
+iterative relax time:   0.973654933 (s)Optimal    209921.91986349452
+Relax Lower time:   1.699401529   (s)
+reduction_relax0
+hello  UB   210978.18257788348  relaxed_LB  209921.91986349452 relaxed_status   Infeasible
+all node solved
+Solution time:   50.584207415 (s)
+relax_LB_time_total:   1.699401529 (s)
+global_LB_time_total:   0 (s)
+local_UB_time_total:   24.991725180000003 (s)
+global_UB_time_total:   0 (s)
+BT_time_total:   18.278098922 (s)
+VS_time_total:   0 (s)
+solved nodes:  1
+1                                                     2.0889e+05     2.1098e+05     1.0000  % 
+first stage sol   [3.1, 13.6, 0.0, 1.1, 0.0]
+LB_UB_list   Any[[-1.0e10, 2.10978e5, 1.0, 1.0]]

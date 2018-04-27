@@ -1,0 +1,581 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+WARNING: Solver does not appear to support hot-starts. Model will be built from scratch.
+WARNING: Nonlinear solver does not provide dual solutions
+No. of first stage variables  5
+No. of second stage variables 30
+No. of second stage constraints 20
+No. of scenarios  100
+No. of total variables 2505
+No. of total constraints 2000
+No. of binary variables 0
+No. of continuous variables 2505
+U:   -14842.915887410698
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+preprocess:   2.394327374 (s)
+extensive:   0.202252214 (s)
+No. of nonlinear variables  2505
+No. of nonlinear Terms  2505
+preprocessex:   0.420139336 (s)
+U:   -14842.915887410698
+additional  variables:  2505
+relax:   0.302531307 (s)
+ iter  left  lev   bVarId       bvlb             bvub             LB              UB            gap   
+remaining 1   -1.0e10
+1      0      1                                        -10000000000.0000 -1.4843e+04    67372106.8888 % 
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [41.1111, 46.1111, 41.25, 36.6667, 51.25]
+after initial feasibility reduction [0.0, 0.0, 0.0, 0.0, 1.78518e-9]   [18.1647, 8.86094, 18.0206, 12.0771, 48.1527]     time:   4.136889319 (s)
+firstId   1   xl   0.0   xu   6.054911827554204    true
+firstId   1   xl   12.10982365510841   xu   18.164735482662614    true
+firstId   2   xl   0.0   xu   2.95364594123577    true
+firstId   2   xl   5.90729188247154   xu   8.86093782370731    true
+firstId   3   xl   0.0   xu   6.006881098930027    true
+firstId   3   xl   12.013762197860054   xu   18.02064329679008    false
+firstId   4   xl   0.0   xu   4.025695266416436    true
+firstId   4   xl   8.051390532832873   xu   12.077085799249309    true
+firstId   5   xl   1.7851842941738724e-9   xu   16.05091635629128    true
+firstId   5   xl   32.10183271079737   xu   48.15274906530347    true
+A [0.0, 0.0, 0.0, 0.0, 1.78518e-9]     [18.1647, 8.86094, 12.0138, 12.0771, 48.1527]
+B [0.0, 0.0, 0.0, 0.0, 1.78518e-9]     [18.1647, 8.86094, 12.0138, 12.0771, 48.1527]true
+firstId   1   xl   0.0   xu   6.054911827554204    true
+firstId   1   xl   12.10982365510841   xu   18.164735482662614    true
+firstId   2   xl   0.0   xu   2.95364594123577    true
+firstId   2   xl   5.90729188247154   xu   8.86093782370731    true
+firstId   3   xl   0.0   xu   4.0045873992866845    true
+firstId   3   xl   8.009174798573369   xu   12.013762197860054    true
+firstId   4   xl   0.0   xu   4.025695266416436    true
+firstId   4   xl   8.051390532832873   xu   12.077085799249309    true
+firstId   5   xl   1.7851842941738724e-9   xu   16.05091635629128    true
+firstId   5   xl   32.10183271079737   xu   48.15274906530347    true
+after probing [0.0, 0.0, 0.0, 0.0, 1.78518e-9]   [18.1647, 8.86094, 12.0138, 12.0771, 48.1527]
+probing time:   18.98402117 (s)true
+added con      0
+iterative relax time:   0.111023147 (s)Optimal    -15512.39695780872
+relaxed_LB  -15512.39695780872
+Relax Lower time:   0.941798176   (s)
+reduction_relax0
+hello  UB   -14842.915887410698  relaxed_LB  -15512.39695780872 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    -138.0925009662366
+  scenario :  1   WS  scip statusOptimal  obj -138.1875066233409 lb  -138.79092342662625  0.847674551 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235587
+  scenario :  2   WS  scip statusOptimal  obj -149.4735357526397 lb  -149.5944757188515  0.191684679 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349496
+  scenario :  3   WS  scip statusOptimal  obj -149.47353600866614 lb  -149.59321329919592  0.195639283 (s) 
+inside local_ws
+scenariocopy:   Optimal    -139.2921250220173
+  scenario :  4   WS  scip statusOptimal  obj -139.292123178719 lb  -139.849944085085  0.213761836 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349655
+  scenario :  5   WS  scip statusOptimal  obj -149.47353611916765 lb  -149.59447571885258  0.184446975 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235598
+  scenario :  6   WS  scip statusOptimal  obj -149.47353615383417 lb  -149.59447571885147  0.186386711 (s) 
+inside local_ws
+scenariocopy:   Optimal    -148.1580957041888
+  scenario :  7   WS  scip statusOptimal  obj -148.15810412117116 lb  -148.8272414212507  0.143992983 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346327
+  scenario :  8   WS  scip statusOptimal  obj -149.47353597007367 lb  -149.5944757188532  0.227626351 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355828
+  scenario :  9   WS  scip statusOptimal  obj -149.47353525813645 lb  -149.59447571885153  0.197794904 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142353052
+  scenario :  10   WS  scip statusOptimal  obj -149.47353509946302 lb  -149.594475718852  0.199161715 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142347552
+  scenario :  11   WS  scip statusOptimal  obj -149.47352939780666 lb  -150.20756936116726  0.120365071 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234602
+  scenario :  12   WS  scip statusOptimal  obj -149.47353560678516 lb  -149.59447571885323  0.186581789 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346688
+  scenario :  13   WS  scip statusOptimal  obj -149.4735358768125 lb  -149.5944757188531  0.175017207 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346324
+  scenario :  14   WS  scip statusOptimal  obj -149.47353576321797 lb  -149.59447571885318  0.181908825 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142350252
+  scenario :  15   WS  scip statusOptimal  obj -149.47353619560138 lb  -149.59264409622023  0.186890954 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355738
+  scenario :  16   WS  scip statusOptimal  obj -149.4735352612766 lb  -149.59447571885153  0.234700753 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355655
+  scenario :  17   WS  scip statusOptimal  obj -149.47353514044926 lb  -149.59447571885153  0.186249349 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142344048
+  scenario :  18   WS  scip statusOptimal  obj -149.47352939780455 lb  -150.20031949743205  0.118551254 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142351804
+  scenario :  19   WS  scip statusOptimal  obj -149.47353619497306 lb  -149.59447571885224  0.184130749 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349644
+  scenario :  20   WS  scip statusOptimal  obj -149.47353576643533 lb  -149.5944757188526  0.183354377 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235171
+  scenario :  21   WS  scip statusOptimal  obj -149.47353536818045 lb  -149.59447571885224  0.182920706 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234687
+  scenario :  22   WS  scip statusOptimal  obj -149.47353510025295 lb  -149.59447571885306  0.180401935 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349456
+  scenario :  23   WS  scip statusOptimal  obj -149.47353568465044 lb  -149.59025116774944  0.176872797 (s) 
+inside local_ws
+scenariocopy:   Optimal    -148.21982927936
+  scenario :  24   WS  scip statusOptimal  obj -148.21983770009064 lb  -148.8574434423355  0.178518161 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235601
+  scenario :  25   WS  scip statusOptimal  obj -149.4735357547022 lb  -149.59447571885147  0.182016974 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142334455
+  scenario :  26   WS  scip statusOptimal  obj -149.47352939780666 lb  -150.19628035784734  0.121861421 (s) 
+inside local_ws
+scenariocopy:   Optimal    -141.16010395230367
+  scenario :  27   WS  scip statusOptimal  obj -141.1601020757442 lb  -141.79580324414306  0.210287422 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355075
+  scenario :  28   WS  scip statusOptimal  obj -149.47353619560138 lb  -149.59447571885164  0.194751076 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234672
+  scenario :  29   WS  scip statusOptimal  obj -149.47353560619902 lb  -149.5944757188531  0.189444703 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234637
+  scenario :  30   WS  scip statusOptimal  obj -149.47353525725745 lb  -149.59447571885318  0.185760608 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142345654
+  scenario :  31   WS  scip statusOptimal  obj -149.47353579004843 lb  -149.59447571885332  0.179343698 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234524
+  scenario :  32   WS  scip statusOptimal  obj -149.4735356079166 lb  -149.59447571885335  0.247169885 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235336
+  scenario :  33   WS  scip statusOptimal  obj -149.47353560720887 lb  -149.59447571885195  0.184933575 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355942
+  scenario :  34   WS  scip statusOptimal  obj -149.47353619559772 lb  -149.59447571885147  0.192032163 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346032
+  scenario :  35   WS  scip statusOptimal  obj -149.47353561233945 lb  -149.59447571885323  0.196686452 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355874
+  scenario :  36   WS  scip statusOptimal  obj -149.47353521426598 lb  -149.59447571885153  0.183988824 (s) 
+inside local_ws
+scenariocopy:   Optimal    -141.24564950696012
+  scenario :  37   WS  scip statusOptimal  obj -141.24564762873246 lb  -141.87449073635975  0.208028895 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142350403
+  scenario :  38   WS  scip statusOptimal  obj -149.4735361925803 lb  -149.59447571885246  0.198246339 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349587
+  scenario :  39   WS  scip statusOptimal  obj -149.47353575982487 lb  -149.59447571885264  0.239307394 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355936
+  scenario :  40   WS  scip statusOptimal  obj -149.47353619391492 lb  -149.59447571885153  0.187250676 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235603
+  scenario :  41   WS  scip statusOptimal  obj -149.47353526063125 lb  -149.5944757188515  0.184782155 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142353117
+  scenario :  42   WS  scip statusOptimal  obj -149.47353566972927 lb  -149.59447571885198  0.187297685 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346645
+  scenario :  43   WS  scip statusOptimal  obj -149.47353510185567 lb  -149.59447571885315  0.19173722 (s) 
+inside local_ws
+scenariocopy:   Optimal    -144.10800705209846
+  scenario :  44   WS  scip statusOptimal  obj -144.1044091979172 lb  -144.62484034266862  0.184749042 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142352904
+  scenario :  45   WS  scip statusOptimal  obj -149.47352939780663 lb  -150.21653355225737  0.11805352 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142356175
+  scenario :  46   WS  scip statusOptimal  obj -149.47353511189854 lb  -149.59447571885147  0.182814491 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349655
+  scenario :  47   WS  scip statusOptimal  obj -149.47353561169302 lb  -149.59447571885258  0.214833696 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235571
+  scenario :  48   WS  scip statusOptimal  obj -149.47353565600093 lb  -149.59447571885153  0.174495235 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349587
+  scenario :  49   WS  scip statusOptimal  obj -149.4735353610786 lb  -149.5944757188526  0.170763973 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346662
+  scenario :  50   WS  scip statusOptimal  obj -149.4735356411593 lb  -149.59447571885312  0.168313735 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142350815
+  scenario :  51   WS  scip statusOptimal  obj -149.47353537034888 lb  -149.5944757188524  0.166672724 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349684
+  scenario :  52   WS  scip statusOptimal  obj -149.47353566295428 lb  -149.59447571885258  0.170662738 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142356226
+  scenario :  53   WS  scip statusOptimal  obj -149.47353579645394 lb  -149.59447571885144  0.160522152 (s) 
+inside local_ws
+scenariocopy:   Optimal    -145.02048382664938
+  scenario :  54   WS  scip statusOptimal  obj -145.02048187817797 lb  -145.48879358716104  0.163915502 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346626
+  scenario :  55   WS  scip statusOptimal  obj -149.4735357656544 lb  -149.59447571885312  0.205592748 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346591
+  scenario :  56   WS  scip statusOptimal  obj -149.47353619560138 lb  -149.59447571885312  0.170703428 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.473531423561
+  scenario :  57   WS  scip statusOptimal  obj -149.47353619318366 lb  -149.59447571885147  0.170725639 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142347086
+  scenario :  58   WS  scip statusOptimal  obj -149.4735361182467 lb  -149.59447571885306  0.173608622 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346546
+  scenario :  59   WS  scip statusOptimal  obj -149.47353619426204 lb  -149.59447571885315  0.165734912 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349456
+  scenario :  60   WS  scip statusOptimal  obj -149.4735357722477 lb  -149.59036707575828  0.175464606 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346037
+  scenario :  61   WS  scip statusOptimal  obj -149.47353596879765 lb  -149.59447571885323  0.162195612 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235177
+  scenario :  62   WS  scip statusOptimal  obj -149.47353566261611 lb  -149.59447571885224  0.213589709 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355743
+  scenario :  63   WS  scip statusOptimal  obj -149.47353521005323 lb  -149.59447571885153  0.17585059 (s) 
+inside local_ws
+scenariocopy:   Optimal    -142.40003161024038
+  scenario :  64   WS  scip statusOptimal  obj -142.40002970966094 lb  -143.00143355128282  0.176077871 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234599
+  scenario :  65   WS  scip statusOptimal  obj -149.47353560729815 lb  -149.59447571885323  0.171171047 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234952
+  scenario :  66   WS  scip statusOptimal  obj -149.47353619560144 lb  -149.59447571885266  0.173726105 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235504
+  scenario :  67   WS  scip statusOptimal  obj -149.4735356124101 lb  -149.59447571885164  0.178292417 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346276
+  scenario :  68   WS  scip statusOptimal  obj -149.47353617940826 lb  -149.59447571885318  0.170978397 (s) 
+inside local_ws
+scenariocopy:   Optimal    -141.10662679151923
+  scenario :  69   WS  scip statusOptimal  obj -141.1066249161837 lb  -141.74662829742005  0.195374403 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.473531423495
+  scenario :  70   WS  scip statusOptimal  obj -149.47353565561545 lb  -149.59339563121722  0.221304791 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142356326
+  scenario :  71   WS  scip statusOptimal  obj -149.47353560142776 lb  -149.5944757188514  0.168948156 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234956
+  scenario :  72   WS  scip statusOptimal  obj -149.47353583250316 lb  -149.5944757188526  0.164868376 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234947
+  scenario :  73   WS  scip statusOptimal  obj -149.47352939780686 lb  -150.20567090777578  0.111274539 (s) 
+inside local_ws
+scenariocopy:   Optimal    -141.86548423782583
+  scenario :  74   WS  scip statusOptimal  obj -141.8654823470857 lb  -142.47702517439245  0.192165995 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142352836
+  scenario :  75   WS  scip statusOptimal  obj -149.47352939780373 lb  -150.21608560017972  0.114066012 (s) 
+inside local_ws
+scenariocopy:   Optimal    -141.11557225148607
+  scenario :  76   WS  scip statusOptimal  obj -141.11557037597885 lb  -141.75485329179855  0.189177033 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355934
+  scenario :  77   WS  scip statusOptimal  obj -149.4735356608216 lb  -149.59447571885153  0.167874211 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142345432
+  scenario :  78   WS  scip statusOptimal  obj -149.47353614531767 lb  -149.59447571885335  0.215946725 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142356167
+  scenario :  79   WS  scip statusOptimal  obj -149.47353511138584 lb  -149.59447571885147  0.173268092 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142351693
+  scenario :  80   WS  scip statusOptimal  obj -149.4735351057042 lb  -149.59447571885224  0.17907842 (s) 
+inside local_ws
+scenariocopy:   Optimal    -146.49715041297682
+  scenario :  81   WS  scip statusOptimal  obj -146.4971484364087 lb  -147.00153712975583  0.150624796 (s) 
+inside local_ws
+scenariocopy:   Optimal    -143.39261907491897
+  scenario :  82   WS  scip statusOptimal  obj -143.4080855000603 lb  -143.95323308218667  0.169710487 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346526
+  scenario :  83   WS  scip statusOptimal  obj -149.4735356063558 lb  -149.59447571885312  0.182242478 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349678
+  scenario :  84   WS  scip statusOptimal  obj -149.47353560627104 lb  -149.59447571885258  0.179981495 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349468
+  scenario :  85   WS  scip statusOptimal  obj -149.47353592371056 lb  -149.59112201808404  0.177204791 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355962
+  scenario :  86   WS  scip statusOptimal  obj -149.4735351024938 lb  -149.5944757188515  0.210249036 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234701
+  scenario :  87   WS  scip statusOptimal  obj -149.4735356121866 lb  -149.59447571885303  0.180812722 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142354058
+  scenario :  88   WS  scip statusOptimal  obj -149.47353603029782 lb  -149.5944757188518  0.175993784 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235584
+  scenario :  89   WS  scip statusOptimal  obj -149.47353536394206 lb  -149.5944757188515  0.187950604 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355894
+  scenario :  90   WS  scip statusOptimal  obj -149.47353619446153 lb  -149.5944757188515  0.191587285 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349516
+  scenario :  91   WS  scip statusOptimal  obj -149.47353619560144 lb  -149.59447571885264  0.189706646 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349752
+  scenario :  92   WS  scip statusOptimal  obj -149.47353561277706 lb  -149.59447571885258  0.185650867 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355942
+  scenario :  93   WS  scip statusOptimal  obj -149.47353576632958 lb  -149.5944757188515  0.206861819 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142356187
+  scenario :  94   WS  scip statusOptimal  obj -149.47353615134995 lb  -149.59447571885144  0.188873538 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142349542
+  scenario :  95   WS  scip statusOptimal  obj -149.47353619560144 lb  -149.5944757188526  0.187369687 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314234706
+  scenario :  96   WS  scip statusOptimal  obj -149.47353565169576 lb  -149.59447571885306  0.180311246 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235584
+  scenario :  97   WS  scip statusOptimal  obj -149.4735357654859 lb  -149.5944757188515  0.187948206 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142355902
+  scenario :  98   WS  scip statusOptimal  obj -149.4735361949668 lb  -149.5944757188515  0.193968213 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.47353142346256
+  scenario :  99   WS  scip statusOptimal  obj -149.47353576017787 lb  -149.5944757188532  0.191012694 (s) 
+inside local_ws
+scenariocopy:   Optimal    -149.4735314235368
+  scenario :  100   WS  scip statusOptimal  obj -149.47353619476098 lb  -149.59447571885192  0.192107644 (s) 
+inside ws_lower19.00627283  (s) 
+WS_status:  Optimal
+scenario   1  LB  -138.79092342662625
+scenario   2  LB  -149.5944757188515
+scenario   3  LB  -149.59321329919592
+scenario   4  LB  -139.849944085085
+scenario   5  LB  -149.59447571885258
+scenario   6  LB  -149.59447571885147
+scenario   7  LB  -148.8272414212507
+scenario   8  LB  -149.5944757188532
+scenario   9  LB  -149.59447571885153
+scenario   10  LB  -149.594475718852
+scenario   11  LB  -150.20756936116726
+scenario   12  LB  -149.59447571885323
+scenario   13  LB  -149.5944757188531
+scenario   14  LB  -149.59447571885318
+scenario   15  LB  -149.59264409622023
+scenario   16  LB  -149.59447571885153
+scenario   17  LB  -149.59447571885153
+scenario   18  LB  -150.20031949743205
+scenario   19  LB  -149.59447571885224
+scenario   20  LB  -149.5944757188526
+scenario   21  LB  -149.59447571885224
+scenario   22  LB  -149.59447571885306
+scenario   23  LB  -149.59025116774944
+scenario   24  LB  -148.8574434423355
+scenario   25  LB  -149.59447571885147
+scenario   26  LB  -150.19628035784734
+scenario   27  LB  -141.79580324414306
+scenario   28  LB  -149.59447571885164
+scenario   29  LB  -149.5944757188531
+scenario   30  LB  -149.59447571885318
+scenario   31  LB  -149.59447571885332
+scenario   32  LB  -149.59447571885335
+scenario   33  LB  -149.59447571885195
+scenario   34  LB  -149.59447571885147
+scenario   35  LB  -149.59447571885323
+scenario   36  LB  -149.59447571885153
+scenario   37  LB  -141.87449073635975
+scenario   38  LB  -149.59447571885246
+scenario   39  LB  -149.59447571885264
+scenario   40  LB  -149.59447571885153
+scenario   41  LB  -149.5944757188515
+scenario   42  LB  -149.59447571885198
+scenario   43  LB  -149.59447571885315
+scenario   44  LB  -144.62484034266862
+scenario   45  LB  -150.21653355225737
+scenario   46  LB  -149.59447571885147
+scenario   47  LB  -149.59447571885258
+scenario   48  LB  -149.59447571885153
+scenario   49  LB  -149.5944757188526
+scenario   50  LB  -149.59447571885312
+scenario   51  LB  -149.5944757188524
+scenario   52  LB  -149.59447571885258
+scenario   53  LB  -149.59447571885144
+scenario   54  LB  -145.48879358716104
+scenario   55  LB  -149.59447571885312
+scenario   56  LB  -149.59447571885312
+scenario   57  LB  -149.59447571885147
+scenario   58  LB  -149.59447571885306
+scenario   59  LB  -149.59447571885315
+scenario   60  LB  -149.59036707575828
+scenario   61  LB  -149.59447571885323
+scenario   62  LB  -149.59447571885224
+scenario   63  LB  -149.59447571885153
+scenario   64  LB  -143.00143355128282
+scenario   65  LB  -149.59447571885323
+scenario   66  LB  -149.59447571885266
+scenario   67  LB  -149.59447571885164
+scenario   68  LB  -149.59447571885318
+scenario   69  LB  -141.74662829742005
+scenario   70  LB  -149.59339563121722
+scenario   71  LB  -149.5944757188514
+scenario   72  LB  -149.5944757188526
+scenario   73  LB  -150.20567090777578
+scenario   74  LB  -142.47702517439245
+scenario   75  LB  -150.21608560017972
+scenario   76  LB  -141.75485329179855
+scenario   77  LB  -149.59447571885153
+scenario   78  LB  -149.59447571885335
+scenario   79  LB  -149.59447571885147
+scenario   80  LB  -149.59447571885224
+scenario   81  LB  -147.00153712975583
+scenario   82  LB  -143.95323308218667
+scenario   83  LB  -149.59447571885312
+scenario   84  LB  -149.59447571885258
+scenario   85  LB  -149.59112201808404
+scenario   86  LB  -149.5944757188515
+scenario   87  LB  -149.59447571885303
+scenario   88  LB  -149.5944757188518
+scenario   89  LB  -149.5944757188515
+scenario   90  LB  -149.5944757188515
+scenario   91  LB  -149.59447571885264
+scenario   92  LB  -149.59447571885258
+scenario   93  LB  -149.5944757188515
+scenario   94  LB  -149.59447571885144
+scenario   95  LB  -149.5944757188526
+scenario   96  LB  -149.59447571885306
+scenario   97  LB  -149.5944757188515
+scenario   98  LB  -149.5944757188515
+scenario   99  LB  -149.5944757188532
+scenario   100  LB  -149.59447571885192
+WS_status  Optimal  WS_LB -14878.828846572427
+WS Lower time:   19.421500275 (s)
+FLB: -1.0e10
+node L:-14878.828846572427
+global L:-14878.828846572427
+all node solved
+Solution time:   77.647282908 (s)
+relax_LB_time_total:   0.941798176 (s)
+global_LB_time_total:   19.421500275 (s)
+local_UB_time_total:   25.644219403999998 (s)
+global_UB_time_total:   0 (s)
+BT_time_total:   26.868158157000003 (s)
+VS_time_total:   0 (s)
+solved nodes:  1
+1                                                     -1.4991e+04    -1.4843e+04    1.0000  % 
+first stage sol   [0.0, 0.0, 0.0, 0.0, 20.0]
+LB_UB_list   Any[[-1.0e10, -14842.9, 2.0, 1.0]]

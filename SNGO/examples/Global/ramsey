@@ -1,0 +1,96 @@
+include("setup.jl")
+
+
+function createModel()
+    m = Model()
+ x1 = 3
+ @variable(m, x2>=3 )
+ @variable(m, x3>=3 )
+ @variable(m, x4>=3 )
+ @variable(m, x5>=3 )
+ @variable(m, x6>=3 )
+ @variable(m, x7>=3 )
+ @variable(m, x8>=3 )
+ @variable(m, x9>=3 )
+ @variable(m, x10>=3 )
+ @variable(m, x11>=3 )
+ @variable(m, x12>=0.95 )
+ @variable(m, x13>=0.95  )
+ @variable(m, x14>=0.95  )
+ @variable(m, x15>=0.95  )
+ @variable(m, x16>=0.95  )
+ @variable(m, x17>=0.95  )
+ @variable(m, x18>=0.95  )
+ @variable(m, x19>=0.95  )
+ @variable(m, x20>=0.95  )
+ @variable(m, x21>=0.95  )
+ @variable(m, x22>=0.95  )
+ x23 = 0.05 
+ @variable(m, 0.05<=x24<=0.0575 )
+ @variable(m, 0.05<=x25<=0.066125 )
+ @variable(m, 0.05<=x26<=0.07604375 )
+ @variable(m, 0.05<=x27<=0.0874503125 )
+ @variable(m, 0.05<=x28<=0.100567859375 )
+ @variable(m, 0.05<=x29<=0.11565303828125 )
+ @variable(m, 0.05<=x30<=0.133000994023437 )
+ @variable(m, 0.05<=x31<=0.152951143126953 )
+ @variable(m, 0.05<=x32<=0.175893814595996 )
+ @variable(m, 0.05<=x33<=0.202277886785395 )
+ @variable(m, objvar)
+ @objective(m, :Min, objvar)
+
+@NLconstraint(m,  0.759835685651593*x1^0.25 - x12 - x23 == 0)
+
+@NLconstraint(m,  0.77686866556676*x2^0.25 - x13 - x24 == 0)
+
+@NLconstraint(m,  0.794283468039448*x3^0.25 - x14 - x25 == 0)
+
+@NLconstraint(m,  0.812088652256959*x4^0.25 - x15 - x26 == 0)
+
+@NLconstraint(m,  0.830292969275008*x5^0.25 - x16 - x27 == 0)
+
+@NLconstraint(m,  0.848905366318769*x6^0.25 - x17 - x28 == 0)
+
+@NLconstraint(m,  0.867934991180342*x7^0.25 - x18 - x29 == 0)
+
+@NLconstraint(m,  0.88739119671479*x8^0.25 - x19 - x30 == 0)
+
+@NLconstraint(m,  0.907283545436972*x9^0.25 - x20 - x31 == 0)
+
+@NLconstraint(m,  0.92762181422141*x10^0.25 - x21 - x32 == 0)
+
+@NLconstraint(m,  0.948415999107521*x11^0.25 - x22 - x33 == 0)
+
+@constraint(m,   - x1 + x2 - x23 == 0)
+
+@constraint(m,   - x2 + x3 - x24 == 0)
+
+@constraint(m,   - x3 + x4 - x25 == 0)
+
+@constraint(m,   - x4 + x5 - x26 == 0)
+
+@constraint(m,   - x5 + x6 - x27 == 0)
+
+@constraint(m,   - x6 + x7 - x28 == 0)
+
+@constraint(m,   - x7 + x8 - x29 == 0)
+
+@constraint(m,   - x8 + x9 - x30 == 0)
+
+@constraint(m,   - x9 + x10 - x31 == 0)
+
+@constraint(m,   - x10 + x11 - x32 == 0)
+
+@constraint(m,     0.03*x11 - x33 <= 0)
+
+@NLconstraint(m,   0.95*log(x12) + 0.9025*log(x13) + 0.857375*log(x14) + 0.81450625*log(
+      x15) + 0.7737809375*log(x16) + 0.735091890625*log(x17) + 0.69833729609375
+      *log(x18) + 0.663420431289062*log(x19) + 0.630249409724609*log(x20) + 
+      0.598736939238379*log(x21) + 11.3760018455292*log(x22) + objvar == 0)
+
+
+
+    return m
+end
+
+include("solver.jl")

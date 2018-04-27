@@ -1,0 +1,27 @@
+#Required Julia 0.6
+#set environment 
+export SINGODIR=/home/cao27/SNGO
+
+
+#Currently, the SNGO code is not uploaded yet, but users can verfify the results of examples using scip
+#files to run:
+#users can change the number of scenarios by changing the number in the line with "NS=10" (NS >=10)
+PID:  #Optimal Controller Tuning
+julia6 pidnonlinear.jl  
+julia6 pidnonlinearSCIP.jl
+
+
+
+Param: #Estimation for Microbial Growth Models
+# users can change the id of different test problems (with different experiments) by changing the line "j = 12"
+julia6 param.jl
+julia6 paramSCIP.jl
+
+
+Global: Stochastic GLOBALLib Instances
+# users can change the number scenarios by change the number in the line "NS = 1000" within the file setup.jl 
+# users can chose solvers (SNGO, SCIP, Ipopt) by changing the file solver.jl
+files can be run are in the file command
+
+
+#Results are within the corresponding folders

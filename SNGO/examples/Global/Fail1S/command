@@ -1,0 +1,8 @@
+julia6 5_4_4 >&5_4_4.out&
+julia6 8_4_2 >&8_4_2.out&
+julia6 8_6_2 >&8_6_2.out&
+julia6 hhfair >&hhfair.out&
+julia6 launch >&launch.out& 
+julia6 maxmin >&maxmin.out& 
+julia6 prolog >&prolog.out&   
+julia6 worst >&worst.out&

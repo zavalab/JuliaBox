@@ -1,0 +1,37 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((0.350000 * <_var1_>) + (0.340000 * <_var2_>) + (0.500000 * <_var3_>) + (0.490000 * <_var4_>) + (0.680000 * <_var5_>) + (0.670000 * <_var6_>) + ((-1.000000) * <_var15_>) + ((-1.000000) * <_var16_>) + (0.990000 * <_var19_>) + (0.990000 * <_var20_>) + ((-1.000000) * <_var30_>)) >= -0;
+violation: left hand side is violated by 5.31000000000001 (scaled: 5.31000000000001)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 2001 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       0 del vars, 100 del conss, 0 add conss, 2706 chg bounds, 0 chg sides, 0 chg coeffs, 2001 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       1 del vars, 101 del conss, 0 add conss, 3408 chg bounds, 0 chg sides, 0 chg coeffs, 2001 upgd conss, 0 impls, 0 clqs
+presolving (4 rounds: 4 fast, 1 medium, 1 exhaustive):
+ 1 deleted vars, 101 deleted constraints, 0 added constraints, 3408 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 3405 variables (0 bin, 0 int, 0 impl, 3405 cont) and 2000 constraints
+   1900 constraints of type <linear>
+    100 constraints of type <nonlinear>
+Presolving Time: 0.42
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  6432 |     - |  16M| 1.423762e+05 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+q     1 |     0 |  6432 |     - |  16M| 1.423762e+05 | 2.109782e+05 |  48.18%
+      1 |     0 |  7912 |     - |  17M| 2.109782e+05 | 2.109782e+05 |   0.00%
+      1 |     0 |  7912 |     - |  17M| 2.109782e+05 | 2.109782e+05 |   0.00%
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 2.18
+Solving Nodes      : 1
+Primal Bound       : +2.10978183274926e+05 (2 solutions)
+Dual Bound         : +2.10978183274926e+05
+Gap                : 0.00 %
+WARNING: Nonlinear solver does not provide dual solutions

@@ -1,0 +1,3 @@
+print_level 0
+#bound_relax_factor 0
+#honor_original_bounds yes
