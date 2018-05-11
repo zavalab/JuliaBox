@@ -1,0 +1,66 @@
+include("setup.jl")
+
+
+function createModel()
+    m = Model()
+
+    @variable(m, x1 >=0)
+    @variable(m, x2 >=0)
+    @variable(m, x3 >=0)
+    @variable(m, x4 >=0)
+    @variable(m, x5 >=0)
+    @variable(m, x6 >=0)
+    @variable(m, x7 >=0)
+    @variable(m, x8 >=0)
+    @variable(m, x9 >=0)
+    @variable(m, x10 >=0)
+    @variable(m, x11 >=0)
+    @variable(m, x12 >=0)
+    @variable(m, x13 >=0)
+    @variable(m, x14 >=0)
+    @variable(m, x15 >=0)
+    @variable(m, x16 >=0)
+    @variable(m, x17 >=0)
+    @variable(m, x18 >=0)
+    @variable(m, x19 >=0)
+    @variable(m, x20 >=0)
+    @variable(m, x21 >=0)
+    @variable(m, x22 >=0)
+    @variable(m, x23 >=0)
+    @variable(m, x24 >=0)
+
+
+    @constraint(m,  - x1 - x5 - x9 - x13 - x17 - x21 <= -29)
+    @constraint(m,    x1 + x5 + x9 + x13 + x17 + x21 <= 29)
+    @constraint(m,  - x2 - x6 - x10 - x14 - x18 - x22 <= -41)
+    @constraint(m,    x2 + x6 + x10 + x14 + x18 + x22 <= 41)
+    @constraint(m,  - x3 - x7 - x11 - x15 - x19 - x23 <= -13)
+    @constraint(m,    x3 + x7 + x11 + x15 + x19 + x23 <= 13)
+    @constraint(m,  - x4 - x8 - x12 - x16 - x20 - x24 <= -21)
+    @constraint(m,    x4 + x8 + x12 + x16 + x20 + x24 <= 21)
+    @constraint(m,  - x1 - x2 - x3 - x4 <= -8)
+    @constraint(m,    x1 + x2 + x3 + x4 <= 8)
+    @constraint(m,  - x5 - x6 - x7 - x8 <= -24)
+    @constraint(m,    x5 + x6 + x7 + x8 <= 24)
+    @constraint(m,  - x9 - x10 - x11 - x12 <= -20)
+    @constraint(m,    x9 + x10 + x11 + x12 <= 20)
+    @constraint(m,  - x13 - x14 - x15 - x16 <= -24)
+    @constraint(m,    x13 + x14 + x15 + x16 <= 24)
+    @constraint(m,  - x17 - x18 - x19 - x20 <= -16)
+    @constraint(m,    x17 + x18 + x19 + x20 <= 16)
+    @constraint(m,  - x21 - x22 - x23 - x24 <= -12)
+    @constraint(m,    x21 + x22 + x23 + x24 <= 12)
+
+
+    @objective(m, Min,  (300*x1 - 7*(x1)^2 - 4*(x2)^2 + 270*x2 - 6*(x3)^2 + 460*x3 - 8*(
+      x4)^2 + 800*x4 - 12*(x5)^2 + 740*x5 - 9*(x6)^2 + 600*x6 - 14*(x7)^2 + 
+      540*x7 - 7*(x8)^2 + 380*x8 - 13*(x9)^2 + 300*x9 - 12*(x10)^2 + 490*x10
+       - 8*(x11)^2 + 380*x11 - 4*(x12)^2 + 760*x12 - 7*(x13)^2 + 430*x13 - 9
+      *(x14)^2 + 250*x14 - 16*(x15)^2 + 390*x15 - 8*(x16)^2 + 600*x16 - 4*
+      (x17)^2 + 210*x17 - 10*(x18)^2 + 830*x18 - 21*(x19)^2 + 470*x19 - 13*
+      (x20)^2 + 680*x20 - 17*(x21)^2 + 360*x21 - 9*(x22)^2 + 290*x22 - 8*
+      (x23)^2 + 400*x23 - 4*(x24)^2 + 310*x24))
+    return m
+end
+
+include("solver.jl")

@@ -1,0 +1,88 @@
+include("setup.jl")
+
+function createModel()
+    m = Model()
+
+ @variable(m, 10<=x1<=110 )
+ @variable(m, 10<=x2<=110 )
+ @variable(m, 10<=x3<=110 )
+ @variable(m, 10<=x4<=110 )
+ @variable(m, 10<=x5<=110 )
+ @variable(m, 10<=x6<=110 )
+ @variable(m, 10<=x7<=45 )
+ @variable(m, 10<=x8<=45 )
+ @variable(m, 10<=x9<=45 )
+ @variable(m, 10<=x10<=45 )
+ @variable(m, 10<=x11<=45 )
+ @variable(m, 10<=x12<=45 )
+ @variable(m, 10<=x13<=45 )
+ @variable(m, 10<=x14<=45 )
+ @variable(m, 10<=x15<=45 )
+ @variable(m, 10<=x16<=45 )
+ @variable(m, 10<=x17<=45 )
+ @variable(m, 10<=x18<=45 )
+ @variable(m, 10<=x19<=45 )
+ @variable(m, 10<=x20<=45 )
+ @variable(m, 10<=x21<=45 )
+ @variable(m, 100<=x22<=200 )
+ @variable(m, 100<=x23<=200 )
+ @variable(m, 100<=x24<=200 )
+ @variable(m, 100<=x25<=200 )
+ @variable(m, 100<=x26<=200 )
+ @variable(m, 100<=x27<=200 )
+ @variable(m, obj )
+
+
+
+@objective(m, :Min, obj)
+@constraint(m,     x7 + x12 + x17 == 45)
+
+@constraint(m,     x7 - x8 + x14 + x20 == 0)
+
+@constraint(m,     x9 + x12 - x13 + x19 == 0)
+
+@constraint(m,     x10 + x15 + x17 - x18 == 0)
+
+@constraint(m,   - x8 + x9 + x10 + x11 == 0)
+
+@constraint(m,   - x13 + x14 + x15 + x16 == 0)
+
+@constraint(m,   - x18 + x19 + x20 + x21 == 0)
+
+@constraint(m,  x25*x14 + x27*x20 - x22*x8 + 100*x7 == 0)
+
+@constraint(m,  x23*x9 + x27*x19 - x24*x13 + 100*x12 == 0)
+
+@constraint(m,  x23*x10 + x25*x15 - x26*x18 + 100*x17 == 0)
+
+@constraint(m,  x8*x23 - x8*x22 == 2000)
+
+@constraint(m,  x13*x25 - x13*x24 == 1000)
+
+@constraint(m,  x18*x27 - x18*x26 == 1500)
+
+@constraint(m,     x1 + x23 == 210)
+
+@constraint(m,     x2 + x22 == 130)
+
+@constraint(m,     x3 + x25 == 210)
+
+@constraint(m,     x4 + x24 == 160)
+
+@constraint(m,     x5 + x27 == 210)
+
+@constraint(m,     x6 + x26 == 180)
+
+@NLconstraint(m,   - (1300*(2000/(0.333333333333333*x1*x2 + 0.166666666666667*x1 + 0.166666666666667*x2))^0.6 + 1300*(1000/(0.666666666666667*x3*x4 + 0.166666666666667*x3 + 0.166666666666667*x4))^0.6 + 1300*(1500/(0.666666666666667*x5*x6 + 0.166666666666667*x5 + 0.166666666666667*x6))^0.6) + obj == 0)
+
+
+    return m
+end
+
+
+m = createModel()
+m = copyNLModel(m)
+m.solver = SCIPSolver("limits/gap", mingap, "limits/absgap", mingap, "limits/time", 43200.0)
+solve(m)
+println(m.colVal)
+

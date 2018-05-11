@@ -1,0 +1,39 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((1.000000 * <_var0_>) + ((-0.305000) * <_var14_>) + ((-0.424000) * <_var21_>)) == 293.7758;
+violation: left hand side is violated by 389.8487 (scaled: 389.8487)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 18996 upgd conss, 0 impls, 0 clqs
+(round 2, exhaustive) 0 del vars, 4995 del conss, 0 add conss, 1 chg bounds, 0 chg sides, 0 chg coeffs, 18996 upgd conss, 0 impls, 0 clqs
+presolving (3 rounds: 3 fast, 2 medium, 2 exhaustive):
+ 0 deleted vars, 4995 deleted constraints, 0 added constraints, 1 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 23006 variables (0 bin, 0 int, 0 impl, 23006 cont) and 14001 constraints
+  14000 constraints of type <linear>
+      1 constraints of type <quadratic>
+Presolving Time: 685.99
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 10005 |     - | 125M|-9.142160e-04 |      --      |    Inf 
+y     1 |     0 | 10005 |     - | 125M|-9.142160e-04 | 9.736436e+04 |    Inf 
+      1 |     0 | 13150 |     - | 132M| 9.736308e+04 | 9.736436e+04 |   0.00%
+      1 |     2 | 13150 |     - | 132M| 9.736308e+04 | 9.736436e+04 |   0.00%
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 38536.17
+Solving Nodes      : 1
+Primal Bound       : +9.73643623437448e+04 (1 solutions)
+Dual Bound         : +9.73630754227984e+04
+Gap                : 0.00 %
+  [nonlinear] <nonlin>: (((-0.914000) * <_var0_>) + (1.000000 * <_var1_>) + (0.016000 * <_var99_>) + ((-0.305000) * <_var107_>) + ((-0.424000) * <_var114_>)) <= -57.9958334826821;
+violation: right hand side is violated by 2.89978968481819e-06 (scaled: 2.89978968481819e-06)
+best solution is not feasible in original problem
+WARNING: Nonlinear solver does not provide dual solutions

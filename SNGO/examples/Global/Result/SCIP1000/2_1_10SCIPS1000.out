@@ -1,0 +1,55 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((5.000000 * <_var0_>) + (4.000000 * <_var1_>) + (5.000000 * <_var2_>) + (4.000000 * <_var3_>) + (1.000000 * <_var4_>) + (4.000000 * <_var5_>) + (4.000000 * <_var6_>) + (2.000000 * <_var7_>) + (5.000000 * <_var8_>) + (2.000000 * <_var9_>) + (3.000000 * <_var10_>) + (6.000000 * <_var11_>) + (1.000000 * <_var12_>) + (7.000000 * <_var13_>) + (7.000000 * <_var14_>) + (5.000000 * <_var15_>) + (8.000000 * <_var16_>) + (7.000000 * <_var17_>) + (2.000000 * <_var18_>) + (1.000000 * <_var19_>)) <= 415;
+violation: right hand side is violated by 40.655 (scaled: 40.655)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 10001 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       0 del vars, 0 del conss, 0 add conss, 48977 chg bounds, 0 chg sides, 0 chg coeffs, 10001 upgd conss, 0 impls, 0 clqs
+presolving (3 rounds: 3 fast, 1 medium, 1 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 0 added constraints, 48977 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 15006 variables (0 bin, 0 int, 0 impl, 15006 cont) and 10001 constraints
+  10000 constraints of type <linear>
+      1 constraints of type <quadratic>
+Presolving Time: 493.18
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+y     1 |     0 |     0 |     - | 126M|      --      | 5.476635e+08 |    Inf 
+      1 |     0 | 10430 |     - | 150M|-3.367951e+08 | 5.476635e+08 |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+y     1 |     0 | 10430 |     - | 150M|-3.367951e+08 | 5.829363e+07 |    Inf 
+      1 |     0 | 10430 |     - | 150M|-3.367951e+08 | 5.829363e+07 |    Inf 
+      1 |     0 | 10430 |     - | 150M|-3.367951e+08 | 5.829363e+07 |    Inf 
+      1 |     0 | 17954 |     - | 150M|-3.123187e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 24535 |     - | 150M|-3.123187e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 27380 |     - | 150M|-2.210035e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 27380 |     - | 150M|-2.210035e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 28278 |     - | 152M|-1.719850e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 28278 |     - | 152M|-1.719850e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 28710 |     - | 153M|-1.676536e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 28829 |     - | 153M|-1.633373e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 35840 |     - | 153M|-1.633373e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 35906 |     - | 154M|-1.631648e+07 | 5.829363e+07 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 35912 |     - | 154M|-1.631525e+07 | 5.829363e+07 |    Inf 
+      1 |     0 | 35948 |     - | 154M|-1.631246e+07 | 5.829363e+07 |    Inf 
+(node 1) unresolved numerical troubles in LP 13 -- using pseudo solution instead (loop 1)
+      1 |     2 | 43388 |     - | 157M|-1.631246e+07 | 5.829363e+07 |    Inf 
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 43200.79
+Solving Nodes      : 2
+Primal Bound       : +5.82936260314348e+07 (2 solutions)
+Dual Bound         : -1.63124564539037e+07
+Gap                : infinite
+  [nonlinear] <nonlin>: ((3.000000 * <_var0_>) + (5.000000 * <_var1_>) + (5.000000 * <_var2_>) + (6.000000 * <_var3_>) + (4.000000 * <_var4_>) + (4.000000 * <_var5_>) + (5.000000 * <_var6_>) + (6.000000 * <_var7_>) + (4.000000 * <_var8_>) + (4.000000 * <_var9_>) + (8.000000 * <_var10_>) + (4.000000 * <_var11_>) + (2.000000 * <_var12_>) + (1.000000 * <_var13_>) + (1.000000 * <_var14_>) + (1.000000 * <_var15_>) + (2.000000 * <_var16_>) + (1.000000 * <_var17_>) + (7.000000 * <_var18_>) + (3.000000 * <_var19_>)) <= 380;
+violation: right hand side is violated by 2.21999983978094e-05 (scaled: 2.21999983978094e-05)
+best solution is not feasible in original problem
+WARNING: Not solved to optimality, status: UserLimit

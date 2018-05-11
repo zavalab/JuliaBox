@@ -1,0 +1,90 @@
+include("setup.jl")
+
+
+function createModel()
+    m = Model()
+@variable(m, objvar ) 
+@variable(m, x2 >=0.2, start=0.5942 )
+ @variable(m, x3 >=0.2, start=0.5942 )
+ @variable(m, x4 >=0.2, start=1.6167 )
+ @variable(m, x5 >= 0 , start=352)
+ @variable(m, x6 >= 0 , start=430)
+ @variable(m, x7 >= 0 , start=222)
+ @variable(m, x8 >= 0 , start=292)
+ @variable(m, x9 >= 0 , start=0.130670360422406)
+ @variable(m, x10 >= 0 , start=0.130670360422406)
+ @variable(m, x11 >= 0 )
+ @variable(m, x12 >= 0 )
+ @variable(m, x13 >= 0 )
+ @variable(m, x14 >= 0 )
+ @variable(m, x15 >= 0 )
+ @variable(m, x16 >= 0 )
+ @variable(m, x17 >= 0 )
+ @variable(m, x18 >= 0 )
+ @variable(m, x19 >= 0 )
+ @variable(m, x20 >= 0 , start=500.14934)
+ @variable(m, x21 >= 0 , start=638.25084)
+
+
+
+
+
+
+@constraint(m,     x5 + x6 - 0.94*x11 - 0.94*x12 - 0.94*x13 + 0.244*x17 + 0.244*x18 + 0.244*x19 <= 0)
+
+@constraint(m,     0.064*x11 + 0.064*x12 + 0.064*x13 - 0.58*x14 - 0.58*x15 - 0.58*x16 + 0.172*x17 + 0.172*x18 + 0.172*x19 <= 0)
+
+@constraint(m,     x7 + x8 + 0.048*x11 + 0.048*x12 + 0.048*x13 + 0.247*x14 + 0.247*x15 + 0.247*x16 - 0.916*x17 - 0.916*x18 - 0.916*x19 <= 0)
+
+@constraint(m,     x11 + 1.2*x12 + 0.8*x13 + 2*x14 + 1.8*x15 + 2.4*x16 + 3*x17 + 2.7*x18  + 3.2*x19 <= 3712)
+
+@constraint(m,     2*x11 + 1.8*x12 + 2.2*x13 + 3*x14 + 3.5*x15 + 2.3*x16 + 3*x17 + 3.2*x18  + 2.7*x19 <= 5000)
+
+@constraint(m,     356.474947137148*x2 + 53.7083537310174*x4 + x5 - 0.564264890180399*x20<= 352)
+
+@constraint(m,     339.983422262764*x2 + 43.5418249774113*x4 + x6 - 0.405939876920766*x21<= 430)
+
+@constraint(m,     106.946746119538*x2 + 145.018955433089*x4 + x7 - 0.507117039797071*x20<= 222)
+
+@constraint(m,     173.929713444361*x2 + 203.031384299627*x4 + x8 - 0.578889145413521*x21<= 292)
+
+@constraint(m,  x5*x2 + x7*x4 - x20 <= 0)
+
+@constraint(m,  x6*x2 + x8*x4 - x21 <= 0)
+
+@constraint(m,   - 3340.8*x9 - 500*x10 + x20 <= 0)
+
+@constraint(m,   - 371.2*x9 - 4500*x10 + x21 <= 0)
+
+@constraint(m,     0.94*x2 - 0.064*x3 - 0.048*x4 - x9 - 2*x10 <= 0)
+
+@constraint(m,     0.94*x2 - 0.064*x3 - 0.048*x4 - 1.2*x9 - 1.8*x10 <= 0)
+
+@constraint(m,     0.94*x2 - 0.064*x3 - 0.048*x4 - 0.8*x9 - 2.2*x10 <= 0)
+
+@constraint(m,     0.58*x3 - 0.247*x4 - 2*x9 - 3*x10 <= 0)
+
+@constraint(m,     0.58*x3 - 0.247*x4 - 1.8*x9 - 3.5*x10 <= 0)
+
+@constraint(m,     0.58*x3 - 0.247*x4 - 2.4*x9 - 2.3*x10 <= 0)
+
+@constraint(m,   - 0.244*x2 - 0.172*x3 + 0.916*x4 - 3*x9 - 3*x10 <= 0)
+
+@constraint(m,   - 0.244*x2 - 0.172*x3 + 0.916*x4 - 2.7*x9 - 3.2*x10 <= 0)
+
+@constraint(m,   - 0.244*x2 - 0.172*x3 + 0.916*x4 - 3.2*x9 - 2.7*x10 <= 0)
+
+@objective(m, :Min,  - (x5*x2 + x6*x2 + x7*x4 + x8*x4) + 3712*x9 + 5000*x10 )
+
+
+    return m
+end
+
+
+m = createModel()
+m = copyNLModel(m)
+m.solver = SCIPSolver("limits/gap", mingap, "limits/absgap", mingap, "limits/time", 43200.0)
+solve(m)
+println(m.colVal)
+
+

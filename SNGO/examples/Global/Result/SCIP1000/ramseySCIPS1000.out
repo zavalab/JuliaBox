@@ -1,0 +1,88 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: (1.000000 * <_var0_>) == 3.05;
+violation: left hand side is violated by 0.0499999999999998 (scaled: 0.0499999999999998)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 8000 chg bounds, 0 chg sides, 0 chg coeffs, 15997 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       2002 del vars, 10931 del conss, 0 add conss, 25750 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       3008 del vars, 11947 del conss, 0 add conss, 30444 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 4, fast)       3008 del vars, 12015 del conss, 0 add conss, 31166 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 5, fast)       3008 del vars, 12094 del conss, 0 add conss, 31704 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 6, fast)       3008 del vars, 12608 del conss, 0 add conss, 31704 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 7, fast)       3008 del vars, 12608 del conss, 1006 add conss, 31705 chg bounds, 0 chg sides, 0 chg coeffs, 16997 upgd conss, 0 impls, 0 clqs
+(round 8, fast)       3008 del vars, 12608 del conss, 1006 add conss, 31705 chg bounds, 0 chg sides, 0 chg coeffs, 18003 upgd conss, 0 impls, 0 clqs
+(round 9, exhaustive) 3008 del vars, 12627 del conss, 1006 add conss, 31705 chg bounds, 0 chg sides, 0 chg coeffs, 18003 upgd conss, 0 impls, 0 clqs
+presolving (10 rounds: 10 fast, 2 medium, 2 exhaustive):
+ 3008 deleted vars, 12627 deleted constraints, 1006 added constraints, 31705 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 25004 variables (0 bin, 0 int, 0 impl, 25004 cont) and 15376 constraints
+   5376 constraints of type <linear>
+  10000 constraints of type <nonlinear>
+Presolving Time: 74.21
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 28954 |     - | 133M|-4.097574e+03 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+q     1 |     0 | 28954 |     - | 146M|-4.097574e+03 |-3.935040e+03 |   4.13%
+      1 |     0 | 28954 |     - | 145M|-4.097574e+03 |-3.935040e+03 |   4.13%
+      1 |     0 | 28954 |     - | 145M|-4.097574e+03 |-3.935040e+03 |   4.13%
+      1 |     0 | 31052 |     - | 145M|-3.997481e+03 |-3.935040e+03 |   1.59%
+      1 |     0 | 31053 |     - | 145M|-3.997481e+03 |-3.935040e+03 |   1.59%
+      1 |     0 | 34508 |     - | 157M|-3.935046e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36330 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36533 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36704 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36820 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36893 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 36966 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37052 |     - | 158M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37155 |     - | 151M|-3.935042e+03 |-3.935040e+03 |   0.00%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 37223 |     - | 151M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37289 |     - | 151M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37361 |     - | 151M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37432 |     - | 151M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37495 |     - | 149M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37555 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37611 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37661 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37710 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37763 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37806 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37850 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37896 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37932 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 37965 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 37997 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38020 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38045 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38069 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38086 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38108 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38126 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38140 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38148 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38154 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38158 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38161 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38163 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38165 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+      1 |     0 | 38166 |     - | 150M|-3.935042e+03 |-3.935040e+03 |   0.00%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+*     1 |     0 | 38166 |     - | 150M|-3.935042e+03 |-3.935042e+03 |   0.00%
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 508.81
+Solving Nodes      : 1
+Primal Bound       : -3.93504186825052e+03 (2 solutions)
+Dual Bound         : -3.93504186825052e+03
+Gap                : 0.00 %
+WARNING: Nonlinear solver does not provide dual solutions

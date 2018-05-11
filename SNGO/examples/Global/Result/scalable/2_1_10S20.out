@@ -1,0 +1,369 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+WARNING: Solver does not appear to support hot-starts. Model will be built from scratch.
+WARNING: Nonlinear solver does not provide dual solutions
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Suboptimal
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+No. of first stage variables  5
+No. of second stage variables 20
+No. of second stage constraints 10
+No. of scenarios  20
+No. of total variables 305
+No. of total constraints 200
+No. of binary variables 0
+No. of continuous variables 305
+U:   634001.4684318099
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+first:  [1, 2, 3, 4, 5]
+preprocess:   2.534492285 (s)
+extensive:   0.174710008 (s)
+No. of nonlinear variables  305
+No. of nonlinear Terms  305
+preprocessex:   0.20690322 (s)
+U:   634001.4684318099
+additional  variables:  305
+relax:   0.404267015 (s)
+ iter  left  lev   bVarId       bvlb             bvub             LB              UB            gap   
+remaining 1   -1.0e10
+1      0      1                                        -10000000000.0000 6.3400e+05     1577383.4130 % 
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [50.0, 66.6667, 66.6667, 63.3333, 55.0]
+after initial feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [32.8924, 12.7477, 37.1236, 63.3333, 6.1744]     time:   2.597654761 (s)
+firstId   1   xl   0.0   xu   10.964123631119143    true
+firstId   1   xl   21.928247262238287   xu   32.89237089335743    true
+firstId   2   xl   0.0   xu   4.249225678589453    true
+firstId   2   xl   8.498451357178904   xu   12.747677035768358    true
+firstId   3   xl   0.0   xu   12.374532320906473    true
+firstId   3   xl   24.749064641812943   xu   37.12359696271942    true
+firstId   4   xl   0.0   xu   21.111111093257918    true
+firstId   4   xl   42.222222186515836   xu   63.333333279773754    true
+firstId   5   xl   0.0   xu   2.0581334728873446    true
+firstId   5   xl   4.11626694577469   xu   6.174400418662034    true
+after probing [0.0, 0.0, 0.0, 0.0, 0.0]   [32.8924, 12.7477, 37.1236, 63.3333, 6.1744]
+probing time:   2.263259919 (s)true
+added con      21
+relaxed_LB_trial       227660.3103821648
+added con      20
+relaxed_LB_trial       232785.1547424564
+added con      20
+relaxed_LB_trial       236030.2131944449
+added con      20
+relaxed_LB_trial       236703.1806462526
+added con      20
+relaxed_LB_trial       236965.7591515631
+added con      20
+relaxed_LB_trial       236985.09332504493
+added con      20
+relaxed_LB_trial       236994.95515799156
+added con      20
+relaxed_LB_trial       236999.4716578374
+added con      20
+relaxed_LB_trial       236999.58654961336
+added con      19
+relaxed_LB_trial       236999.63822768844
+iterative relax time:   0.33450811 (s)Optimal    236999.63822768844
+relaxed_LB  236999.63822768844
+after multiplier feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [32.8924, 7.51148, 37.1236, 63.3333, 3.40712]
+Relax Lower time:   1.238858115   (s)
+reduction_relax0.6748472154874068
+hello  UB   634001.4684318099  relaxed_LB  236999.63822768844 relaxed_status   Optimal
+before feasibility reduction [0.0, 0.0, 0.0, 0.0, 0.0]   [32.8924, 7.51148, 37.1236, 63.3333, 3.40712]
+after initial feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 3.37637e-10, 0.0]   [31.2356, 7.51148, 30.0917, 63.3333, 3.40712]     time:   0.240473022 (s)
+firstId   1   xl   0.0   xu   10.411859678675908    true
+firstId   1   xl   20.82371935735182   xu   31.235579036027726    true
+firstId   2   xl   1.014094600826683e-9   xu   2.5038277657028307    true
+firstId   2   xl   5.007655530391567   xu   7.5114832950803025    true
+firstId   3   xl   2.0624537540596573e-10   xu   10.030561308253672    true
+firstId   3   xl   20.0611226163011   xu   30.091683924348523    true
+firstId   4   xl   3.376366510731083e-10   xu   21.11111108428216    true
+firstId   4   xl   42.22222216822669   xu   63.333333252171215    true
+firstId   5   xl   0.0   xu   1.1357071494144984    true
+firstId   5   xl   2.2714142988289963   xu   3.407121448243495    true
+after probing [0.0, 1.01409e-9, 2.06245e-10, 3.37637e-10, 0.0]   [31.2356, 7.51148, 30.0917, 63.3333, 3.40712]
+probing time:   1.600348866 (s)true
+added con      21
+relaxed_LB_trial       251304.53203674627
+added con      20
+relaxed_LB_trial       254244.98965822542
+added con      20
+relaxed_LB_trial       258732.80227552654
+added con      20
+relaxed_LB_trial       261430.39548109443
+added con      20
+relaxed_LB_trial       262187.8689736194
+added con      20
+relaxed_LB_trial       262354.9518937828
+added con      20
+relaxed_LB_trial       262408.347097688
+added con      20
+relaxed_LB_trial       262415.84158911154
+added con      20
+relaxed_LB_trial       262419.588867031
+added con      20
+relaxed_LB_trial       262419.9934393555
+iterative relax time:   0.299544599 (s)Optimal    262419.9934393555
+relaxed_LB  262419.9934393555
+Relax Lower time:   0.347122866   (s)
+reduction_relax0
+hello  UB   634001.4684318099  relaxed_LB  262419.9934393555 relaxed_status   Optimal
+inside local_ws
+scenariocopy:   Optimal    49318.01003863317
+  scenario :  1   WS  scip statusOptimal  obj 49318.01796460353 lb  49275.259874126335  0.836098246 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.12107655286
+  scenario :  2   WS  scip statusOptimal  obj 24523.38236551827 lb  24522.702363453933  0.183562046 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076552987
+  scenario :  3   WS  scip statusOptimal  obj 24523.382365513346 lb  24522.702363453933  0.189475071 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076553016
+  scenario :  4   WS  scip statusOptimal  obj 24523.382367310278 lb  24522.701948414327  0.17820086 (s) 
+inside local_ws
+scenariocopy:   Optimal    29981.400144591942
+  scenario :  5   WS  scip statusOptimal  obj 28936.75997955877 lb  28892.93940985614  0.121855606 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076552696
+  scenario :  6   WS  scip statusOptimal  obj 24523.382365498535 lb  24522.702363436038  0.182112974 (s) 
+inside local_ws
+scenariocopy:   Optimal    39003.41245519699
+  scenario :  7   WS  scip statusOptimal  obj 39003.41521376794 lb  39003.41521376794  0.076718034 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076553074
+  scenario :  8   WS  scip statusOptimal  obj 24523.382369837444 lb  24523.382369837444  0.090276717 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076552856
+  scenario :  9   WS  scip statusOptimal  obj 24523.38236550737 lb  24522.702363441702  0.229786711 (s) 
+inside local_ws
+scenariocopy:   Optimal    36408.49978237032
+  scenario :  10   WS  scip statusOptimal  obj 36408.507493378056 lb  36408.507493378056  0.065220015 (s) 
+inside local_ws
+scenariocopy:   Optimal    28712.922549363997
+  scenario :  11   WS  scip statusOptimal  obj 28367.998314591703 lb  28363.28929304912  0.154464854 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.12107655298
+  scenario :  12   WS  scip statusOptimal  obj 24523.38236549834 lb  24522.702363453933  0.183935796 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076552936
+  scenario :  13   WS  scip statusOptimal  obj 24523.382365498477 lb  24522.70193706927  0.169277951 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076553012
+  scenario :  14   WS  scip statusOptimal  obj 24523.382365516132 lb  24522.702363453933  0.164162099 (s) 
+inside local_ws
+scenariocopy:   Optimal    30043.223655505844
+  scenario :  15   WS  scip statusOptimal  obj 30043.231828877786 lb  29939.900212330977  0.097587804 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076552892
+  scenario :  16   WS  scip statusOptimal  obj 27375.29164300392 lb  27357.512814977978  0.194477252 (s) 
+inside local_ws
+scenariocopy:   Optimal    29184.44379751671
+  scenario :  17   WS  scip statusOptimal  obj 28520.40823296875 lb  28520.40823296875  0.106461733 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.121076553103
+  scenario :  18   WS  scip statusOptimal  obj 24523.38236549854 lb  24522.70215315601  0.176362013 (s) 
+inside local_ws
+scenariocopy:   Optimal    30950.21239096584
+  scenario :  19   WS  scip statusOptimal  obj 29541.966963652736 lb  29541.966963652736  0.167200261 (s) 
+inside local_ws
+scenariocopy:   Optimal    28404.12107655289
+  scenario :  20   WS  scip statusOptimal  obj 24523.38236551872 lb  24522.702363453933  0.196712553 (s) 
+inside ws_lower3.890750742  (s) 
+WS_status:  Optimal
+scenario   1  LB  49275.259874126335
+scenario   2  LB  24522.702363453933
+scenario   3  LB  24522.702363453933
+scenario   4  LB  24522.701948414327
+scenario   5  LB  28892.93940985614
+scenario   6  LB  24522.702363436038
+scenario   7  LB  39003.41521376794
+scenario   8  LB  24523.382369837444
+scenario   9  LB  24522.702363441702
+scenario   10  LB  36408.507493378056
+scenario   11  LB  28363.28929304912
+scenario   12  LB  24522.702363453933
+scenario   13  LB  24522.70193706927
+scenario   14  LB  24522.702363453933
+scenario   15  LB  29939.900212330977
+scenario   16  LB  27357.512814977978
+scenario   17  LB  28520.40823296875
+scenario   18  LB  24522.70215315601
+scenario   19  LB  29541.966963652736
+scenario   20  LB  24522.702363453933
+WS_status  Optimal  WS_LB 567053.6044607324
+WS Lower time:   4.289216853 (s)
+FLB: -1.0e10
+node L:567053.6044607324
+global L:567053.6044607324
+local_UB  Optimal1.2491571110847786e6
+scenario   1    WSfix  scip status       Infeasible  obj NaN lb  49318.020038611074
+node U:1.2491571110847786e6
+upper time:   0.937185045 (s)
+UB:  634001.4684318099
+before multiplier medium feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 3.37637e-10, 0.0]   [31.2356, 7.51148, 30.0917, 63.3333, 3.40712]
+after multiplier medium feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 13.0464, 1.75867e-10]   [27.0894, 4.3828, 11.6217, 63.3333, 1.54774]
+before select[0.0, 1.01409e-9, 2.06245e-10, 13.0464, 1.75867e-10][27.0894, 4.3828, 11.6217, 63.3333, 1.54774]
+added con      17
+relaxed_LB_trial       570433.4685579735
+added con      15
+relaxed_LB_trial       570467.8902814045
+added con      12
+relaxed_LB_trial       570467.8882547402
+added con      6
+relaxed_LB_trial       570467.8752933802
+added con      6
+relaxed_LB_trial       570467.8788933796
+iterative relax time:   0.187769095 (s)Optimal    570467.8788933796
+relaxed_LB  570467.8788933796
+iterative relax time:   0.035890619 (s)Infeasible    2.0e10
+relaxed_LB  2.0e10
+added con      18
+relaxed_LB_trial       567847.3068104134
+added con      15
+relaxed_LB_trial       567854.4443975483
+added con      14
+relaxed_LB_trial       567854.4452829144
+added con      6
+relaxed_LB_trial       567854.4447045034
+added con      6
+relaxed_LB_trial       567854.452488907
+iterative relax time:   0.201576101 (s)Optimal    567854.452488907
+relaxed_LB  567854.452488907
+added con      19
+relaxed_LB_trial       608256.2278313736
+added con      17
+relaxed_LB_trial       608256.2278313736
+warning!:   Suboptimal     608256.2278313736
+iterative relax time:   0.132006257 (s)Optimal    608256.2278313736
+relaxed_LB  608256.2278313736
+added con      17
+relaxed_LB_trial       567848.1053857929
+added con      15
+relaxed_LB_trial       567854.4444554955
+added con      14
+relaxed_LB_trial       567854.446091136
+added con      5
+relaxed_LB_trial       567854.4444871315
+added con      6
+relaxed_LB_trial       567854.4448017593
+iterative relax time:   0.198255288 (s)Optimal    567854.4448017593
+relaxed_LB  567854.4448017593
+iterative relax time:   0.03273818 (s)Infeasible    2.0e10
+relaxed_LB  2.0e10
+iterative relax time:   0.027900548 (s)Infeasible    2.0e10
+relaxed_LB  2.0e10
+added con      17
+relaxed_LB_trial       604952.8645780891
+added con      18
+relaxed_LB_trial       605732.4470562671
+added con      18
+relaxed_LB_trial       605792.1940493209
+added con      19
+relaxed_LB_trial       605792.1941203547
+added con      10
+relaxed_LB_trial       605792.1954138529
+added con      4
+relaxed_LB_trial       605792.1946633633
+iterative relax time:   0.18444238 (s)Optimal    605792.1946633633
+relaxed_LB  605792.1946633633
+added con      17
+relaxed_LB_trial       567843.3559797059
+added con      15
+relaxed_LB_trial       567854.4443984185
+added con      14
+relaxed_LB_trial       567854.4479435546
+added con      5
+relaxed_LB_trial       567854.4451119474
+added con      4
+relaxed_LB_trial       567854.4539012959
+iterative relax time:   0.213660808 (s)Optimal    567854.4539012959
+relaxed_LB  567854.4539012959
+added con      18
+relaxed_LB_trial       593242.4517459772
+added con      17
+relaxed_LB_trial       593242.7818574017
+added con      10
+relaxed_LB_trial       593242.7823158944
+added con      2
+relaxed_LB_trial       593242.7817848609
+added con      4
+relaxed_LB_trial       593242.7745959524
+iterative relax time:   0.189708422 (s)Optimal    593242.7745959524
+relaxed_LB  593242.7745959524
+i  1    0.0    27.089367866648093    13.544683933324047
+improve_left:  3414.2744326471584   improve_right:  66947.86397107749 score 12944.312863411707
+LB_status_left  Optimal  obj_left  570467.8788933796  LB_status_right  634001.4684318099
+i  2    1.014094600826683e-9    4.382798250931383    2.191399125972739
+improve_left:  800.8480281746015   improve_right:  41202.623370641144 score 6861.114329544583
+LB_status_left  Optimal  obj_left  567854.452488907  LB_status_right  608256.2278313736
+i  3    2.0624537540596573e-10    11.62169508432059    5.810847542263418
+improve_left:  800.8403410268947   improve_right:  66947.86397107749 score 10722.893885534482
+LB_status_left  Optimal  obj_left  567854.4448017593  LB_status_right  634001.4684318099
+i  4    13.046354667640571    63.33333324601285    53.78819944363486
+improve_left:  66947.86397107749   improve_right:  38738.59020263085 score 42969.981267897834
+LB_status_left  Infeasible  obj_left  2.0e10  LB_status_right  605792.1946633633
+i  5    1.758670337948494e-10    1.5477444206693167    0.7738722104225919
+improve_left:  800.8494405634701   improve_right:  26189.17013521993 score 4609.0975447619385
+LB_status_left  Optimal  obj_left  567854.4539012959  LB_status_right  593242.7745959524
+bVarId:  4max_score  42969.981267897834
+after select[0.0, 1.01409e-9, 2.06245e-10, 53.7882, 1.75867e-10][13.5447, 0.567908, 2.31133, 63.3333, 0.214427]
+var select time:   2.403983051 (s)
+bVarId:  4  bValue: 58.88093004063415        53.78819944363486          63.33333324601285   node_LB  605792.1946633633
+left 605792.1946633633   605792.1946633633
+right 605792.1946633633   605792.1946633633
+remaining 1   605792.1946633633
+remaining 2   605792.1946633633
+2      1      2      4      53.7882        5.8881e+01     6.0579e+05     6.3400e+05     4.6566  %
+before feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 53.7882, 1.75867e-10]   [13.5447, 0.567908, 2.31133, 58.8809, 0.214427]
+after initial feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 53.7882, 1.75867e-10]   [13.5447, 0.567908, 2.31133, 58.8809, 0.214427]     time:   0.080645837 (s)
+remaining 1   605792.1946633633
+3      0      2      4      58.8809        6.3333e+01     6.0579e+05     6.3400e+05     4.6566  %
+before feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 58.8809, 1.75867e-10]   [13.5447, 0.567908, 2.31133, 63.3333, 0.214427]
+after initial feasibility reduction [0.0, 1.01409e-9, 2.06245e-10, 60.8955, 4.69919e-10]   [3.59513, 0.567908, 1.46567, 63.3333, 0.186912]     time:   0.308702683 (s)
+added con      25
+relaxed_LB_trial       632552.2914791739
+iterative relax time:   0.03632775 (s)Optimal    632552.2914791739
+Relax Lower time:   0.037959399   (s)
+reduction_relax0
+hello  UB   634001.4684318099  relaxed_LB  632552.2914791739 relaxed_status   Infeasible
+all node solved
+Solution time:   48.880200308 (s)
+relax_LB_time_total:   1.62394038 (s)
+global_LB_time_total:   4.289216853 (s)
+local_UB_time_total:   23.434591894999997 (s)
+global_UB_time_total:   0.700511217 (s)
+BT_time_total:   11.312274614999998 (s)
+VS_time_total:   2.403983051 (s)
+solved nodes:  3
+3                                                     6.2772e+05     6.3400e+05     1.0000  % 
+first stage sol   [0.0, 0.0, 0.0, 62.6087, 0.0]
+LB_UB_list   Any[[5.67054e5, 6.34001e5, 2.0, 1.0], [6.27724e5, 6.34001e5, 1.0, 1.0], [6.05792e5, 6.34001e5, 1.0, 1.0]]

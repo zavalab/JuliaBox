@@ -1,0 +1,118 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((5.000000 * <_var0_>) + (4.000000 * <_var1_>) + (5.000000 * <_var2_>) + (4.000000 * <_var3_>) + (1.000000 * <_var4_>) + (4.000000 * <_var5_>) + (4.000000 * <_var6_>) + (2.000000 * <_var7_>) + (5.000000 * <_var8_>) + (2.000000 * <_var9_>) + (3.000000 * <_var10_>) + (6.000000 * <_var11_>) + (1.000000 * <_var12_>) + (7.000000 * <_var13_>) + (7.000000 * <_var14_>) + (5.000000 * <_var15_>) + (8.000000 * <_var16_>) + (7.000000 * <_var17_>) + (2.000000 * <_var18_>) + (1.000000 * <_var19_>)) <= 415;
+violation: right hand side is violated by 40.655 (scaled: 40.655)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 1001 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       0 del vars, 0 del conss, 0 add conss, 4793 chg bounds, 0 chg sides, 0 chg coeffs, 1001 upgd conss, 0 impls, 0 clqs
+presolving (3 rounds: 3 fast, 1 medium, 1 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 0 added constraints, 4793 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 1506 variables (0 bin, 0 int, 0 impl, 1506 cont) and 1001 constraints
+   1000 constraints of type <linear>
+      1 constraints of type <quadratic>
+Presolving Time: 2.23
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+y     1 |     0 |     0 |     - |  12M|      --      | 5.476635e+07 |    Inf 
+      1 |     0 |   661 |     - |  15M|-3.217982e+07 | 5.476635e+07 |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+q     1 |     0 |   661 |     - |  15M|-3.217982e+07 | 5.907051e+06 |    Inf 
+y     1 |     0 |   661 |     - |  15M|-3.217982e+07 | 5.907047e+06 |    Inf 
+      1 |     0 |   661 |     - |  15M|-3.217982e+07 | 5.907047e+06 |    Inf 
+      1 |     0 |   661 |     - |  15M|-3.217982e+07 | 5.907047e+06 |    Inf 
+      1 |     0 |  1041 |     - |  15M|-2.808424e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1041 |     - |  15M|-2.808424e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1214 |     - |  15M|-1.633951e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1214 |     - |  15M|-1.633951e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1250 |     - |  15M|-1.268143e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1250 |     - |  15M|-1.268143e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1269 |     - |  15M|-1.154027e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1269 |     - |  15M|-1.154027e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1287 |     - |  15M|-1.129028e+06 | 5.907047e+06 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  1293 |     - |  15M|-1.128591e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1302 |     - |  15M|-1.123402e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1310 |     - |  15M|-1.119836e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1318 |     - |  15M|-1.119054e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1325 |     - |  15M|-1.118562e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1334 |     - |  15M|-1.117943e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1338 |     - |  16M|-1.117599e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1341 |     - |  16M|-1.117522e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1347 |     - |  16M|-1.116499e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1351 |     - |  16M|-1.116320e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1354 |     - |  16M|-1.116295e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1356 |     - |  16M|-1.116223e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1359 |     - |  16M|-1.116218e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1361 |     - |  16M|-1.116216e+06 | 5.907047e+06 |    Inf 
+      1 |     0 |  1366 |     - |  16M|-1.116175e+06 | 5.907047e+06 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 15026 |     - |  16M|-1.116175e+06 | 5.907047e+06 |    Inf 
+      1 |     0 | 15106 |     - |  16M| 6.622487e+03 | 5.907047e+06 |  Large 
+      1 |     0 | 15106 |     - |  16M| 6.622487e+03 | 5.907047e+06 |  Large 
+      1 |     0 | 15119 |     - |  16M| 2.016848e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15119 |     - |  16M| 2.016848e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15125 |     - |  16M| 2.901721e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15125 |     - |  16M| 2.901721e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15132 |     - |  16M| 3.765325e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15132 |     - |  16M| 3.765325e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15133 |     - |  16M| 3.773508e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15135 |     - |  16M| 3.789620e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15136 |     - |  16M| 3.792872e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15137 |     - |  16M| 3.800518e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15139 |     - |  16M| 3.814817e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15140 |     - |  16M| 3.815750e+04 | 5.907047e+06 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 15141 |     - |  16M| 3.817481e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15142 |     - |  16M| 3.819351e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15143 |     - |  16M| 3.819449e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15144 |     - |  16M| 3.819575e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15145 |     - |  16M| 3.819577e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15146 |     - |  16M| 3.819578e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15147 |     - |  16M| 3.819639e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15148 |     - |  16M| 3.819642e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15149 |     - |  16M| 3.819672e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15150 |     - |  16M| 3.819674e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15151 |     - |  16M| 3.819677e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15152 |     - |  16M| 3.819678e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15153 |     - |  16M| 3.819680e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15154 |     - |  16M| 3.819680e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15155 |     - |  16M| 3.819680e+04 | 5.907047e+06 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 15156 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15157 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15158 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15159 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15160 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15161 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15162 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15163 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15164 |     - |  16M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15165 |     - |  17M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     0 | 15166 |     - |  17M| 3.819681e+04 | 5.907047e+06 |  Large 
+      1 |     2 | 15166 |     - |  17M| 3.819681e+04 | 5.907047e+06 |  Large 
+y    26 |    25 | 32551 |1241.8 |  47M| 4.637216e+05 | 5.602401e+06 |1108.14%
+y    68 |    67 |205815 |3049.4 | 138M| 6.603194e+05 | 4.658874e+06 | 605.55%
+    100 |   101 |372798 |3750.4 | 183M| 6.782228e+05 | 4.658874e+06 | 586.92%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+y   101 |    68 |372798 |3712.9 | 169M| 6.782228e+05 | 3.067507e+06 | 352.29%
+    200 |    69 |486278 |2436.0 | 195M| 2.251298e+06 | 3.067507e+06 |  36.26%
+    300 |    81 |622611 |2077.3 | 220M| 2.447085e+06 | 3.067507e+06 |  25.35%
+    400 |    77 |734068 |1836.0 | 286M| 2.678877e+06 | 3.067507e+06 |  14.51%
+    500 |    57 |817793 |1635.8 | 272M| 2.833326e+06 | 3.067507e+06 |   8.27%
+    600 |    17 |860625 |1434.3 | 205M| 3.018251e+06 | 3.067507e+06 |   1.63%
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 3067.56
+Solving Nodes      : 611
+Primal Bound       : +3.06750688859231e+06 (6 solutions)
+Dual Bound         : +3.04246260574776e+06
+Gap                : 0.82 %
+WARNING: Nonlinear solver does not provide dual solutions

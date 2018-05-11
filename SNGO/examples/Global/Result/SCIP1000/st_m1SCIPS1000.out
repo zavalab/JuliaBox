@@ -1,0 +1,71 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((4.000000 * <_var0_>) + ((-10.000000) * <_var1_>) + (3.000000 * <_var2_>) + (5.000000 * <_var3_>) + (8.000000 * <_var4_>) + (8.000000 * <_var5_>) + ((-8.000000) * <_var6_>) + ((-9.000000) * <_var7_>) + (5.000000 * <_var8_>) + (7.000000 * <_var9_>) + ((-9.000000) * <_var10_>) + ((-6.000000) * <_var11_>) + ((-5.000000) * <_var12_>) + ((-7.000000) * <_var13_>) + (1.000000 * <_var14_>) + (3.000000 * <_var15_>) + ((-7.000000) * <_var16_>) + ((-7.000000) * <_var17_>) + (8.000000 * <_var18_>) + (3.000000 * <_var19_>)) <= -5;
+violation: right hand side is violated by 5 (scaled: 5)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 11001 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       0 del vars, 0 del conss, 0 add conss, 15006 chg bounds, 0 chg sides, 0 chg coeffs, 11001 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       0 del vars, 0 del conss, 0 add conss, 16008 chg bounds, 0 chg sides, 0 chg coeffs, 11001 upgd conss, 0 impls, 0 clqs
+presolving (4 rounds: 4 fast, 1 medium, 1 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 0 added constraints, 16008 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 15006 variables (0 bin, 0 int, 0 impl, 15006 cont) and 11001 constraints
+  11000 constraints of type <linear>
+      1 constraints of type <quadratic>
+Presolving Time: 211.59
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  6812 |     - | 123M|-2.295697e+10 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+y     1 |     0 |  6812 |     - | 123M|-2.295697e+10 |-4.902282e+08 |4582.91%
+      1 |     0 |  6812 |     - | 123M|-2.295697e+10 |-4.902282e+08 |4582.91%
+      1 |     2 |  6812 |     - | 123M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    100 |     1 | 55567 | 492.5 | 124M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    200 |     1 |118783 | 562.7 | 124M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    300 |     1 |182850 | 588.8 | 124M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    400 |     1 |257075 | 627.2 | 125M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    500 |     1 |315162 | 617.9 | 125M|-2.295697e+10 |-4.902282e+08 |4582.91%
+    600 |     3 |385326 | 631.9 | 125M|-2.183314e+10 |-4.902282e+08 |4353.67%
+    700 |     5 |465027 | 655.5 | 125M|-2.183314e+10 |-4.902282e+08 |4353.67%
+    800 |     5 |535065 | 661.1 | 125M|-2.183314e+10 |-4.902282e+08 |4353.67%
+    900 |     5 |574789 | 631.8 | 126M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1000 |     5 |617979 | 611.8 | 126M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1100 |     7 |704424 | 634.8 | 126M|-2.183314e+10 |-4.902282e+08 |4353.67%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   1200 |     7 |848656 | 702.1 | 126M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1300 |     7 |  1019k| 779.5 | 126M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1400 |     9 |  1155k| 820.9 | 127M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1500 |     9 |  1283k| 851.6 | 127M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1600 |    11 |  1391k| 866.2 | 127M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1700 |    11 |  1486k| 871.0 | 127M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1800 |    11 |  1596k| 883.8 | 128M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   1900 |    11 |  1706k| 895.0 | 128M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   2000 |    11 |  1793k| 893.7 | 128M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   2100 |    53 |  2755k|1309.6 | 154M|-2.183314e+10 |-4.902282e+08 |4353.67%
+   2200 |    85 |  3919k|1779.3 | 181M|-2.076432e+10 |-4.902282e+08 |4135.64%
+   2300 |   111 |  4157k|1805.4 | 228M|-2.076432e+10 |-4.902282e+08 |4135.64%
+   2400 |   131 |  5187k|2159.4 | 254M|-1.878093e+10 |-4.902282e+08 |3731.06%
+   2500 |   131 |  5645k|2256.4 | 286M|-1.878093e+10 |-4.902282e+08 |3731.06%
+   2600 |   151 |  6469k|2486.4 | 317M|-1.878093e+10 |-4.902282e+08 |3731.06%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   2700 |   165 |  7186k|2660.1 | 352M|-1.877992e+10 |-4.902282e+08 |3730.85%
+   2800 |   173 |  7616k|2718.7 | 370M|-1.877992e+10 |-4.902282e+08 |3730.85%
+   2900 |   193 |  8562k|2951.2 | 408M|-1.760083e+10 |-4.902282e+08 |3490.33%
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 43200.65
+Solving Nodes      : 2962
+Primal Bound       : -4.90228164974763e+08 (1 solutions)
+Dual Bound         : -1.76008304808032e+10
+Gap                : 3490.33 %
+  [nonlinear] <nonlin>: ((4.000000 * <_var0_>) + ((-2.000000) * <_var1_>) + ((-2.000000) * <_var2_>) + (10.000000 * <_var3_>) + ((-5.000000) * <_var4_>) + (8.000000 * <_var5_>) + (9.000000 * <_var6_>) + (5.000000 * <_var7_>) + (10.000000 * <_var8_>) + ((-5.000000) * <_var9_>) + (1.000000 * <_var10_>) + (4.000000 * <_var11_>) + ((-6.000000) * <_var12_>) + (2.000000 * <_var13_>) + ((-5.000000) * <_var14_>) + (2.000000 * <_var15_>) + (9.000000 * <_var16_>) + (6.000000 * <_var17_>) + ((-5.000000) * <_var18_>) + ((-1.000000) * <_var19_>)) <= 49;
+violation: right hand side is violated by 4.34999994780583e-06 (scaled: 4.34999994780583e-06)
+best solution is not feasible in original problem
+WARNING: Not solved to optimality, status: UserLimit
