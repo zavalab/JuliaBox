@@ -36,4 +36,5 @@ plot_err_dist.m
 plot_fitting.m
 plot_hmap.m
 plot_inference.m
-run_all
+
+- run_all runs all the examples.
