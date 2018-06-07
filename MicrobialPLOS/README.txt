@@ -30,7 +30,7 @@ example_pips_bash
 example_saturable.jl
 example_standard.jl
 
-- The following MATLAB scripts generates the plots.
+- The following MATLAB scripts generate the plots.
 plot_.m
 plot_err_dist.m
 plot_fitting.m
