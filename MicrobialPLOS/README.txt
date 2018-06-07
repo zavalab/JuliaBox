@@ -31,7 +31,7 @@ example_saturable.jl
 example_standard.jl
 
 - The following MATLAB scripts generate the plots.
-plot_.m
+plot_scalability.m
 plot_err_dist.m
 plot_fitting.m
 plot_hmap.m
