@@ -1,0 +1,24 @@
+* Elapsed Time:
+819.745532063
+* Large error indices:
+exp:Pi:11,species:[2, 8],phase:1,spind:1,timeind:2
+exp:Pi:14,species:[4, 10],phase:3,spind:2,timeind:2
+exp:Pi:16,species:[5, 10],phase:1,spind:2,timeind:2
+exp:Pi:31,species:[6, 4],phase:3,spind:2,timeind:2
+exp:Pi:41,species:[4, 12],phase:3,spind:1,timeind:2
+exp:Pi:41,species:[4, 12],phase:3,spind:1,timeind:3
+exp:Pi:42,species:[4, 9],phase:3,spind:1,timeind:2
+exp:Pi:52,species:[5, 12],phase:1,spind:2,timeind:2
+exp:Pi:55,species:[5, 1],phase:1,spind:2,timeind:2
+exp:Pi:59,species:[1, 12],phase:2,spind:2,timeind:2
+* Large total error indices:
+exp:Pi:65,species:[11, 2],spind:1
+exp:Mi:1,species:[10],spind:1
+exp:Mi:3,species:[8],spind:1
+exp:Mi:4,species:[4],spind:1
+exp:Mi:5,species:[3],spind:1
+exp:Mi:6,species:[5],spind:1
+exp:Mi:7,species:[9],spind:1
+exp:Mi:9,species:[2],spind:1
+exp:Mi:11,species:[12],spind:1
+exp:Mi:12,species:[6],spind:1
