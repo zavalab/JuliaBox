@@ -1,4 +1,4 @@
-This folder includes the Julia script used in the manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin, Ophelia Venturelli, Victor Zavala.
+This folder includes the Julia script used in the manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin, Ophelia Venturelli, and Victor Zavala.
 
 To run the julia script, the following Julia packages:
 JuMP, Plasmo, Ipopt, JLD.
