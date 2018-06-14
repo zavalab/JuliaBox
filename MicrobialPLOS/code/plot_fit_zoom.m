@@ -53,11 +53,5 @@ for k=1:4
              clrs{species(j)},'LineWidth',2,'LineStyle',markers{kk})
     end
     xlim([0 timePoints(end)])
-    %         ylim([0 ymax])
-    % ylabel('State','FontSize',16)
-    % xlabel('Time','FontSize',16)
-    % lg=legend('$\overline{x}$ (state exp. measurement)','$x$ (model state trajectory)','Location','southeast');
-    % lg.Interpreter='latex';
-    % lg.FontSize=16;
 end
 saveas(figure(1),[figurePath 'fit_select.eps'],'epsc')
