@@ -14,18 +14,18 @@ greyclr=[.5 .5 .5];
 markers={'-',':'};
 
 % Saturable
-% folderNames={'saturable','standard'};
-% exps={'M','M','P','P'};
-% spind={1,1,1,2};
-% inds={1,9,4,60};
-% hlind={[],[],[],[]};
+folderNames={'saturable','standard'};
+exps={'M','M','P','P'};
+spind={1,1,1,2};
+inds={1,9,4,60};
+hlind={[],[],[],[]};
 
 % CVaR
-folderNames={'cvar','standard'};
-exps={'P','P','P','P'};
-spind={1,2,2,2};
-inds={4,60,14,16};
-hlind={5,2,6,2};
+% folderNames={'cvar','standard'};
+% exps={'P','P','P','P'};
+% spind={1,2,2,2};
+% inds={4,60,14,16};
+% hlind={5,2,6,2};
 
 for k=1:4
     subplot(1,4,k);set(gca, 'FontSize', 14)

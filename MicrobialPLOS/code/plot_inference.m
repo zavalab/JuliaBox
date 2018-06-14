@@ -149,9 +149,6 @@ end
 
 saveas(fg,[figurePath 'UQ_ellipse.eps'],'epsc')
 
-set(0, 'defaultTextInterpreter','latex','defaultLegendInterpreter', ...
-       'latex','defaultAxesTickLabelInterpreter','latex')
-
 fg= figure(5);
 fg.Position(3:4)=[600 400];
 std_rsh=reshape(std,13,12)';

@@ -3,10 +3,12 @@
 
 ind=1;
 nSpecies=12;
-folderName='standard';
+folderName='cvar';;
 figurePath='../figure/';
 mkdir(figurePath);
 fg=figure(1);
+fg.Position(3:4)=[1920 984];
+
 ymax=1.5;
 clf
 hold on
@@ -105,5 +107,4 @@ for i=1:nSpecies
     htext.BackgroundColor=[1 1 1];
 end
 
-fg.Position(3:4)=[1920 984];
 saveas(fg,[figurePath 'fit2.eps'],'epsc')
