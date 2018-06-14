@@ -57,23 +57,25 @@ for i=1:nSpecies
     end
 end
 
-speciesOrder={'BH','CA','BU','PC','BO','BV','BT','FL','FP','CH','DP','ER'};
+speciesOrder={'BH','CA','BU','PC','BO','BV','BT','EL','FP','CH','DP','ER'};
 for i=1:nSpecies
     vtext = uicontrol('style','text');
     set(vtext,'String',speciesOrder{i});
     vtext.Units='normalized';
-    vtext.Position(1:2)=[0.105,0.06+(13-i)*(0.835/nSpecies)];
-    vtext.Position(3)=vtext.Position(3)*0.5;
-    vtext.FontSize=16;
+    vtext.Position(1:2)=[0.105,0.058+(13-i)*(0.835/nSpecies)];
+    vtext.Position(3)=vtext.Position(3)*0.8;
+    vtext.Position(4)=vtext.Position(4)*1.3;
+    vtext.FontSize=24;
     vtext.ForegroundColor=clrs{i};
     vtext.BackgroundColor=[1 1 1];
     
     htext = uicontrol('style','text');
     set(htext,'String',speciesOrder{i});
     htext.Units='normalized';
-    htext.Position(1:2)=[0.085+(i+1)*(0.788/(nSpecies+1)),0.935,];
-    htext.Position(3)=htext.Position(3)*0.5;
-    htext.FontSize=16;
+    htext.Position(1:2)=[0.081+(i+1)*(0.788/(nSpecies+1)),0.927];
+    htext.Position(3)=htext.Position(3)*0.8;
+    htext.Position(4)=vtext.Position(4)*1.15;
+    htext.FontSize=24;
     htext.ForegroundColor=[0 0 0];
     htext.BackgroundColor=[1 1 1];
 end
@@ -112,7 +114,7 @@ for ii=1:nSpecies
             end
         end
         hold on
-        plot(params(i,:),params(j,:),'.','Color',clrs{ii},'MarkerSize',3) ;
+        plot(params(i,:),params(j,:),'.','Color',clrs{ii},'MarkerSize',5) ;
         ctr=contour(X1,X2,Z,[b,b],'Color','k','LineWidth',1.5);
         sp.XTick=[];
         sp.YTick=[];
@@ -121,24 +123,26 @@ for ii=1:nSpecies
     end
 end
 
-labelV={'BH','CA','BU','PC','BO','BV','BT','FL','FP','CH','DP','ER'};
-labelH={'BH','CA','BU','PC','BO','BV','BT','FL','FP','CH','DP','ER'};
+labelV={'BH','CA','BU','PC','BO','BV','BT','EL','FP','CH','DP','ER'};
+labelH={'BH','CA','BU','PC','BO','BV','BT','EL','FP','CH','DP','ER'};
 for i=1:nSpecies
     vtext = uicontrol('style','text');
     set(vtext,'String',labelV{i});
     vtext.Units='normalized';
-    vtext.Position(1:2)=[0.105,0.06+(13-i)*(0.835/nSpecies)];
-    vtext.Position(3)=vtext.Position(3)*0.5;
-    vtext.FontSize=16;
+    vtext.Position(1:2)=[0.105,0.055+(13-i)*(0.835/nSpecies)];
+    vtext.Position(3)=vtext.Position(3)*0.65;
+    vtext.Position(4)=vtext.Position(4)*1.3;
+    vtext.FontSize=24;
     vtext.ForegroundColor=clrs{i};
     vtext.BackgroundColor=[1 1 1];
     
     htext = uicontrol('style','text');
     set(htext,'String',labelH{i});
     htext.Units='normalized';
-    htext.Position(1:2)=[0.08+i*(0.792/nSpecies),0.935,];
-    htext.Position(3)=htext.Position(3)*0.5;
-    htext.FontSize=16;
+    htext.Position(1:2)=[0.075+i*(0.792/nSpecies),0.93,];
+    htext.Position(3)=htext.Position(3)*0.8;
+    htext.Position(4)=htext.Position(4)*1.3;
+    htext.FontSize=24;
     htext.ForegroundColor=[0 0 0];
     htext.BackgroundColor=[1 1 1];
 end
