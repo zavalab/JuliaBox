@@ -3,7 +3,7 @@ clear
 clc
 
 set(0,'defaultAxesFontSize',14)
-speciesOrder={'BH','CA','BU','PC','BO','BV','BT','FL','FP','CH','DP','ER'};
+speciesOrder={'BH','CA','BU','PC','BO','BV','BT','EL','FP','CH','DP','ER'};
 figurePath='../figure/';
 
 fg=figure(1);fg.Position(3:4)=[600 400];

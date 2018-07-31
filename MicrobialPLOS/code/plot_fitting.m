@@ -3,10 +3,12 @@
 
 ind=1;
 nSpecies=12;
-folderName='standard';
+folderName='cvar';;
 figurePath='../figure/';
 mkdir(figurePath);
 fg=figure(1);
+fg.Position(3:4)=[1920 984];
+
 ymax=1.5;
 clf
 hold on
@@ -82,26 +84,27 @@ for pairid=1:66
     end
 end
 
-speciesOrder={'BH','CA','BU','PC','BO','BV','BT','FL','FP','CH','DP','ER'};
+speciesOrder={'BH','CA','BU','PC','BO','BV','BT','EL','FP','CH','DP','ER'};
 for i=1:nSpecies
     vtext = uicontrol('style','text');
     set(vtext,'String',speciesOrder{i});
     vtext.Units='normalized';
-    vtext.Position(1:2)=[0.103,0.06+(13-i)*(0.835/nSpecies)];
-    vtext.Position(3)=vtext.Position(3)*0.5;
-    vtext.FontSize=16;
+    vtext.Position(1:2)=[0.098,0.06+(13-i)*(0.835/nSpecies)];
+    vtext.Position(3)=vtext.Position(3)*0.75;
+    vtext.Position(4)=vtext.Position(4)*1.3;
+    vtext.FontSize=24;
     vtext.ForegroundColor=clrs{i};
     vtext.BackgroundColor=[1 1 1];
     
     htext = uicontrol('style','text');
     set(htext,'String',speciesOrder{i});
     htext.Units='normalized';
-    htext.Position(1:2)=[0.08+i*(0.792/nSpecies),0.935,];
-    htext.Position(3)=htext.Position(3)*0.5;
-    htext.FontSize=16;
+    htext.Position(1:2)=[0.08+i*(0.792/nSpecies),0.93,];
+    htext.Position(3)=htext.Position(3)*0.75;
+    htext.Position(4)=htext.Position(4)*1.3;
+    htext.FontSize=24;
     htext.ForegroundColor=[0 0 0];
     htext.BackgroundColor=[1 1 1];
 end
 
-fg.Position(3:4)=[1920 984];
 saveas(fg,[figurePath 'fit2.eps'],'epsc')
