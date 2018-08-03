@@ -16,13 +16,13 @@ quantile{2}=0.9;
 quantile{3}=0.9;
 quantile{4}=0.9;
 
-mses_{1}=sort(csvread('../output/standard/mses.csv'));
-mses_{2}=sort(csvread('../output/cvar/mses.csv'));
+mses_{1}=sort(csvread('../output/standard/mses.csv'))/2;
+mses_{2}=sort(csvread('../output/cvar/mses.csv'))/2;
 
 k=floor(length(mses_{1})/2);
-xmin=1e-4;
+xmin=1e-4/2;
 xmax=max([mses_{1};mses_{2}]);
-xmin2=1e2;
+xmin2=1e2/2;
 ymax=200;
 ymax2=20;
 
@@ -43,7 +43,7 @@ for i=1:2
     plot(ones(1,20)*m1{i},linspace(0,ymax,20),'r','LineWidth',4);
     plot(ones(1,20)*m4{i},linspace(0,ymax,20),'b','LineWidth',4);
     
-    xlabel('Error','FontSize',13);
+    % xlabel('Error','FontSize',13);
     lg=legend('Errors','Mean','CVaR$_{0.9}$');
     lg.FontSize=11;
     lg.Location='northwest';
@@ -62,7 +62,7 @@ for i=1:2
     
     plot(ones(1,20)*m4{i},linspace(0,ymax2,20),'b','LineWidth',4);
     
-    xlabel('Error','FontSize',13);
+    % xlabel('Error','FontSize',13);
     lg=legend('Errors','CVaR$_{0.9}$');
     lg.FontSize=11;
     lg.Location='northeast';
@@ -74,3 +74,4 @@ for i=1:2
     fg.Position(3:4)=[400 180];
     saveas(fg,['../figure/mse_histogram_zoom' num2str(i) '.eps'],'epsc')
 end
+

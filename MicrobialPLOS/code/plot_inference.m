@@ -1,5 +1,6 @@
 % Sungho Shin (sungho.shin@wisc.edu) and Victor Zavala (zavalatejeda@wisc.edu)
 % Makes posterior plots
+set(0,'defaultFigureVisible','off')
 
 set(0, 'DefaultFigureRenderer', 'painters');
 
@@ -18,7 +19,7 @@ outputPath=['../output/UQ/posterior/'];
 figurePath='../figure/';
 
 mkdir(figurePath);
-fg=figure(2);
+fg=figure;
 fg.Position(3:4)=[1920 984];
 clf
 
@@ -42,17 +43,19 @@ varPar=var(params')';
 std=sqrt(varPar);
 rsd=abs(sqrt(varPar)./meanPar);
 
+
 for i=1:nSpecies
     for j=1:nSpecies+1
         k=(nSpecies+1)*(i-1)+j;
         distmax = 3*std(k);
         subplot(nSpecies,nSpecies+1,13*(i-1)+j);
-        h=histogram(params(k,:),linspace(meanPar(k)-distmax,meanPar(k)+distmax));
+        h=histogram(params(k,:),linspace(meanPar(k)-distmax,meanPar(k)+distmax,50));
         h.EdgeColor='none';
         h.FaceAlpha=1;
         h.FaceColor=clrs{i};
         h.Parent.YAxis.TickLabels={};
         xlim([meanPar(k)-distmax meanPar(k)+distmax]);
+        ylim([0 50])
         h.Parent.XAxis.TickLabels={};
     end
 end
@@ -82,7 +85,7 @@ end
 
 saveas(fg,[figurePath 'UQ_conf.eps'],'epsc')
 
-fg=figure(3);
+fg=figure;
 fg.Position(3:4)=[1920 984];
 clf
 
@@ -149,7 +152,10 @@ end
 
 saveas(fg,[figurePath 'UQ_ellipse.eps'],'epsc')
 
-fg= figure(5);
+set(0, 'defaultTextInterpreter','latex','defaultLegendInterpreter', ...
+       'latex','defaultAxesTickLabelInterpreter','latex')
+
+fg= figure;
 fg.Position(3:4)=[600 400];
 std_rsh=reshape(std,13,12)';
 h=heatmap(std_rsh');
@@ -165,7 +171,7 @@ for i=1:156
     ec{i} = ' ';
 end
 
-fg= figure(6);
+fg= figure;
 cmap =[ ones(32,1) linspace(0,1,32)' linspace(0,1,32)';
         linspace(1,0,32)' linspace(1,0,32)' ones(32,1)];
 fg.Position(3:4)=[600 400];
@@ -179,3 +185,38 @@ h.GridVisible='off';
 h.YDisplayLabels=ec;
 h.XDisplayLabels=ec;
 saveas(fg,[figurePath 'UQ_hmap_pcor.eps'],'epsc')
+
+% Third momdent
+mom3 = moment(params',3)'./(std.^3);
+mom3_rsh=reshape(mom3,13,12)';
+cmap =[ ones(32,1) linspace(0,1,32)' linspace(0,1,32)';
+        linspace(1,0,32)' linspace(1,0,32)' ones(32,1)];
+
+fg= figure;
+fg.Position(3:4)=[600 400];
+h=heatmap(mom3_rsh');
+h.YData = {'-',speciesOrder{:}};
+h.XData = speciesOrder;
+h.ColorLimits = [-max(abs(mom3_rsh(:))) max(abs(mom3_rsh(:)))];
+h.Colormap=cmap;
+h.FontSize=20;
+h.CellLabelColor='none';
+saveas(fg,[figurePath 'UQ_hmap_mom3.eps'],'epsc')
+
+% Forth momdent
+mom4 = moment(params',4)'./(std.^4);
+mom4_rsh=reshape(mom4,13,12)';
+cmap =[ ones(32,1) linspace(0,1,32)' linspace(0,1,32)';
+        linspace(1,0,32)' linspace(1,0,32)' ones(32,1)];
+
+fg= figure;
+fg.Position(3:4)=[600 400];
+h=heatmap(mom4_rsh');
+h.YData = {'-',speciesOrder{:}};
+h.XData = speciesOrder;
+h.ColorLimits = [3-max(abs(3-mom4_rsh(:))) 3+max(abs(3-mom4_rsh(:)))];
+h.Colormap=cmap;
+% h.Colormap=[ ones(64,1) linspace(1,0,64)' linspace(1,0,64)'];
+h.FontSize=20;
+h.CellLabelColor='none';
+saveas(fg,[figurePath 'UQ_hmap_mom4.eps'],'epsc')

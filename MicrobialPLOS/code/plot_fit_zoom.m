@@ -14,18 +14,18 @@ greyclr=[.5 .5 .5];
 markers={'-',':'};
 
 % Saturable
-folderNames={'saturable','standard'};
-exps={'M','M','P','P'};
-spind={1,1,1,2};
-inds={1,9,4,60};
-hlind={[],[],[],[]};
+% folderNames={'saturable','standard'};
+% exps={'M','M','P','P'};
+% spind={1,1,1,2};
+% inds={1,9,4,60};
+% hlind={[],[],[],[]};
 
 % CVaR
-% folderNames={'cvar','standard'};
-% exps={'P','P','P','P'};
-% spind={1,2,2,2};
-% inds={4,60,14,16};
-% hlind={5,2,6,2};
+folderNames={'cvar','standard'};
+exps={'P','P','P','P'};
+spind={1,2,2,2};
+inds={4,60,14,16};
+hlind={5,2,6,2};
 
 for k=1:4
     subplot(1,4,k);set(gca, 'FontSize', 14)
@@ -53,5 +53,11 @@ for k=1:4
              clrs{species(j)},'LineWidth',2,'LineStyle',markers{kk})
     end
     xlim([0 timePoints(end)])
+    %         ylim([0 ymax])
+    % ylabel('State','FontSize',16)
+    % xlabel('Time','FontSize',16)
+    % lg=legend('$\overline{x}$ (state exp. measurement)','$x$ (model state trajectory)','Location','southeast');
+    % lg.Interpreter='latex';
+    % lg.FontSize=16;
 end
 saveas(figure(1),[figurePath 'fit_select.eps'],'epsc')
