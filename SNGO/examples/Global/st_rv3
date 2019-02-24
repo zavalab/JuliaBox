@@ -1,0 +1,62 @@
+include("setup.jl")
+
+function createModel()
+    m = Model()
+
+    @variable(m, x1 >=0)
+    @variable(m, x2 >=0)
+    @variable(m, x3 >=0)
+    @variable(m, x4 >=0)
+    @variable(m, x5 >=0)
+    @variable(m, x6 >=0)
+    @variable(m, x7 >=0)
+    @variable(m, x8 >=0)
+    @variable(m, x9 >=0)
+    @variable(m, x10 >=0)
+    @variable(m, x11 >=0)
+    @variable(m, x12 >=0)
+    @variable(m, x13 >=0)
+    @variable(m, x14 >=0)
+    @variable(m, x15 >=0)
+    @variable(m, x16 >=0)
+    @variable(m, x17 >=0)
+    @variable(m, x18 >=0)
+    @variable(m, x19 >=0)
+    @variable(m, x20 >=0)
+
+    @constraint(m,    8*x1 + 5*x6 + 4*x7 + 6*x12 + 6*x13 + 9*x14 + 5*x19 + x20 <= 220)
+    @constraint(m,    3*x1 + 4*x2 + 3*x7 + 7*x8 + 4*x13 + 9*x14 + 3*x15 + 2*x20 <= 175)
+    @constraint(m,    2*x2 + x3 + 6*x8 + 8*x9 + 9*x14 + 9*x15 + 8*x16 <= 215)
+    @constraint(m,    7*x3 + x4 + 7*x9 + 9*x10 + 2*x15 + 4*x16 + 9*x17 <= 195)
+    @constraint(m,    4*x4 + 4*x5 + x10 + 3*x11 + 7*x16 + 2*x17 + 8*x18 <= 145)
+    @constraint(m,    9*x5 + 5*x6 + 5*x11 + 7*x12 + x17 + 4*x18 + 6*x19 <= 185)
+    @constraint(m,    5*x1 + 5*x6 + 3*x7 + 8*x12 + 5*x13 + 9*x18 + 9*x19 + x20 <= 225)
+    @constraint(m,    x1 + 9*x2 + 9*x7 + 3*x8 + 9*x13 + 7*x14 + 4*x19 + x20 <= 215)
+    @constraint(m,    3*x1 + 6*x2 + 3*x3 + 4*x8 + 2*x9 + 6*x14 + 3*x15 + 8*x19 + x20 <= 175)
+    @constraint(m,    x2 + 2*x3 + 8*x4 + 4*x9 + x10 + 9*x15 + 6*x16 <= 155)
+    @constraint(m,    9*x3 + 3*x4 + 6*x5 + x10 + 6*x11 + 9*x16 + 8*x17 <= 210)
+    @constraint(m,    6*x4 + 3*x5 + 3*x6 + 6*x11 + 3*x12 + 8*x17 + 9*x18 <= 190)
+    @constraint(m,    9*x5 + 8*x6 + 2*x7 + 7*x12 + 8*x13 + 4*x18 + 3*x19 <= 205)
+    @constraint(m,    4*x1 + 6*x6 + 9*x7 + x8 + 6*x13 + 9*x14 + 8*x19 + 6*x20 <= 245)
+    @constraint(m,    7*x1 + 3*x2 + 7*x7 + 4*x8 + 2*x9 + x14 + 3*x15 + 5*x20 <= 160)
+    @constraint(m,    7*x2 + 9*x3 + 7*x8 + 9*x9 + 5*x10 + 2*x15 + 6*x16 <= 225)
+    @constraint(m,    6*x3 + 9*x4 + 8*x9 + 4*x10 + 2*x11 + 6*x16 + 4*x17 <= 195)
+    @constraint(m,    5*x4 + 5*x5 + 7*x10 + 8*x11 + 9*x12 + 8*x17 + 6*x18 <= 240)
+    @constraint(m,    7*x5 + 5*x6 + 6*x11 + 2*x12 + 8*x13 + 6*x18 + 9*x19 <= 215)
+    @constraint(m,    x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 + x12 + x13
+       + x14 + x15 + x16 + x17 + x18 + x19 + x20 <= 200) 
+
+
+    @objective(m, Min,  (-0.00055*(x1)^2 - 0.0583*x1 - 0.0019*(x2)^2 - 0.2318*x2 - 0.0002*
+      (x3)^2 - 0.0108*x3 - 0.00095*(x4)^2 - 0.1634*x4 - 0.0046*(x5)^2 - 
+      0.138*x5 - 0.0035*(x6)^2 - 0.357*x6 - 0.00315*(x7)^2 - 0.1953*x7 - 
+      0.00475*(x8)^2 - 0.361*x8 - 0.0048*(x9)^2 - 0.1824*x9 - 0.003*(x10)^2
+       - 0.162*x10 - 0.00265*(x11)^2 - 0.4346*x11 - 0.0017*(x12)^2 - 0.1054*
+      x12 - 0.0012*(x13)^2 - 0.2376*x13 - 0.00295*(x14)^2 - 0.0059*x14 - 
+      0.00315*(x15)^2 - 0.189*x15 - 0.0021*(x16)^2 - 0.0252*x16 - 0.00225*
+      (x17)^2 - 0.099*x17 - 0.0034*(x18)^2 - 0.3604*x18 - 0.001*(x19)^2 - 
+      0.022*x19 - 0.00305*(x20)^2 - 0.3294*x20))
+    return m
+end
+
+include("solver.jl")

@@ -1,0 +1,72 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: (1.000000 * <_var0_>) == 3.05;
+violation: left hand side is violated by 0.0499999999999998 (scaled: 0.0499999999999998)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 800 chg bounds, 0 chg sides, 0 chg coeffs, 1597 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       202 del vars, 1089 del conss, 0 add conss, 2586 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       302 del vars, 1189 del conss, 0 add conss, 3033 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 4, fast)       302 del vars, 1197 del conss, 0 add conss, 3105 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 5, fast)       302 del vars, 1213 del conss, 0 add conss, 3152 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 6, fast)       302 del vars, 1253 del conss, 0 add conss, 3152 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 7, fast)       302 del vars, 1253 del conss, 100 add conss, 3153 chg bounds, 0 chg sides, 0 chg coeffs, 1697 upgd conss, 0 impls, 0 clqs
+(round 8, fast)       302 del vars, 1253 del conss, 100 add conss, 3153 chg bounds, 0 chg sides, 0 chg coeffs, 1797 upgd conss, 0 impls, 0 clqs
+presolving (9 rounds: 9 fast, 1 medium, 1 exhaustive):
+ 302 deleted vars, 1253 deleted constraints, 100 added constraints, 3153 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 2504 variables (0 bin, 0 int, 0 impl, 2504 cont) and 1544 constraints
+    544 constraints of type <linear>
+   1000 constraints of type <nonlinear>
+Presolving Time: 0.21
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  2927 |     - |  13M|-4.034968e+02 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+q     1 |     0 |  2927 |     - |  14M|-4.034968e+02 |-3.877725e+02 |   4.06%
+      1 |     0 |  2927 |     - |  14M|-4.034968e+02 |-3.877725e+02 |   4.06%
+      1 |     0 |  2927 |     - |  14M|-4.034968e+02 |-3.877725e+02 |   4.06%
+      1 |     0 |  3470 |     - |  15M|-3.877732e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3691 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3723 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3747 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3773 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3790 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3815 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3830 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3847 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3870 |     - |  16M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3883 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  3895 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3906 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3914 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3921 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3929 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3937 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3943 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3948 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3954 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3960 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3965 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3971 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3976 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3980 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+      1 |     0 |  3983 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  3984 |     - |  15M|-3.877726e+02 |-3.877725e+02 |   0.00%
+*     1 |     0 |  3984 |     - |  15M|-3.877726e+02 |-3.877726e+02 |   0.00%
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 1.33
+Solving Nodes      : 1
+Primal Bound       : -3.87772613213583e+02 (2 solutions)
+Dual Bound         : -3.87772613213583e+02
+Gap                : 0.00 %
+WARNING: Nonlinear solver does not provide dual solutions

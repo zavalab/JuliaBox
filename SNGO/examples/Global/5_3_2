@@ -1,0 +1,52 @@
+include("setup.jl")
+
+function createModel()
+    m = Model()
+
+    @variable(m, 0<=x1 <=300)
+    @variable(m, 0<=x2 <=300)
+    @variable(m, 0<=x3 <=300)
+    @variable(m, 0<=x4 <=300)
+    @variable(m, 0<=x5 <=300)
+    @variable(m, 0<=x6 <=300)
+    @variable(m, 0<=x7 <=300)
+    @variable(m, 0<=x8 <=300)
+    @variable(m, 0<=x9 <=300)
+    @variable(m, 0<=x10 <=300)
+    @variable(m, 0<=x11 <=300)
+    @variable(m, 0<=x12 <=300)
+    @variable(m, 0<=x13 <=300)
+    @variable(m, 0<=x14 <=300)
+    @variable(m, 0<=x15 <=300)
+    @variable(m, 0<=x16 <=300)
+    @variable(m, 0<=x17 <=300)
+    @variable(m, 0<=x18 <=300)
+    @variable(m, 0<=x19 <=1)
+    @variable(m, 0<=x20 <=1)
+    @variable(m, 0<=x21 <=1)
+    @variable(m, 0<=x22 <=1)
+
+    @constraint(m,    x1 + x2 + x3 + x4 == 300)
+    @constraint(m,    x5 - x6 - x7 == 0)
+    @constraint(m,    x8 - x9 - x10 - x11 == 0)
+    @constraint(m,    x12 - x13 - x14 - x15 == 0)
+    @constraint(m,    x16 - x17 - x18 == 0)
+    @constraint(m, x13*x21 + 0.333*x1 - x5 == 0)
+    @constraint(m, x13*x22 - x8*x20 + 0.333*x1 == 0)
+    @constraint(m,  - x8*x19 + 0.333*x1 == 0)
+    @constraint(m,  - x12*x21 - 0.333*x2 == 0)
+    @constraint(m, x9*x20 - x12*x22 + 0.333*x2 == 0)
+    @constraint(m, x9*x19 + 0.333*x2 - x16 == 0)
+    @constraint(m, x14*x21 + 0.333*x3 + x6 == 30)
+    @constraint(m, x10*x20 + x14*x22 + 0.333*x3 == 50)
+    @constraint(m, x10*x19 + 0.333*x3 + x17 == 30)
+    @constraint(m,    x19 + x20 == 1)
+    @constraint(m,    x21 + x22 == 1)
+
+
+    @objective(m, Min, 0.00432*x1 + 0.01517*x2 + 0.01517*x9 + 0.00432*x13 + 0.9979)
+    return m
+end
+
+include("solver.jl")
+

@@ -1,0 +1,44 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: (((<_var22_> * <_var0_> * <_var32_>) - (<_var1_> * <_var3_>)) - 0.000000) == 0;
+violation: left hand side is violated by 262.9263 (scaled: 262.9263)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 34090 chg bounds, 0 chg sides, 0 chg coeffs, 1 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       0 del vars, 0 del conss, 0 add conss, 51283 chg bounds, 0 chg sides, 0 chg coeffs, 1 upgd conss, 0 impls, 0 clqs
+(round 3, fast)       0 del vars, 0 del conss, 90000 add conss, 51283 chg bounds, 0 chg sides, 0 chg coeffs, 1 upgd conss, 0 impls, 0 clqs
+(round 4, fast)       0 del vars, 0 del conss, 90000 add conss, 70335 chg bounds, 0 chg sides, 0 chg coeffs, 90001 upgd conss, 0 impls, 0 clqs
+(round 5, fast)       0 del vars, 0 del conss, 90000 add conss, 159201 chg bounds, 0 chg sides, 0 chg coeffs, 90001 upgd conss, 0 impls, 0 clqs
+(round 6, fast)       0 del vars, 0 del conss, 90000 add conss, 225170 chg bounds, 0 chg sides, 0 chg coeffs, 90001 upgd conss, 0 impls, 0 clqs
+(round 7, fast)       0 del vars, 0 del conss, 90000 add conss, 225560 chg bounds, 0 chg sides, 0 chg coeffs, 98567 upgd conss, 0 impls, 0 clqs
+(round 8, fast)       0 del vars, 0 del conss, 90000 add conss, 259801 chg bounds, 0 chg sides, 0 chg coeffs, 98567 upgd conss, 0 impls, 0 clqs
+(round 9, fast)       0 del vars, 0 del conss, 90000 add conss, 263818 chg bounds, 0 chg sides, 0 chg coeffs, 98567 upgd conss, 0 impls, 0 clqs
+(round 10, fast)       0 del vars, 0 del conss, 100000 add conss, 263818 chg bounds, 0 chg sides, 0 chg coeffs, 98567 upgd conss, 0 impls, 0 clqs
+(round 11, fast)       0 del vars, 0 del conss, 100000 add conss, 263818 chg bounds, 0 chg sides, 0 chg coeffs, 108567 upgd conss, 0 impls, 0 clqs
+presolving (12 rounds: 12 fast, 1 medium, 1 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 100000 added constraints, 263859 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 137006 variables (0 bin, 0 int, 0 impl, 137006 cont) and 120001 constraints
+   8566 constraints of type <abspower>
+  91435 constraints of type <quadratic>
+  20000 constraints of type <nonlinear>
+Presolving Time: 658.87
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+
+(node 1) unresolved numerical troubles in LP 2 -- using pseudo solution instead (loop 1)
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     2 |147791 |     - | 652M|-3.482819e-02 |      --      |    Inf 
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 43241.59
+Solving Nodes      : 54
+Primal Bound       : +1.00000000000000e+20 (0 solutions)
+Dual Bound         : -3.48281860351562e-02
+Gap                : infinite
+WARNING: Not solved to optimality, status: UserLimit

@@ -1,0 +1,23 @@
+# for P2
+mkdir -p ../output/pips_P2
+# mpirun -np 16 julia example_pips_P2.jl |tee ../output/pips_P2/po16.out 
+mpirun -np 8  julia example_pips_P2.jl |tee ../output/pips_P2/po8.out
+# mpirun -np 4  julia example_pips_P2.jl |tee ../output/pips_P2/po4.out
+# mpirun -np 2  julia example_pips_P2.jl |tee ../output/pips_P2/po2.out
+# mpirun -np 1  julia example_pips_P2.jl |tee ../output/pips_P2/po1.out
+
+# # for S1
+# mkdir -p ../output/pips_S1
+# mpirun -np 12 julia example_pips_S1.jl |tee ../output/pips_S1/po12.out
+
+# # for S2
+# mkdir -p ../output/pips_S2
+# mpirun -np 12 julia example_pips_S2.jl |tee ../output/pips_S2/po12.out
+
+# # for S3
+# mkdir -p ../output/pips_S3
+# mpirun -np 12 julia example_pips_S3.jl |tee ../output/pips_S3/po12.out
+
+# # for S4
+# mkdir -p ../output/pips_S4
+# mpirun -np 12 julia example_pips_S4.jl |tee ../output/pips_S4/po12.out

@@ -1,0 +1,6 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+  [nonlinear] <nonlin>: ((1.000000 * <_var0_>) + (1.000000 * <_var3_>) + (1.000000 * <_var6_>) + (1.000000 * <_var9_>)) == 1;
+violation: left hand side is violated by 1 (scaled: 1)
+all 1 solutions given by solution candidate storage are infeasible
+
+presolving:

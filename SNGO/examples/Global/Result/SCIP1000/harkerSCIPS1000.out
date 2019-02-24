@@ -1,0 +1,93 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+1/1 feasible solution given by solution candidate storage, new primal bound 0.000000e+00
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 11996 upgd conss, 0 impls, 0 clqs
+(round 2, exhaustive) 0 del vars, 4995 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 11996 upgd conss, 0 impls, 0 clqs
+presolving (3 rounds: 3 fast, 2 medium, 2 exhaustive):
+ 0 deleted vars, 4995 deleted constraints, 0 added constraints, 0 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 16006 variables (0 bin, 0 int, 0 impl, 16006 cont) and 8001 constraints
+   7001 constraints of type <linear>
+   1000 constraints of type <nonlinear>
+Presolving Time: 720.68
+transformed 2/2 original solutions to the transformed problem space
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |     5 |     - | 105M|      --      | 0.000000e+00 |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+      1 |     0 |  1025 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |  1042 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |  1049 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |  1056 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |  1065 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |  1256 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 7)
+      1 |     0 | 16204 |     - | 116M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 17474 |     - | 119M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1389)
+      1 |     0 | 18627 |     - | 120M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 20180 |     - | 121M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1391)
+      1 |     0 | 22116 |     - | 122M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 22631 |     - | 125M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1393)
+      1 |     0 | 23762 |     - | 126M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 30217 |     - | 127M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1395)
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 33208 |     - | 127M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 35581 |     - | 128M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1397)
+      1 |     0 | 37261 |     - | 129M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 44964 |     - | 131M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1399)
+      1 |     0 | 47336 |     - | 133M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 52489 |     - | 134M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1401)
+      1 |     0 | 59396 |     - | 135M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 | 86998 |     - | 136M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1404)
+      1 |     0 | 91255 |     - | 138M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |116047 |     - | 140M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 1407)
+(node 1) unresolved numerical troubles in LP 1409 -- using pseudo solution instead (loop 1)
+      1 |     2 |131153 |     - | 142M|      --      | 0.000000e+00 |    Inf 
+y     2 |     1 |131153 |13080.0 | 142M|      --      |-1.130811e+06 |    Inf 
+    100 |   101 |  2264k|21680.1 | 148M|      --      |-1.130811e+06 |    Inf 
+    200 |   201 |  3530k|17147.7 | 153M|      --      |-1.130811e+06 |    Inf 
+    300 |   301 |  4702k|15334.0 | 156M|      --      |-1.130811e+06 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+    400 |   401 |  6043k|14850.4 | 161M|      --      |-1.130811e+06 |    Inf 
+    500 |   501 |  7253k|14299.9 | 166M|      --      |-1.130811e+06 |    Inf 
+    600 |   601 |  8496k|13987.3 | 171M|      --      |-1.130811e+06 |    Inf 
+    700 |   701 |  9875k|13959.0 | 176M|      --      |-1.130811e+06 |    Inf 
+    800 |   801 | 11168k|13830.8 | 181M|      --      |-1.130811e+06 |    Inf 
+    900 |   901 | 12482k|13753.5 | 182M|      --      |-1.130811e+06 |    Inf 
+   1000 |  1001 | 13832k|13728.4 | 183M|      --      |-1.130811e+06 |    Inf 
+   1100 |  1101 | 14950k|13496.0 | 185M|      --      |-1.130811e+06 |    Inf 
+   1200 |  1201 | 15961k|13213.8 | 186M|      --      |-1.130811e+06 |    Inf 
+   1300 |  1301 | 17005k|13000.4 | 187M|      --      |-1.130811e+06 |    Inf 
+   1400 |  1401 | 18065k|12828.7 | 188M|      --      |-1.130811e+06 |    Inf 
+   1500 |  1501 | 19012k|12605.0 | 189M|      --      |-1.130811e+06 |    Inf 
+   1600 |  1601 | 20841k|12960.3 | 210M|      --      |-1.130811e+06 |    Inf 
+   1700 |  1701 | 21800k|12762.1 | 211M|      --      |-1.130811e+06 |    Inf 
+   1800 |  1801 | 22962k|12698.4 | 218M|      --      |-1.130811e+06 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   1900 |  1901 | 23965k|12558.1 | 219M|      --      |-1.130811e+06 |    Inf 
+   2000 |  2001 | 24919k|12406.7 | 220M|      --      |-1.130811e+06 |    Inf 
+   2100 |  2101 | 26222k|12436.8 | 238M|      --      |-1.130811e+06 |    Inf 
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 43200.78
+Solving Nodes      : 2198
+Primal Bound       : -1.13081124698640e+06 (3 solutions)
+Dual Bound         : -1.00000000000000e+20
+Gap                : infinite
+WARNING: Not solved to optimality, status: UserLimit

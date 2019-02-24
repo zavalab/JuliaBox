@@ -1,0 +1,8 @@
+Please run the following files with Julia:
+
+EDAS.jl      #using "alsmot sure" approach
+EDsvar.jl    #using sigmoid approximation approach, the first iteration uses Cvar approximation
+EDsmooth.jl  #using the smooth approximation proposed in Li Pu's paper
+
+
+Results are saved on the corresponding .out files.

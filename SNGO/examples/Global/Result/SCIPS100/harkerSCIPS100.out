@@ -1,0 +1,127 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+1/1 feasible solution given by solution candidate storage, new primal bound 0.000000e+00
+
+presolving:
+(round 1, fast)       0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 1196 upgd conss, 0 impls, 0 clqs
+(round 2, exhaustive) 0 del vars, 495 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 1196 upgd conss, 0 impls, 0 clqs
+presolving (3 rounds: 3 fast, 2 medium, 2 exhaustive):
+ 0 deleted vars, 495 deleted constraints, 0 added constraints, 0 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 1606 variables (0 bin, 0 int, 0 impl, 1606 cont) and 801 constraints
+    701 constraints of type <linear>
+    100 constraints of type <nonlinear>
+Presolving Time: 1.56
+transformed 2/2 original solutions to the transformed problem space
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |     5 |     - |  10M|      --      | 0.000000e+00 |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+      1 |     0 |   125 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |   134 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |   139 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |   143 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |   254 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+      1 |     0 |   299 |     - |  11M|      --      | 0.000000e+00 |    Inf 
+(node 1) LP relaxation is unbounded (LP 7)
+q     1 |     0 |  5299 |     - |  11M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  5299 |     - |  11M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  5459 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 589)
+      1 |     0 |  6974 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  7271 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 767)
+      1 |     0 |  7487 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  7511 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 769)
+      1 |     0 |  7614 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  7885 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 771)
+      1 |     0 |  8088 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  8698 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 773)
+      1 |     0 |  8729 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  9167 |     - |  12M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 775)
+      1 |     0 |  9204 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  9230 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 777)
+      1 |     0 |  9252 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  9272 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 779)
+      1 |     0 |  9291 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |  9333 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 781)
+      1 |     0 |  9713 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 10217 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 783)
+      1 |     0 | 10330 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 10666 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 785)
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 10947 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 11149 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 787)
+      1 |     0 | 11466 |     - |  13M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 11654 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 789)
+      1 |     0 | 11774 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 12400 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 791)
+      1 |     0 | 12808 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 13056 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 793)
+      1 |     0 | 13246 |     - |  14M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 13973 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 795)
+      1 |     0 | 14479 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 14956 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 797)
+      1 |     0 | 15606 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 16797 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 799)
+      1 |     0 | 18464 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 19045 |     - |  15M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 801)
+      1 |     0 | 20021 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 21261 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 803)
+      1 |     0 | 23500 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 26273 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 805)
+      1 |     0 | 29937 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 34200 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 807)
+      1 |     0 | 38728 |     - |  16M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 48156 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 809)
+      1 |     0 | 49501 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 61516 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 812)
+      1 |     0 | 62014 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 62836 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 814)
+      1 |     0 | 69879 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 | 83543 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+(node 1) LP relaxation is unbounded (LP 816)
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 | 90808 |     - |  17M|      --      |-1.127499e+05 |    Inf 
+      1 |     0 |108518 |     - |  18M|-1.337677e+05 |-1.127499e+05 |  18.64%
+      1 |     0 |108518 |     - |  18M|-1.337677e+05 |-1.127499e+05 |  18.64%
+(node 1) unresolved numerical troubles in LP 820 -- using pseudo solution instead (loop 1)
+      1 |     2 |121312 |     - |  18M|-1.337677e+05 |-1.127499e+05 |  18.64%
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 153.35
+Solving Nodes      : 3
+Primal Bound       : -1.12749932159477e+05 (4 solutions)
+Dual Bound         : -1.12749932159477e+05
+Gap                : 0.00 %
+WARNING: Nonlinear solver does not provide dual solutions

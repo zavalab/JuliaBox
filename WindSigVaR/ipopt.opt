@@ -1,0 +1,7 @@
+linear_solver ma27
+#nlp_scaling_method none
+#constr_mult_init_max 0
+print_level 5
+#bound_relax_factor 0
+#honor_original_bounds yes
+tol 1e-6

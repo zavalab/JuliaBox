@@ -1,0 +1,30 @@
+julia6 2_1_10 >&2_1_10S100.out&
+julia6 2_1_8 >&2_1_8S100.out&
+julia6 5_3_2 >&5_3_2S100.out&
+julia6 abel  >&abelS100.out&
+julia6 immun   >&immunS100.out&
+julia6 st_fp7a  >&st_fp7aS100.out&
+julia6 st_fp7c  >&st_fp7cS100.out&
+julia6 st_fp7e   >&st_fp7eS100.out&
+julia6 st_m1  >&st_m1S100.out&
+julia6 st_rv2  >&st_rv2S100.out&
+julia6 st_rv7  >&st_rv7S100.out&
+
+julia6 2_1_7  >&2_1_7S100.out&
+julia6 5_2_5  >&5_2_5S100.out&
+julia6 8_4_1  >&8_4_1S100.out&
+julia6 hydro  >&hydroS100.out&
+julia6 st_fp7b  >&st_fp7bS100.out&
+julia6 st_fp7d  >&st_fp7dS100.out&
+julia6 st_fp8  >&st_fp8S100.out&
+julia6 st_m2  >&st_m2S100.out&
+julia6 st_rv3  >&st_rv3S100.out&
+julia6 st_rv8  >&st_rv8S100.out&
+
+julia6 8_4_8_bnd >&8_4_8_bndS100.out&
+julia6 8_4_8 >&8_4_8S100.out&
+julia6 pollut >&pollutS100.out&
+julia6 ramsey >&ramseyS100.out&
+julia6 srcpm >&srcpmS100.out&
+julia6 harker >&harkerS100.out&
+julia6 chenery >&cheneryS100.out&

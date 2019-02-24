@@ -1,0 +1,226 @@
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Plasmo.jl/src/Plasmo.jl:16
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Plasmo.jl/src/Plasmo.jl:16
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Plasmo.jl/src/Plasmo.jl:55
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Plasmo.jl/src/Plasmo.jl:66
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:152
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:152
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:152
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:152
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:156
+WARNING: Base.String is deprecated, use AbstractString instead.
+  likely near /home/cao27/SINGO/Param/param.jl:156
+presolving:
+(round 1, fast)       93 del vars, 93 del conss, 0 add conss, 95 chg bounds, 0 chg sides, 0 chg coeffs, 471 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       93 del vars, 93 del conss, 0 add conss, 162 chg bounds, 0 chg sides, 0 chg coeffs, 471 upgd conss, 0 impls, 0 clqs
+(round 3, medium)     93 del vars, 93 del conss, 0 add conss, 162 chg bounds, 0 chg sides, 0 chg coeffs, 472 upgd conss, 0 impls, 0 clqs
+presolving (4 rounds: 4 fast, 2 medium, 1 exhaustive):
+ 93 deleted vars, 93 deleted constraints, 0 added constraints, 163 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 989 variables (0 bin, 0 int, 0 impl, 989 cont) and 987 constraints
+      1 constraints of type <linear>
+    470 constraints of type <abspower>
+    516 constraints of type <quadratic>
+Presolving Time: 0.02
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |   189 |     - |6581k|-1.004400e-05 |      --      |    Inf 
+q     1 |     0 |   189 |     - |6959k|-1.004400e-05 | 3.923297e+01 |    Inf 
+      1 |     0 |   536 |     - |7232k|-1.004400e-05 | 3.923297e+01 |    Inf 
+      1 |     0 |   536 |     - |7218k|-1.004400e-05 | 3.923297e+01 |    Inf 
+      1 |     0 |   990 |     - |7340k| 4.381149e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  1336 |     - |7563k| 5.635808e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  1605 |     - |7664k| 5.950285e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  1801 |     - |7730k| 6.123901e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  1999 |     - |7806k| 6.178874e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2103 |     - |7857k| 6.284419e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2182 |     - |7901k| 6.345751e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2238 |     - |7932k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2281 |     - |7953k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2306 |     - |6339k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2315 |     - |6344k| 6.360300e-02 | 3.923297e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  2317 |     - |6345k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  2318 |     - |6346k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  7740 |     - |6333k| 6.360300e-02 | 3.923297e+01 |  Large 
+      1 |     0 |  7769 |     - |6344k| 1.039264e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8119 |     - |6501k| 1.397475e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8256 |     - |6504k| 1.442841e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8299 |     - |6525k| 1.442841e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8427 |     - |6572k| 1.473647e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8481 |     - |6143k| 1.473647e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8580 |     - |6169k| 1.481703e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8642 |     - |6199k| 1.481703e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8658 |     - |6208k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8667 |     - |6213k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8671 |     - |6214k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8673 |     - |6194k| 1.484097e-01 | 3.923297e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  8677 |     - |6195k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8679 |     - |6196k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8683 |     - |6197k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8742 |     - |6197k| 1.484097e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  8957 |     - |6292k| 1.608135e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9085 |     - |6233k| 1.619043e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9116 |     - |6252k| 1.619364e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9181 |     - |6283k| 1.801753e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9225 |     - |6314k| 1.877587e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9317 |     - |6360k| 1.877587e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9376 |     - |6373k| 2.428886e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9398 |     - |6344k| 2.428886e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9469 |     - |6352k| 2.801756e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9480 |     - |6358k| 2.801756e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9488 |     - |6362k| 2.904385e-01 | 3.923297e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  9491 |     - |6364k| 2.904385e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9499 |     - |6368k| 3.031035e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9501 |     - |6331k| 3.031035e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9506 |     - |6334k| 3.066479e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9508 |     - |6335k| 3.066479e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9512 |     - |6338k| 3.072817e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9513 |     - |6339k| 3.072817e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9519 |     - |6341k| 3.077263e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9520 |     - |6316k| 3.077263e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9522 |     - |6318k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9523 |     - |6318k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9524 |     - |6319k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9525 |     - |6320k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9526 |     - |6321k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9527 |     - |6317k| 3.077708e-01 | 3.923297e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  9528 |     - |6318k| 3.077708e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9534 |     - |6318k| 3.216369e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9538 |     - |6321k| 3.234341e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9539 |     - |6322k| 3.234341e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9541 |     - |6324k| 3.246317e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9619 |     - |6337k| 3.441897e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9633 |     - |6345k| 3.457442e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9638 |     - |6347k| 3.457442e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9647 |     - |6348k| 3.458631e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9659 |     - |6354k| 3.458631e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9662 |     - |6354k| 3.459201e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9711 |     - |6370k| 3.460388e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9750 |     - |6391k| 3.460498e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9751 |     - |6392k| 3.460498e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9768 |     - |6399k| 3.460524e-01 | 3.923297e+01 |  Large 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |  9769 |     - |6400k| 3.460524e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9770 |     - |6400k| 3.460533e-01 | 3.923297e+01 |  Large 
+      1 |     0 |  9771 |     - |6377k| 3.460533e-01 | 3.923297e+01 |  Large 
+      1 |     2 |  9771 |     - |6377k| 3.460533e-01 | 3.923297e+01 |  Large 
+    100 |    89 | 91032 | 875.6 |  17M| 7.488426e+00 | 3.923297e+01 | 423.91%
+    200 |   169 |119275 | 577.5 |  21M| 7.491139e+00 | 3.923297e+01 | 423.73%
+    300 |   229 |159634 | 519.3 |  27M| 7.510289e+00 | 3.923297e+01 | 422.39%
+    400 |   281 |213468 | 524.1 |  34M| 7.522026e+00 | 3.923297e+01 | 421.57%
+    500 |   335 |274608 | 541.6 |  43M| 7.567728e+00 | 3.923297e+01 | 418.42%
+    600 |   369 |325904 | 536.8 |  51M| 7.690560e+00 | 3.923297e+01 | 410.14%
+    700 |   393 |362053 | 511.7 |  57M| 7.774088e+00 | 3.923297e+01 | 404.66%
+    800 |   393 |408857 | 506.3 |  64M| 7.903997e+00 | 3.923297e+01 | 396.37%
+    900 |   397 |457564 | 504.1 |  70M| 8.015579e+00 | 3.923297e+01 | 389.46%
+   1000 |   415 |515088 | 511.3 |  77M| 8.150418e+00 | 3.923297e+01 | 381.36%
+   1100 |   419 |561930 | 507.4 |  81M| 8.320606e+00 | 3.923297e+01 | 371.52%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   1200 |   423 |596967 | 494.3 |  87M| 8.423940e+00 | 3.923297e+01 | 365.73%
+   1300 |   425 |621193 | 474.9 |  90M| 8.533847e+00 | 3.923297e+01 | 359.73%
+   1400 |   415 |636209 | 451.7 |  91M| 8.650543e+00 | 3.923297e+01 | 353.53%
+   1500 |   417 |659573 | 437.1 |  96M| 8.729993e+00 | 3.923297e+01 | 349.40%
+   1600 |   415 |732486 | 455.4 |  99M| 8.775035e+00 | 3.923297e+01 | 347.10%
+   1700 |   415 |775162 | 453.7 | 103M| 1.206928e+01 | 3.923297e+01 | 225.06%
+   1800 |   407 |790994 | 437.3 | 103M| 1.369499e+01 | 3.923297e+01 | 186.48%
+   1900 |   393 |816037 | 427.4 | 102M| 1.371315e+01 | 3.923297e+01 | 186.10%
+   2000 |   379 |838905 | 417.5 | 100M| 1.373958e+01 | 3.923297e+01 | 185.55%
+   2100 |   371 |930975 | 441.5 | 104M| 1.374637e+01 | 3.923297e+01 | 185.41%
+   2200 |   357 |  1032k| 467.6 | 107M| 1.394250e+01 | 3.923297e+01 | 181.39%
+   2300 |   337 |  1109k| 480.5 | 103M| 1.410992e+01 | 3.923297e+01 | 178.05%
+   2400 |   311 |  1224k| 508.5 | 101M| 1.433485e+01 | 3.923297e+01 | 173.69%
+   2500 |   289 |  1327k| 529.6 |  99M| 1.536203e+01 | 3.923297e+01 | 155.39%
+   2600 |   303 |  1405k| 539.3 | 102M| 2.389363e+01 | 3.923297e+01 |  64.20%
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+   2700 |   275 |  1462k| 540.4 | 102M| 2.476269e+01 | 3.923297e+01 |  58.44%
+   2800 |   243 |  1513k| 539.0 |  98M| 2.523738e+01 | 3.923297e+01 |  55.46%
+   2900 |   217 |  1556k| 535.3 |  93M| 2.665158e+01 | 3.923297e+01 |  47.21%
+   3000 |   179 |  1590k| 528.9 |  83M| 2.833657e+01 | 3.923297e+01 |  38.45%
+   3100 |   145 |  1622k| 522.1 |  76M| 3.043597e+01 | 3.923297e+01 |  28.90%
+   3200 |   119 |  1660k| 517.7 |  65M| 3.104341e+01 | 3.923297e+01 |  26.38%
+   3300 |   105 |  1720k| 520.2 |  59M| 3.251100e+01 | 3.923297e+01 |  20.68%
+   3400 |    99 |  1774k| 520.8 |  55M| 3.445989e+01 | 3.923297e+01 |  13.85%
+   3500 |   115 |  1832k| 522.4 |  55M| 3.793450e+01 | 3.923297e+01 |   3.42%
+   3600 |   149 |  1868k| 517.9 |  56M| 3.841859e+01 | 3.923297e+01 |   2.12%
+   3700 |   197 |  1893k| 510.7 |  60M| 3.854649e+01 | 3.923297e+01 |   1.78%
+y  3738 |   158 |  1904k| 508.5 |  56M| 3.857173e+01 | 3.902331e+01 |   1.17%
+y  3778 |   171 |  1916k| 506.2 |  58M| 3.857546e+01 | 3.902031e+01 |   1.15%
+   3800 |   175 |  1922k| 504.9 |  58M| 3.860675e+01 | 3.902031e+01 |   1.07%
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 321.47
+Solving Nodes      : 3852
+Primal Bound       : +3.90203084867295e+01 (3 solutions)
+Dual Bound         : +3.86355447942888e+01
+Gap                : 1.00 %
+  [quadratic] <quadcons>: <_var377_>[C] -10000<_var366_>[C]^2 >= -0;
+violation: left hand side is violated by 0.00236500002179785 (scaled: 0.00236500002179785)
+best solution is not feasible in original problem
+j:   7
+npiece:   47
+[0.0,0.5]
+[0.5,1.0]
+[1.0,1.5]
+[1.5,2.0]
+[2.0,2.5]
+[2.5,3.0]
+[3.0,3.5]
+[3.5,4.0]
+[4.0,4.5]
+[4.5,5.0]
+[5.0,5.5]
+[5.5,6.0]
+[6.0,6.5]
+[6.5,7.0]
+[7.0,7.5]
+[7.5,8.0]
+[8.0,8.5]
+[8.5,9.0]
+[9.0,9.5]
+[9.5,10.0]
+[10.0,10.5]
+[10.5,11.0]
+[11.0,11.5]
+[11.5,12.0]
+[12.0,12.5]
+[12.5,13.0]
+[13.0,13.5]
+[13.5,14.0]
+[14.0,14.5]
+[14.5,15.0]
+[15.0,15.5]
+[15.5,16.0]
+[16.0,16.5]
+[16.5,17.0]
+[17.0,17.5]
+[17.5,18.0]
+[18.0,18.5]
+[18.5,19.0]
+[19.0,19.5]
+[19.5,20.0]
+[20.0,20.5]
+[20.5,21.0]
+[21.0,21.5]
+[21.5,22.0]
+[22.0,22.5]
+[22.5,23.0]
+[23.0,23.5]

@@ -1,0 +1,4 @@
+WARNING: using JuMP.getdual in module Main conflicts with an existing identifier.
+1/1 feasible solution given by solution candidate storage, new primal bound 0.000000e+00
+
+presolving:

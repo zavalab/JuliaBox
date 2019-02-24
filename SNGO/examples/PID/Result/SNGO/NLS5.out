@@ -1,0 +1,80 @@
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+WARNING: Array{T}(::Type{T}, m::Int, n::Int) is deprecated, use Array{T}(m, n) instead.
+Stacktrace:
+ [1] depwarn(::String, ::Symbol) at ./deprecated.jl:70
+ [2] Array(::Type{Float64}, ::Int64, ::Int64) at ./deprecated.jl:57
+ [3] include_from_node1(::String) at ./loading.jl:569
+ [4] include(::String) at ./sysimg.jl:14
+ [5] process_options(::Base.JLOptions) at ./client.jl:305
+ [6] _start() at ./client.jl:371
+while loading /home/cao27/SNGO/PID/pidnonlinear.jl, in expression starting on line 28
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{cost[s, t], t = T} with sum(cost[s, t] for t = T).
+WARNING: Replace sum{costS[s], s = S} with sum(costS[s] for s = S).
+WARNING: Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.
+Stacktrace:
+ [1] depwarn(::String, ::Symbol) at ./deprecated.jl:70
+ [2] Array(::Type{JuMP.Model}, ::Int64) at ./deprecated.jl:57
+ [3] include_from_node1(::String) at ./loading.jl:569
+ [4] include(::String) at ./sysimg.jl:14
+ [5] process_options(::Base.JLOptions) at ./client.jl:305
+ [6] _start() at ./client.jl:371
+while loading /home/cao27/SNGO/PID/pidnonlinear.jl, in expression starting on line 134
+WARNING: A variable or constraint named costdef is already attached to this model. If creating constraints programmatically, use the anonymous constraint syntax con = @constraint(m, ...).
+WARNING: getvariable is deprecated, use getindex instead.
+Stacktrace:
+ [1] depwarn(::String, ::Symbol) at ./deprecated.jl:70
+ [2] getvariable(::JuMP.Model, ::Vararg{Any,N} where N) at ./deprecated.jl:31
+ [3] macro expansion at /home/cao27/.julia/v0.6/JuMP/src/macros.jl:422 [inlined]
+ [4] macro expansion at /home/cao27/SNGO/PID/pidnonlinear.jl:139 [inlined]
+ [5] anonymous at ./<missing>:?
+ [6] include_from_node1(::String) at ./loading.jl:569
+ [7] include(::String) at ./sysimg.jl:14
+ [8] process_options(::Base.JLOptions) at ./client.jl:305
+ [9] _start() at ./client.jl:371
+while loading /home/cao27/SNGO/PID/pidnonlinear.jl, in expression starting on line 136
+WARNING: A variable or constraint named costdef is already attached to this model. If creating constraints programmatically, use the anonymous constraint syntax con = @constraint(m, ...).
+WARNING: A variable or constraint named costdef is already attached to this model. If creating constraints programmatically, use the anonymous constraint syntax con = @constraint(m, ...).
+WARNING: A variable or constraint named costdef is already attached to this model. If creating constraints programmatically, use the anonymous constraint syntax con = @constraint(m, ...).
+WARNING: A variable or constraint named costdef is already attached to this model. If creating constraints programmatically, use the anonymous constraint syntax con = @constraint(m, ...).
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Not solved to optimality, status: Infeasible
+WARNING: Infeasibility ray (Farkas proof) not available
+WARNING: Nonlinear solver does not provide dual solutions
+ERROR: LoadError: UndefVarError: local_UB_time_total not defined
+Stacktrace:
+ [1] getUpperBound!(::JuMP.Model, ::PreprocessResult, ::JuMP.Model, ::JuMP.Model, ::Float64, ::Symbol, ::Array{Float64,1}, ::Float64, ::Float64, ::Int64) at /home/cao27/SNGO/PID/../bb.jl:1230
+ [2] branch_bound(::JuMP.Model) at /home/cao27/SNGO/PID/../bb.jl:643
+ [3] include_from_node1(::String) at ./loading.jl:569
+ [4] include(::String) at ./sysimg.jl:14
+ [5] process_options(::Base.JLOptions) at ./client.jl:305
+ [6] _start() at ./client.jl:371
+while loading /home/cao27/SNGO/PID/pidnonlinear.jl, in expression starting on line 154
+No. of first stage variables  3
+No. of second stage variables 83
+No. of second stage constraints 80
+No. of scenarios  5
+No. of total variables 403
+No. of total constraints 400
+No. of binary variables 0
+No. of continuous variables 403
+Optimal
+U:   144.36403268328272
+No. of nonlinear variables  293
+No. of nonlinear Terms  485
+additional  variables:  485
+ iter  left  lev   bVarId       bvlb             bvub             LB              UB            gap   
+1      0      1                                        -10000000000.0000 1.4436e+02     100.0000 % 
+inside ws_lower3.916236109  (s) 
+WS_status:  Optimal
