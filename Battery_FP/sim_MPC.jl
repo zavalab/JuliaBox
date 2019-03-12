@@ -18,7 +18,7 @@ function OptimalControl(u0, t_start, soc_min, soc_max)
     nHours_start = round(Int, t_start/3600)
 
     TIME_FR = 0:dt_FR:Totaltime_Horizon
-    expectedrevenue = 241407*P_nominal/1000
+
 
     csp_avg0 = u0[1]
     csn_avg0 = u0[Ncp+1]

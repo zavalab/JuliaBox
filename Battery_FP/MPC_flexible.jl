@@ -8,16 +8,15 @@ using JLD
 include("setup.jl")
 
 
-
+nHours_Horizon = 1
 function OptimalControl(u0, t_start, soc_min, soc_max)
-    nHours_Horizon = 1	 
     Totaltime_Horizon = nHours_Horizon*60*60                                     # seconds
     Nt_FR_Horizon = round(Int, Totaltime_Horizon/dt_FR)+1           		 # number of FR time step
     Nt_FR_start = round(Int, t_start/dt_FR)
     nHours_start = round(Int, t_start/3600)
 
     TIME_FR = 0:dt_FR:Totaltime_Horizon
-
+    expectedrevenue = 241407*P_nominal/1000        # 241407, 409723
 
     csp_avg0 = u0[1]
     csn_avg0 = u0[Ncp+1]

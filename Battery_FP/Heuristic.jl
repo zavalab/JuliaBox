@@ -8,7 +8,7 @@ using JLD
 include("setup.jl")
 
 
-C = 3
+C = 10
 FR_band0 = P_nominal*C                          # Initial FR Band Per area
 MPC(u0, "Heuristic")
 
