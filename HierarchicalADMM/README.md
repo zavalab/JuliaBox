@@ -22,4 +22,6 @@ Furthermore, to run the scripts with IPOPT with HSL linear solvers (e.g., MA57),
 plotter.m
 
 - To run the script, use the following command.
+```shell
 mpirun -np (number_of_processors) julia example.jl
+```
