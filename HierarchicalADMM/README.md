@@ -15,7 +15,7 @@ Furthermore, to run the scripts with IPOPT with HSL linear solvers (e.g., MA57),
 
 # Description
 - multigrid.jl includes functions used in the example scripts.
-- data/*.jld include data sets from pglib. https://github.com/power-grid-lib/pglib-opf
+- jlds/*.jld include data sets from pglib. https://github.com/power-grid-lib/pglib-opf
 - The example.jl run the case study examples.
 
 - The following MATLAB scripts generate the plots.
