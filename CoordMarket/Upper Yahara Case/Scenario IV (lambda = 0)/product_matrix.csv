@@ -1,0 +1,21 @@
+#pord,name,trans($/tonne/km),Pemit
+p1,beef manure,0.3,0.000512821
+p2,lactating cow manure,0.3,0.000761929
+p3,heifer manure,0.3,0.000595238
+p4,phosphorous,1.00E+30,0
+p5,digestate 1,0.3,5.15E-05
+p6,digestate2,0.3,7.66E-05
+p7,digestate3,0.3,5.98E-05
+p8,struvite,0.16,0.00E+00
+p9,beef manure liquid part,0.3,0.000416987
+p10,lactating cow manure liquid aprt,0.3,0.000619544
+p11,heifer manure liquid part ,0.3,0.000484003
+p12,dried beef manure solid part,0.16,0.001288229
+p13,dried lactating cow manure solid part,0.16,0.001914002
+p14,dried heifer manure solid part,0.16,0.001495266
+p15,granulated beef manure,0.16,0
+p16,granulated lactating cow manure,0.16,0
+p17,granulated heifer manure,0.16,0
+p18,digestate l1,0.3,4.18E-05
+p19,digestate l2,0.3,6.23E-05
+p20,digestate l3,0.3,4.86E-05
