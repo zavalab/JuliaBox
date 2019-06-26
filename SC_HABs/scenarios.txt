@@ -1,0 +1,8 @@
+I: 49% storage (70% winter manure), no technology, standard penalty
+II: 49% storage (70% winter manure), no technology, small penalty
+III: 63% storage (90% winter manure), no technology, standard penalty
+IV: 63% storage (90% winter manure), no technology, small penalty
+V: 49% storage (70% winter manure), separation technology, standard penalty
+VI: 49% storage (70% winter manure), separation technology, small penalty
+VII: 63% storage (90% winter manure), separation technology, standard penalty
+VIII: 63% storage (90% winter manure), separation technology, small penalty
