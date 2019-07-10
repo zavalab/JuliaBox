@@ -2,7 +2,7 @@ This repository includes the Julia/MATLAB scripts used in manuscript "Scalable N
 
 # Installation
 
-To run the julia scripts, the following Julia packages need to be installed:
+To run the julia scripts, julia v0.6.4 (available at https://julialang.org/downloads/oldreleases.html) and the following Julia packages need to be installed:
 
 - JuMP.jl (v0.6.4) https://github.com/JuliaOpt/JuMP.jl
 - Plasmo.jl (commit d00420598e406331f057a6eadd0ff7e54b691d71) https://github.com/jalving/Plasmo.jl
