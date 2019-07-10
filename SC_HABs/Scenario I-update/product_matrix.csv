@@ -1,0 +1,17 @@
+#prod,prod name,transcost $/tonne/km,P emit,N emit
+p1,beef manure,0.3,0.000512821,0.00224359
+p2,lactating cow manure,0.3,0.000762539,0.004374567
+p3,heifer manure,0.3,0.000595238,0.003214286
+p4,liquid fraction 1,0.3,0.000416989,0.002081467
+p5,liquid fraction 2,0.3,0.000620042,0.004058458
+p6,liquid fraction 3,0.3,0.000484005,0.00298202
+p7,solid fraction 1,0.16,0.001288185,0.003555313
+p8,solid fraction 2,0.16,0.001915469,0.006932175
+p9,solid fraction 3,0.16,0.001495215,0.00509353
+p10,pellet 1,0.16,0,0
+p11,pellet 2,0.16,0,0
+p12,pellet 3,0.16,0,0
+p13,struvite,0.16,0,0
+p14,digestate 1,0.3,4.18E-05,0.003391087
+p15,digestate 2,0.3,6.23E-05,0.003824955
+p16,digestate 3,0.3,4.86E-05,0.002795867
