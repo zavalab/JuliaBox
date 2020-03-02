@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE metadata SYSTEM "http://www.fgdc.gov/metadata/fgdc-std-001-1998.dtd">
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Dane County Land Information Office</origin>
+				<pubdate>2015</pubdate>
+				<title>Municipalities Dane County, WI 2015</title>
+				<pubinfo>
+					<pubplace>Dane County (Wis.)</pubplace>
+					<publish>Dane County Land Information Office</publish>
+				</pubinfo>
+				<ftname Sync="TRUE">Dane_Municipalities_2015</ftname><geoform Sync="TRUE">vector digital data</geoform><onlink Sync="TRUE">\\robbie\data\ARCHIVE_PROJECT\COUNTIES\Dane\2015\Dane_Municipalities_2015.shp</onlink></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This polygon data layer represents municipalities for Dane County, Wisconsin in 2015. 
+[A county wide municipal boundaries dataset.]</abstract>
+			<purpose>This layer is intended for students, faculty, and staff of the University of Wisconsin Systems for reference and mapping purposes, and may be used for basic applications such as viewing, querying, and map output production, or to provide a basemap to support graphical overlays and analysis with other spatial data. 
+[The municipal boundary dataset was created to fill the need for a county wide representation of the civil division boundaries. The dataset is intended for cartographic use and general spatial analysis.]</purpose>
+			<supplinf>Augmented original metadata with UW-Madison specific elements. For additional information, please see original license/data sharing agreement where applicable. For original metadata documentation, please visit http://www.countyofdane.com/lio/datacatalog.aspx.</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>2015</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>Unknown</update>
+		</status>
+		<keywords>
+			<theme>
+				<themekt>FGDC</themekt>
+				<themekey>Polygon</themekey></theme>
+			<theme>
+				<themekt>ISO 19115 Topic Category</themekt>
+				<themekey>boundaries</themekey></theme>
+			<theme>
+				<themekt>LCSH</themekt>
+				<themekey>Cities and towns</themekey></theme>
+			<place>
+				<placekt>GNIS</placekt>
+				<placekey>Dane County</placekey>
+				<placekey>Wisconsin</placekey>
+			</place>
+			<theme><themekt>RML</themekt><themekey>Civil divisions</themekey></theme></keywords>
+		<accconst>Restricted Access Online: Access is granted to licensee only. Available only to the University of Wisconsin Systems affiliates.</accconst>
+		<useconst>For educational noncommercial use only.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Dane County Land Information Office</cntorg>
+					<cntper>Fred Iausly</cntper>
+				</cntorgp>
+				<cntpos>Senior GIS Analyst</cntpos>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>210 Martin Luther King Jr. Blvd</address>
+					<address>Room 110</address>
+					<city>Madison</city>
+					<state>WI</state>
+					<postal>53703</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>Senior GIS Analyst</cntvoice>
+				<cntemail>iausly@countyofdane.com</cntemail>
+			</cntinfo>
+		</ptcontac>
+		<native Sync="TRUE">Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.4000</native><spdom><bounding><westbc Sync="TRUE">-89.840960</westbc><eastbc Sync="TRUE">-89.008148</eastbc><northbc Sync="TRUE">43.294196</northbc><southbc Sync="TRUE">42.844312</southbc></bounding><lboundng><leftbc Sync="TRUE">699508.140750</leftbc><rightbc Sync="TRUE">921250.067250</rightbc><bottombc Sync="TRUE">399135.562625</bottombc><topbc Sync="TRUE">562840.578625</topbc></lboundng></spdom><natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>Attribute information remains the same as given by the author of the data.</attraccr>
+		</attracc>
+		<logic>Unknown</logic>
+		<complete>Unknown</complete>
+		<lineage>
+			<procstep>
+				<procdesc>Changed name of file from 'Municipalities.shp' to Dane_Municipalities_2015.</procdesc>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>Arthur H. Robinson Map Library, UW-Madison</cntorg>
+						</cntorgp>
+						<cntpos>Data Technician</cntpos>
+						<cntaddr>
+							<addrtype>mailing and physical address</addrtype>
+							<address>550 N. Park Street</address>
+							<address>310 Science Hall</address>
+							<city>Madison</city>
+							<state>WI</state>
+							<postal>53706</postal>
+							<country>USA</country>
+						</cntaddr>
+						<cntvoice>608-262-1471</cntvoice>
+						<cntemail>askmap@library.wisc.edu</cntemail>
+						<hours>Monday - Friday, 9:00 am - 5:00 pm CST-USA</hours>
+					</cntinfo>
+				</proccont>
+				<procdate>20150519</procdate></procstep>
+		</lineage>
+	</dataqual>
+	<eainfo>
+		<detailed Name="Dane_Municipalities_2015">
+			<enttyp>
+				<enttypd>Municipalities Dane County, WI 2015</enttypd>
+				<enttypds>Dane County Land Information Office</enttypds>
+				<enttypl Sync="TRUE">Dane_Municipalities_2015</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">69</enttypc></enttyp>
+			<attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">NAME</attrlabl><attalias Sync="TRUE">NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">60</attwidth></attr><attr><attrlabl Sync="TRUE">C_T_V</attrlabl><attalias Sync="TRUE">C_T_V</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">1</attwidth></attr><attr><attrlabl Sync="TRUE">FIPSCODE</attrlabl><attalias Sync="TRUE">FIPSCODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">10</attwidth></attr><attr><attrlabl Sync="TRUE">MUNITAXID</attrlabl><attalias Sync="TRUE">MUNITAXID</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">10</attwidth></attr><attr><attrlabl Sync="TRUE">SHAPE_STAr</attrlabl><attalias Sync="TRUE">SHAPE_STAr</attalias><attrtype Sync="TRUE">Float</attrtype><attwidth Sync="TRUE">19</attwidth><atnumdec Sync="TRUE">11</atnumdec></attr><attr><attrlabl Sync="TRUE">SHAPE_STLe</attrlabl><attalias Sync="TRUE">SHAPE_STLe</attalias><attrtype Sync="TRUE">Float</attrtype><attwidth Sync="TRUE">19</attwidth><atnumdec Sync="TRUE">11</atnumdec></attr></detailed>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Arthur H. Robinson Map Library, UW-Madison</cntorg>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>550 N. Park Street</address>
+					<address>310 Science Hall</address>
+					<city>Madison</city>
+					<state>WI</state>
+					<postal>53706</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>608-262-1471</cntvoice>
+				<cntemail>askmap@library.wisc.edu</cntemail>
+				<hours>Monday - Friday, 9:00 am - 5:00 pm CST-USA</hours>
+			</cntinfo>
+		</distrib>
+		<resdesc>Online Dataset</resdesc>
+		<distliab>Although this data is being distributed by the University of Wisconsin-Madison, no warranty expressed or implied is made by the University as to the accuracy of the data and related materials. The act of distribution shall not constitute any such warranty, and no responsibility is assumed by the University in the use of this data, or related materials.</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ESRI</formname>
+					<transize Sync="TRUE">2.442</transize><dssize Sync="TRUE">2.442</dssize></digtinfo>
+			</digform>
+			<fees>None</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20150520</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Arthur H. Robinson Map Library, UW-Madison</cntorg>
+					<cntper>REQUIRED: The person responsible for the metadata information.</cntper></cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>550 N. Park Street</address>
+					<address>310 Science Hall</address>
+					<city>Madison</city>
+					<state>WI</state>
+					<postal>53706</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>608-262-1471</cntvoice>
+				<cntemail>askmap@library.wisc.edu</cntemail>
+				<hours>Monday - Friday, 9:00 am - 5:00 pm CST-USA</hours>
+			</cntinfo>
+		</metc>
+		<langmeta Sync="TRUE">en</langmeta><metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn><metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv><mettc Sync="TRUE">local time</mettc><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><MetaID>{23CA9E19-67FC-4FFF-B9F3-2480207C1ADB}</MetaID><CreaDate>20150519</CreaDate><CreaTime>12440300</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20150520</SyncDate><SyncTime>10204000</SyncTime><ModDate>20150520</ModDate><ModTime>10204000</ModTime></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.4000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">Dane_Municipalities_2015</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">699508.14075</westBL><eastBL Sync="TRUE">921250.06725</eastBL><northBL Sync="TRUE">562840.578625</northBL><southBL Sync="TRUE">399135.562625</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-89.84096</westBL><eastBL Sync="TRUE">-89.008148</eastBL><northBL Sync="TRUE">43.294196</northBL><southBL Sync="TRUE">42.844312</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\robbie\data\ARCHIVE_PROJECT\COUNTIES\Dane\2015\Dane_Municipalities_2015.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">2.442</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><spdoinfo><direct Sync="TRUE">Vector</direct><ptvctinf><esriterm Name="Dane_Municipalities_2015"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">69</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm><sdtsterm Name="Dane_Municipalities_2015"><sdtstype Sync="TRUE">G-polygon</sdtstype><ptvctcnt Sync="TRUE">69</ptvctcnt></sdtsterm></ptvctinf></spdoinfo><spref><horizsys><cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983_HARN</geogcsn><projcsn Sync="TRUE">NAD_1983_HARN_WISCRS_Dane_County_Feet</projcsn></cordsysn><planar><planci><plance Sync="TRUE">coordinate pair</plance><plandu Sync="TRUE">survey feet</plandu><coordrep><absres Sync="TRUE">0.000000</absres><ordres Sync="TRUE">0.000000</ordres></coordrep></planci><mapproj><mapprojn Sync="TRUE">Lambert Conformal Conic</mapprojn><lambertc><stdparll Sync="TRUE">43.069516</stdparll><longcm Sync="TRUE">-89.422222</longcm><latprjo Sync="TRUE">43.069516</latprjo><feast Sync="TRUE">811000.000000</feast><fnorth Sync="TRUE">480943.886000</fnorth></lambertc></mapproj></planar><geodetic><horizdn Sync="TRUE">D_North_American_1983_HARN</horizdn><ellips Sync="TRUE">Geodetic Reference System 80</ellips><semiaxis Sync="TRUE">6378137.000000</semiaxis><denflat Sync="TRUE">298.257222</denflat></geodetic></horizsys></spref><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">NAD_1983_HARN_WISCRS_Dane_County_Feet</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="Dane_Municipalities_2015"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">69</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20150520</mdDateSt></metadata>

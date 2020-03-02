@@ -1,0 +1,81 @@
+<Layout name="Layout 1" worldFileMap="{73825a78-e5db-4621-8c05-212982f37208}" printResolution="192" units="mm">
+ <Snapper snapToGuides="1" tolerance="5" snapToGrid="0" snapToItems="1"/>
+ <Grid offsetY="0" resolution="10" offsetUnits="mm" resUnits="mm" offsetX="0"/>
+ <PageCollection>
+  <symbol type="fill" name="" alpha="1" clip_to_extent="1">
+   <layer locked="0" pass="0" enabled="1" class="SimpleFill">
+    <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+    <prop v="255,255,255,255" k="color"/>
+    <prop v="miter" k="joinstyle"/>
+    <prop v="0,0" k="offset"/>
+    <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+    <prop v="MM" k="offset_unit"/>
+    <prop v="35,35,35,255" k="outline_color"/>
+    <prop v="no" k="outline_style"/>
+    <prop v="0.26" k="outline_width"/>
+    <prop v="MM" k="outline_width_unit"/>
+    <prop v="solid" k="style"/>
+    <data_defined_properties>
+     <Option type="Map">
+      <Option value="" type="QString" name="name"/>
+      <Option name="properties"/>
+      <Option value="collection" type="QString" name="type"/>
+     </Option>
+    </data_defined_properties>
+   </layer>
+  </symbol>
+  <LayoutItem id="" referencePoint="0" position="0,0,mm" positionOnPage="0,0,mm" outlineWidthM="0.3,mm" groupUuid="" excludeFromExports="0" type="65638" background="true" zValue="0" size="145.362,128.466,mm" templateUuid="{b911ebcf-19a9-41dc-9d27-3f4463229743}" itemRotation="0" uuid="{b911ebcf-19a9-41dc-9d27-3f4463229743}" visibility="1" positionLock="false" frameJoinStyle="miter" opacity="1" frame="false" blendMode="0">
+   <FrameColor red="0" blue="0" alpha="255" green="0"/>
+   <BackgroundColor red="255" blue="255" alpha="255" green="255"/>
+   <LayoutObject>
+    <dataDefinedProperties>
+     <Option type="Map">
+      <Option value="" type="QString" name="name"/>
+      <Option name="properties"/>
+      <Option value="collection" type="QString" name="type"/>
+     </Option>
+    </dataDefinedProperties>
+    <customproperties/>
+   </LayoutObject>
+  </LayoutItem>
+  <GuideCollection visible="1"/>
+ </PageCollection>
+ <LayoutItem id="map" referencePoint="4" position="72.6808,64.2328,mm" positionOnPage="72.6808,64.2328,mm" outlineWidthM="0.3,mm" groupUuid="" excludeFromExports="0" type="65639" background="true" zValue="1" drawCanvasItems="true" size="145.362,128.466,mm" templateUuid="{73825a78-e5db-4621-8c05-212982f37208}" itemRotation="0" mapRotation="0" uuid="{73825a78-e5db-4621-8c05-212982f37208}" visibility="1" positionLock="true" followPreset="false" frameJoinStyle="miter" opacity="1" followPresetName="" frame="false" blendMode="0" keepLayerSet="false">
+  <FrameColor red="0" blue="0" alpha="255" green="0"/>
+  <BackgroundColor red="255" blue="255" alpha="255" green="255"/>
+  <LayoutObject>
+   <dataDefinedProperties>
+    <Option type="Map">
+     <Option value="" type="QString" name="name"/>
+     <Option type="Map" name="properties">
+      <Option type="Map" name="dataDefinedMapXMax">
+       <Option value="false" type="bool" name="active"/>
+       <Option value="" type="QString" name="expression"/>
+       <Option type="Map" name="transformer">
+        <Option type="Map" name="d">
+         <Option value="1" type="double" name="exponent"/>
+         <Option value="10" type="double" name="maxOutput"/>
+         <Option value="0" type="double" name="maxValue"/>
+         <Option value="1" type="double" name="minOutput"/>
+         <Option value="0" type="double" name="minValue"/>
+         <Option value="0" type="double" name="nullOutput"/>
+        </Option>
+        <Option value="0" type="int" name="t"/>
+       </Option>
+       <Option value="3" type="int" name="type"/>
+      </Option>
+     </Option>
+     <Option value="collection" type="QString" name="type"/>
+    </Option>
+   </dataDefinedProperties>
+   <customproperties/>
+  </LayoutObject>
+  <Extent ymin="460721.86399999994318932" ymax="564671.51719999988563359" xmin="758924.69400000001769513" xmax="876546.2219999999506399"/>
+  <LayerSet/>
+  <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
+ </LayoutItem>
+ <customproperties>
+  <property value="png" key="atlasRasterFormat"/>
+ </customproperties>
+ <Atlas filterFeatures="0" coverageLayer="" hideCoverage="0" filenamePattern="'output_'||@atlas_featurenumber" pageNameExpression="" enabled="0" sortFeatures="0"/>
+</Layout>
