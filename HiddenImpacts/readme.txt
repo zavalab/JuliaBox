@@ -1,4 +1,4 @@
-This folder provides supporting codes for the paper "Hidden Economic Impacts of Nutrient Pollution from Livestock Waste".
+This folder provides supporting codes for the paper "Valuing Economic Impact Reductions of Nutrient Pollution from Livestock Waste".
 
 * The folder "sensitivity_analysis" contains the code and data files for different values of the economic impact/value of service (vos).
 
