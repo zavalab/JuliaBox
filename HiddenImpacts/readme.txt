@@ -1,8 +1,8 @@
 This folder provides supporting codes for the paper "Valuing Economic Impact Reductions of Nutrient Pollution from Livestock Waste".
 
-* The folder "sensitivity_analysis" contains the code and data files for different values of the economic impact/value of service (vos).
+* The folder "geographical_plots" contains the code and data files used to generate the maps of the Upper Yahara watershed region presented in the paper (Figures 6, 7, and 8). 
 
-* The folder "GIS_data" contains the code and data files used to generate the maps of the Upper Yahara watershed region presented in the paper. 
+* The folder "sensitivity_analysis" contains the code and data files for different values of the economic impact/value of service (VOS).
 
 * In each case, we have three Julia scripts: "market_model.jl", "market_Run.jl", and "market_print.jl". One should run "market_Run.jl" first, this script will automatically read the "market_model.jl" script, establish the model, and solve the model. Then, the "market_print.jl" should be run in order to print out all the result files.
 
