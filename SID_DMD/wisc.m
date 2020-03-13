@@ -1,7 +1,5 @@
 % Written by Sungho Shin (sungho.shin@wisc.edu) and Victor Zavala (victor.zavala@wisc.edu)
 
-rng(1)
-
 close all
 clear
 clc
@@ -14,12 +12,12 @@ snapind = [1,6,11,16,21,26,31,36,41,46,51,56,61];
 X = zeros(2,N);
 X(:,1) = [.9999999;0];
 for i=2:N
-    X(:,i) = A*X(:,i-1)+randn(2,1)*0;
+    X(:,i) = A*X(:,i-1);
 end
-wiscraw = [zeros(233,8) imread('wisc.png','png')==0 zeros(233,8)];
-wisc = zeros(l);
-wisc(l/5+1:l*4/5,l/5+1:l*4/5) =double(imresize(wiscraw,[l*3/5,l*3/5]));
-C = [wisc(:) zeros(l^2,1)];
+wiscraw = [zeros(233,8) imread('data/wiscmap.png','png')==0 zeros(233,8)];
+wiscmap = zeros(l);
+wiscmap(l/5+1:l*4/5,l/5+1:l*4/5) =double(imresize(wiscraw,[l*3/5,l*3/5]));
+C = [wiscmap(:) zeros(l^2,1)];
 Y = C*X;
 n = 2;
 s = 2;
@@ -29,8 +27,8 @@ arr2avi('vid_example.mp4',Y,l,l)
 [Ahat,Chat,Psi,Lam] = sid_dmd(Y,n,s);
 
 % plot the results
-imwrite(arr2img(real(Psi(:,1)),l,l)/0.02,'img_smode_1.png');
-imwrite(arr2img(imag(Psi(:,1)),l,l)/0.02,'img_smode_2.png');
+imwrite(arr2img(real(Psi(:,1)),l,l)/0.02,'wisc_output/img_smode_1.png');
+imwrite(arr2img(imag(Psi(:,1)),l,l)/0.02,'wisc_output/img_smode_2.png');
 fg=figure;
 hold on; box on; grid on;
 plot(real(Lam(1).^(0:N)));
@@ -38,7 +36,7 @@ plot(imag(Lam(1).^(0:N)),'--');
 xlabel('$k$','interpreter','latex')
 ylabel('$\Re[\psi^k]$, $\Im[\psi^k]$','interpreter','latex')
 xlim([0,N]);
-saveas(fg,'img_tmode.eps');
+saveas(fg,'wisc_output/img_tmode.eps');
 
 
 function arr2avi(fpath,arr,nx,ny)
