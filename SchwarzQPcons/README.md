@@ -4,8 +4,8 @@ This repository includes the Julia/python scripts used in manuscript "Overlappin
 
 To run the julia scripts, julia v1.0.5 and the following Julia packages need to be installed:
 
-[b6b21f68] Ipopt v0.6.1
-[4076af6c] JuMP v0.20.1
-[093fc24a] LightGraphs v1.3.0
-[2679e427] Metis v0.1.0
-[c36e90e8] PowerModels v0.14.0
+[b6b21f68] Ipopt v0.6.1<br/>
+[4076af6c] JuMP v0.20.1<br/>
+[093fc24a] LightGraphs v1.3.0<br/>
+[2679e427] Metis v0.1.0<br/>
+[c36e90e8] PowerModels v0.14.0<br/>
