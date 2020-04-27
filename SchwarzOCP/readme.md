@@ -1,4 +1,4 @@
-This repository includes the Julia scripts used in manuscript "Overlapping Schwarz Decomposition for Constrained Quadratic Programs" by Sen Na (senna@uchicago.edu), Sungho Shin (sungho.shin@wisc.edu), Mihai Anitescu (anitescu@mcs.anl.gov), and Victor M. Zavala (victor.zavala@wisc.edu).
+This repository includes the Julia scripts used in manuscript "Overlapping Schwarz Decomposition for Nonlinear Optimal Control" by Sen Na (senna@uchicago.edu), Sungho Shin (sungho.shin@wisc.edu), Mihai Anitescu (anitescu@mcs.anl.gov), and Victor M. Zavala (victor.zavala@wisc.edu).
 
 # Installation
 
