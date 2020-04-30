@@ -1,3 +1,8 @@
+using Plots, LaTeXStrings, PyCall
+PyDict(pyimport("matplotlib")["rcParams"])["text.usetex"] = [true]
+PyDict(pyimport("matplotlib")["rcParams"])["font.family"] = ["serif"]
+pyplot()
+
 srand(1)
 
 # Set parallel
@@ -14,8 +19,9 @@ xN = [0,0,0,0,0,0,0,0,0]
 
 xref = zeros(N,9)
 
-for k=1:Int(N/30)
-    xref[30*(k-1)+1:30*k,[1,3,5]] .= ones(30)*randn(3)'
+freq = 30
+for k=1:Int(N/freq)
+    xref[freq*(k-1)+1:freq*k,[1,3,5]] .= ones(freq)*randn(3)'
 end
 
 uref = [9.8,0,0,0]    
@@ -54,7 +60,8 @@ for Om in Oms
     x = ones(par[:N]) * par[:x0]'
     l = ones(par[:N]) * par[:lN]'
     u = ones(par[:N]) * par[:uN]'
-
+    x[end,:] = par[:xN]
+    
     err_pr = Inf
     err_du = Inf
 
@@ -90,11 +97,116 @@ for Om in Oms
 end
 
 writecsv("ts.csv",ts)
-plot_err(par,err_saves,Oms=Oms)
+
+mkr = [:diamond,:rect,:circle]
+clr = [RGB(1,0,0),RGB(0,1,0),RGB(0,0,1)]
+
+p=plot(size=(400,200),box=true,grid=true,fontfamily="serif",
+       xlim=(0,size(err_saves[1],1)),
+       yscale=:log,
+       ylabel=L"\textrm{primal error}",
+       xlabel=L"\textrm{iteration steps}");
+for k=1:length(err_saves)
+    plot!(p,err_saves[k][:,1],marker=mkr[k],color=clr[k],linewidth=.5,markersize=4,markerstrokecolor=clr[k],markercolor=:transparent,label=LaTeXString("\$\\omega=$(Oms[k])\$"))
+end
+plot!(p,par[:tol]*ones(size(err_saves[1],1)+1),color=:black,linestyle=:dash,linewidth=.5,label="")
+savefig(p,"inf-x.pdf")
+
+p=plot(size=(400,200),box=true,grid=true,fontfamily="serif",
+       xlim=(0,size(err_saves[1],1)),
+       yscale=:log,
+       ylabel=L"\textrm{dual error}",
+       xlabel=L"\textrm{iteration steps}");
+for k=1:length(err_saves)
+    plot!(p,err_saves[k][:,2],marker=mkr[k],color=clr[k],linewidth=.5,markersize=4,markerstrokecolor=clr[k],markercolor=:transparent,label=LaTeXString("\$\\omega=$(Oms[k])\$"))
+end
+plot!(p,par[:tol]*ones(size(err_saves[1],1)+1),color=:black,linestyle=:dash,linewidth=.5,label="")
+savefig(p,"inf-l.pdf")
 
 
+######################################################################
+# one-by-one
 
-# Get Param
+maxiter = 6
+
+err_saves = []; ts=[]
+Om = 6
+srand(1)
+par = getpar(xref,uref,x0,xN,K=K,N=N,Om=Om,dt=dt,tol=tol,mu=mu)
+par[:solver]=IpoptSolver(print_level=0,linear_solver="ma27",tol=1e-10)
+
+
+# Initialize decentral
+x = ones(par[:N]) * par[:x0]'
+l = ones(par[:N]) * par[:lN]'
+u = ones(par[:N]) * par[:uN]'
+x[end,:] = par[:xN]
+
+r = [remotecall(do_init,workers()[k],par,k) for k=1:par[:K]]
+fetch.(r)
+
+# Iteration
+trajs=[]
+cnt=0
+# for fixedcounter = 1:20
+for cnt=1:maxiter
+    prf=x[par[:n1][2:end],:]; duf=l[par[:n1][2:end],:]
+    r = [remotecall(do_iter,workers()[k],
+                    x[par[:n1Om][k],:],x[par[:n2Om][k],:],
+                    l[par[:n2Om][k],:],u[par[:n2Om][k],:]) for k=1:par[:K]]
+    for k=1:par[:K]
+        x[par[:ind][k],:],l[par[:ind][k],:],u[par[:ind][k],:],prfk,dufk = fetch(r[k])
+        if k!=par[:K]
+            prf[k,:]-=prfk; duf[k,:]-=dufk;
+        end
+    end
+    err_pr=norm(prf[:],Inf); err_du=norm(duf[:],Inf)
+    # @printf("%4i %7.2e %7.2e\n",cnt,err_pr,err_du)
+    
+    traj=[remotecall_fetch(get_sol,workers()[k]) for k=1:par[:K]]
+    push!(trajs,traj)
+end
+
+for cnt = 1:maxiter
+    clr = [RGB(1,0,0),RGB(0,1,0),RGB(0,0,1),RGB(.5,.5,.5)]
+    mkr = [:diamond,:rect,:circle,:dtriangle]
+    p=plot(size=(500,500),color=:black,fontfamily="serif",
+           leg=false, box=true,xlabel=L"$X$",ylabel=L"$Y$",zlabel=L"$Z$");
+    for k=1:par[:K]
+        x = trajs[cnt][k][1]
+        plot!(p,
+              x[:,1],x[:,3],x[:,5],
+              color=clr[k],linewidth=.5,
+              markershape=mkr[k],markersize=4,
+              markerstrokecolor=clr[k],markercolor=:transparent)
+    end
+    plot!(p,x_cen[:,1],x_cen[:,3],x_cen[:,5],color=:black);
+    plot!(p,[x_cen[1,1]],[x_cen[1,3]],[x_cen[1,5]],
+          marker=:circle,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+    plot!(p,[x_cen[end,1]],[x_cen[end,3]],[x_cen[end,5]],
+          marker=:diamond,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+    savefig(p,"iter-x-$cnt.pdf")
+
+    p=plot(size=(500,500),color=:black,fontfamily="serif",
+           leg=false, box=true,xlabel=L"$\lambda_X$",ylabel=L"$\lambda_Y$",zlabel=L"$\lambda_Z$");
+    for k=1:par[:K]
+        l = trajs[cnt][k][2]
+        plot!(p,
+              l[:,1],l[:,3],l[:,5],
+              color=clr[k],linewidth=.5,
+              markershape=mkr[k],markersize=4,
+              markerstrokecolor=clr[k],markercolor=:transparent)
+    end
+    plot!(p,l_cen[:,1],l_cen[:,3],l_cen[:,5],color=:black);
+    plot!(p,[l_cen[1,1]],[l_cen[1,3]],[l_cen[1,5]],
+          marker=:circle,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+    plot!(p,[l_cen[end,1]],[l_cen[end,3]],[l_cen[end,5]],
+          marker=:diamond,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+    savefig(p,"iter-l-$cnt.pdf")
+end
+
+######################################################################
+# sensitivity study
 srand(1)
 par = getpar(xref,uref,x0,xN,K=1,N=Int(N/K),dt=dt,tol=tol,mu=mu)
 par[:solver]=IpoptSolver(print_level=0,linear_solver="ma27")
@@ -111,7 +223,7 @@ for i=1:30
     par[:lN]= 10*sig*randn(par[:nx])
 
     do_setpar(m_cen,par[:x0],par[:xN],par[:lN],par[:uN])
-    status = solve(m_cen); status!=:Optimal && continue
+    status = solve(m_cen); 
     
     x = getvalue(m_cen[:x][:,:])
     u = getvalue(m_cen[:u][:,:])
@@ -123,10 +235,32 @@ for i=1:30
     push!(u_pers,u)
     push!(objs,getobjectivevalue(m_cen))
 end
-outs=Dict(:par=>par,:x_cen=>x_cen[1:end-1,:],:l_cen=>l_cen,:x_pers=>x_pers,:u_pers=>u_pers,:l_pers=>l_pers)
-plot_cen_T(outs[:par],outs[:x_cen],outs[:l_cen],
-         outs[:x_pers],outs[:l_pers],ks=[1,3,5])
 
 
+p=plot(size=(500,500),color=:black,fontfamily="serif",grid=true,
+       leg=false, box=true,xlabel=L"$X$",ylabel=L"$Y$",zlabel=L"$Z$");
+for x_per in x_pers
+    plot!(p,
+          x_per[:,1],x_per[:,3],x_per[:,5],
+          color=:lightblue,linewidth=.5)
+end
+plot!(p,x_cen[:,1],x_cen[:,3],x_cen[:,5],color=:black);
+plot!(p,[x_cen[1,1]],[x_cen[1,3]],[x_cen[1,5]],
+      marker=:circle,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+plot!(p,[x_cen[end,1]],[x_cen[end,3]],[x_cen[end,5]],
+      marker=:diamond,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+savefig(p,"x.pdf")
 
-# # scp -r shin79@baptiste.che.wisc.edu:/home/shin79/argonne-etc/quadrotor/*.pdf .
+p=plot(size=(500,500),color=:black,fontfamily="serif",
+       leg=false, box=true,xlabel=L"$\lambda_X$",ylabel=L"$\lambda_Y$",zlabel=L"$\lambda_Z$");
+for l_per in l_pers
+    plot!(p,
+          l_per[:,1],l_per[:,3],l_per[:,5],
+          color=:lightblue,linewidth=.5)
+end
+plot!(p,l_cen[:,1],l_cen[:,3],l_cen[:,5],color=:black);
+plot!(p,[l_cen[1,1]],[l_cen[1,3]],[l_cen[1,5]],
+      marker=:circle,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+plot!(p,[l_cen[end,1]],[l_cen[end,3]],[l_cen[end,5]],
+      marker=:diamond,markersize=8,markerstrokewidth=1,markercolor=:transparent);
+savefig(p,"l.pdf")

@@ -1,4 +1,4 @@
-using JuMP, Ipopt, PyPlot
+using JuMP, Ipopt
 
 function P(par,n1,n2)
     m = Model(solver=par[:solver])
@@ -146,6 +146,11 @@ function do_iter(x0,xN,lN,uN)
     return xk, lk, uk, prf, duf
 end
 
+
+function get_sol()
+    return getvalue(m[:x][:,:]),getdual(m[:l][:,:])
+end
+
 function do_setpar(m,x0,xN,lN,uN)
     setvalue.(m[:x0],x0)
     setvalue.(m[:xN],xN)
@@ -154,85 +159,3 @@ function do_setpar(m,x0,xN,lN,uN)
 end
 
 
-function plot_cen_T(par,x_cen,l_cen,x_pers,l_pers;ks=[1,2,3])
-    ioff()
-    rc("text",usetex="True")
-    matplotlib["rcParams"][:update](Dict("font.size" => 8))
-    
-    lst = ["D","x","o"]
-    clr = [(1, 0, 0),(0, 0, 1),(0, .9, 0)]
-
-    tgrid1 =(0:(par[:N]-1))*par[:dt]
-    tgrid2 =(0:(par[:N]-1))*par[:dt]
-
-    ul = [L"T_c\,(\mathrm{K})",L"F\,(\mathrm{m^3/min})"]
-
-    fg=figure(figsize=(3.25,3.9))
-
-    for k=1:3
-        subplot(3,1,k)
-        for x_per in x_pers
-            plot(tgrid1,x_per[:,ks[k]],color=(.8,.8,1),linewidth=.5)
-        end
-        plot(tgrid1,x_cen[:,ks[k]],color="black",linewidth=1)
-        ylabel(LaTeXString("\${x}[$(ks[k])]\$"));
-        grid("on",color="lightgray");
-        xlim([tgrid1[1],tgrid1[end]+par[:dt]])
-    end    
-    xlabel(L"\textrm{time (sec)}");
-    tight_layout()
-    savefig("x.pdf",bbox_inches="tight")
-    PyPlot.close_figs()
-
-    fg=figure(figsize=(3.25,3.9))
-    for k=1:3
-        subplot(3,1,k)
-        for l_per in l_pers
-            plot(tgrid1,l_per[:,ks[k]],color=(.8,.8,1),linewidth=.5)
-        end
-        plot(tgrid1,l_cen[:,ks[k]],color="black",linewidth=1)
-        ylabel(LaTeXString("\${\\lambda}[$(ks[k])]\$"));
-        grid("on",color="lightgray");
-        xlim([tgrid1[1],tgrid1[end]+par[:dt]])
-    end    
-    xlabel(L"\textrm{time (sec)}");
-    tight_layout()
-    savefig("l.pdf",bbox_inches="tight")
-    PyPlot.close_figs()
-end
-
-function plot_err(par,err_saves;Oms=[1,2,3])
-    ioff();
-    rc("text",usetex="True")
-    matplotlib["rcParams"][:update](Dict("font.size" => 8))
-    lst = ["D-","x-","o-"]
-    clr = [(1, 0, 0),(0, 0, 1),(0, .9, 0)]
-
-    subplots(2,1,sharex=true,figsize=(3.25,2.6)); 
-    subplot(2,1,1)
-    for k=1:length(err_saves)
-        plot(err_saves[k][:,1],color=clr[k],linewidth=.5,lst[k],markersize=4,markerfacecolor="none",label=LaTeXString("\$\\omega=$(Oms[k])\$"))
-    end
-    len=size(err_saves[1],1)
-    plot(par[:tol]*ones(len+1),color="black","--",linewidth=.5)
-    yscale("log")
-    ylabel(L"\textrm{primal error}");
-    grid("on",color="lightgray");
-    xlim([0,len]);
-
-    subplot(2,1,2)
-    for k=1:length(err_saves)
-        plot(err_saves[k][:,2],color=clr[k],linewidth=.5,lst[k],markersize=4,markerfacecolor="none",label=LaTeXString("\$\\omega=$(Oms[k])\$"))
-    end
-    ylabel(L"\textrm{dual error}");
-    plot(par[:tol]*ones(len+1),color="black","--",linewidth=.5)
-    grid("on",color="lightgray");
-    
-    xlabel(L"\textrm{iteration steps}");
-    yscale("log")
-    xlim([0,len]);
-    legend();
-    tight_layout()
-    savefig("inf.pdf",bbox_inches="tight")
-    close()
-end
