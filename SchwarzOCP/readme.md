@@ -6,4 +6,5 @@ To run the julia scripts, julia v0.6 and the following Julia packages need to be
 
 Ipopt v0.4.5<br/>
 JuMP v0.18.5<br/>
+Plots v0.17.4<br/>
 PyPlot v2.6.3<br/>
