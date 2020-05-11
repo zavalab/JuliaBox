@@ -7,6 +7,7 @@ nt= 24              #number of time points
 nx = 3              #number of space points per pipeline
 dt = horizon / (nt - 1) #time delta
 
+include("modelfunctions.jl")
 include("load_data.jl")
 
 gas_network = ModelGraph()
@@ -53,14 +54,14 @@ for junction in junctions
     @linkconstraint(gas_network,[t = 1:nt], flow_in[t] - flow_out[t] + total_supplied[t] - total_delivered[t] == 0)
 end
 
+
 #Fix Demands
-base_demand = 2.0
 for (i,j_data) in junction_data
     jmodel = jmap[i]
     dvalues = j_data[:demand_values]
     n_demands = length(dvalues)
     nodes = jmodel[:time_nodes]
     for (t,node) in enumerate(nodes)
-        @constraint(node,[d = 1:n_demands],node[:fdemand][d] == dvalues[d][t] + base_demand)
+        @constraint(node,[d = 1:n_demands],node[:fdemand][d] == dvalues[d][t])
     end
 end

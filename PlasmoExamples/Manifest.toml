@@ -63,9 +63,9 @@ version = "0.2.0"
 
 [[Contour]]
 deps = ["StaticArrays"]
-git-tree-sha1 = "6d56f927b33d3820561b8f89d7de311718683846"
+git-tree-sha1 = "0b17db36e7e03f8437e0d1f55aea3e4a60c74353"
 uuid = "d38c429a-6771-53c6-b99e-75d170b6e991"
-version = "0.5.2"
+version = "0.5.3"
 
 [[DataAPI]]
 git-tree-sha1 = "176e23402d80e7743fc26c19c681bfb11246af32"
@@ -221,6 +221,19 @@ uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 [[Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
+[[MPI]]
+deps = ["Distributed", "Libdl", "Random", "Requires", "Serialization", "Sockets"]
+git-tree-sha1 = "1493102ae15bdbb2f98a5c27fb659528865ec1ba"
+pinned = true
+uuid = "da04e1cc-30fd-572f-bb4f-1f8673147195"
+version = "0.10.0"
+
+[[MPIClusterManagers]]
+deps = ["Distributed", "MPI", "Serialization", "Sockets"]
+git-tree-sha1 = "4e9a51bb1e5bef6f4525ce19b60cb706f6cb7d4f"
+uuid = "e7922434-ae4b-11e9-05c5-9780451d2c66"
+version = "0.1.0"
+
 [[MacroTools]]
 deps = ["Markdown", "Random"]
 git-tree-sha1 = "f7d2e3f654af75f01ec49be82c231c382214223a"
@@ -291,15 +304,23 @@ git-tree-sha1 = "72c3451932513427caffbd8bab15643ad693804b"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
 version = "1.0.3"
 
+[[PipsSolver]]
+deps = ["DataStructures", "Distributed", "JuMP", "Libdl", "LinearAlgebra", "MPI", "MPIClusterManagers", "MathOptInterface", "Plasmo", "SparseArrays"]
+git-tree-sha1 = "0871d868c39ed1d4f6a2af608897eb70ebeefeb8"
+repo-rev = "master"
+repo-url = "https://github.com/jalving/PipsSolver.jl.git"
+uuid = "0e2b999c-8a3a-11ea-3c4b-c36350f324a0"
+version = "0.1.0"
+
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[Plasmo]]
 deps = ["ColorTypes", "Colors", "DataStructures", "Distributed", "GeometryTypes", "JuMP", "LightGraphs", "LinearAlgebra", "MathOptInterface", "NetworkLayout", "Reexport", "Requires", "SparseArrays", "Statistics", "Test"]
-git-tree-sha1 = "ef80f210c1c762f4bc4d62807ff8cb8f8379b1a6"
-repo-rev = "modelgraphs_update"
-repo-url = "/home/jordan/.julia/dev/Plasmo"
+git-tree-sha1 = "9e13ce840f7e3807d9ef0ba06fc0ad99272c87cb"
+repo-rev = "master"
+repo-url = "https://github.com/jalving/Plasmo.jl.git"
 uuid = "d3f7391f-f14a-50cc-bbe4-76a32d1bad3c"
 version = "0.3.0"
 

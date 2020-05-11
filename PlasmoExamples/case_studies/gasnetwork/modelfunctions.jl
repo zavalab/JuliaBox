@@ -29,8 +29,8 @@ function create_junction_model(data,nt)
     for (i,node) in enumerate(time_nodes)
         @variable(node, data[:pmin] <= pressure <= data[:pmax], start = 60)
         @variable(node, 0 <= fgen[1:n_supplies] <= 200, start = 10)
-        @variable(node, fdeliver[1:n_demands] >= 0)
-        @variable(node, fdemand[1:n_demands] >= 0)
+        @variable(node, fdeliver[1:n_demands] >= 0, start = 10)
+        @variable(node, fdemand[1:n_demands] >= 0, start = 10)
 
         @constraint(node,[d = 1:n_demands],fdeliver[d] <= fdemand[d])
 
@@ -57,9 +57,9 @@ function create_pipeline_model(data,nt,nx)
 
     #Create variables on each node in the grid
     for node in grid
-        @variable(node, 1 <= px <= 100)
-        @variable(node, 0 <= fx <= 100)
-        @variable(node,slack >= 0)
+        @variable(node, 1 <= px <= 100,start = 10)
+        @variable(node, 0 <= fx <= 100, start = 10)
+        @variable(node,slack >= 0, start = 1)
         @NLnodeconstraint(node, slack*px - c3*fx*fx == 0)
     end
 
