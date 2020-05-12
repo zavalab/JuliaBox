@@ -9,7 +9,7 @@ using KaHyPar
 ##################################################
 max_imbalance = 0.1
 n_parts = 8
-n_processes = 2
+n_processes = 8
 ##################################################
 hypergraph,hyper_map = gethypergraph(gas_network)
 
@@ -55,7 +55,8 @@ end
 end
 
 #get the julia ids of the mpi workers
-julia_workers = collect(values(manager.mpi2j))
+#Need to sort for the allocation
+julia_workers = sort(collect(values(manager.mpi2j)))
 
 #Distribute the modelgraph among the workers
 #Here, we create the variable `pipsgraph` on each worker
