@@ -14,9 +14,9 @@ N_lines = ne(g)
 y = args[:y]
 del = args[:del]
 
-powergrid = ModelGraph()
-@node(powergrid,buses[1:N_buses])  #create node buses
-@node(powergrid,lines[1:N_lines])  #create transmission lines
+powergrid = OptiGraph()
+@optinode(powergrid,buses[1:N_buses])  #create node buses
+@optinode(powergrid,lines[1:N_lines])  #create transmission lines
 
 node_map_in = Dict((bus,ModelNode[]) for bus in buses)
 node_map_out = Dict((bus,ModelNode[]) for bus in buses)

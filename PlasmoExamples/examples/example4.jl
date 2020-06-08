@@ -9,7 +9,7 @@ plt_matrix4 = spy(graph);
 #partition
 hypergraph,hyper_map = gethypergraph(graph) #create hypergraph object based on graph
 partition_vector = KaHyPar.partition(hypergraph,8,configuration = :connectivity,imbalance = 0.01)
-partition = Partition(hypergraph,partition_vector,hyper_map)
+partition = Partition(graph,partition_vector,hyper_map)
 make_subgraphs!(graph,partition)
 
 #plot partition

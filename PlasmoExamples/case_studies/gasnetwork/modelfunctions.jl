@@ -23,7 +23,7 @@ c4 = (1/ffac2)*(Cp*Tgas)        #[kW/(scmx10-4/hr)]
 
 function create_junction_model(data,nt)
     graph = ModelGraph()
-    @node(graph,time_nodes[1:nt])
+    @optinode(graph,time_nodes[1:nt])
     n_demands = length(data[:demand_values])
     n_supplies = length(data[:supplies])
     for (i,node) in enumerate(time_nodes)
@@ -53,7 +53,7 @@ function create_pipeline_model(data,nt,nx)
     #Create pipeline modelgraph
     graph = ModelGraph()
     #Create grid of modelnodes
-    @node(graph,grid[1:nt,1:nx])
+    @optinode(graph,grid[1:nt,1:nx])
 
     #Create variables on each node in the grid
     for node in grid
@@ -87,7 +87,7 @@ end
 
 function create_compressor_model(data,nt)
     graph = ModelGraph()
-    @node(graph,time_nodes[1:nt])
+    @optinode(graph,time_nodes[1:nt])
     for node in time_nodes
         @variable(node, 1 <= psuction <= 100, start = 60)   #This could also be inforced at the suction node
         @variable(node, 1 <= pdischarge <= 100, start = 60)

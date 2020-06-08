@@ -3,9 +3,9 @@ using Plasmo
 T = 100          #number of time points
 d = sin.(1:T)    #disturbance vector
 
-graph = ModelGraph()
-@node(graph,state[1:T])
-@node(graph,control[1:T-1])
+graph = OptiGraph()
+@optinode(graph,state[1:T])
+@optinode(graph,control[1:T-1])
 
 for node in state
     @variable(node,x)

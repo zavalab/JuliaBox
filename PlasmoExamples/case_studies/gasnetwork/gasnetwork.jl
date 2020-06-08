@@ -10,7 +10,7 @@ dt = horizon / (nt - 1) #time delta
 include("modelfunctions.jl")
 include("load_data.jl")
 
-gas_network = ModelGraph()
+gas_network = OptiGraph()
 for pipe in pipelines
     add_subgraph!(gas_network,pipe)
 end

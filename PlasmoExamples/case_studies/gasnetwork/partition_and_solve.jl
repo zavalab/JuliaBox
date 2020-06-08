@@ -7,9 +7,9 @@ using KaHyPar
 
 #NOTE: define n_parts, max_imbalance, and n_processes
 ##################################################
-max_imbalance = 0.1
 n_parts = 8
-n_processes = 8
+max_imbalance = 0.1
+n_processes = 2
 ##################################################
 hypergraph,hyper_map = gethypergraph(gas_network)
 
@@ -29,7 +29,7 @@ partition = Partition(hypergraph,node_vector,hyper_map)
 make_subgraphs!(gas_network,partition)
 
 #Combine the subgraphs into model-nodes
-combined_graph , combine_map  = combine(gas_network,0)
+combined_graph , combine_map  = aggregate(gas_network,0)
 
 for node in all_nodes(combined_graph)
     @objective(node,Min,1e-6*objective_function(node))

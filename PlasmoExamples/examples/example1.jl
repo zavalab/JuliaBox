@@ -2,21 +2,21 @@ using Plasmo
 using Plots;pyplot()
 using GLPK
 
-graph1 = ModelGraph()
+graph1 = OptiGraph()
 
-@node(graph1,n1)
+@optinode(graph1,n1)
 @variable(n1, y >= 2)
 @variable(n1,x >= 0)
 @constraint(n1,x + y >= 3)
 @objective(n1, Min, y)
 
-@node(graph1,n2)
+@optinode(graph1,n2)
 @variable(n2, y)
 @variable(n2,x >= 0)
 @constraint(n2,x + y >= 3)
 @objective(n2, Min, y)
 
-@node(graph1,n3)
+@optinode(graph1,n3)
 @variable(n3, y )
 @variable(n3,x >= 0)
 @constraint(n3,x + y >= 3)
