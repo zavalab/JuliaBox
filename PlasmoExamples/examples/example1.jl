@@ -23,7 +23,7 @@ graph1 = OptiGraph()
 @objective(n3, Min, y)
 
 #Create a link constraint linking the 3 models
-@linkconstraint(graph1, n1[:x] + n2[:x] + n3[:x] == 5)
+@linkconstraint(graph1, n1[:x] + n2[:x] + n3[:x] == 3)
 optimize!(graph1,GLPK.Optimizer)
 
 #Query Solution
