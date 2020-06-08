@@ -23,7 +23,8 @@ node_vector = KaHyPar.partition(hypergraph,n_parts,configuration = :edge_cut,
 imbalance = max_imbalance, node_sizes = node_sizes, edge_weights = edge_weights)
 
 #Create a model partition
-partition = Partition(hypergraph,node_vector,hyper_map)
+# partition = Partition(hypergraph,node_vector,hyper_map)
+partition = Partition(gas_network,node_vector,hyper_map)
 
 #Setup subgraphs based on partition
 make_subgraphs!(gas_network,partition)
