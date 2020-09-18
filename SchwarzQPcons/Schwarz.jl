@@ -1,3 +1,5 @@
+# Written by Sungho Shin (sungho.shin@wisc.edu), Mihai Anitescu (anitescu@mcs.anl.gov), and Victor Zavala (victor.zavala@wisc.edu)
+
 using JuMP, LightGraphs, Random, LinearAlgebra, Printf, Metis, DelimitedFiles, PowerModels, Ipopt, SparseArrays
 
 function get_data(path)
