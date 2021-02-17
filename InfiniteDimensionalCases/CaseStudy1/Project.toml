@@ -1,0 +1,11 @@
+[deps]
+InfiniteOpt = "20393b10-9daf-11e9-18c9-8db751c92c57"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+Gurobi = "2e9cd046-0924-5485-92f1-d5272153d98b"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+
+[compat]
+julia = "~1"
+InfiniteOpt = "=0.3.2"
+JuMP = "=0.24.6"
