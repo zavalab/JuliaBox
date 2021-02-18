@@ -8,4 +8,4 @@ PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 [compat]
 julia = "~1"
 InfiniteOpt = "=0.3.2"
-JuMP = "=0.24.6"
+JuMP = "=0.21.6"
