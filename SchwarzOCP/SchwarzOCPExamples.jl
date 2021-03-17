@@ -82,18 +82,18 @@ function thinplate(
     d = (i,j,k)->100*sin(2*pi*(4*i/N-12*j/n-12*k/n)) + 400,
     opt...)
 
-    kappa = 400 # thermal conductivity of copper, W/(m-K)
-    rho = 8960 # density of copper, kg/m^3
-    specificHeat = 386 # specific heat of copper, J/(kg-K)
+    kappa = 400. # thermal conductivity of copper, W/(m-K)
+    rho = 8960. # density of copper, kg/m^3
+    specificHeat = 386. # specific heat of copper, J/(kg-K)
     thick = .01 # plate thickness in meters
     stefanBoltz = 5.670373e-8 # Stefan-Boltzmann constant, W/(m^2-K^4)
-    hCoeff = 1 # Convection coefficient, W/(m^2-K)
-    Ta = 300 # The ambient temperature is assumed to be 300 degrees-Kelvin.
+    hCoeff = 1. # Convection coefficient, W/(m^2-K)
+    Ta = 300. # The ambient temperature is assumed to be 300 degrees-Kelvin.
     emiss = .5 # emissivity of the plate surface
     
     m = SimpleNLModels.Model(optimizer,K;opt...)
     
-    x=Dict((i,j,k) => (j ==0 || j== n+1 || j== n+1 || j== n+1) ? .0 : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
+    x=Dict((i,j,k) => (j ==0 || j== n+1 || j== n+1 || j== n+1) ? Ta : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
            for i=1:N+1,j=0:n+1,k=0:n+1)
     u=Dict((i,j,k) => (j ==0 || j== n+1) ? .0 : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
            for i=1:N,j=0:n+1,k=0:n+1)
