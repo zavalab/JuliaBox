@@ -1,6 +1,6 @@
 # benchmark - thin plate
 
-for (K,T,L,dt,dx) in [(1:20,3600,1,100.,.25),(1:20,3600,1,10.,.1)]  # to force compiling, we start with a dummy
+for (K,T,L,dt,dx) in [(1:20,3600*4,1,5.,.1)]  # to force compiling, we start with a dummy
     
     N = round(Int,T/dt)
     n = round(Int,L/dx)
