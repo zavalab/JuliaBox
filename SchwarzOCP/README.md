@@ -1,3 +1,5 @@
+# SchwarzOCP Examples
+
 To reproduce the results, run the following script
 ```julia
 julia --project=. -p 20 # make sure that your hardware has enough cores
