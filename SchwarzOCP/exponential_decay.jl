@@ -21,10 +21,12 @@ z_pers = []
 lx_pers = []
 ly_pers = []
 lz_pers = []
-
+d_orig = value.(m_ref[:d][N+1,:])
 for i=1:nsam
     x0_new = [randn(),0,randn(),0,randn(),0,0,0,0] * .3
+    d_new = d_orig .+ [randn(),0,randn(),0,randn(),0,0,0,0] * .3
     setvalue.(m_ref[:x0],x0_new)
+    setvalue.(m_ref[:d][N+1,:],d_new)
     optimize!(m_ref)
     push!(x_pers, value.(m_ref[:x][:,1]))
     push!(y_pers, value.(m_ref[:x][:,3]))
