@@ -140,9 +140,9 @@ mutable struct KKTErrorEvaluator
 end
     
 function set_KKT_error_evaluator!(m::SimpleNLModels.Model)
-    _grad! = SimpleNLModels.eval_grad!(m.objs,m.p)
-    _con! = SimpleNLModels.eval_con!(m.cons,m.p)
-    _jac!,_jac_sparsity!,nnz_jac = SimpleNLModels.eval_jac!(m.cons,m.p)
+    _grad! = SimpleNLModels.get_evaluators_grad!(m.objs,m.p)
+    _con! = SimpleNLModels.get_evaluators_con!(m.cons,m.p)
+    _jac!,_jac_sparsity!,nnz_jac = SimpleNLModels.get_evaluators_jac!(m.cons,m.p)
     
     I = Vector{Int}(undef,nnz_jac)
     J = Vector{Int}(undef,nnz_jac)
@@ -178,7 +178,7 @@ end
 
 
 function plot_benchmark(err_ref,time_ref,err_schwarz,time_schwarz,err_admm,time_admm)
-    plt = plot(;xlabel="Wall Time (sec)",ylabel="KKT Error",framestyle=:box,yscale=:log10,xlim=(0,min(time_schwarz[end],time_admm[end])),legend=:right,fontfamily="Computer Modern");
+    plt = plot(;xlabel="Wall Time (sec)",ylabel="KKT Error",framestyle=:box,yscale=:log10,xlim=(0,min(time_schwarz[end],time_admm[end])),legend=:topright,fontfamily="Computer Modern");
     plot!(plt,time_schwarz,err_schwarz,label="Schwarz",markershape=:diamond);
     plot!(plt,time_admm,err_admm,label="ADMM",markershape=:circle);
     vline!(plt,[time_ref],linestyle=:dash,color=:black,label="Ipopt Time")
