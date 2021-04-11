@@ -5,3 +5,9 @@ Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 SimpleADMM = "12438b49-b34a-4b7b-98de-0209cc7abbd4"
 SimpleNLModels = "f0d6f1f6-17c6-46e2-b3a9-6ef89a8ca0c6"
 SimpleSchwarz = "7f3bf340-25b4-4f77-9eee-45f8edabf671"
+
+[compat]
+Ipopt = "0.6.5"
+LaTeXStrings = "1.2.1"
+Plots = "1.11.0"
+julia = "1.6"
