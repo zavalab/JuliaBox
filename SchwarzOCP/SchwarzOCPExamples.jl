@@ -107,7 +107,7 @@ function thinplate(
     for i=1:N
         for j=1:n
             for k=1:n
-                constraint(m, x[i+1,j,k] ==  x[i,j,k] + (1/rho/specificHeat/thick)*(kappa*thick*(-4*x[i,j,k] - x[i,j,k-1] - x[i,j,k+1] - x[i,j-1,k] - x[i,j+1,k])/dx^2  -.25* u[i,j,k] + 2*hCoeff*(x[i,j,k]-Ta) + 2*emiss*stefanBoltz*(x[i,j,k]^4-Ta^4))*dt)
+                constraint(m, x[i+1,j,k] ==  x[i,j,k] + (1/rho/specificHeat/thick)*(kappa*thick*(-4*x[i,j,k] + x[i,j,k-1] + x[i,j,k+1] + x[i,j-1,k] + x[i,j+1,k])/dx^2  -.25* u[i,j,k] + 2*hCoeff*(x[i,j,k]-Ta) + 2*emiss*stefanBoltz*(x[i,j,k]^4-Ta^4))*dt)
             end
         end
     end
