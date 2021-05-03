@@ -3,7 +3,7 @@ dt= 0.005
 K = 1:20
 T = 60
 N = round(Int,T/dt)
-omegas = [.1,.5,1.]
+omegas = [.3,.5,1.]
 
 err_schwarz=[]
 ms = Dict()

@@ -289,9 +289,9 @@ version = "0.6.5"
 
 [[Ipopt_jll]]
 deps = ["ASL_jll", "Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "Libdl", "MUMPS_seq_jll", "OpenBLAS32_jll", "Pkg"]
-git-tree-sha1 = "610e03d6ff38a70c2a5eca351d83638309f4afb5"
+git-tree-sha1 = "5a0f832bda36cd6b9582c162199aaa7aabca44e9"
 uuid = "9cc047cb-c261-5740-88fc-0cf96f7bdcc7"
-version = "3.13.4+0"
+version = "3.13.4+1"
 
 [[IterTools]]
 git-tree-sha1 = "05110a2ab1fc5f932622ffea2a003221f4782c18"
@@ -677,9 +677,7 @@ version = "0.1.0"
 
 [[SimpleSchwarz]]
 deps = ["LightGraphs", "LinearAlgebra", "Printf", "SimpleNLModels"]
-git-tree-sha1 = "62a3a42c517ae481b06cc7de63b7ca76a755cf8b"
-repo-rev = "4b6f7c04817b98ede8362f621e9b02924a99c376"
-repo-url = "https://github.com/sshin23/SimpleSchwarz.jl"
+path = "/home/shin79/git/SimpleSchwarz.jl"
 uuid = "7f3bf340-25b4-4f77-9eee-45f8edabf671"
 version = "0.1.0"
 
