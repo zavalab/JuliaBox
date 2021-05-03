@@ -93,9 +93,9 @@ function thinplate(
     
     m = SimpleNLModels.Model(optimizer,K;opt...)
     
-    x=Dict((i,j,k) => (j ==0 || j== n+1 || j== n+1 || j== n+1) ? Ta : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
+    x=Dict((i,j,k) => (j ==0 || j== n+1 ||k== 0 || k== n+1) ? Ta : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
            for i=1:N+1,j=0:n+1,k=0:n+1)
-    u=Dict((i,j,k) => (j ==0 || j== n+1) ? .0 : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
+    u=Dict((i,j,k) => (j ==0 || j== n+1 ||k== 0 || k== n+1) ? .0 : variable(m,floor(Int,(i-1)/(N+1)*length(K))+1)
            for i=1:N,j=0:n+1,k=0:n+1)
     
     for j=1:n
@@ -124,6 +124,7 @@ function thinplate(
     
     m[:x] = x
     m[:u] = u
+    m[:x0] = x0
     
     return m
 end
