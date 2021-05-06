@@ -21,7 +21,7 @@ GC.gc(); GC.enable(false)
 start = time()
 err_schwarz = Float64[get_KKT_error(m)]
 time_schwarz = Float64[start]
-@time optimize!(schwarz;maxiter=400,tol=0,optional=schwarz->(push!(err_schwarz,get_KKT_error(schwarz.model)),push!(time_schwarz,time())))
+@time optimize!(schwarz;maxiter=30,tol=0,optional=schwarz->(push!(err_schwarz,get_KKT_error(schwarz.model)),push!(time_schwarz,time())))
 time_schwarz.-= start
 GC.enable(true); GC.gc()
 
@@ -32,7 +32,7 @@ GC.gc(); GC.enable(false)
 start = time()
 err_admm = Float64[get_KKT_error(m)]
 time_admm = Float64[start]
-@time optimize!(admm;maxiter=400,tol=0,optional=optional=admm->(push!(err_admm,get_KKT_error(admm.model)),push!(time_admm,time())))
+@time optimize!(admm;maxiter=30,tol=0,optional=optional=admm->(push!(err_admm,get_KKT_error(admm.model)),push!(time_admm,time())))
 time_admm.-= start
 GC.enable(true); GC.gc()
 
