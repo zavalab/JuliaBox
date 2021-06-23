@@ -6,6 +6,6 @@ Gurobi = "2e9cd046-0924-5485-92f1-d5272153d98b"
 PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 
 [compat]
-julia = "~1"
-InfiniteOpt = "=0.3.2"
-JuMP = "=0.21.6"
+julia = "1"
+InfiniteOpt = "0.4.1"
+JuMP = "0.21.8"
