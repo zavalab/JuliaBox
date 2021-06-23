@@ -1,4 +1,4 @@
-using JuMP, InfiniteOpt, Ipopt, JLD
+using InfiniteOpt, Ipopt, JLD
 
 function Param_Est_Function(args::Dict)
     # Load in the data files that are independent of the formulation
@@ -28,10 +28,10 @@ function Param_Est_Function(args::Dict)
 
     # Define the parameters to be estimated (finite optimization variables)
     # Growth rate parameters U and interaction parameters A
-    @hold_variable(model, U[:μ_lb][i] ≤ μ[i ∈ 1:n_m] ≤ U[:μ_ub][i], 
-                   start = U[:μ_start][i])
-    @hold_variable(model, A[:α_lb][i, j] ≤ α[i ∈ 1:n_m, j ∈ 1:n_m] ≤ A[:α_ub][i, j], 
-                   start = A[:α_start][i, j])
+    @variable(model, U[:μ_lb][i] ≤ μ[i ∈ 1:n_m] ≤ U[:μ_ub][i], 
+              start = U[:μ_start][i])
+    @variable(model, A[:α_lb][i, j] ≤ α[i ∈ 1:n_m, j ∈ 1:n_m] ≤ A[:α_ub][i, j], 
+              start = A[:α_start][i, j])
 
     # Define the infinite time parameters for each experiment
     if args[:Formulation] == :Continuous
@@ -52,16 +52,16 @@ function Param_Est_Function(args::Dict)
 
     # Define the infinite variables 
     # Mono-species concentrations x_m[experiment, species](t)
-    @infinite_variable(model, 0 ≤ x_m[i ∈ 1:n_m, j ∈ M[i][:species]](t_m), 
-                       start = M[i][:init_cond][1])
+    @variable(model, 0 ≤ x_m[i ∈ 1:n_m, j ∈ M[i][:species]], Infinite(t_m), 
+              start = M[i][:init_cond][1])
     # Mono-species dummy variables α[species] * x_m[experiment, species](t)
-    @infinite_variable(model, α_x_m[i=1:n_m, j=M[i][:species]](t_m), start = 0)
+    @variable(model, α_x_m[i=1:n_m, j=M[i][:species]], Infinite(t_m), start = 0)
     # Pairwise concentrations x_p[experiment, sub-experiment, species](t)
-    @infinite_variable(model, 0 ≤ x_p[i ∈ 1:n_p, j ∈ 1:n_p_s, k ∈ P[i][j][:species]](t_p[i, j]), 
-                       start = P[i][j][:init_cond][k])
+    @variable(model, 0 ≤ x_p[i ∈ 1:n_p, j ∈ 1:n_p_s, k ∈ P[i][j][:species]], Infinite(t_p[i, j]), 
+              start = P[i][j][:init_cond][k])
     # Pairwise dummy variables α[species1, species2] * x_p[experiment, sub-experiment, species1, species2](t)
-    @infinite_variable(model, α_x_p[i ∈ 1:n_p, j ∈ 1:n_p_s, k ∈ P[i][j][:species], n=P[i][j][:species]](t_p[i, j]), 
-                       start = 0)
+    @variable(model, α_x_p[i ∈ 1:n_p, j ∈ 1:n_p_s, k ∈ P[i][j][:species], n=P[i][j][:species]], Infinite(t_p[i, j]), 
+              start = 0)
 
     # Define constraints for each experiment
     # Mono-species experiments
@@ -79,63 +79,41 @@ function Param_Est_Function(args::Dict)
     # Define parameter functions for the experimental data, which is dependent on the formulation type
     if args[:Formulation] == :Continuous
         # Mono-species experiments
-        x_m_d = Dict()
-        for i=1:n_m
+        function get_mono_conc(t, i)
             p = Param_Mono[i]
-            function get_concentration(t)
-                return p[1] ./(p[2] .+ p[3] .* exp.(p[4] .* (t .- p[5])))
-            end
-            x_m_d[i, M[i][:species]] = parameter_function(get_concentration, t_m)
+            return p[1] ./(p[2] .+ p[3] .* exp.(p[4] .* (t .- p[5])))
         end
         # Pairwise experiments
-        x_p_d = Dict()
-        for i=1:n_p
-            for j=1:n_p_s
-                for k = P[i][j][:species]
-                    p = Param_Pair[i, j, k]
-                    function get_concentration(t)
-                        return p[1] ./(p[2] .+ p[3] .* exp.(p[4] .* (t .- p[5])))
-                    end
-                    x_p_d[i, j, k] = parameter_function(get_concentration, t_p[i, j])
-                end
-            end
+        function get_pair_conc(t, i, j, k)
+            p = Param_Pair[i, j, k]
+            return p[1] ./(p[2] .+ p[3] .* exp.(p[4] .* (t .- p[5])))
         end
     else
         # Mono-species experiments
-        x_m_d = Dict()
-        for i=1:n_m
+        function get_mono_conc(t, i)
             d = M[i][:data]
-            function get_concentration(t)
-                ts = collect(keys(d))
-                closest_index = findmin(abs.(ts.-t))[2]
-                nearest_t = ts[closest_index]
-                return d[nearest_t]
-            end
-            x_m_d[i, M[i][:species]] = parameter_function(get_concentration, t_m)
+            ts = collect(keys(d))
+            closest_index = findmin(abs.(ts.-t))[2]
+            nearest_t = ts[closest_index]
+            return d[nearest_t]
         end
         # Pairwise experiments
-        x_p_d = Dict()
-        for i=1:n_p
-            for j=1:n_p_s
-                for k = P[i][j][:species]
-                    d = P[i][j][:data][k]
-                    function get_concentration(t)
-                        ts = collect(keys(d))
-                        closest_index = findmin(abs.(ts.-t))[2]
-                        nearest_t = ts[closest_index]
-                        return d[nearest_t]
-                    end
-                    x_p_d[i, j, k] = parameter_function(get_concentration, t_p[i, j])
-                end
-            end
+        function get_pair_conc(t, i, j, k)
+            d = P[i][j][:data][k]
+            ts = collect(keys(d))
+            closest_index = findmin(abs.(ts.-t))[2]
+            nearest_t = ts[closest_index]
+            return d[nearest_t]
         end
     end
+    @parameter_function(model, x_m_d[i=1:n_m, M[i][:species]] == t_m -> get_mono_conc(t_m, i))
+    @parameter_function(model, x_p_d[i=1:n_p, j=1:n_p_s, k=P[i][j][:species]] == t_p[i, j] -> get_pair_conc(t_p[i, j], i, j, k))
 
     # Calculate the sum of the squared residuals for the objective function
     # Monospecies experiments
     res_m = sum(support_sum((x_m_d[i, j] - x_m[i, j])^2, t_m) for i in 1:n_m for j in M[i][:species]) 
     # Pairwise experiments
-    res_p = sum(support_sum((x_p_d[i, j, k] - x_p[i, j, k])^2 , t_p[i, j]) for i in 1:n_p for j in 1:n_p_s for k in P[i][j][:species][1:end]) 
+    res_p = sum(support_sum((x_p_d[i, j, k] - x_p[i, j, k])^2 , t_p[i, j]) for i in 1:n_p for j in 1:n_p_s for k in P[i][j][:species]) 
 
     # Define the objective function
     @objective(model, Min, res_m + res_p)
