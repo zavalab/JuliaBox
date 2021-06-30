@@ -1,0 +1,10 @@
+# 1. Tech ID|2. Tech Outputs|3. Tech Inputs|4. Output stoich|5. Input stoich|6. Reference product|7. Operating cost (USD/tonne)|8. Capacity|9. Name
+T1A|MW|Digestate|0.062313267|1.0|Digestate|0.001439949|100000|Biogas 1A
+T1B|MW|Digestate|0.062313267|1.0|Digestate|0.001490274|70000|Biogas 1B
+T1C|MW|Digestate|0.062313267|1.0|Digestate|0.001630707|35000|Biogas 1C
+T1D|MW|Digestate|0.062313267|1.0|Digestate|0.001798018|15000|Biogas 1D
+T2A|MW|Digestate|0.079563798|1.0|Digestate|0.001439949|100000|Biogas 2A
+T2B|MW|Digestate|0.079563798|1.0|Digestate|0.001490274|70000|Biogas 2B
+T2C|MW|Digestate|0.079563798|1.0|Digestate|0.001630707|35000|Biogas 2C
+T2D|MW|Digestate|0.079563798|1.0|Digestate|0.001798018|15000|Biogas 2D
+# Since the time discretization is one hour; the ~62 kWh comes out to the equivalent of 0.062 MW during that hour.
