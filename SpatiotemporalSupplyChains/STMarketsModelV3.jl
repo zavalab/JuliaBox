@@ -24,7 +24,7 @@ PrintOutput = false
 PrintSpacer = "*"^50
 
 # Use custom arc lengths or determine from longitude/latitude coordinates?
-CustomLengths = false
+CustomLengths = true
 
 ################################################################################
 ### SET DIRECTORY ###
@@ -827,7 +827,6 @@ end
 
 # Save records
 include("RecordMaker.jl")
-println(PrintSpacer,"\nRecords Saved!\n",PrintSpacer)
 
 ################################################################################
 ### END OF CODE ###
