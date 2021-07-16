@@ -1,8 +1,10 @@
 # Infinite-Dimensional Optimization Case Studies
 This repository contains the source-code Julia scripts used in the case studies 
-featured in the manuscript "A Unifying Framework for Modeling Infinite-Dimensional 
-Optimization Problems" by Joshua L. Pulsipher, Weiqi Zhang, Tyler J. Hongisto, 
-and Victor M. Zavala.
+featured in the manuscript "A Unifying Modeling Abstraction for 
+Infinite-Dimensional Optimization" by Joshua L. Pulsipher, Weiqi Zhang, 
+Tyler J. Hongisto, and Victor M. Zavala.
+
+![abstract](abstract.png)
 
 ## Implementation
 First, you'll need to install Julia (available at https://julialang.org/downloads/).
