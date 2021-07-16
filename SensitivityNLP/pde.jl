@@ -1,4 +1,4 @@
-using Random, JuMP, Ipopt, Plots, LightGraphs, LinearAlgebra
+using Random, JuMP, MadNLP, Plots, LightGraphs, LinearAlgebra
 
 Random.seed!(1)
 
@@ -11,7 +11,7 @@ function coloring(x)
     return RGB(arr[1],arr[2],arr[3])
 end
 norms(A;p=2) = sqrt.(abs.(sum(A.^2)))
-params = [(1,1), (1e-2,1), (1,1e-2), (1e-2,1e-2)]
+params = [(1,1), (0,1), (1,0), (0,0)]
 (i0,j0) = (5,5)
 
 sig = .001
@@ -33,19 +33,24 @@ for cnt = 1:length(params)
     global sols
     (eta,b)=params[cnt]
 
-    m=Model(Ipopt.Optimizer)
+    m = Model(()->MadNLP.Optimizer(fixed_variable_treatment=MadNLP.RELAX_BOUND,
+                                   print_level=MadNLP.ERROR))
     @variable(m,x[1:NX,1:NY])
     @variable(m,u[1:NX,1:NY])
-    @NLparameter(m,d[1:NX,1:NY]==0)
-    @NLparameter(m,xref[1:NX,1:NY]==300)
+    @variable(m,d[1:NX,1:NY]==0)
+    @variable(m,xref[1:NX,1:NY]==300)
     
     l=@NLconstraint(m,[i=1:NX,j=1:NY],
                     sum(x[i,j]-x[i1,j1] for (i1,j1) in nbr[i,j])==
                     -2hc/k/tz*(x[i,j]-300)
                     -2eps*sb/k/tz*(x[i,j]^4-300^4)
                     +(b*u[i,j] + d[i,j])/k/tz)
-    @NLobjective(m,Min,sum(eta*(x[i,j]-xref[i,j])^2+u[i,j]^2 for i=1:NX for j=1:NY))
+    @objective(m,Min,sum(eta*(x[i,j]-xref[i,j])^2+u[i,j]^2 for i=1:NX for j=1:NY))
     optimize!(m)
+    Upsilon,rho = upsilon_rho(m,[d,xref])
+    println("eta=$eta, b=$b")
+    println("Upsilon=$Upsilon, 1-rho=$(1-rho)")
+
     set_start_value.(all_variables(m),value.(all_variables(m)))
     sol_ref = [value.(x),value.(u),dual.(l)]
 
@@ -55,8 +60,8 @@ for cnt = 1:length(params)
 
     for i=1:n_sample
         p = sig*(rand(3).-.5)
-        set_value(d[i0,j0],p[1])
-        set_value(xref[i0,j0],300+p[2])
+        fix(d[i0,j0],p[1])
+        fix(xref[i0,j0],300+p[2])
         optimize!(m)
         push!(sols,[value.(x),value.(u),dual.(l)])
         push!(ps,  p)
@@ -104,7 +109,7 @@ for cnt = 1:length(params)
 
     pgfplotsx()
     q=scatter([abs(i-i0)+abs(j-j0) for j=1:NY for i=1:NX][C[:].>1e-10],C[:][C[:].>1e-10],
-              size=(300,300), leg=false, framestyle=:box,
+              size=(180,180), leg=false, framestyle=:box,markersize=2,
               yscale=:log10,
               ylims=(1e-3,10),
               markerstrokewidth=0,color=:black)

@@ -1,4 +1,4 @@
-using Random, JuMP, Ipopt, Plots, LightGraphs, LinearAlgebra
+using Random, JuMP, MadNLP, Plots, LightGraphs, LinearAlgebra
 
 fcolor = [0,0,1]
 bcolor = [.95,.95,.95]
@@ -45,27 +45,32 @@ pos = hcat(pos...)'
 
 for cnt = 1:length(params)
     eta,b = params[cnt]
-    m = Model(Ipopt.Optimizer)
+    m = Model(()->MadNLP.Optimizer(fixed_variable_treatment=MadNLP.RELAX_BOUND,
+                                   print_level=MadNLP.ERROR))
     @variable(m, x[1:nv(g)])
     @variable(m, u[1:nv(g)])
     @variable(m, v[1:nv(g)])
 
-    @NLparameter(m,ee[1:nv(g)]==0)
-    @NLparameter(m,dd[j=1:nv(g)]==d[j])
-    @NLparameter(m,pi[1:nv(g)]==0)
+    @variable(m,ee[1:nv(g)]==0)
+    @variable(m,dd[j=1:nv(g)]==d[j])
+    @variable(m,pi[1:nv(g)]==0)
 
-    @NLobjective(m, Min, sum(pr[i]*(1/2*eta*x[i]^2+1/2*u[i]^2+pi[i]*v[i]) for i=1:nv(g)))
+    @objective(m, Min, sum(pr[i]*(1/2*eta*x[i]^2+1/2*u[i]^2+pi[i]*v[i]) for i=1:nv(g)))
     l = Array{Any,1}(nothing,nv(g))
-    l[1]     = @NLconstraint(m, x[1] == ee[1])
+    l[1]     = @constraint(m, x[1] == ee[1])
     for i=2:nv(g)
-        l[i] = @NLconstraint(m, x[i] == x[inneighbors(g,i)[1]] + b*u[inneighbors(g,i)[1]] + ee[i])
+        l[i] = @constraint(m, x[i] == x[inneighbors(g,i)[1]] + b*u[inneighbors(g,i)[1]] + ee[i])
     end
     mu= Array{Any,1}(nothing,nv(g))
     for i=1:nv(g)
-        mu[i] = @NLconstraint(m, v[i] == u[i] + dd[i])
+        mu[i] = @constraint(m, v[i] == u[i] + dd[i])
     end
 
     optimize!(m)
+    Upsilon,rho = upsilon_rho(m,[ee,dd,pi])
+    println("eta=$eta, b=$b")
+    println("Upsilon=$Upsilon, 1-rho=$(1-rho)")
+
     set_start_value.(all_variables(m),value.(all_variables(m)))
     sol_ref = [value.(x) value.(u) value.(v) dual.(l) dual.(mu)]
 
@@ -73,9 +78,9 @@ for cnt = 1:length(params)
     ps   = []
     for i=1:n_sample
         p = sig*(rand(3).-.5)
-        set_value(pi[j],p[1])
-        set_value(dd[j],d[j]+p[2])
-        set_value(ee[j],p[3])
+        fix(pi[j],p[1])
+        fix(dd[j],d[j]+p[2])
+        fix(ee[j],p[3])
         
         optimize!(m)
         Int(termination_status(m)) in [1,4]||error("suboptimal") 
@@ -108,7 +113,7 @@ for cnt = 1:length(params)
 
     pgfplotsx()
     q=scatter([length(a_star(g,i,j)) for i=1:nv(g)][C[:].>1e-10],C[:][C[:].>1e-10],
-              size=(300,300), leg=false, framestyle=:box,
+              size=(180,180), leg=false, framestyle=:box,markersize=2,
               yscale=:log10,
               ylims=(1e-3,10),
               markerstrokewidth=0,color=:black)
