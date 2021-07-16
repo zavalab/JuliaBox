@@ -1,4 +1,4 @@
-using Random,JuMP,PowerModels,Ipopt,DelimitedFiles,Plots,LightGraphs,LinearAlgebra
+using Random,JuMP,PowerModels,Ipopt,DelimitedFiles,Plots,LightGraphs,LinearAlgebra,LaTeXStrings
 const PM = PowerModels
 import PowerModels: build_opf, constraint_power_balance, constraint_voltage_angle_difference,
     constraint_ohms_yt_from, constraint_thermal_limit_from, constraint_ohms_yt_to, constraint_thermal_limit_to
@@ -268,7 +268,7 @@ for cnt=1:length(params)
 
     pm = PowerModels.instantiate_model(data, ACPPowerModel, PowerModels.build_opf)
     set_optimizer(pm.model,Ipopt.Optimizer)
-    set_optimizer_attribute(pm.model,"linear_solver","ma57")
+    set_optimizer_attribute(pm.model,"linear_solver","ma27")
     set_optimizer_attribute(pm.model,"tol",1e-10)
     set_optimizer_attribute(pm.model,"print_level",0)
 
@@ -329,9 +329,9 @@ for cnt=1:length(params)
     savefig(p, "fig/opf-hm-$cnt.pdf")
     pgfplotsx()
     q=scatter([length(a_star(g,i,j)) for i=1:nv(g)][C[:].>1e-10],C[:][C[:].>1e-10],
-              size=(250,250), leg=false, framestyle=:box,
+              size=(180,180), leg=false, framestyle=:box,markersize=2,
               yscale=:log10,
-              ylims=(1e-5,10),
+              ylims=(1e-5,10), ytick = ([10,1e-1,1e-3,1e-5],[L"$$10^{1}$$",L"$$10^{-1}$$",L"$$10^{-3}$$",L"$$10^{-5}$$"]),
               markerstrokewidth=0,color=:black)
     savefig(q, "fig/opf-sc-$cnt.pdf")
 end
