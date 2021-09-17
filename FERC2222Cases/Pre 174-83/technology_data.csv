@@ -1,0 +1,10 @@
+# 1. Tech ID|2. Tech Outputs|3. Tech Inputs|4. Output stoich|5. Input stoich|6. Reference product|7. Operating cost (USD/tonne)|8. Capacity|9. Name
+T1A|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T1B|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T1C|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T1D|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T2A|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T2B|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T2C|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+T2D|MWh|Manure|0.079563798|1.0|Manure|13.65996198|100000|Biogas 2A
+TXX|PostMWh|MWh|1.0|1.0|MWh|124.83|1E15|Old Policy Intermediary
