@@ -51,8 +51,8 @@ for cnt = 1:length(params)
     @variable(m, u[1:nv(g)])
     @variable(m, v[1:nv(g)])
 
-    @variable(m,ee[1:nv(g)]==0)
-    @variable(m,dd[j=1:nv(g)]==d[j])
+    @variable(m,ee[1:nv(g)]==d[j])
+    @variable(m,dd[j=1:nv(g)]==0)
     @variable(m,pi[1:nv(g)]==0)
 
     @objective(m, Min, sum(pr[i]*(1/2*eta*x[i]^2+1/2*u[i]^2+pi[i]*v[i]) for i=1:nv(g)))
