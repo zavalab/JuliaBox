@@ -26,7 +26,7 @@ b adjusts y offset
 c adjusts x offset
 d adjusts slope 
 """
-a, b, c, d = 0, 1, 500, .125 
+a, b, c, d = 0, 1, 500, .15 
 coverage_setpoint(x) = ((a - b) / (1 + exp(x - (c / 2))^d)) + b
 
 # Set the sampling parameters
