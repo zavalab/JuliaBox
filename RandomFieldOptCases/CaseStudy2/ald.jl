@@ -55,7 +55,7 @@ m = InfiniteModel(KNITRO.Optimizer)
 @objective(m, Min, 1 / num_samples * sum(∫((yθ[i](10, z) - yθ_setpoint)^2, x) for i in 1:num_samples))
 
 @constraint(m, [i = 1:num_samples], yθ[i](0, x) == 1)
-@constraint(m, [i = 1:num_samples], yp[i](t, 0) == np0, DomainRestrictions(t => [supports(t)[2], 10]))
+@constraint(m, [i = 1:num_samples], yp[i](t, 0) == zp, DomainRestrictions(t => [supports(t)[2], 10]))
 @constraint(m, [i = 1:num_samples], yp[i](0, x) == 0)
 @constraint(m, [i = 1:num_samples], ∂(yp[i], t)(t, L) == 0)
 @constraint(m, c1[i = 1:num_samples], ∂(yp[i], t) == D * @∂(yp[i], x^2) - γ * ξ[i] * yp[i] * yθ[i])
