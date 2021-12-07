@@ -52,7 +52,7 @@ m = InfiniteModel(KNITRO.Optimizer)
 @parameter_function(m, ξ[i = 1:num_samples] == x -> interps[i](x))
 @parameter_function(m, yθ_setpoint == coverage_setpoint(x))
 
-@objective(m, Min, 1 / num_samples * sum(∫((yθ[i](10, z) - yθ_setpoint)^2, x) for i in 1:num_samples))
+@objective(m, Min, 1 / num_samples * sum(∫((yθ[i](10, x) - yθ_setpoint)^2, x) for i in 1:num_samples))
 
 @constraint(m, [i = 1:num_samples], yθ[i](0, x) == 1)
 @constraint(m, [i = 1:num_samples], yp[i](t, 0) == zp, DomainRestrictions(t => [supports(t)[2], 10]))
