@@ -178,10 +178,19 @@ function get_KKT_error(m::SimpleNLModels.Model)
 end
 
 
-function plot_benchmark(err_ref,time_ref,err_schwarz,time_schwarz,err_admm,time_admm)
-    plt = plot(;xlabel="Wall Time (sec)",ylabel="KKT Error",framestyle=:box,yscale=:log10,xlim=(0,min(time_schwarz[end],time_admm[end])),legend=:topright,fontfamily="Computer Modern");
-    plot!(plt,time_schwarz,err_schwarz,label="Schwarz",markershape=:diamond);
-    plot!(plt,time_admm,err_admm,label="ADMM",markershape=:circle);
+function plot_benchmark(err_ref,time_ref,err_schwarzs,time_schwarzs,err_admms,time_admms,rhos)
+    plt = plot(
+        ;
+        xlabel="Wall Time (sec)",ylabel="KKT Error",framestyle=:box,yscale=:log10,
+        xlim=(0,min(minimum(time_schwarz[end] for time_schwarz in time_schwarzs),
+                    minimum(time_admm[end] for time_admm in time_admms))),
+        legend=:bottomleft,fontfamily="Computer Modern");
+    for (time_schwarz,err_schwarz,rho) in zip(time_schwarzs,err_schwarzs,rhos)
+        plot!(plt,time_schwarz,err_schwarz,label=L"Schwarz $\mu=%$rho$",markershape=:diamond);
+    end
+    for (time_admm,err_admm,rho) in zip(time_admms,err_admms,rhos)
+        plot!(plt,time_admm,err_admm,label=L"ADMM $\mu=%$rho$",markershape=:circle);
+    end
     vline!(plt,[time_ref],linestyle=:dash,color=:black,label="Ipopt Time")
     hline!(plt,[err_ref],linestyle=:dot,color=:black,label="Ipopt KKT error")
 end
