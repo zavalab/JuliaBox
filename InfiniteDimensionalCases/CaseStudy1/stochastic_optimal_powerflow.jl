@@ -9,7 +9,7 @@ Cg, Cξ = [1 0; 0. 0; 0 0; 0 1], [0 0; 1 0; 0 1.; 0 0]
 cg = [1, 10]
 yg_lim = 10 * ones(size(Cg,2))
 yb_lim = 4 * ones(size(A, 2))
-αs =  1 .- [0.025, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.12, 0.14, 0.15, 0.17, 0.2, 0.5, 1]
+αs =  1 .- [0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.12, 0.14, 0.15, 0.17, 0.2, 0.5, 1]
 U = 100
 μ = [3., 5.]
 Σ = [2 0.; 0. 2]
@@ -29,12 +29,14 @@ set_silent(model1)
 @constraint(model1, yb - yb_lim .<= yw * U)
 chance1 = expect(1 - yw, ξ)
 @constraint(model1, chance1 >= α1)
+supps = supports(ξ)
 
 # Define the second model (using the alternative constraint logic)
 model2 = InfiniteModel(Gurobi.Optimizer)
 set_silent(model2)
 @finite_parameter(model2, α2 == 0.95)
-@infinite_parameter(model2, ξ[1:2] ~ MvNormal(μ, Σ), num_supports = 1000)
+@infinite_parameter(model2, ξ[i = 1:2] ~ MvNormal(μ, Σ))
+add_supports(ξ, supps, label = WeightedSample) # use the same samples
 @variable(model2, yg[1:2] >= 0, Infinite(ξ))
 @variable(model2, yb[1:5], Infinite(ξ))
 @variable(model2, yw[[:g, :b, :o]], Infinite(ξ), Bin)
