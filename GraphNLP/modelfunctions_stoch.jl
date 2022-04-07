@@ -50,7 +50,7 @@ function create_junction_model(data,nt)
 
         # If there is a demand on this node, define an objective function
         if n_demands > 0
-            @objective(node,Min,-sum(1000*(fdeliver[d]-1.25*foverdemand[d]) for d = 1:n_demands))  #Changed from 2 to 1.25
+            @objective(node,Min,-sum(1000*(fdeliver[d]-1.25*foverdemand[d]) for d = 1:n_demands))  
         end
     end
     return graph
@@ -84,16 +84,16 @@ function create_pipeline_model(data,nt,nx)
 
     #Finite differencing.  Backward difference in time from t, Forward difference in space from x.
     @linkconstraint(graph, press[t = 2:nt, x = 1:nx - 1], ((grid[t,x][:px] - grid[t-1,x][:px])/dt
-    + c1*(grid[t,x+1][:fx] - grid[t,x][:fx])/dx)*10 == 0 )  #~.1-.01
+    + c1*(grid[t,x+1][:fx] - grid[t,x][:fx])/dx)*10 == 0 )  
     @linkconstraint(graph, flow[t = 2:nt, x = 1:nx - 1],  ((grid[t,x][:fx] - grid[t-1,x][:fx])/dt)*10 ==
-    (-c2*(grid[t,x+1][:px] - grid[t,x][:px])/dx - grid[t,x][:slack])*10) # ~.1-.01
+    (-c2*(grid[t,x+1][:px] - grid[t,x][:px])/dx - grid[t,x][:slack])*10)
 
     #initial steady state
-    @linkconstraint(graph, ssflow[x = 1:nx-1], (grid[1,x+1][:fx] - grid[1,x][:fx])/10 == 0)   #~10
-    @linkconstraint(graph, sspress[x = 1:nx-1], (-c2*(grid[1,x+1][:px] - grid[1,x][:px])/dx - grid[1,x][:slack])*10 == 0) #~ .1
+    @linkconstraint(graph, ssflow[x = 1:nx-1], (grid[1,x+1][:fx] - grid[1,x][:fx])/10 == 0)   
+    @linkconstraint(graph, sspress[x = 1:nx-1], (-c2*(grid[1,x+1][:px] - grid[1,x][:px])/dx - grid[1,x][:slack])*10 == 0)
 
     # Refill pipeline linepack at the end of time horizon
-    @linkconstraint(graph,.001*linepack[end] >= .001*linepack[1])  #~100?
+    @linkconstraint(graph,.001*linepack[end] >= .001*linepack[1])  
     return graph
 end
 
