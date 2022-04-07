@@ -1,0 +1,89 @@
+This is MadNLP version v0.3.0, running with pardiso-mkl
+
+Number of nonzeros in constraint Jacobian............:    40374
+Number of nonzeros in Lagrangian Hessian.............:    14064
+
+Total number of variables............................:    11640
+                     variables with only lower bounds:        0
+                variables with lower and upper bounds:     7920
+                     variables with only upper bounds:     3456
+Total number of equality constraints.................:    11304
+Total number of inequality constraints...............:       37
+        inequality constraints with only lower bounds:       13
+   inequality constraints with lower and upper bounds:        0
+        inequality constraints with only upper bounds:       24
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+   0 -5.4619044e+05 2.00e+02 9.90e+01  -1.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   1 -5.4780866e+05 1.99e+02 9.69e+01  -1.0 2.16e+02    -  2.46e-02 5.82e-03h  1
+   2 -5.4736103e+05 1.98e+02 9.92e+01  -1.0 1.81e+02    -  2.88e-02 3.56e-03h  1
+   3 -3.9544851e+05 2.98e+00 1.23e+02  -1.0 2.24e+02    -  2.17e-03 1.00e+00h  1
+   4 -3.9628932e+05 2.78e+00 1.21e+02  -1.0 1.33e+01    -  6.90e-02 6.88e-02h  1
+   5 -3.9876311e+05 2.57e+00 1.24e+02  -1.0 2.88e+02    -  5.77e-03 7.49e-02h  1
+   6 -3.9886190e+05 2.57e+00 1.23e+02  -1.0 9.74e+02    -  1.71e-02 9.92e-04h  1
+   7 -4.0331432e+05 2.48e+00 1.23e+02  -1.0 1.25e+03    -  1.38e-02 3.38e-02h  1
+   8 -4.0366620e+05 2.47e+00 1.22e+02  -1.0 1.25e+03    -  3.17e-02 2.53e-03h  1
+   9 -4.0709914e+05 2.41e+00 1.21e+02  -1.0 1.24e+03    -  3.06e-02 2.39e-02h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  10 -4.0838673e+05 2.39e+00 1.18e+02  -1.0 1.07e+03    -  5.80e-02 1.01e-02h  1
+  11 -4.1143808e+05 2.33e+00 1.13e+02  -1.0 9.42e+02    -  1.18e-01 2.65e-02h  1
+  12 -4.1431082e+05 2.24e+00 1.09e+02  -1.0 6.29e+02    -  1.28e-01 3.69e-02h  1
+  13 -4.1475178e+05 2.15e+00 9.85e+01  -1.0 2.37e+02  -4.0 2.76e-01 4.05e-02h  1
+  14 -4.1490270e+05 1.41e+00 9.18e+01  -1.0 1.49e+02  -4.5 4.78e-01 3.44e-01h  1
+  15 -4.1560647e+05 6.02e-01 9.96e+01  -1.0 6.08e+01  -5.0 5.38e-01 1.00e+00h  1
+  16 -4.1605936e+05 5.37e-01 6.20e+01  -1.0 9.43e+01    -  3.79e-01 2.45e-01h  1
+  17 -4.1606517e+05 5.31e-01 8.70e+01  -1.0 7.57e+01    -  3.64e-01 1.13e-02h  1
+  18 -4.1614161e+05 4.39e-01 3.69e+01  -1.0 5.26e+01    -  2.92e-01 4.53e-01h  1
+  19 -4.1615547e+05 4.11e-01 3.69e+01  -1.0 1.05e+02    -  3.63e-01 1.76e-01h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  20 -4.1618080e+05 6.88e-01 1.92e+01  -1.0 1.07e+02    -  2.51e-01 4.08e-01h  1
+  21 -4.1621697e+05 1.40e+00 1.06e+01  -1.0 1.47e+02    -  8.17e-01 5.80e-01h  1
+  22 -4.1625103e+05 6.62e-01 2.71e+00  -1.0 8.83e+01    -  9.31e-01 5.30e-01h  1
+  23 -4.1625735e+05 3.70e-02 6.82e-03  -1.0 1.47e+01    -  1.00e+00 1.00e+00h  1
+  24 -4.1747308e+05 1.81e-01 4.97e+00  -2.5 2.76e+02    -  3.45e-01 4.13e-01f  1
+  25 -4.1776313e+05 1.65e-01 3.45e+00  -2.5 1.20e+02    -  3.73e-01 2.93e-01h  1
+  26 -4.1781853e+05 1.28e-01 4.78e+00  -2.5 3.29e+01    -  1.45e-01 2.44e-01h  1
+  27 -4.1826095e+05 7.68e+00 2.80e+01  -2.5 2.21e+02    -  7.82e-03 6.37e-01h  1
+  28 -4.1833686e+05 7.45e+00 1.77e+01  -2.5 2.97e+02    -  3.87e-01 8.26e-02h  1
+  29 -4.1833871e+05 7.31e+00 1.67e+01  -2.5 6.43e+01    -  2.10e-01 1.81e-02h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  30 -4.1834301e+05 6.14e+00 1.38e+01  -2.5 3.25e+01    -  2.39e-01 1.62e-01h  1
+  31 -4.1834096e+05 3.73e+00 8.29e+00  -2.5 1.14e+01    -  4.35e-01 3.93e-01h  1
+  32 -4.1833333e+05 6.74e-01 1.12e+00  -2.5 2.41e+00    -  1.00e+00 8.22e-01h  1
+  33 -4.1833146e+05 6.70e-03 1.85e-04  -2.5 5.58e-01    -  1.00e+00 1.00e+00h  1
+  34 -4.1833955e+05 2.13e-03 6.69e-01  -3.8 7.47e-01    -  1.00e+00 6.91e-01h  1
+  35 -4.1834090e+05 1.23e-03 2.07e+00  -3.8 3.38e-01    -  5.82e-01 4.25e-01h  1
+  36 -4.1834198e+05 5.90e-04 3.55e-01  -3.8 1.35e+00    -  3.24e-01 6.01e-01h  1
+  37 -4.1834241e+05 5.58e-04 4.65e-01  -3.8 3.97e-01    -  8.94e-01 5.57e-01h  1
+  38 -4.1834277e+05 1.35e-02 7.70e-06  -3.8 8.16e-01    -  1.00e+00 1.00e+00h  1
+  39 -4.1834276e+05 7.75e-04 9.88e-07  -3.8 1.94e-01  -5.4 1.00e+00 1.00e+00h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  40 -4.1834315e+05 4.22e-03 1.96e-02  -5.7 7.15e-01  -5.9 5.96e-01 6.22e-01h  1
+  41 -4.1834330e+05 1.78e-03 6.66e-02  -5.7 2.20e-01    -  7.94e-01 6.59e-01h  1
+  42 -4.1834338e+05 2.06e-05 2.81e-02  -5.7 1.22e-01    -  8.37e-01 1.00e+00h  1
+  43 -4.1834338e+05 9.03e-05 4.28e-08  -5.7 6.63e-02    -  1.00e+00 1.00e+00h  1
+  44 -4.1834338e+05 1.12e-07 1.02e-10  -5.7 2.34e-03    -  1.00e+00 1.00e+00h  1
+  45 -4.1834339e+05 3.19e-06 4.05e-04  -8.6 1.26e-02    -  9.53e-01 9.91e-01h  1
+  46 -4.1834339e+05 2.83e-08 1.42e-08  -8.6 1.17e-03    -  1.00e+00 1.00e+00h  1
+  47 -4.1834339e+05 9.09e-13 5.20e-11  -8.6 1.15e-06    -  1.00e+00 1.00e+00h  1
+
+Number of Iterations....: 47
+
+                                   (scaled)                 (unscaled)
+Objective...............:  -4.1834338914948393e+05   -5.2292923643685486e+06
+Dual infeasibility......:   5.1973300799197701e-11    6.4966625998997124e-10
+Constraint violation....:   1.7572916666666664e+01    9.0949470177292824e-13
+Complementarity.........:   2.0047234518029049e-10    2.5059043147536310e-09
+Overall NLP error.......:   1.7572916666666664e+01    2.5059043147536310e-09
+
+Number of objective function evaluations             = 48
+Number of objective gradient evaluations             = 48
+Number of constraint evaluations                     = 49
+Number of constraint Jacobian evaluations            = 48
+Number of Lagrangian Hessian evaluations             = 47
+Total wall-clock secs in solver (w/o fun. eval./lin. alg.)  =  0.321
+Total wall-clock secs in linear solver                      =  3.680
+Total wall-clock secs in NLP function evaluations           =  0.530
+Total wall-clock secs                                       =  4.531
+
+EXIT: Optimal Solution Found.
