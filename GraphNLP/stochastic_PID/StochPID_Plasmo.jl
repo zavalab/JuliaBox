@@ -1,4 +1,6 @@
-using Plasmo, JuMP, MadNLP, MadNLPGraph
+using Plasmo, JuMP, MadNLP, MadNLPGraph, PlasmoPlots
+
+# PlasmoPlots.jl is available at: https://github.com/jalving/PlasmoPlots.jl.git
      
 # sets
 NS= 5      # number of scenarios
@@ -91,7 +93,16 @@ function get_scenario_model(s)
    @linkconstraint(PID, nodes[1][:tauD]==master[:tauD])    
  end
 
+# Make a plot by scenario-partition; this uses the PlasmoPlots.jl
+plt_scenario = layout_plot(PID, node_labels=false, markersize=4,linewidth=1,
+subgraph_colors=true, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ),
+plt_options=Dict(:size=>(500,500),:legend=>false, :framestyle=>:box, :grid => false, :axis => nothing));
 
+PID_agg, extras = aggregate(PID,0)
+
+# Make an aggregated plot by scenario; this uses the PlasmoPlots.jl
+plt_scenario_agg = layout_plot(PID_agg, node_labels=false, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ))
+ 
 # create reference map for partition
 hypergraph, refmap = gethypergraph(PID)
 
@@ -110,4 +121,14 @@ PID_partition = Partition(node_membership_vector,refmap)
 # repartition subgraphs according to the partition
 make_subgraphs!(PID, PID_partition) 
 
+# Make a plot by time-partition; this uses the PlasmoPlots.jl
+plt_time = layout_plot(PID, node_labels=false, markersize=4,linewidth=1,
+subgraph_colors=true, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ),
+plt_options=Dict(:size=>(500,500),:legend=>false, :framestyle=>:box, :grid => false, :axis => nothing));
+
+# Make an aggregated plot by time; this uses the PlasmoPlots.jl
+PID_agg, extras = aggregate(PID,0)
+plt_time_agg = layout_plot(PID_agg, node_labels=false, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ))
+
+# Solve the problemm with MadNLP.jl
 MadNLP.optimize!(PID; linear_solver=MadNLPUmfpack)
