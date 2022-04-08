@@ -98,9 +98,12 @@ plt_scenario = layout_plot(PID, node_labels=false, markersize=4,linewidth=1,
 subgraph_colors=true, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ),
 plt_options=Dict(:size=>(500,500),:legend=>false, :framestyle=>:box, :grid => false, :axis => nothing));
 
-PID_agg, extras = aggregate(PID,0)
+# Plot adjacency matrix
+spy_scenario = matrix_plot(PID; subgraph_colors=true)
+
 
 # Make an aggregated plot by scenario; this uses the PlasmoPlots.jl
+PID_agg, extras = aggregate(PID,0)
 plt_scenario_agg = layout_plot(PID_agg, node_labels=false, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ))
  
 # create reference map for partition
@@ -125,6 +128,9 @@ make_subgraphs!(PID, PID_partition)
 plt_time = layout_plot(PID, node_labels=false, markersize=4,linewidth=1,
 subgraph_colors=true, layout_options=Dict(:tol => .1, :C=>20, :K =>0.1,  :iterations=> 100 ),
 plt_options=Dict(:size=>(500,500),:legend=>false, :framestyle=>:box, :grid => false, :axis => nothing));
+
+# Plot adjacency matrix
+spy_time = matrix_plot(PID; subgraph_colors=true)
 
 # Make an aggregated plot by time; this uses the PlasmoPlots.jl
 PID_agg, extras = aggregate(PID,0)
