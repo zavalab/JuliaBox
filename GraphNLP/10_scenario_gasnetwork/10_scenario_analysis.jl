@@ -31,7 +31,7 @@ end
 # This only uses first nine points to be consistent with the linepack constraint of the model
 # Note that the linepack is an average pressure (in bars)
 # Linepack can be converted to mass by multiplying by the volume of the pipeline (D = .92 m, L is pipeline dependent; see JLD2 file)
-# and dividing by the speed of sound squared (see make_JLD2_stoch_150.jl for this value, which is given as "nu2" which is in m^2/s^2)
+# and dividing by the speed of sound squared (see make_JLD2_stoch_150.jl for this value, which is given as "nu2" in units of m^2/s^2)
 linepack = Array{Any,3}(undef, (10,13,24))
 
 for i in 1:13
@@ -56,7 +56,8 @@ end
 
 # Define arrays for the amount of gas delivered and the demand values
 # Rows represent the scenario number and columns represent the time point
-# Units are SCMx10^4 for each time period
+# Units are SCMx10^4/hr for each time period; this can be converted to mass by using 
+# the density value given in "make_JLD2_stoch_150.jl"
 deliver_values = Array{Any,2}(undef, (10,24))
 demand_values  = Array{Any,2}(undef, (10,24))
 
