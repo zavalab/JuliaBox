@@ -5,6 +5,7 @@ using MadNLPGraph
 using MadNLPHSL
 using JLD2
 
+
 #######################################################################################
 
 #Model Data
@@ -79,3 +80,21 @@ gas_node_agg, dict_agg = aggregate(gas_network_stoch)
 #MadNLP.optimize!(gas_node; linear_solver=MadNLPMa57)
 MadNLP.optimize!(gas_node; linear_solver=MadNLPMa57)
 #MadNLP.optimize!(gas_node; linear_solver=MadNLPSchur, schur_custom_partition=true, schur_subproblem_solver=MadNLPMa57)
+
+
+#######################################################################################
+# Below is optional code for plotting a single scenario of the gas network. This was used to create the visualizations of the graph network
+# The locations of the nodes and edges from the generated graph was used to produce clearer visualizaitons
+
+using PlasmoPlots
+
+# PlasmoPlots.jl is available at: https://github.com/jalving/PlasmoPlots.jl.git
+
+
+network = make_stoch_subgraph(1)
+
+plt1 = layout_plot(network, node_labels=false,  markersize=5,linewidth=.1,linealpha=2.0,
+subgraph_colors=true, layout_options=Dict(:tol => .05, :C=>100, :K =>.005,  :iterations=> 400 ),
+plt_options=Dict(:size=>(500,500),:legend=>false, :framestyle=>:box, :grid => false, :axis => nothing));
+
+display(plt1)

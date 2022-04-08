@@ -83,6 +83,13 @@ function make_stoch_subgraph(snum)
         @linkconstraint(gas_network,[t = 1:nt],nodes[t][:psuction] == junction_from[:time_nodes][t][:pressure])
         @linkconstraint(gas_network,[t = 1:nt],nodes[t][:pdischarge]  == junction_to[:time_nodes][t][:pressure])
     end
+    
+    # Create linking constraints between the pipelines and the junctions on either side of them
+    for pipe in pipelines
+        junction_from,junction_to = pipe_map[pipe]
+        @linkconstraint(gas_network,[t = 1:nt],pipe[:pin][t] == junction_from[:time_nodes][t][:pressure])
+        @linkconstraint(gas_network,[t = 1:nt],pipe[:pout][t] == junction_to[:time_nodes][t][:pressure])
+    end
 
     # Create linking constraints and definitions for connections between the pipelines and junctions on either side of them 
     for junction in junctions
