@@ -30,6 +30,6 @@ This folder contains the code used to time the gasnetwork problem at different p
 * output_data.jl - This file contains the total solver time, linear solver time, and number of iterations for runs 2-4 from run_gas_network.jl tests. This same data is contained in the output files, but this file contains the data as arrays in Julia for convenience.
 * output_files - This folder contains all of the runs for MadNLP.jl equipped with Ma57 running in both serial and parallel (30 threads), MadNLP.jl equipped with Schur solver running in parallel (30 threads), and MadNLP.jl equipped with PardisoMKL running in parallel (30 threads). Each of these runs was using a Plasmo.jl OptiGraph model of the gasnetwork problem. This folder also contains the runs for MadNLP.jl equipped with MA57 running in parallel (30 threads) for a JuMP.jl model rather than a Plasmo.jl OptiGraph. File names are "MadNLP_{run identifier}_{number of scenarios} {nx value} {run number}"
 
-## 4. visualizaitons
+## 4. visualizations
 This folder contains CSVs of node locations and a .jl file that was used to generate the figures for the above manuscript. The node locations were generated from PlasmoPlots (examples of the code for PlasmoPlots.jl can be seen in stochastic_PID/StochPID_Plasmo.jl and in 10_scenario_gasnetwork/run_gas_network.jl).
 
