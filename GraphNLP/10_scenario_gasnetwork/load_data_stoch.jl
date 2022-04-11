@@ -2,8 +2,8 @@
 function make_stoch_subgraph(snum)
 
     # Open JLD2 file and unpack data corresonding to scenario snum
-    jldfile = jldopen("13_pipelines_150_scenarios.jld2")
-    #jldfile = jldopen("13_pipelines_10_case_study.jld2","r")
+    #jldfile = jldopen("13_pipelines_150_scenarios.jld2")
+    jldfile = jldopen("13_pipelines_10_case_study.jld2","r")
     junction_data = jldfile["junction_data$snum"]
     pipeline_data = jldfile["pipeline_data"]
     compressor_data = jldfile["compressor_data"]
