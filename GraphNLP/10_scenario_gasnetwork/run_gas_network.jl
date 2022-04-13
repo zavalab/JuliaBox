@@ -13,7 +13,7 @@ horizon = 24*3600        # The time horizon in seconds
 nt= 24                   # Number of time points
 nx = 10                  # Number of space points per pipeline
 dt = horizon / (nt - 1)  # Time delta
-NS = 5                   # Number of scenarios
+NS = 10                  # Number of scenarios
 S = 1:NS
 
 # Load in the function to build the pipelines
