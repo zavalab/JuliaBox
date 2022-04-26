@@ -33,3 +33,12 @@ This folder contains the code used to time the gasnetwork problem at different p
 ## 4. visualizations
 This folder contains CSVs of node locations and a .jl file that was used to generate the figures for the above manuscript. The node locations were generated from PlasmoPlots (examples of the code for PlasmoPlots.jl can be seen in stochastic_PID/StochPID_Plasmo.jl and in 10_scenario_gasnetwork/run_gas_network.jl).
 
+
+The code included in these folders works with the following package versions (though it may not be limited to these versions):
+* MadNLP: v0.3.0 and v0.2.0
+* JuMP: v0.21.10
+* JLD2: v0.4.13 and v0.4.15
+* Plasmo: v0.4.1
+* MadNLPGraph: v0.1.0 and v0.3.0
+* MadNLPHSL: v0.1.0 and v0.2.0
+* PlasmoPlots v0.1.0
