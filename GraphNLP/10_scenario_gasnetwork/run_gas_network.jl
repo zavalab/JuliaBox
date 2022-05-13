@@ -77,7 +77,8 @@ gas_node_agg, dict_agg = aggregate(gas_network_stoch)
 #######################################################################################
 
 # Solve the problem with MadNLP.optimize!
-#MadNLP.optimize!(gas_node; linear_solver=MadNLPMa57)
+# This code uses Ma57 as the linear solver, but this solver requires additional setup
+# If you just want to run this example problem without Ma57, you can use linear_solver=MadNLPUmfpack instead in line 82 below
 MadNLP.optimize!(gas_node; linear_solver=MadNLPMa57)
 #MadNLP.optimize!(gas_node; linear_solver=MadNLPSchur, schur_custom_partition=true, schur_subproblem_solver=MadNLPMa57)
 
