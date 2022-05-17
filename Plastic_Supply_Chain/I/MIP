@@ -177,7 +177,7 @@ m = Model(with_optimizer(Gurobi.Optimizer))
 
 # supply capacity constraints
 #*******************************
-@constraint(m, supply_capacity[i in SUPS],  sup[i] <= sup_cap[i]);
+@constraint(m, supply_capacity[i in SUPS],  sup[i] == sup_cap[i]);
 #*******************************
 
 @variable(m, z[NODES,TECHS,1:3], Int);
