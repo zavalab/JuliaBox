@@ -1,0 +1,4 @@
+NHDFlowline.shp filter=lfs diff=lfs merge=lfs -text
+NHDWaterbody.shp filter=lfs diff=lfs merge=lfs -text
+WBDHU10.shp filter=lfs diff=lfs merge=lfs -text
+WBDHU12.shp filter=lfs diff=lfs merge=lfs -text
