@@ -1,0 +1,2 @@
+WisconsinFieldBoundaries2019.dbf filter=lfs diff=lfs merge=lfs -text
+WisconsinFieldBoundaries2019.shp filter=lfs diff=lfs merge=lfs -text
