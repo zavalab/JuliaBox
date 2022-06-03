@@ -14,9 +14,9 @@ WILakes  = gpd.GeoDataFrame.from_file("WIgeodataframes/lakes/lakes.shp")
 WIRivers = gpd.GeoDataFrame.from_file("WIgeodataframes/rivers/rivers.shp")
 
 # Load in the HUC8, HUC10, and HUC12 shapefiles for Wisconsin
-HUC8  = gpd.GeoDataFrame.from_file("lakes_rivers/HUC8/HUC8.shp")
-HUC10 = gpd.GeoDataFrame.from_file("lakes_rivers/HUC10/HUC10.shp")
-HUC12 = gpd.GeoDataFrame.from_file("lakes_rivers/HUC12/HUC12.shp") 
+HUC8  = gpd.GeoDataFrame.from_file("WIgeodataframes/HUC8/HUC8.shp")
+HUC10 = gpd.GeoDataFrame.from_file("WIgeodataframes/HUC10/HUC10.shp")
+HUC12 = gpd.GeoDataFrame.from_file("WIgeodataframes/HUC12/HUC12.shp") 
 
 print("Adding HUCs to lakes")
 
