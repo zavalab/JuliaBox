@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xalan="http://xml.apache.org/xalan" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.isotc211.org/2005/gmd">
+    <fileIdentifier>
+        <gco:CharacterString>31f1f67253074ef9afe46cd905bff07a</gco:CharacterString>
+    </fileIdentifier>
+    <characterSet>
+        <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+    </characterSet>
+    <hierarchyLevel>
+        <MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" codeSpace="ISOTC211/19115">dataset</MD_ScopeCode>
+    </hierarchyLevel>
+    <hierarchyLevelName>
+        <gco:CharacterString>dataset</gco:CharacterString>
+    </hierarchyLevelName>
+    <contact>
+        <CI_ResponsibleParty>
+            <individualName>
+                <gco:CharacterString>Bill Ceelen</gco:CharacterString>
+            </individualName>
+            <organisationName>
+                <gco:CharacterString>Wisconsin Department of Natural Resources, Bureau of Technology Services - GIS Section</gco:CharacterString>
+            </organisationName>
+            <positionName>
+                <gco:CharacterString>GIS Specialist</gco:CharacterString>
+            </positionName>
+            <contactInfo>
+                <CI_Contact>
+                    <address>
+                        <CI_Address>
+                            <electronicMailAddress>
+                                <gco:CharacterString>william.ceelen@wi.gov</gco:CharacterString>
+                            </electronicMailAddress>
+                        </CI_Address>
+                    </address>
+                </CI_Contact>
+            </contactInfo>
+            <role>
+                <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</CI_RoleCode>
+            </role>
+        </CI_ResponsibleParty>
+    </contact>
+    <dateStamp>
+        <gco:Date>2017-08-09</gco:Date>
+    </dateStamp>
+    <metadataStandardName>
+        <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+    </metadataStandardName>
+    <metadataStandardVersion>
+        <gco:CharacterString>2007</gco:CharacterString>
+    </metadataStandardVersion>
+    <identificationInfo>
+        <MD_DataIdentification>
+            <citation>
+                <CI_Citation>
+                    <title>
+                        <gco:CharacterString>WDNR HYDRO 24k Waterbodies</gco:CharacterString>
+                    </title>
+                    <date>
+                        <CI_Date>
+                            <date>
+                                <gco:Date>2021-08-16</gco:Date>
+                            </date>
+                            <dateType>
+                                <CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision" codeSpace="ISOTC211/19115">revision</CI_DateTypeCode>
+                            </dateType>
+                        </CI_Date>
+                    </date>
+                </CI_Citation>
+            </citation>
+            <abstract>
+                <gco:CharacterString>Waterbodies are hydrographic features only and do not represent islands or uplands. Features were collected from water areas represented on the US Geological Survey's 1:24,000-scale topographic map series such as perennial and intermittent streams, lakes, reservoirs etc. A large portion of the DNR's unique IDs for waterbodies (Waterbody Identification Codes - WBICs) have been incorporated into the 24K Hydro layer, along with surface water names from the USGS Geographic Names Information System (GNIS). Wetland delineations are NOT included in the 24K Hydro data layer.Visit https://www.arcgis.com/home/item.html?id=cb1c7f75d14f42ee819a46894fd2e771 to download the entire 24k Hydro file geodatabase.</gco:CharacterString>
+            </abstract>
+            <purpose>
+                <gco:CharacterString>Water features such as Lakes, Reservoirs, Wide Streams and River, and Unspecified Open
+Water features.</gco:CharacterString>
+            </purpose>
+            <credit>
+                <gco:CharacterString>Wisconsin Department of Natural Resources</gco:CharacterString>
+            </credit>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrology</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>water</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>lake</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>river</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>pond</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>stream</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>24K Hydro</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Wisconsin</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Department of Natural Resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WDNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>WI DNR</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>natural resources</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>environmental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>hydrography</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>surface water</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <resourceConstraints>
+                <MD_Constraints>
+                    <useLimitation>
+                        <gco:CharacterString>Access to and use of data obtained from the Department of Natural Resources (&amp;quot;Department&amp;quot;) is provided subject to these terms and conditions. PLEASE READ THESE TERMS CAREFULLY AS USE OF THIS DATA CONSTITUTES ACCEPTANCE OF THESE TERMS AND CONDITIONS.DISCLAIMER OF LIABILITYNeither the Department of Natural Resources, nor any of its programs nor any of its employees shall be held liable for any improper or incorrect use of the information described and/or contained herein and assumes no responsibility for anyone's use of the information. In no event shall the Department or its employees be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement or substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this system, even if advised of the possibility of such damage. This disclaimer of liability applies to any damages or injury, including but not limited to those caused by any failure of performance, error, omission, interruption, deletion, defect, delay in operation or transmission, computer virus, communication line failure, theft or destruction or unauthorized access to, alteration of, or use of record, whether for breach of contract, tortious behavior, negligence or under any other cause of action.DISCLAIMER OF WARRANTIES AND ACCURACY OF DATAAlthough the data found using the Department's access systems have been produced and processed from sources believed to be reliable, no warranty, expressed or implied, is made regarding accuracy, adequacy, completeness, legality, reliability or usefulness of any information, unless otherwise indicated. This disclaimer applies to both isolated and aggregate uses of the information. The State provides this information on an &amp;quot;as is&amp;quot; basis. All warranties of any kind, express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, freedom from contamination by computer viruses and non-infringement of proprietary rights are disclaimed. Changes may be periodically made to the information herein; these changes may or may not be incorporated in any new version of the publication. Data can also quickly become out of date. It is recommended that careful attention be paid to the contents of any data associated with a file, and that the originator of the data or information be contacted with any questions regarding appropriate use. If you find any errors or omissions, we encourage you to report them to the Department.DISCLAIMER OF ENDORSEMENTThe Department is a distributor of content sometimes supplied by third parties and users. Any opinions, advice, statements, services, offers, or other information or content expressed or made available by third parties, including information providers, users, or others, are those of the respective author(s) or distributor(s) and do not necessarily state or reflect those of the Department or the state of Wisconsin and shall not be used for advertising or product endorsement purposes. Reference herein to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the Department or the State.CHOICE OF LAWConstruction of the disclaimers above and resolution of disputes thereof are governed by the laws of the State of Wisconsin. The laws of the state of Wisconsin, U.S.A., shall apply to all uses of this data and this system. By use of this system and any data contained therein, the user agrees that use shall conform to all applicable laws and regulations and user shall not violate the rights of any third parties.</gco:CharacterString>
+                    </useLimitation>
+                </MD_Constraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <accessConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </accessConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <useConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </useConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <accessConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </accessConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <useConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </useConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <accessConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </accessConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <useConstraints>
+                        <MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" codeSpace="ISOTC211/19115">otherRestrictions</MD_RestrictionCode>
+                    </useConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>Other Constraints</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <language>
+                <LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng" codeSpace="ISO639-2">eng</LanguageCode>
+            </language>
+            <characterSet>
+                <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+            </characterSet>
+            <topicCategory>
+                <MD_TopicCategoryCode>environment</MD_TopicCategoryCode>
+            </topicCategory>
+            <topicCategory>
+                <MD_TopicCategoryCode>inlandWaters</MD_TopicCategoryCode>
+            </topicCategory>
+        </MD_DataIdentification>
+    </identificationInfo>
+    <distributionInfo>
+        <MD_Distribution>
+            <transferOptions>
+                <MD_DigitalTransferOptions>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>http://dnrmaps.wi.gov/arcgis2/rest/services/TS_AGOL_STAGING_SERVICES/EN_AGOL_STAGING_SurfaceWater_WTM/MapServer/1</URL>
+                            </linkage>
+                        </CI_OnlineResource>
+                    </onLine>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>https://www.arcgis.com/home/item.html?id=31f1f67253074ef9afe46cd905bff07a#overview</URL>
+                            </linkage>
+                            <name>
+                                <gco:CharacterString>Metadata (Item Details)</gco:CharacterString>
+                            </name>
+                            <function>
+                                <CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</CI_OnLineFunctionCode>
+                            </function>
+                        </CI_OnlineResource>
+                    </onLine>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>https://dnr.wi.gov/maps/gis/documents/hydro_metadata/hydro_waterbody_metadata.pdf</URL>
+                            </linkage>
+                            <name>
+                                <gco:CharacterString>Waterbody Metadata</gco:CharacterString>
+                            </name>
+                            <function>
+                                <CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</CI_OnLineFunctionCode>
+                            </function>
+                        </CI_OnlineResource>
+                    </onLine>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>https://dnr.wi.gov/maps/gis/documents/hydro_data_dict/hydro_waterbody_data_dict.pdf</URL>
+                            </linkage>
+                            <name>
+                                <gco:CharacterString>Waterbody Data Dictionary</gco:CharacterString>
+                            </name>
+                            <function>
+                                <CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</CI_OnLineFunctionCode>
+                            </function>
+                        </CI_OnlineResource>
+                    </onLine>
+                </MD_DigitalTransferOptions>
+            </transferOptions>
+        </MD_Distribution>
+    </distributionInfo>
+</MD_Metadata>
