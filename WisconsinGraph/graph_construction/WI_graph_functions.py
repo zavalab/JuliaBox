@@ -554,9 +554,20 @@ def count_cycles(G):
     print(counter)
 
 def get_downstream_graph(G, node, lake_gdf, river_gdf):
+
+    """
+    Construct the downstream graph of a given node
+    Return the downstream graph and the set of node colors based on whether the 
+    nodes are waterbody or river nodes
+    """
+
+    # Build a list of all nodes that lie downstream of a given node
     downstream = [n for n in nx.traversal.bfs_tree(G, node, reverse=False)]
     
+    # Define a directed graph
     subG = nx.DiGraph()
+
+    subG.add_node(node)
     
     for j in downstream:
         edge_list = G.edges(j)
@@ -581,6 +592,8 @@ def get_upstream_graph(G, node, lake_gdf, river_gdf):
     downstream = [n for n in nx.traversal.bfs_tree(G, node, reverse=True)]
     
     subG = nx.DiGraph()
+
+    subG.add_node(node)
     
     for j in downstream:
         edge_list = G.edges(j)
