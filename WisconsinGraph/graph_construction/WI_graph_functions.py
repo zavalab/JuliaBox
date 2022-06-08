@@ -567,17 +567,27 @@ def get_downstream_graph(G, node, lake_gdf, river_gdf):
     # Define a directed graph
     subG = nx.DiGraph()
 
+    # Add the node of interest to the given graph. This ensures that the returned graph will not
+    # be empty if the given node is at the end of the graph (i.e., it has no downstream graph)
     subG.add_node(node)
-    
+
+    # Iterate through the list of downstream nodes    
     for j in downstream:
+        # Get all incident edges to j
         edge_list = G.edges(j)
         
+        # Iterate through the edge list; if both ends of the edge are in the set of downstream
+        # nodes, then add that edge to the downstream graph
         for i in edge_list:
             if i[0] in downstream and i[1] in downstream:
                 subG.add_edge(i[0], i[1])
     
+    # Define an empty list to fill with node colors
+    # this can be used for plotting with networkx.draw
     node_colors = []
     
+    # Iterate through the nodes of the downstream graph; make river nodes red, waterbody nodes blue,
+    # and any other nodes orange (this may include pollutant nodes)
     for i in subG.nodes:
         if i in river_gdf.COMID.values:
             node_colors.append("red")
@@ -585,25 +595,45 @@ def get_downstream_graph(G, node, lake_gdf, river_gdf):
             node_colors.append("blue")
         else:
             node_colors.append("orange")
-            
+    
+    # Return the downstream graph and the list of colors
     return subG, node_colors
 
 def get_upstream_graph(G, node, lake_gdf, river_gdf):
-    downstream = [n for n in nx.traversal.bfs_tree(G, node, reverse=True)]
     
+    """
+    Construct the upstream graph of a given node
+    Return the upstream graph and the set of node colors based on whether the 
+    nodes are waterbody or river nodes
+    """
+    
+    # Build a list of all nodes that lie upstream of a given node
+    upstream = [n for n in nx.traversal.bfs_tree(G, node, reverse=True)]
+    
+    # Define a directed graph
     subG = nx.DiGraph()
 
+    # Add the node of interest to the given graph. This ensures that the returned graph will not
+    # be empty if the given node is at the start of the graph (i.e., it has no upstream graph)
     subG.add_node(node)
     
-    for j in downstream:
+    # Iterate through the list of upstream nodes
+    for j in upstream:
+        # Get all incident edges to j
         edge_list = G.edges(j)
-        
+
+        # Iterate through the edge list; if both ends of the edge are in the set of upstream
+        # nodes, then add that edge to the upstream graph       
         for i in edge_list:
-            if i[0] in downstream and i[1] in downstream:
+            if i[0] in upstream and i[1] in upstream:
                 subG.add_edge(i[0], i[1])
     
+    # Define an empty list to fill with node colors
+    # this can be used for plotting with networkx.draw
     node_colors = []
 
+    # Iterate through the nodes of the downstream graph; make river nodes red, waterbody nodes blue,
+    # and any other nodes orange (this may include pollutant nodes)
     for i in subG.nodes:
         if i in river_gdf.COMID.values:
             node_colors.append("red")
@@ -612,29 +642,49 @@ def get_upstream_graph(G, node, lake_gdf, river_gdf):
         else:
             node_colors.append("orange")
             
+    # Return the downstream graph and the list of colors
     return subG, node_colors
 
 
 def add_CAFOS_to_graph(G_old, lake_gdf, river_gdf, CAFOS):
+    """
+    This function was specifically designed for adding CAFOs to a graph that is already defined. 
+    This function could be applied to point sources other than CAFOS, by passing a GeoDataFrame containing pollutant
+    point source locations in the place of CAFOS. Any GeoDataFrame passed in the place of CAFOS must contain an identifier
+    column called 'Node'. 
+
+    CAFOs are added by placing an edge between the CAFO and the closest node in the graph that is also in the HUC12 of the CAFO.
+    """
+
+    # Make a copy of the graph passed to this function; this prevents making changes to the original graph, G_old
     G = G_old.copy()
     
+    # Make a list of all the nodes comprising graph G
     all_nodes = [i for i in G.nodes]
+    # Build a concatenated dataframe containing the COMIDs, huc12 codes, and geometry for all waterbody and river nodes that are in the graph
     node_df = pd.concat([lake_gdf[["COMID", 'huc12', 'geometry']][lake_gdf.COMID.isin(all_nodes)].copy(), river_gdf[['COMID', 'huc12','geometry']][river_gdf.COMID.isin(all_nodes)].copy()])
     
+    # Loop through the list of CAFOS
     for i in range(len(CAFOS)):
+        # Define the huc the CAFO is in, the location of the CAFO, and the name of the CAFO
         huc = CAFOS.huc12.iloc[i]
         point = CAFOS.geometry.iloc[i]
         cafo_name = CAFOS.Node.iloc[i]
         
+        # Get a dataframe of all waterbody and river nodes in the graph that are also in the CAFO's huc12
         df_in_huc = node_df[node_df.huc12 == huc].copy()
         df_in_huc = df_in_huc.reset_index(drop=True)
         
+        # For nodes in the huc, define the distances from the CAFO location
         distances = df_in_huc.distance(point)
         
+        # If there are other nodes in the huc, then add an edge from the CAFO to the closest node
         if len(df_in_huc) != 0:
             comid_to_connect = df_in_huc.COMID.values[distances == min(distances)][0]
         
             G.add_edge(cafo_name, comid_to_connect)
+
+    # Return the graph with the CAFOs added. 
     return G
         
 def build_graph_with_pollutants(tofroms,lake_gdf, river_gdf, source):
@@ -690,7 +740,11 @@ def get_pos_dict_with_pollutant(G, lake_gdf, riv_gdf, source):
     return G_pos, node_colors, node_size
 
 
-def add_source_to_graph(G, lake_gdf, river_gdf, source):
+def add_source_to_graph(G_old , lake_gdf, river_gdf, source):
+
+    # Make a copy of the graph passed to this function; this prevents making changes to the original graph, G_old
+    G = G_old.copy()
+
     all_nodes = [i for i in G.nodes]
     node_df = pd.concat([lake_gdf[["COMID", 'huc12', 'geometry']][lake_gdf.COMID.isin(all_nodes)].copy(), river_gdf[['COMID', 'huc12','geometry']][river_gdf.COMID.isin(all_nodes)].copy()])
     
