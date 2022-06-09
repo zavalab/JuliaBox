@@ -688,10 +688,22 @@ def add_CAFOS_to_graph(G_old, lake_gdf, river_gdf, CAFOS):
     return G
         
 def build_graph_with_pollutants(tofroms,lake_gdf, river_gdf, source):
+    """
+    Build a graph from GeoDataFrames for waterbodies, rivers, and pollutant sources. 
+
+    source dataframe must contain an identifying column called "Node"
+
+    Pollutant sources are added by placing an edge between the source and the nearest
+    river or waterbody node that lies in the same HUC12
+    """
+
+    # Build a concatenated dataframe containing the COMIDs, huc12 codes, and geometry for all waterbody and river nodes that are in the graph
     node_df = pd.concat([lake_gdf[["COMID", 'huc12']], river_gdf[['COMID', 'huc12']]])
     
+    # Define a directed graph
     G = nx.DiGraph()
     
+    # Loop through the list of to-froms; add edges to the graph for each of these
     for j in range(len(tofroms)):
         from_node = tofroms.FROMCOMID.iloc[j]
         to_node   = tofroms.TOCOMID.iloc[j]
@@ -699,72 +711,145 @@ def build_graph_with_pollutants(tofroms,lake_gdf, river_gdf, source):
         if from_node != to_node:
             G.add_edge(from_node, to_node)
     
+    # Get a set of all nodes in the graph
     all_nodes = [i for i in G.nodes]
     
+    # Loop through the list of sources
     for i in range(len(source)):
+        # define the huc the source is in
         huc = source.huc12.iloc[i]
-        new_df = node_df[(node_df.huc12 == huc) & (node_df.COMID.isin(all_nodes))]
+        point = source.geometry.iloc[i]
+        source_name = source.Node.iloc[i]
+
+        # Get a dataframe of all waterbody and river nodes in the graph that are also in the source's huc12
+        df_in_huc = node_df[(node_df.huc12 == huc) & node_df.COMID.isin(all_nodes)].copy()
+        df_in_huc = df_in_huc.reset_index(drop=True)
         
-        for j in range(len(new_df)):
-            from_node = source.Node.iloc[i]
-            to_node = new_df.COMID.iloc[j]
-            G.add_edge(from_node, to_node)
+        # For nodes in the huc, define the distances from the source location
+        distances = df_in_huc.distance(point)
+        
+        # If there are other nodes in the huc, then add an edge from the source to the closest node
+        if len(df_in_huc) != 0:
+            # Get the COMID of the closest node
+            comid_to_connect = df_in_huc.COMID.values[distances == min(distances)][0]
+        
+            # Add an edge from the source to the comid
+            G.add_edge(source_name, comid_to_connect)
+
     return G
 
 def get_pos_dict_with_pollutant(G, lake_gdf, riv_gdf, source):
+    """
+    Return a dictionary containing geographic locations of nodes for plotting.
+    Also return a list of node colors and node_sizes. These will be used to plot
+    the graph network and give different colors to different node types
+
+    Takes inputs of a networkX directed graph (G), a waterbody GeoDataFrame (lake_gdf),
+    a river GeoDataFrame (riv_gdf), and a source GeoDataframe (source)
+    """
+
+    # Define an empty dictionary
     G_pos = dict()
     
+    # Define empty lists for node colors and node size
     node_colors= []
     node_size = []
     
-    
+    # Loop through the set of ndoes in the graph
     for j in tqdm((G.nodes)):
         
+        # If a node is a river, make the node color red
         if np.isin(j, riv_gdf.COMID.values):
             poly_val = riv_gdf.geometry[riv_gdf.COMID == j]
             cent_val = poly_val.centroid
             node_colors.append("red")
             node_size.append(10)
+        # If the node is a pollutant source, make the node color orange
         elif np.isin(j, source.Node.values):
             cent_val = source.geometry[source.Node == j]
             node_colors.append("orange")
             node_size.append(30)
+        # If the node isn't a river or a source, it must be a waterbody; make the ndoe color blue
         else:
             poly_val = lake_gdf.geometry[lake_gdf.COMID == j]
             cent_val = poly_val.centroid
             node_colors.append("blue")
             node_size.append(10)
-            
+        
+        # Set the x and y position of the node based on the centroid of the object
         G_pos[j] = (np.array([cent_val.x.values[0], cent_val.y.values[0]]))
 
+    # Return the dictionary of positions and the sets of node colors/sizes
     return G_pos, node_colors, node_size
 
 
 def add_source_to_graph(G_old , lake_gdf, river_gdf, source):
+    """
+    This function is a generalization of the function 'add_CAFOS_to_graph'. It operates identically, but has a different name
+    """
 
     # Make a copy of the graph passed to this function; this prevents making changes to the original graph, G_old
     G = G_old.copy()
 
+    # Make a list of all nodes in graph G
     all_nodes = [i for i in G.nodes]
+
+    # Build a concatenated dataframe containing the COMIDs, huc12 codes, and geometry for all waterbody and river nodes that are in the graph
     node_df = pd.concat([lake_gdf[["COMID", 'huc12', 'geometry']][lake_gdf.COMID.isin(all_nodes)].copy(), river_gdf[['COMID', 'huc12','geometry']][river_gdf.COMID.isin(all_nodes)].copy()])
     
+    # Loop through the list of sources
     for i in range(len(source)):
+        # Define the huc the source is in, the location of the source, and the name of the source
         huc = source.huc12.iloc[i]
         point = source.geometry.iloc[i]
-        cafo_name = source.Node.iloc[i]
+        source_name = source.Node.iloc[i]
         
+        # Get a dataframe of all waterbody and river nodes in the graph taht are also in the source's hcu12
         df_in_huc = node_df[node_df.huc12 == huc].copy()
         df_in_huc = df_in_huc.reset_index(drop=True)
         
+        # For nodes in the huc, define the distances from the source location
         distances = df_in_huc.distance(point)
         
+        # If there are other nodes in the huc, then add an edge from the source to the closest node
         if len(df_in_huc) != 0:
             comid_to_connect = df_in_huc.COMID.values[distances == min(distances)][0]
         
-            G.add_edge(cafo_name, comid_to_connect)
+            G.add_edge(source_name, comid_to_connect)
+        
+    # Return the graph with the sources added
     return G
 
 
+def color_nodes(G,lake_gdf, riv_gdf, source):
+    """
+    This function returns lists of node colors and node sizes; it does the same thing as 'get_pos_dict_with_pollutants',
+    except that it doesn't return the position dictionary. Forming this dictionary is typically the most time consuming
+    part of the function. 
+    """
+    
+    # Define lists for node colors and node sizes
+    node_colors= []
+    node_size = []
+    
+    # Loop through the set of all nodes in the graph
+    for j in tqdm((G.nodes)):
+        
+        # If the node is a river node, set the node color as red
+        if np.isin(j, riv_gdf.COMID.values):
+            node_colors.append("red")
+            node_size.append(10)
+        # If the node is a waterbody node, set the node color as blue
+        elif np.isin(j, lake_gdf.COMID.values):
+            node_colors.append("blue")
+            node_size.append(10)
+        # If the node is not a waterbody or river node, it is a source node; set the color as orange
+        else:
+            node_colors.append("orange")
+            node_size.append(10)
+            
+    # Return the lists
+    return node_colors, node_size
 
 
 
