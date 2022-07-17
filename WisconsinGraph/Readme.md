@@ -1,6 +1,6 @@
-# Hydrology Graphs 
+# HydroGraphs
 
-This repository contains the code for the manuscript "A Graph Formulation for Tracing Hydrological Pollutant Transport in Surface Waters." There are three main folders containing code and data, and these are outlined below. We call the framework for building a graph of these hydrological systems "Hydrology Graphs". This code was run using Python versions 3.8 and 3.9.
+This repository contains the code for the manuscript "A Graph Formulation for Tracing Hydrological Pollutant Transport in Surface Waters." There are three main folders containing code and data, and these are outlined below. We call the framework for building a graph of these hydrological systems `HydroGraphs`. This code was run using Python versions 3.8 and 3.9.
 
 ## 1. graph_construction
 This folder contains the data and code for building a graph of the watershed-river-waterbody hydrological system. It uses data from the Watershed Boundary Dataset (WBD; link [here](https://apps.nationalmap.gov/downloader/#/)) and the National Hydrography Dataset (NHDPlusV2; link [here](https://www.epa.gov/waterdata/get-nhdplus-national-hydrography-dataset-plus-data)) as a basis and builds a list of directed edges. We use `NetworkX` to build and visualize the list as a graph. This folder contains the following subfolders:
@@ -19,7 +19,7 @@ This folder also contains several files and scripts. These are as follows:
 * WILakes.df - This is a set of the waterbodies from the NHDPlusV2 for the state of Wisconsin. It includes columns for the HUC8, HUC10, and HUC12 codes and a column for intersecting rivers
 * WIRivers.df - This is a set of the rivers from the NHDPlusV2 for the state of Wisconsin. It includes columns for the HUC8, HUC10, and HUC12 codes and a column for intersecting waterbodies. 
 * agland.df - This is the agricultural land with the HUC8, HUC10, and HUC12 codes added
-* WI_graph_functions.py - This script contains several functions for working with "Hydrology Graphs." It also contains several functions that are called to form the desired graphs from the NHDPlusV2 and WBD.
+* WI_graph_functions.py - This script contains several functions for working with `HydroGraphs`. It also contains several functions that are called to form the desired graphs from the NHDPlusV2 and WBD.
 * run_WI_graph_code.py - This script runs the following other scripts, in the following order, to take the data from lakes_rivers and construct the files in WIgeodataframes and the files WILakes.df and WIRivers.df
     * build_base_dataframes.py - takes the NHDPlusV2 data and removes the areas outside of Wisconsin.
     * add_hucs_to_lakes_rivers.py - adds the HUC8, HUC10, and HUC12 codes to the river and waterbody GeoDataFrames
