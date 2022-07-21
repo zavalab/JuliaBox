@@ -2,6 +2,8 @@
 
 This repository contains the code for the manuscript "A Graph Formulation for Tracing Hydrological Pollutant Transport in Surface Waters." There are three main folders containing code and data, and these are outlined below. We call the framework for building a graph of these hydrological systems `HydroGraphs`. This code was run using Python versions 3.8 and 3.9.
 
+### NOTE: because of the size of some of the data, the files are not currently uploaded to Github. This will be updated in the future, either with the files uploaded using Git LFS or with a link to another location where the larger files can be downloaded. 
+
 ## 1. graph_construction
 This folder contains the data and code for building a graph of the watershed-river-waterbody hydrological system. It uses data from the Watershed Boundary Dataset (WBD; link [here](https://apps.nationalmap.gov/downloader/#/)) and the National Hydrography Dataset (NHDPlusV2; link [here](https://www.epa.gov/waterdata/get-nhdplus-national-hydrography-dataset-plus-data)) as a basis and builds a list of directed edges. We use `NetworkX` to build and visualize the list as a graph. This folder contains the following subfolders:
 
