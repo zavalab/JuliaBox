@@ -4,6 +4,7 @@ using MadNLP
 using MadNLPGraph
 using MadNLPHSL
 using JLD2
+using DelimitedFiles
 
 
 #######################################################################################
@@ -82,6 +83,33 @@ gas_node_agg, dict_agg = aggregate(gas_network_stoch)
 MadNLP.optimize!(gas_node; linear_solver=MadNLPMa57)
 #MadNLP.optimize!(gas_node; linear_solver=MadNLPSchur, schur_custom_partition=true, schur_subproblem_solver=MadNLPMa57)
 
+#######################################################################################
+
+# Save the optimized values of gas_node to a CSV
+
+nodes      = all_nodes(gas_node)
+all_values = Array{Any,2}(undef, (11376,11))
+
+# Set the first column to be the variable name
+all_values[:,1] = all_variables(nodes[1])
+
+# Set columns 2 - NS + 1 to be the value of the variable in each scenario
+for i in 1:NS
+    vars = all_variables(nodes[i])
+    for j in 1:11376
+        all_values[i + 1, j] = value(vars[j])
+    end
+end
+
+master_node_vars   = all_variables(nodes[NS + 1])
+master_node_values = value.(master_node_vars)
+
+master_node = Array{Any,2}(undef, (264,2))
+master_node[:,1] = master_node_vars
+master_node[:,2] = master_node_values
+
+DelimitedFiles.writedlm("10_scenario_results.csv", all_values, ',')
+DelimitedFiles.writedlm("10_scenario_master_node.csv", master_node, ',')
 
 #######################################################################################
 # Below is optional code for plotting a single scenario of the gas network. This was used to create the visualizations of the graph network
