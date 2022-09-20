@@ -34,13 +34,13 @@ for i in 1:length(edges[:,1])
     n_from = Int(edges[i,1])
     n_to   = Int(edges[i,2])
     if i == 1
-        Plots.plot!(plt_1scenario, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]]; linewidth=1, linecolor=:blue,linealpha=.3, label="Linking Constraint")
+        Plots.plot!(plt_1scenario, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]]; linewidth=1, linecolor=:blue,linealpha=.4, label="Linking Constraint")
     else
-        Plots.plot!(plt_1scenario, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]];label=false, linewidth=1, linecolor=:blue,linealpha=.3 )
+        Plots.plot!(plt_1scenario, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]];label=false, linewidth=1, linecolor=:blue,linealpha=.4 )
     end
 end
 
-
+savefig("gasnetwork1new.pdf")
 
 
 ### Code for graphing 4 scenarios of the stochastic gas network and the master node ###
@@ -126,10 +126,10 @@ Plots.scatter!(compressor_nodes4[:,1], compressor_nodes4[:,2], markersize=m_size
 
 # Add edges (linking constraints) to master node
 for i in 1:length(compressor_nodes[:,1])
-    Plots.plot!(plt_4scenarios, [15,compressor_nodes[i,1]], [15,compressor_nodes[i,2]]; linewidth=.1,linecolor=:blue,linealpha=.2,label=false)
-    Plots.plot!(plt_4scenarios, [15, compressor_nodes2[i,1]], [15, compressor_nodes2[i,2]], linewidth=.1, linecolor=:blue, linealpha=.2, label=false)
-    Plots.plot!(plt_4scenarios, [15, compressor_nodes3[i,1]], [15, compressor_nodes3[i,2]], linewidth=.1, linecolor=:blue, linealpha=.2, label=false)
-    Plots.plot!(plt_4scenarios, [15, compressor_nodes4[i,1]], [15, compressor_nodes4[i,2]], linewidth=.1, linecolor=:blue, linealpha=.2, label=false)
+    Plots.plot!(plt_4scenarios, [15,compressor_nodes[i,1]], [15,compressor_nodes[i,2]]; linewidth=.1,linecolor=:blue,linealpha=.25,label=false)
+    Plots.plot!(plt_4scenarios, [15, compressor_nodes2[i,1]], [15, compressor_nodes2[i,2]], linewidth=.1, linecolor=:blue, linealpha=.25, label=false)
+    Plots.plot!(plt_4scenarios, [15, compressor_nodes3[i,1]], [15, compressor_nodes3[i,2]], linewidth=.1, linecolor=:blue, linealpha=.25, label=false)
+    Plots.plot!(plt_4scenarios, [15, compressor_nodes4[i,1]], [15, compressor_nodes4[i,2]], linewidth=.1, linecolor=:blue, linealpha=.25, label=false)
 end
 
 # Add master node; there are also other nodes defined under the master node to make labeling of the legend easier
@@ -148,22 +148,22 @@ for i in 1:length(edges[:,1])
     n_to   = Int(edges[i,2])
 
     if i == 1
-        Plots.plot!(plt_4scenarios, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]]; linewidth=.05, linecolor=:blue,linealpha=.15, label="Linking Constraint")
+        Plots.plot!(plt_4scenarios, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]]; linewidth=.05, linecolor=:blue,linealpha=.2, label="Linking Constraint")
     else
-        Plots.plot!(plt_4scenarios, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.15 )
+        Plots.plot!(plt_4scenarios, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
     end
 
     n_from2 = Int(edges[i,1])
     n_to2   = Int(edges[i,2])
-    Plots.plot!(plt_4scenarios, [node_positions2[n_from2,1], node_positions2[n_to2,1]], [node_positions2[n_from2,2], node_positions2[n_to2,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.15 )
+    Plots.plot!(plt_4scenarios, [node_positions2[n_from2,1], node_positions2[n_to2,1]], [node_positions2[n_from2,2], node_positions2[n_to2,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
     
     n_from3 = Int(edges[i,1])
     n_to3   = Int(edges[i,2])
-    Plots.plot!(plt_4scenarios, [node_positions3[n_from3,1], node_positions3[n_to3,1]], [node_positions3[n_from3,2], node_positions3[n_to3,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.15 )
+    Plots.plot!(plt_4scenarios, [node_positions3[n_from3,1], node_positions3[n_to3,1]], [node_positions3[n_from3,2], node_positions3[n_to3,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
     
     n_from4 = Int(edges[i,1])
     n_to4   = Int(edges[i,2])
-    Plots.plot!(plt_4scenarios, [node_positions4[n_from4,1], node_positions4[n_to4,1]], [node_positions4[n_from4,2], node_positions4[n_to4,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.15 )
+    Plots.plot!(plt_4scenarios, [node_positions4[n_from4,1], node_positions4[n_to4,1]], [node_positions4[n_from4,2], node_positions4[n_to4,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
 
 
     if i%1000 == 0
@@ -171,7 +171,7 @@ for i in 1:length(edges[:,1])
     end
 end
 
-
+savefig("gasnetwork4new.pdf")
 
 ### Code for graphing the stochastic PID problem in both time and scenario ###
 ######################################################################################################################
