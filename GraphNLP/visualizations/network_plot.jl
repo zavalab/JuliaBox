@@ -40,8 +40,6 @@ for i in 1:length(edges[:,1])
     end
 end
 
-savefig("gasnetwork1new.pdf")
-
 
 ### Code for graphing 4 scenarios of the stochastic gas network and the master node ###
 #######################################################################################################
@@ -156,11 +154,11 @@ for i in 1:length(edges[:,1])
     n_from2 = Int(edges[i,1])
     n_to2   = Int(edges[i,2])
     Plots.plot!(plt_4scenarios, [node_positions2[n_from2,1], node_positions2[n_to2,1]], [node_positions2[n_from2,2], node_positions2[n_to2,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
-    
+
     n_from3 = Int(edges[i,1])
     n_to3   = Int(edges[i,2])
     Plots.plot!(plt_4scenarios, [node_positions3[n_from3,1], node_positions3[n_to3,1]], [node_positions3[n_from3,2], node_positions3[n_to3,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
-    
+
     n_from4 = Int(edges[i,1])
     n_to4   = Int(edges[i,2])
     Plots.plot!(plt_4scenarios, [node_positions4[n_from4,1], node_positions4[n_to4,1]], [node_positions4[n_from4,2], node_positions4[n_to4,2]];label=false, linewidth=.05, linecolor=:blue,linealpha=.2 )
@@ -170,8 +168,6 @@ for i in 1:length(edges[:,1])
         println("Done with iteration ", i, " out of ", length(edges[:,1]))
     end
 end
-
-savefig("gasnetwork4new.pdf")
 
 ### Code for graphing the stochastic PID problem in both time and scenario ###
 ######################################################################################################################
@@ -229,4 +225,3 @@ for i in 1:length(edges[:,1])
     n_to   = Int(edges[i,2])
     Plots.plot!(plt_PID_time, [node_positions[n_from,1], node_positions[n_to,1]], [node_positions[n_from,2], node_positions[n_to,2]];label=false, linewidth=1, linecolor=:blue,linealpha=200 )
 end
-
