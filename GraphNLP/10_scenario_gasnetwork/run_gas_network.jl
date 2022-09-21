@@ -97,7 +97,8 @@ all_values[:,1] = all_variables(nodes[1])
 for i in 1:NS
     vars = all_variables(nodes[i])
     for j in 1:11376
-        all_values[i + 1, j] = value(vars[j])
+        println(i, "   ", j)
+        all_values[j, i + 1] = value(vars[j])
     end
 end
 
