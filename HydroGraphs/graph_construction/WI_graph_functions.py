@@ -1,21 +1,9 @@
 import pandas as pd
 import numpy as np
-from shapely.ops import nearest_points
-from shapely.geometry import MultiPoint
-import matplotlib.dates as mdates
-
-pd.options.display.max_columns = 250
-pd.options.display.max_rows=150
-
-import matplotlib.pyplot as plt
-import matplotlib.colors as colors
-
-
 import geopandas as gpd
 from geopandas.tools import sjoin
 import pandas as pd
 from shapely.geometry import Point
-from scipy.interpolate import interp1d
 from tqdm import tqdm
 import networkx as nx
 

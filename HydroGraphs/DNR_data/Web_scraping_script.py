@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import Select
 
 
 
-driver = webdriver.Chrome("C:/Users/dlcole3/Python39/chromedriver.exe")
+driver = webdriver.Chrome("PATH_to_chromedriver")
 driver.set_page_load_timeout("20")
 # Load webpage
 driver.get("https://dnr.wi.gov/lakes/waterquality/")

@@ -1,6 +1,4 @@
 import geopandas as gpd
-import numpy as np
-import pandas as pd
 from WI_graph_functions import *
 
 # Read in the agricultural land file
