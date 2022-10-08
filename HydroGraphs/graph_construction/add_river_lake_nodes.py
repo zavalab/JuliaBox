@@ -1,9 +1,4 @@
 import geopandas as gpd
-import pandas as pd
-import pickle
-import numpy as np
-from tqdm import tqdm
-from shapely.geometry import Point
 
 from WI_graph_functions import *
 
