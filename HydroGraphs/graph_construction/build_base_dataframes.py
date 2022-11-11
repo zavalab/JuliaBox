@@ -66,7 +66,7 @@ lakes7 = lakes7[lakes7.FTYPE != "SwampMarsh"].copy()
 lakes4 = lakes4.reset_index(drop=True)
 lakes7 = lakes7.reset_index(drop=True)
 
-# Add an indicator for 
+# Add a huc indicator column
 HUC84, HUC104, HUC124 = add_huc_col_to_hucs(HUC84.copy(), HUC104.copy(), HUC124.copy())
 HUC87, HUC107, HUC127 = add_huc_col_to_hucs(HUC87.copy(), HUC107.copy(), HUC127.copy())
 
