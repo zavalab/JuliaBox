@@ -4,6 +4,9 @@ from WI_graph_functions import *
 # Read in the agricultural land file
 agland = gpd.GeoDataFrame.from_file("agland/WisconsinFieldBoundaries2019.shp")
 
+# Convert crs
+agland = agland.to_crs("EPSG:4326")
+
 # Read in HUC8, HUC10, and HUC12 files
 HUC8   = gpd.GeoDataFrame.from_file("WIgeodataframes/HUC8/HUC8.shp")
 HUC10  = gpd.GeoDataFrame.from_file("WIgeodataframes/HUC10/HUC10.shp")
