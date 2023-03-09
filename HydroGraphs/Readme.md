@@ -1,8 +1,8 @@
-# Hydrology Graphs 
+# HydroGraphs
 
-This repository contains the code for the manuscript "A Graph Formulation for Tracing Hydrological Pollutant Transport in Surface Waters." There are three main folders containing code and data, and these are outlined below. We call the framework for building a graph of these hydrological systems "Hydrology Graphs".
+This repository contains the code for the manuscript "A Graph-Based Modeling Framework for Tracing Hydrological Pollutant Transport in Surface Waters." There are three main folders containing code and data, and these are outlined below. We call the framework for building a graph of these hydrological systems "HydroGraphs".
 
-Several of the datafiles for building this framework are large and cannot be stored on Github. To conserve space, the notebook `get_and_unpack_data.ipynb` or the script `get_and_unpack_data.py` can be used to download the data from the Watershed Boundary Dataset (WBD), the National Hydrography Dataset (NHDPlusV2), and the agricultural land dataset for the state of Wisconsin. The files `WILakes.df` and `WIRivers.df` metnioend in section 1 below are contained within the `WI_lakes_rivers.zip` folder, and the files 24k Hydro Waterbodies dataset are contained in a zip file under the directory `DNR_data/Hydro_Waterbodies`. These files can also be unpacked by running the corresponding cells in the notebook `get_and_unpack_data.ipynb` or `get_and_unpack_data.py`. 
+Several of the datafiles for building this framework are large and cannot be stored on Github. To conserve space, the notebook `get_and_unpack_data.ipynb` or the script `get_and_unpack_data.py` can be used to download the data from the Watershed Boundary Dataset (WBD), the National Hydrography Dataset (NHDPlusV2), and the agricultural land dataset for the state of Wisconsin. The files `WILakes.df` and `WIRivers.df` mentioned in section 1 below are contained within the `WI_lakes_rivers.zip` folder, and the files 24k Hydro Waterbodies dataset are contained in a zip file under the directory `DNR_data/Hydro_Waterbodies`. These files can also be unpacked by running the corresponding cells in the notebook `get_and_unpack_data.ipynb` or `get_and_unpack_data.py`. 
 
 ## 1. graph_construction
 This folder contains the data and code for building a graph of the watershed-river-waterbody hydrological system. It uses data from the Watershed Boundary Dataset (link [here](https://apps.nationalmap.gov/downloader/#/)) and the National Hydrography Dataset (link [here](https://www.epa.gov/waterdata/get-nhdplus-national-hydrography-dataset-plus-data)) as a basis and builds a list of directed edges. We use `NetworkX` to build and visualize the list as a graph. This folder contains the following subfolders:
@@ -59,3 +59,29 @@ The .ipynb files in `graph_construction/` and `case_studies` were run using Pyth
 * pandas (1.4.2)
 
 The .py file in `DNR_data` used for webscraping used Python version 3.9.5 with Selenium version 3.141.0. Note that the user must download the webdriver and put in the proper path to run the code. For our results, we used the Chromedriver for Chrome version 92. 
+
+## General Framework
+
+While the code in this repository contains scripts for the state of Wisconsin, the overall framework can easily be applied to other geographical areas as long as the data is in the right format. As our data comes directly from the NHDPlusV2 and WBD datasets, this is easy to set up for other areas. The script `run_WI_graph_code.py` calls 5 other python files that incorporate this framework. In addition, it calls many predefined functions from the file `WI_graph_functions.py`. These functions are a primary contribution of this work. 
+
+The first file called is `build_base_dataframes.py`. This file is primarily data processing; the state of Wisconsin includes two different datasets from the NHDPlusV2 (HUC04 and HUC07), and we needed to first merge these two datasets together and then choose only the waterbodies/rivers/watersheds that are in the state of Wisconsin. For users who want to see an example of how to merge multiple HUC2 watersheds, this script may be helpful. 
+
+The necessary data for producing the graph network are:
+ * HUC8, HUC10, and HUC12 shapefiles from WBD
+ * NHDWaterbody and NHDFlowlines shapefiles from NHDPlusV2
+ * PlusFlow.csv from NHDPlusV2 (contains the TOCOMID and FROMCOMID connections)
+
+If the user has the correct data (i.e., they have the NHDPlusV2 and WBD data for the area of interest), the following framework can be followed: 
+
+ * Ensure all datasets use the same EPSG code (see lines 45-55 of `build_base_dataframes.py`)
+ * Remove swamps/marshes from the waterbody dataset (if desired; see lines 62-63 of `build_base_dataframes.py`)
+ * Add HUC code attributes to the WBD dataset (see lines 70-71 of `build_base_dataframes.py`; this is done through the function `add_huc_col_to_hucs`)
+ * Add HUC code attributes to the waterbody and river datasets (lines 23-31 of file `add_hucs_to_lakes_rivers.py`; this is done through the functions `add_HUC8`, `add_HUC10`, and `add_HUC12`)
+ * Identify the river segments that intersect each waterbody (and the waterbodies that intersect each river segment). This is done through the function `add_lake_river_node_column` (see line 12 of `add_river_lake_nodes.py`)
+ * Aggregate the graph (if desired). This reduces the number of nodes in the graph, but maintains connectivity to HUC12s and upstream waterbodies. This is done through the function `aggregate_river_nodes` (see line 18 of `aggregated_graph`)
+
+The result of this framework is an edge list (list of COMID sources and destinations). For river segments alone, this list is supplied by NHDPlusV2, but the above process returns a new list composed of lake and river COMIDs. In addition, the aggregation process returns a reduced list of COMIDs. These lists can be used very easily to construct graphs in `NetworkX` in Python. `HydroGraphs` also provides functions for producing the graph directly from the edge list/tofrom list, and it provides functions for getting the upstream and downstream graphs from a given COMID. 
+
+## Correct Data Format
+
+For the above code to run correctly, certain formatting must be followed. We have found that, depending on where the NHDPlusV2 data is retrieved from, slightly different naming conventions are used. For example, sometimes the COMID column of a data table is called "COMID" and sometimes it is called "ComID". For the above scripts to run accurately, all COMID columns must be named "COMID." In addition, all HUC units must be of type `integer`, where as they are sometimes type `string`. Lastly, HUC columns (i.e., HUC8, HUC10, HUC12) must be lowercase in the column name (i.e., columns must be named "huc8", "huc10", and "huc12"). 
