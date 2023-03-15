@@ -1,0 +1,14 @@
+#  ord,name,trans_vc_truck($/tonne/km),trans_fc_truck($/tonne)
+1,Recyclables,0.07,3.01
+2,plastic bail,0.07,3.01
+3,plastic flake,0.07,3.01
+4,pyrolysis oil,0.0945,7.66
+5,pyrolysis gas,1000000000,0
+6,Ethylene,1000000000,0
+7,propylene,1000000000,0
+8,C4,1000000000,0
+9,pyrolysis gasoline,1000000000,0
+10,Fuel gas,1000000000,0
+11,Fuel oil,1000000000,0
+12,LDPE,1000000000,0
+13,PP,1000000000,0
