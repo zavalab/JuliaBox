@@ -1,6 +1,6 @@
 # Graph-Structured Nonlinear Optimization Code
 
-This repository contains the code of two different nonlinear optimization problems for the manuscript "A Julia Framework for Graph-Structured Nonlinear Optimization." The problems are modeled in Plasmo.jl and solved in MadNLP.jl.
+This repository contains the code of two different nonlinear optimization problems for the manuscript "A Julia Framework for Graph-Structured Nonlinear Optimization" (found [here](https://doi-org.ezproxy.library.wisc.edu/10.1021/acs.iecr.2c01253)). The problems are modeled in Plasmo.jl and solved in MadNLP.jl.
 
 There are four folders containing code, and their contents are described below. Note that several of these scripts use different solves which may require additional setup, such as Ma57. For details on how to complete this setup, please see MadNLP's documentation [here](https://github.com/MadNLP/MadNLP.jl). MadNLP has multiple solvers available that can be used without additional setup. For example, instead of setting `linear_solver=MadNLPMa57` inside the `MadNLP.optimize` function, the user can set `linear_solver=MadNLPUmfpack` to avoid errors when Ma57 is not set up.
 
@@ -33,8 +33,8 @@ This folder contains the code used to time the gasnetwork problem at different p
 ## 4. visualizations
 This folder contains CSVs of node locations and a .jl file that was used to generate the figures for the above manuscript. The node locations were generated from PlasmoPlots (examples of the code for PlasmoPlots.jl can be seen in stochastic_PID/StochPID_Plasmo.jl and in 10_scenario_gasnetwork/run_gas_network.jl).
 
-
-The code included in these folders works with the following package versions (though it may not be limited to these versions):
+## 5. Package Versions
+The code included in these folders works with the following package versions (though it may not be limited to these versions) using Julia 1.6.3:
 * MadNLP: v0.3.0 and v0.2.0
 * JuMP: v0.21.10
 * JLD2: v0.4.13 and v0.4.15
@@ -42,3 +42,8 @@ The code included in these folders works with the following package versions (th
 * MadNLPGraph: v0.1.0 and v0.3.0
 * MadNLPHSL: v0.1.0 and v0.2.0
 * PlasmoPlots v0.1.0
+
+## 6. Schur Decomposition with MadNLP
+One of the contributions of this work is highlighting how MadNLP enables solving nonlinear structured problems with Schur decomposition. 
+
+[Line 86](https://github.com/zavalab/JuliaBox/blob/e527eae6b126d9ac803e5db7d4041dc235a0968b/GraphNLP/timed_gasnetwork/run_gas_network.jl#L86) of timed_gasnetwork/run_gas_network.jl shows how to call the solver using `MadNLPSchur` as the linear solver. The `schur_custom_partition` argument is set to `true` because the problem is partitioned into nodes. On [line 62](https://github.com/zavalab/JuliaBox/blob/e527eae6b126d9ac803e5db7d4041dc235a0968b/GraphNLP/timed_gasnetwork/run_gas_network.jl#L62), the problem is aggregated so that it has no subgraphs. Each scenario of the gas network problem is contained on a separate subgraph, and calling `aggregate` turns the subgraph layers (e.g., each scenario) into nodes. MadNLP is able to detect this problem structure and solve in parallel. In other words, aggregating the graph shown in Figure 10 of the above paper would result in five nodes: the master node in the middle, and one node for each scenario subgraph. 
