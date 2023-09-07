@@ -111,8 +111,8 @@ function run_day1_monolith(graph_set)
     link_between_ST(graph)
 
     set_optimizer(graph, Gurobi.Optimizer)
-    set_optimizer_attribute(graph, "MIPGap", .10)
-    set_optimizer_attribute(graph, "Threads", 8)
+    set_optimizer_attribute(graph, "MIPGap", .05)
+    set_optimizer_attribute(graph, "Threads", 4)
     set_optimizer_attribute(graph, "PreSparsify", 1)
     set_optimizer_attribute(graph, "LogFile", (@__DIR__)*"/gurobi_logs/logfile1.log")
     set_optimizer_attribute(graph, "NodefileStart", .0005)
@@ -123,7 +123,7 @@ function run_day1_monolith(graph_set)
 
     for i in 1:length(subgraph_set)
         values = value.(all_variables(subgraph_set[i]))
-        writedlm((@__DIR__)*"/results/32d_monolith/mipgap10_results$(i)_day1.csv", values, ',')
+        writedlm((@__DIR__)*"/results/32d_monolith/mipgap5_results$(i)_day1.csv", values, ',')
     end
     push!(graph_set, graph)
 end
@@ -136,7 +136,7 @@ function run_day2_monolith(graph_set)
     graph_DAUC = OptiGraph()
     day_num = 2
 
-    build_bus_over_time(graph_DAUC, 25, D_DA[:, 27:51], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
+    build_bus_over_time(graph_DAUC, 25, D_DA[:, 27:51], xi_DA, 1, gen_DA, gen_data_DA, gen_DA, offset = 24)
     graph_DAUC_set = []
     push!(graph_DAUC_set, getsubgraphs(graph_set[1])[1])
     push!(graph_DAUC_set, graph_DAUC)
@@ -175,8 +175,8 @@ function run_day2_monolith(graph_set)
     link_sol_over_HA_new_day(graph, graph_set[1])
 
     set_optimizer(graph, Gurobi.Optimizer)
-    set_optimizer_attribute(graph, "MIPGap", .10)
-    set_optimizer_attribute(graph, "Threads", 8)
+    set_optimizer_attribute(graph, "MIPGap", .05)
+    set_optimizer_attribute(graph, "Threads", 4)
     set_optimizer_attribute(graph, "PreSparsify", 1)
     set_optimizer_attribute(graph, "LogFile", (@__DIR__)*"/gurobi_logs/logfile2.log")
     set_optimizer_attribute(graph, "NodefileStart", .0005)
@@ -187,7 +187,7 @@ function run_day2_monolith(graph_set)
 
     for i in 1:length(subgraph_set)
         values = value.(all_variables(subgraph_set[i]))
-        writedlm((@__DIR__)*"/results/32d_monolith/mipgap10_results$(i)_day2.csv", values, ',')
+        writedlm((@__DIR__)*"/results/32d_monolith/mipgap5_results$(i)_day2.csv", values, ',')
     end
     push!(graph_set, graph)
 end
@@ -204,7 +204,7 @@ function run_dayi_monolith(graph_set, day)
 
     graph_DAUC = OptiGraph()
     DA_range = (3 + 24 * (day - 1)):(3 + 24 * day)
-    build_bus_over_time(graph_DAUC, 25, D_DA[:, DA_range], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
+    build_bus_over_time(graph_DAUC, 25, D_DA[:, DA_range], xi_DA, 1, gen_DA, gen_data_DA, gen_DA, offset = (day - 1) * 24)
     graph_DAUC_set = []
     for k in 1:length(graph_set)
         push!(graph_DAUC_set, getsubgraphs(graph_set[k])[1])
@@ -248,7 +248,7 @@ function run_dayi_monolith(graph_set, day)
     link_sol_over_HA_new_day(graph, graph_set[graph_set_len])
 
     set_optimizer(graph, Gurobi.Optimizer)
-    set_optimizer_attribute(graph, "MIPGap", .10)
+    set_optimizer_attribute(graph, "MIPGap", .05)
     set_optimizer_attribute(graph, "Threads", 8)
     set_optimizer_attribute(graph, "PreSparsify", 1)
     set_optimizer_attribute(graph, "LogFile", (@__DIR__)*"/gurobi_logs/logfile$(day).log")
@@ -260,7 +260,7 @@ function run_dayi_monolith(graph_set, day)
 
     for i in 1:length(subgraph_set)
         values = value.(all_variables(subgraph_set[i]))
-        writedlm((@__DIR__)*"/results/32d_monolith/mipgap10_results$(i)_day$(day).csv", values, ',')
+        writedlm((@__DIR__)*"/results/32d_monolith/mipgap5_results$(i)_day$(day).csv", values, ',')
     end
     push!(graph_set, graph)
 end
@@ -270,13 +270,10 @@ graph_set = []
 run_times = []
 d1_time = @elapsed run_day1_monolith(graph_set)
 push!(run_times, d1_time)
-writedlm((@__DIR__)*"/run_times_monolith.csv", run_times, ',')
 d2_time = @elapsed run_day2_monolith(graph_set)
 push!(run_times, d2_time)
-writedlm((@__DIR__)*"/run_times_monolith.csv", run_times, ',')
 
 for i in 3:32
     di_time = @elapsed run_dayi_monolith(graph_set, i)
     push!(run_times, di_time)
-    writedlm((@__DIR__)*"/run_times_monolith.csv", run_times, ',')
 end
