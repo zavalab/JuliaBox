@@ -697,9 +697,28 @@ function link_sol_over_HA(graph, tau = 1; dt = .25)
     end
 end
 
+"""
+    link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = nothing)
 
+Adds up and downtime link constraints between previous the solution of previous DA problems
+and the current DA problem. Also adds a ramping constraint between the current DA problem
+and the final time point of the last day's DA problem and HA subproblem.
+ * DA_graph - current DA graph receiving the constraints
+ * DA_graph_set - set of DA subgraphs with up to the last two days graphs
+ * day_num - index of day (1-32)
+ * dt - time discretization for DA level
+ * HA_graph - previous day's final HA graph
+
+See also the function `link_between_ST_sol`
+"""
 function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = nothing)
 
+    """
+        get_s_list(DA_graph_set, bus_name, gen_name, day_num)
+
+    Returns a vector of the s variables (or the value of the s variables) for DAUC subproblems; used
+    for the up-time constraint; s variables are sorted in opposite direction of time point (e.g., 4:0.25:0.25)
+    """
     function get_s_list(DA_graph_set, bus_name, gen_name, day_num)
 
         if day_num == 1
@@ -717,6 +736,12 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
         return s_list
     end
 
+    """
+        get_z_list(DA_graph_set, bus_name, gen_name, i)
+
+    Returns a vector of the z variables (or the value of the z variables) for DAUC subproblems; used
+    for the down-time constraint z variables are sorted in opposite direction of time point (e.g., 4:0.25:0.25)
+    """
     function get_z_list(DA_graph_set, bus_name, gen_name, day_num)
         if day_num == 1
             z_list = [getsubgraphs(DA_graph_set[1])[j][:bus][bus_name][:z][gen_name] for j in 25:-1:1]
@@ -733,9 +758,16 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
         return z_list
     end
 
+    """
+        link_subgraphs_uptime(graph, DA_graphs, min_up_time, bus_name, gen_name, s_list, i)
+
+    Adds up-time linking constraints to the DA subproblem graphs. DA_graphs is the set of subproblem graphs (also
+    used in get_s_list). Adds linking constraints for a single generator.
+    """
     function link_subgraphs_uptime(graph, DA_graphs, min_up_time, bus_name, gen_name, s_list, i)
+        # If i = 1, it is the first day, and we must account for their not being a previous graph to pull solutions from
         if i == 1
-            if min_up_time >24
+            if min_up_time > 24
                 for j in 1:24
                     subgraph_index = 26 - j
                     s_range = (j):25
@@ -756,7 +788,9 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
                     @linkconstraint(graph, sum(s_list[s_range]) <= getsubgraphs(DA_graphs[1])[subgraph_index][:bus][bus_name][:x][gen_name])
                 end
             end
-        elseif i == 2 # s_list is length 28
+        # if i == 2, it is the second day. If the min_up time is greater than 24, we must account for there
+        # being fewer time points in the problem than the length of the minimum up or down time
+        elseif i == 2
             if min_up_time > 24
                 up_time_diff = Int(49 - min_up_time)
 
@@ -786,7 +820,14 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
         end
     end
 
+    """
+        link_subgraphs_downtime(graph, DA_graphs, min_down_time, bus_name, gen_name, z_list, i)
+
+    Adds down-time linking constraints to the DA subproblem graphs. DA_graphs is the set of subproblem graphs (also
+    used in get_s_list). Adds linking constraints for a single generator.
+    """
     function link_subgraphs_downtime(graph, DA_graphs, min_down_time, bus_name, gen_name, z_list, i)
+        # If i = 1, it is the first day, and we must account for their not being a previous graph to pull solutions from
         if i == 1
             if min_down_time > 24
                 for j in 1:24
@@ -807,7 +848,9 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
                     @linkconstraint(graph, sum(z_list[z_range]) <= 1 - getsubgraphs(DA_graphs[1])[subgraph_index][:bus][bus_name][:x][gen_name])
                 end
             end
-        elseif i == 2 # s_list is length 28
+        # if i == 2, it is the second day. If the min_up time is greater than 24, we must account for there
+        # being fewer time points in the problem than the length of the minimum up or down time
+        elseif i == 2
             if min_down_time > 24
                 down_time_diff = Int(49 - min_down_time)
 
@@ -838,6 +881,7 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
     end
 
     num_DA_gen = size(gen_DA, 1)
+    # Add constraints to each DA generator
     for j in 1:num_DA_gen
         gen_name = gen_DA[j, "Generator Name"]
         bus_name = gen_DA[j, "Bus of Connection"]
@@ -874,8 +918,11 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
             bus_next = getsubgraphs(DA_graph_set[next_DA_graph_index])[1][:bus][bus_name]
             bus_last = getsubgraphs(DA_graph_set[last_DA_graph_index])[24][:bus][bus_name]
             bus_last_HA = getsubgraphs(HA_graph)[1][:bus][bus_name]
+
+            # Add constraints on binary variables
             @linkconstraint(DA_graph, bus_next[:x][gen_name] - value(bus_last[:x][gen_name]) == bus_next[:s][gen_name] - bus_next[:z][gen_name])
 
+            # Add ramping constraints
             @linkconstraint(DA_graph, bus_next[:Gen_p][gen_name] + bus_next[:Gen_m][gen_name] -
                 value(bus_last_HA[:Gen_p][gen_name]) - value(bus_last_HA[:Gen_m][gen_name]) <=
                 (max_startup - max_ramp_up - min_cap) * bus_next[:s][gen_name] +
@@ -891,6 +938,11 @@ function link_between_DA(DA_graph, DA_graph_set, day_num; dt = 1, HA_graph = not
     end
 end
 
+"""
+    link_sol_over_HA_new_day(graph, graph_last, dt = .25, monolithic = true)
+
+Links the previous day's solutions to the 1st HA subgraph of the day
+"""
 function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true)
 
     HA_subgraph_next = getsubgraphs(graph)[10]
@@ -903,7 +955,6 @@ function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true
     num_conv_gen = size(gen_data_conv, 1)
 
     DA_len = size(gen_DA, 1)
-
 
     for k in 1:DA_len
         gen_name = gen_DA[k, "Generator Name"]
@@ -923,10 +974,11 @@ function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true
         bus_last_gen_p = value(bus_last[:Gen_p][gen_name])
         bus_last_gen_m = value(bus_last[:Gen_m][gen_name])
 
-
         bus_next_DA = getsubgraphs(DA_subgraph_next)[1][:bus][bus_name]
         bus_last_DA = getsubgraphs(DA_subgraph_last)[24][:bus][bus_name]
 
+        # If this is the monolithic problem, then some DA variables
+        # will not have a solution on them yet
         if monolithic
             DA_x_next = bus_next_DA[:x][gen_name]
             DA_s_next = bus_next_DA[:s][gen_name]
@@ -939,7 +991,8 @@ function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true
             DA_x_last = value(bus_last_DA[:x][gen_name])
         end
 
-
+        # Add ramping constraints using the previous day's DA decisions,
+        # the current day's DA decision, and the previous day's HA level
         @linkconstraint(HA_subgraph_next, bus_next[:Gen_p][gen_name] + bus_next[:Gen_m][gen_name] -
             bus_last_gen_p - bus_last_gen_m <=
             (max_startup - max_ramp_up - gen_min_cap) * DA_s_next +
@@ -975,6 +1028,8 @@ function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true
         bus_next_ST = getsubgraphs(ST_subgraph_next)[1][:bus][bus_name]
         bus_last_ST = getsubgraphs(ST_subgraph_last)[12][:bus][bus_name]
 
+        # If this is the monolithic problem, then some ST variables
+        # will not have a solution on them yet
         if monolithic
             ST_x_next = bus_next_ST[:x][gen_name]
             ST_s_next = bus_next_ST[:s][gen_name]
@@ -987,6 +1042,8 @@ function link_sol_over_HA_new_day(graph, graph_last; dt = .25, monolithic = true
             ST_x_last = value(bus_last_ST[:x][gen_name])
         end
 
+        # Add ramping constraints using the previous day's ST decisions,
+        # the current day's ST decision, and the previous day's HA level
         @linkconstraint(HA_subgraph_next, bus_next[:Gen_p][gen_name] + bus_next[:Gen_m][gen_name] -
             bus_last_gen_p - bus_last_gen_m <=
             (max_startup - max_ramp_up - gen_min_cap) * ST_s_next +

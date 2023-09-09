@@ -53,15 +53,14 @@ phi_u = 5000
 
 include((@__DIR__)*"/layer_construction.jl")
 include((@__DIR__)*"/link_solutions.jl")
+
+# Build Dummy graph (used for matching variables to saved solutions)
 graph = OptiGraph()
 
 graph_DAUC = OptiGraph()
 day_num = 1
 
 build_bus_over_time(graph_DAUC, 25, D_DA[:, 3:27], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
-
-#link_DA_over_time(graph_DAUC, gen_data_DA)
-#link_between_DA(graph_DAUC, [graph_DAUC], 1)
 
 add_subgraph!(graph, graph_DAUC)
 
@@ -88,10 +87,15 @@ all_vars = all_variables(graph)
 
 subgraph_set = getsubgraphs(graph)
 
-
+# Get the objective based on the performance of the HA-ED levels
+# Use only the first data point of each HAED subgraph of each day
+# File names are strings corresponding to parts of the file name
 function get_objective_HA_level(graph, file_name1, file_name2, file_name3, day_start, day_end; dt = .25, offset = 0)
 
     obj_val = [0.0]
+    # Loop through the number of days you want the objective for
+    # Each day, the saved solutions are queried and multiplied by
+    # the costs of generation, curtailment, shedding, etc.
     for i in day_start:day_end
         HAED_dict = Dict()
         println("running day $i")
@@ -123,109 +127,5 @@ function get_objective_HA_level(graph, file_name1, file_name2, file_name3, day_s
     return obj_val
 end
 
-function get_objective_all_levels(
-        graph,
-        file_nameDA,
-        file_nameST,
-        file_nameHA,
-        file_name_mid,
-        file_name_end,
-        day_start,
-        day_end;
-        dt1 = 1,
-        dt2 = .25,
-        offset_ST = 0,
-        offset_HA = 0
-    )
-    if phi_c != phi_o
-        error("phi_c is not equal to phi_o; need to update this code")
-    end
-
-    obj_val = [0.0]
-
-    for i in day_start:day_end
-        println("running day $i")
-        DAUC_dict = Dict()
-        DAUC_vars = all_variables(subgraph_set[1])
-        DAUC_vals = readdlm((@__DIR__)*file_nameDA * file_name_mid * "$i" * file_name_end, ',')
-        for k in 1:length(DAUC_vars)
-            DAUC_dict[DAUC_vars[k]] = DAUC_vals[k]
-        end
-
-        for j in 1:24
-            DA_subgraph = getsubgraphs(subgraph_set[1])[j]
-            for k in 1:size(gen_DA, 1)
-                bus_name = gen_DA[k, "Bus of Connection"]
-                gen_name = gen_DA[k, "Generator Name"]
-                x_val    = DAUC_dict[DA_subgraph[:bus][bus_name][:x][gen_name]]
-                s_val    = DAUC_dict[DA_subgraph[:bus][bus_name][:s][gen_name]]
-
-                no_load_cost = gen_DA[k, "No-Load Cost (\$/hr)"]
-                start_cost   = gen_DA[k, "Start Cost (\$)"]
-                obj_val[1]  += no_load_cost * x_val * dt1
-                obj_val[1]  += start_cost * s_val
-            end
-        end
-
-        STUC_dict = Dict()
-        for j in 1:8
-            STUC_vars = all_variables(subgraph_set[1 + j])
-            STUC_vals = readdlm((@__DIR__)*file_nameST * "$(j + offset_ST)" * file_name_mid * "$i" * file_name_end, ',')
-            for k in 1:length(STUC_vars)
-                STUC_dict[STUC_vars[k]] = STUC_vals[k]
-            end
-            for k in 1:12
-                ST_subgraph = getsubgraphs(subgraph_set[1 + j])[k]
-                for l in 1:size(gen_ST, 1)
-                    bus_name = gen_ST[l, "Bus of Connection"]
-                    gen_name = gen_ST[l, "Generator Name"]
-                    x_val = STUC_dict[ST_subgraph[:bus][bus_name][:x][gen_name]]
-                    s_val = STUC_dict[ST_subgraph[:bus][bus_name][:s][gen_name]]
-
-                    no_load_cost = gen_ST[l, "No-Load Cost (\$/hr)"]
-                    start_cost   = gen_ST[l, "Start Cost (\$)"]
-                    obj_val[1]  += no_load_cost * x_val * dt2
-                    obj_val[1]  += start_cost * s_val
-                end
-            end
-        end
-
-        HAED_dict = Dict()
-        for j in 1:96
-            HAED_vars = all_variables(subgraph_set[9 + j])
-            HAED_vals = readdlm((@__DIR__)*file_nameHA * "$(j + offset_HA)" * file_name_mid * "$i" * file_name_end, ',')
-            HA_subgraph = getsubgraphs(subgraph_set[9 + j])[1]
-            for k in 1:length(HAED_vals)
-                HAED_dict[HAED_vars[k]] = HAED_vals[k]
-            end
-            for k in 1:118
-                bus_name = bus_data[k, "Bus Name"]
-                D_shed_val = HAED_dict[HA_subgraph[:bus][bus_name][:D_shed]]
-                obj_val[1] += phi_u * D_shed_val * dt2
-            end
-            for k in 1:size(gen_data, 1)
-                var_gen_cost = gen_data[k, "Variable Cost (\$/MWh)"]
-                bus_name = gen_data[k, "Bus of Connection"]
-                gen_name = gen_data[k, "Generator Name"]
-                gen_p_val = HAED_dict[HA_subgraph[:bus][bus_name][:Gen_p][gen_name]]
-                gen_m_val = HAED_dict[HA_subgraph[:bus][bus_name][:Gen_m][gen_name]]
-                obj_val[1] += var_gen_cost * gen_p_val * dt2
-                obj_val[1] += phi_o * gen_m_val * dt2
-            end
-        end
-    end
-    return obj_val
-end
-
-monolith_obj_HA = get_objective_HA_level(graph, "/results/32d_monolith/mipgap10_results", "_day", ".csv", 1, 32, offset = 9)
+monolith_obj_HA = get_objective_HA_level(graph, "/results/32d_monolith/mipgap5_results", "_day", ".csv", 1, 32, offset = 9)
 serial_obj_HA   = get_objective_HA_level(graph, "/results/32d_serial/HAED_results", "_day", ".csv", 1, 32)
-
-
-monolith_obj_tot = get_objective_all_levels(graph, "/results/32d_monolith/mipgap10_results1",
-    "/results/32d_monolith/mipgap10_results", "/results/32d_monolith/mipgap10_results",  "_day", ".csv", 1, 32,
-    offset_ST = 1, offset_HA = 9
-)
-
-serial_obj_tot = get_objective_all_levels(graph, "/results/32d_serial/DAUC_results", "/results/32d_serial/STUC_results",
-    "/results/32d_serial/HAED_results", "_day", ".csv", 1, 32
-)

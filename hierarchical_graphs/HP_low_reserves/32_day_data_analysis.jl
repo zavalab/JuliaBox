@@ -53,6 +53,8 @@ phi_u = 5000
 
 include((@__DIR__)*"/layer_construction.jl")
 include((@__DIR__)*"/link_solutions.jl")
+
+####### BUILD DUMMY GRAPH ############
 graph = OptiGraph()
 
 graph_DAUC = OptiGraph()
@@ -89,16 +91,20 @@ demand_DA = sum(Matrix(D_DA[:, 3:end]), dims = 1)[:]
 demand_ST = sum(Matrix(D_ST[:, 3:end]), dims = 1)[:]
 demand_RT = sum(Matrix(D_RT[:, 3:end]), dims = 1)[:]
 
+
+# Define datasets to retrieve from datafiles for DA
+# We need the dummy graph above to match the order of variables
 num_days = 32
 DA_len = 24 * num_days
 DA_gen_num = size(gen_DA, 1)
-com_gens_DA = zeros(DA_len)
-gen_m_DA = zeros(DA_len)
-gen_p_DA = zeros(DA_len)
-D_shed_DA = zeros(DA_len)
-on_gens_DA = zeros(DA_len)
-off_gens_DA = zeros(DA_len)
+com_gens_DA = zeros(DA_len) # Number of DA generators committed at each time point
+gen_m_DA = zeros(DA_len) # Amount of overgenerated/curtailed power
+gen_p_DA = zeros(DA_len) # Amount of power to the grid
+D_shed_DA = zeros(DA_len) # Amount of load shed (not met)
+on_gens_DA = zeros(DA_len) # Number of generators turned on
+off_gens_DA = zeros(DA_len) # Number of generators turned off
 
+# Loop through all 32 days of data and fill datasets above for DA data
 for i in 1:num_days
     DAUC_dict = Dict()
     DAUC_vars = all_variables(subgraph_set[1])
@@ -144,15 +150,17 @@ end
 
 gen_tot_DA = gen_m_DA + gen_p_DA
 
+
 ST_len = 96 * num_days
 ST_gen_num = size(gen_ST, 1)
-com_gens_ST = zeros(ST_len)
-gen_m_ST = zeros(ST_len)
-gen_p_ST = zeros(ST_len)
-D_shed_ST = zeros(ST_len)
-on_gens_ST = zeros(ST_len)
-off_gens_ST = zeros(ST_len)
+com_gens_ST = zeros(ST_len) # Number of committed generators at each time
+gen_m_ST = zeros(ST_len) # Amount of overgenerated or curtailed power
+gen_p_ST = zeros(ST_len) # Amount of power to grid
+D_shed_ST = zeros(ST_len) # Amount of power shed (not met)
+on_gens_ST = zeros(ST_len) # Number of generators turned on
+off_gens_ST = zeros(ST_len) # Number of generators turned off
 
+# Loop through all 32 days of data and fill datasets above for ST data
 for i in 1:num_days
     for j in 1:8
         STUC_dict = Dict()
@@ -203,10 +211,11 @@ end
 gen_tot_ST = gen_m_ST + gen_p_ST
 
 HA_len = 96 * num_days
-gen_m_HA = zeros(HA_len)
-gen_p_HA = zeros(HA_len)
-D_shed_HA = zeros(HA_len)
+gen_m_HA = zeros(HA_len) # Amount of power overgenerated/curtailed
+gen_p_HA = zeros(HA_len) # Amount of power to grid
+D_shed_HA = zeros(HA_len) # Amount of power shed (not met)
 
+# Loop through all 32 days of data and fill datasets above for HA data
 for i in 1:num_days
     for j in 1:96
         HAED_dict = Dict()
@@ -241,19 +250,20 @@ end
 
 gen_tot_HA = gen_m_HA + gen_p_HA
 
+# Save data to dataframes
 t_DA = 1:1:(num_days * 24)
 t_ST = .25:.25:(num_days * 24)
 t_HA = .25:.25:(num_days * 24)
 DA_results = DataFrame(["time" => t_DA, "demand" => demand_DA, "com_gens" => com_gens_DA, "started" => on_gens_DA,
     "off" => off_gens_DA, "gen_m" => gen_m_DA, "gen_p" => gen_p_DA, "gen_tot" => gen_tot_DA, "D_shed" => D_shed_DA])
-#CSV.write((@__DIR__)*"/DA_results_serial_res.csv", DA_results)
+#CSV.write((@__DIR__)*"/results/DA_results_serial.csv", DA_results)
 
 ST_results = DataFrame(["time" => t_ST, "demand" => demand_ST, "com_gens" => com_gens_ST, "started" => on_gens_ST,
     "off" => off_gens_ST, "gen_m" => gen_m_ST, "gen_p" => gen_p_ST, "gen_tot" => gen_tot_ST, "D_shed" => D_shed_ST])
-#CSV.write((@__DIR__)*"/ST_results_serial_res.csv", ST_results)
+#CSV.write((@__DIR__)*"/results/ST_results_serial.csv", ST_results)
 
 HA_results = DataFrame(["time" => t_HA, "demand" => demand_RT, "gen_m" => gen_m_HA, "gen_p" => gen_p_HA, "gen_tot" => gen_tot_HA, "D_shed" => D_shed_HA])
-#CSV.write((@__DIR__)*"/HA_results_serial_res.csv", HA_results)
+#CSV.write((@__DIR__)*"/results/HA_results_serial.csv", HA_results)
 
 ################################################################################################################################################################
 ################################################################################################################################################################
@@ -263,16 +273,18 @@ HA_results = DataFrame(["time" => t_HA, "demand" => demand_RT, "gen_m" => gen_m_
 ################################################################################################################################################################
 ################################################################################################################################################################
 
+# Define datasets to retrieve from datafiles for DA
 num_days = 32
 DA_len = 24 * num_days
 DA_gen_num = size(gen_DA, 1)
-com_gens_DA_m = zeros(DA_len)
-gen_m_DA_m = zeros(DA_len)
-gen_p_DA_m = zeros(DA_len)
-D_shed_DA_m = zeros(DA_len)
-on_gens_DA_m = zeros(DA_len)
-off_gens_DA_m = zeros(DA_len)
+com_gens_DA_m = zeros(DA_len) # Number of DA generators committed at each time point
+gen_m_DA_m = zeros(DA_len) # Amount of overgenerated/curtailed power
+gen_p_DA_m = zeros(DA_len) # Amount of power to the grid
+D_shed_DA_m = zeros(DA_len) # Amount of load shed (not met)
+on_gens_DA_m = zeros(DA_len) # Number of generators turned on
+off_gens_DA_m = zeros(DA_len) # Number of generators turned off
 
+# Loop through all 32 days of data and fill datasets above for DA data
 for i in 1:num_days
     DAUC_dict = Dict()
     DAUC_vars = all_variables(subgraph_set[1])
@@ -320,13 +332,14 @@ gen_tot_DA_m = gen_m_DA_m + gen_p_DA_m
 
 ST_len = 96 * num_days
 ST_gen_num = size(gen_ST, 1)
-com_gens_ST_m = zeros(ST_len)
-gen_m_ST_m = zeros(ST_len)
-gen_p_ST_m = zeros(ST_len)
-D_shed_ST_m = zeros(ST_len)
-on_gens_ST_m = zeros(ST_len)
-off_gens_ST_m = zeros(ST_len)
+com_gens_ST_m = zeros(ST_len) # Number of committed generators at each time
+gen_m_ST_m = zeros(ST_len) # Amount of overgenerated or curtailed power
+gen_p_ST_m = zeros(ST_len) # Amount of power to grid
+D_shed_ST_m = zeros(ST_len) # Amount of power shed (not met)
+on_gens_ST_m = zeros(ST_len) # Number of generators turned on
+off_gens_ST_m = zeros(ST_len) # Number of generators turned off
 
+# Loop through all 32 days of data and fill datasets above for ST data
 for i in 1:num_days
     for j in 1:8
         STUC_dict = Dict()
@@ -377,10 +390,11 @@ end
 gen_tot_ST_m = gen_m_ST_m + gen_p_ST_m
 
 HA_len = 96 * num_days
-gen_m_HA_m = zeros(HA_len)
-gen_p_HA_m = zeros(HA_len)
-D_shed_HA_m = zeros(HA_len)
+gen_m_HA_m = zeros(HA_len) # Amount of power overgenerated/curtailed
+gen_p_HA_m = zeros(HA_len) # Amount of power to grid
+D_shed_HA_m = zeros(HA_len) # Amount of power shed (not met)
 
+# Loop through all 32 days of data and fill datasets above for HA data
 for i in 1:num_days
     for j in 1:96
         HAED_dict = Dict()
@@ -419,29 +433,14 @@ t_DA = 1:1:(num_days * 24)
 t_ST = .25:.25:(num_days * 24)
 t_HA = .25:.25:(num_days * 24)
 
-
+# Save data to dataframes
 DA_results_m = DataFrame(["time" => t_DA, "demand" => demand_DA[1:length(t_DA)], "com_gens" => com_gens_DA_m, "started" => on_gens_DA_m,
     "off" => off_gens_DA_m, "gen_m" => gen_m_DA_m, "gen_p" => gen_p_DA_m, "gen_tot" => gen_tot_DA_m, "D_shed" => D_shed_DA_m])
-#CSV.write((@__DIR__)*"/DA_results_monolith_int.csv", DA_results_m)
+#CSV.write((@__DIR__)*"/results/DA_results_monolith.csv", DA_results_m)
 
 ST_results_m = DataFrame(["time" => t_ST, "demand" => demand_ST[1:length(t_ST)], "com_gens" => com_gens_ST_m, "started" => on_gens_ST_m,
     "off" => off_gens_ST_m, "gen_m" => gen_m_ST_m, "gen_p" => gen_p_ST_m, "gen_tot" => gen_tot_ST_m, "D_shed" => D_shed_ST_m])
-#CSV.write((@__DIR__)*"/ST_results_monolith_int.csv", ST_results_m)
+#CSV.write((@__DIR__)*"/results/ST_results_monolith.csv", ST_results_m)
 
 HA_results_m = DataFrame(["time" => t_HA, "demand" => demand_RT[1:length(t_HA)], "gen_m" => gen_m_HA_m, "gen_p" => gen_p_HA_m, "gen_tot" => gen_tot_HA_m, "D_shed" => D_shed_HA_m])
-#CSV.write((@__DIR__)*"/HA_results_monolith_int.csv", HA_results_m)
-
-
-
-plot(t_DA, com_gens_DA, label = "Receding Horizon")
-plot!(t_DA, com_gens_DA_m, label = "Monolith")
-title!("DAUC Layer")
-xlabel!("Time (hr)")
-ylabel!("Number of Committed Generators")
-#savefig((@__DIR__)*"/June2023_plots/ST_serial_DAUC_com_gens.png")
-
-plot(t_ST, com_gens_ST, label = "Receding Horizon")
-plot!(t_ST, com_gens_ST_m, label = "Monolith")
-title!("STUC Layer")
-xlabel!("Time (hr)")
-ylabel!("Number of Committed Generators")
+#CSV.write((@__DIR__)*"/results/HA_results_monolith.csv", HA_results_m)
