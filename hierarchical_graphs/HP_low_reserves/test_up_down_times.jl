@@ -53,15 +53,14 @@ phi_u = 5000
 
 include((@__DIR__)*"/layer_construction.jl")
 include((@__DIR__)*"/link_solutions.jl")
+
+# Build Dummy graph (used for matching variables to saved solutions)
 graph = OptiGraph()
 
 graph_DAUC = OptiGraph()
 day_num = 1
 
 build_bus_over_time(graph_DAUC, 25, D_DA[:, 3:27], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
-
-#link_DA_over_time(graph_DAUC, gen_data_DA)
-#link_between_DA(graph_DAUC, [graph_DAUC], 1)
 
 add_subgraph!(graph, graph_DAUC)
 
@@ -88,6 +87,7 @@ all_vars = all_variables(graph)
 
 subgraph_set = getsubgraphs(graph)
 
+# Define functions for testing up and down times
 function test_up_time(s_vector, z_vector, up_time, gen_num; dt = 1)
     t_points = length(s_vector)
     up_time_points = Int(up_time / dt)
@@ -114,6 +114,7 @@ function test_down_time(s_vector, z_vector, down_time, gen_num; dt = 1)
     end
 end
 
+# Query the s, z, x solutions for DA layer in receding horizon problem
 num_days = 32
 DA_len = 24 * num_days
 DA_gen_num = size(gen_DA, 1)
@@ -146,6 +147,7 @@ for i in 1:num_days
     end
 end
 
+# Query the s, z, x solutions for ST layer in receding horizon problem
 ST_len = 96 * num_days
 ST_gen_num = size(gen_ST, 1)
 s_array_ST = zeros(ST_gen_num, ST_len)
@@ -180,8 +182,7 @@ for i in 1:num_days
     end
 end
 
-
-
+# Test up/down times on DA solutions
 for i in 1:DA_gen_num
     up_time   = gen_DA[i, "Min Up Time (h)"]
     down_time = gen_DA[i, "Min Down Time (h)"]
@@ -192,6 +193,7 @@ for i in 1:DA_gen_num
 end
 println("DONE TESTING DAUC SERIAL")
 
+# Test up/down times on ST solutions
 for i in 1:ST_gen_num
     up_time = gen_ST[i, "Min Up Time (h)"]
     down_time = gen_ST[i, "Min Down Time (h)"]
@@ -202,6 +204,7 @@ for i in 1:ST_gen_num
 end
 println("DONE TESTING STUC SERIAL")
 
+# Query the s, z, x solutions for DA layer in monolithic problem
 num_days = 32
 DA_len = 24 * num_days
 DA_gen_num = size(gen_DA, 1)
@@ -212,7 +215,7 @@ x_array = zeros(DA_gen_num, DA_len)
 for i in 1:num_days
     DAUC_dict = Dict()
     DAUC_vars = all_variables(subgraph_set[1])
-    DAUC_vals = readdlm((@__DIR__)*"/results/32d_monolith/mipgap10_results1_day$(i).csv", ',')
+    DAUC_vals = readdlm((@__DIR__)*"/results/32d_monolith/mipgap5_results1_day$(i).csv", ',')
     for k in 1:length(DAUC_vars)
         DAUC_dict[DAUC_vars[k]] = DAUC_vals[k]
     end
@@ -234,6 +237,7 @@ for i in 1:num_days
     end
 end
 
+# Query the s, z, x solutions for ST layer in monolithic problem
 ST_len = 96 * num_days
 ST_gen_num = size(gen_ST, 1)
 s_array_ST = zeros(ST_gen_num, ST_len)
@@ -244,7 +248,7 @@ for i in 1:num_days
     for j in 1:8
         STUC_dict = Dict()
         STUC_vars = all_variables(subgraph_set[1 + j])
-        STUC_vals = readdlm((@__DIR__)*"/results/32d_monolith/mipgap10_results$(j+1)_day$(i).csv", ',')
+        STUC_vals = readdlm((@__DIR__)*"/results/32d_monolith/mipgap5_results$(j+1)_day$(i).csv", ',')
         for k in 1:length(STUC_vars)
             STUC_dict[STUC_vars[k]] = STUC_vals[k]
         end
@@ -268,6 +272,7 @@ for i in 1:num_days
     end
 end
 
+# Test up/down times on DA solutions
 for i in 1:DA_gen_num
     up_time   = gen_DA[i, "Min Up Time (h)"]
     down_time = gen_DA[i, "Min Down Time (h)"]
@@ -278,6 +283,7 @@ for i in 1:DA_gen_num
 end
 println("DONE TESTING DAUC MONOLITH")
 
+# Test up/down times on ST solutions
 for i in 1:ST_gen_num
     up_time = gen_ST[i, "Min Up Time (h)"]
     down_time = gen_ST[i, "Min Down Time (h)"]

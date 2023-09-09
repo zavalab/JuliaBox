@@ -80,7 +80,7 @@ function run_day1_serial(graph_set)
 
     set_optimizer(graph_DAUC, Gurobi.Optimizer)
 
-    set_optimizer_attribute(graph_DAUC, "MIPGap", .005)
+    set_optimizer_attribute(graph_DAUC, "MIPGap", .001)
 
     println("Optimizing DA Problem")
     optimize!(graph_DAUC)
@@ -173,7 +173,7 @@ function run_day2_serial(graph_set)
 
     set_optimizer(graph_DAUC, Gurobi.Optimizer)
 
-    set_optimizer_attribute(graph_DAUC, "MIPGap", .005)
+    set_optimizer_attribute(graph_DAUC, "MIPGap", .001)
 
     println("Optimizing DA Problem")
     optimize!(graph_DAUC)
@@ -192,7 +192,7 @@ function run_day2_serial(graph_set)
         link_ST_over_time(graph_STUC)
         link_DA_sol_to_ST(graph, graph_STUC, (1 + (i - 1) * 3):(4 + (i - 1) * 3))
         set_optimizer(graph_STUC, Gurobi.Optimizer)
-        set_optimizer_attribute(graph_STUC, "MIPGap", .005)
+        set_optimizer_attribute(graph_STUC, "MIPGap", .003)
         add_subgraph!(graph, graph_STUC)
     end
 
@@ -278,11 +278,12 @@ function run_dayi_serial(graph_set, day)
 
     set_optimizer(graph_DAUC, Gurobi.Optimizer)
 
-    if (day == 16)
-        set_optimizer_attribute(graph_DAUC, "MIPGap", .001)
+    if day == 27 || day == 3 || day == 31
+        set_optimizer_attribute(graph_DAUC, "MIPGap", .0005)
     else
-        set_optimizer_attribute(graph_DAUC, "MIPGap", .005)
+        set_optimizer_attribute(graph_DAUC, "MIPGap", .001)
     end
+    set_optimizer_attribute(graph_DAUC, "Threads", 8)
 
     println("Optimizing DA Problem")
     optimize!(graph_DAUC)
@@ -302,11 +303,19 @@ function run_dayi_serial(graph_set, day)
         link_ST_over_time(graph_STUC)
         link_DA_sol_to_ST(graph, graph_STUC, (1 + (i - 1) * 3):(4 + (i - 1) * 3))
         set_optimizer(graph_STUC, Gurobi.Optimizer)
-        if (day == 16) || (day == 29)
+        if ((day == 26) && (i != 6)) || (day == 25) || (day == 28) || ((day == 31) && (i == 2))
             set_optimizer_attribute(graph_STUC, "MIPGap", .001)
+        elseif day == 27
+            set_optimizer_attribute(graph_STUC, "MIPGap", .0005)
+        elseif ((day == 27) && (i == 6)) || ((day == 31) && (i == 1))
+            set_optimizer_attribute(graph_STUC, "MIPGap", .004)
+        elseif (day == 6) && (i == 3)
+            set_optimizer_attribute(graph_STUC, "MIPGap", .006)
         else
-            set_optimizer_attribute(graph_STUC, "MIPGap", .005)
+            set_optimizer_attribute(graph_STUC, "MIPGap", .003)
         end
+        set_optimizer_attribute(graph_STUC, "Threads", 8)
+
         add_subgraph!(graph, graph_STUC)
     end
 
@@ -375,14 +384,11 @@ graph_set = []
 run_times = []
 d1_time = @elapsed run_day1_serial(graph_set)
 push!(run_times, d1_time)
-writedlm((@__DIR__)*"/run_times_serial.csv", run_times, ',')
 d2_time = @elapsed run_day2_serial(graph_set)
 push!(run_times, d2_time)
-writedlm((@__DIR__)*"/run_times_serial.csv", run_times, ',')
 
 
 for i in 3:32
     di_time = @elapsed run_dayi_serial(graph_set, i)
     push!(run_times, di_time)
-    writedlm((@__DIR__)*"/run_times_serial.csv", run_times, ',')
 end
