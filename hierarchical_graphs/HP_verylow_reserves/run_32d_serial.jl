@@ -31,11 +31,9 @@ D_DA = copy(D_DA_no_reserves)
 D_ST = copy(D_ST_no_reserves)
 D_RT = copy(D_RT_no_reserves)
 
-# Add the reserves to the demand values
 D_DA[:, 3:end] .= D_DA_no_reserves[:, 3:end] .* 1.05
 D_ST[:, 3:end] .= D_ST_no_reserves[:, 3:end] .* 1.05
 D_RT[:, 3:end] .= D_RT_no_reserves[:, 3:end] .* 1.0125
-
 
 xi_DA = Dict()
 xi_ST = Dict()
@@ -64,7 +62,7 @@ phi_u = 5000
 
 gen_com_HA = gen_data[gen_data[:, "Fuel"] .== "EMPTY", :]
 
-########################## LOAD IN .jl FILES FOR BUILDING PROBLEM ##########################################
+########################## LOAD IN OTHER .jl FILES ##########################################
 
 include((@__DIR__)*"/layer_construction.jl")
 include((@__DIR__)*"/link_solutions.jl")
@@ -162,7 +160,7 @@ function run_day2_serial(graph_set)
 
     graph_DAUC = OptiGraph()
 
-    build_bus_over_time(graph_DAUC, 25, D_DA[:, 27:51], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
+    build_bus_over_time(graph_DAUC, 25, D_DA[:, 27:51], xi_DA, 1, gen_DA, gen_data_DA, gen_DA, offset = 24)
     link_DA_over_time(graph_DAUC, gen_data_DA)
     graph_DAUC_set = []
     push!(graph_DAUC_set, getsubgraphs(graph_set[1])[1])
@@ -265,7 +263,7 @@ function run_dayi_serial(graph_set, day)
     graph_DAUC = OptiGraph()
 
     DA_range = (3 + 24 * (day - 1)):(3 + 24 * day)
-    build_bus_over_time(graph_DAUC, 25, D_DA[:, DA_range], xi_DA, 1, gen_DA, gen_data_DA, gen_DA)
+    build_bus_over_time(graph_DAUC, 25, D_DA[:, DA_range], xi_DA, 1, gen_DA, gen_data_DA, gen_DA, offset = (day - 1) * 24)
     link_DA_over_time(graph_DAUC, gen_data_DA)
     graph_DAUC_set = []
     for k in 1:length(graph_set)
@@ -280,6 +278,8 @@ function run_dayi_serial(graph_set, day)
 
     if day == 27 || day == 3 || day == 31
         set_optimizer_attribute(graph_DAUC, "MIPGap", .0005)
+    elseif day == 26
+        set_optimizer_attribute(graph_DAUC, "MIPGap", .003)
     else
         set_optimizer_attribute(graph_DAUC, "MIPGap", .001)
     end
@@ -303,9 +303,9 @@ function run_dayi_serial(graph_set, day)
         link_ST_over_time(graph_STUC)
         link_DA_sol_to_ST(graph, graph_STUC, (1 + (i - 1) * 3):(4 + (i - 1) * 3))
         set_optimizer(graph_STUC, Gurobi.Optimizer)
-        if ((day == 26) && (i != 6)) || (day == 25) || (day == 28) || ((day == 31) && (i == 2))
+        if (day == 28) || ((day == 31) && (i == 2))
             set_optimizer_attribute(graph_STUC, "MIPGap", .001)
-        elseif day == 27
+        elseif day == 26#day == 27 ||
             set_optimizer_attribute(graph_STUC, "MIPGap", .0005)
         elseif ((day == 27) && (i == 6)) || ((day == 31) && (i == 1))
             set_optimizer_attribute(graph_STUC, "MIPGap", .004)
@@ -381,14 +381,9 @@ function run_dayi_serial(graph_set, day)
 end
 
 graph_set = []
-run_times = []
 d1_time = @elapsed run_day1_serial(graph_set)
-push!(run_times, d1_time)
 d2_time = @elapsed run_day2_serial(graph_set)
-push!(run_times, d2_time)
-
 
 for i in 3:32
     di_time = @elapsed run_dayi_serial(graph_set, i)
-    push!(run_times, di_time)
 end
