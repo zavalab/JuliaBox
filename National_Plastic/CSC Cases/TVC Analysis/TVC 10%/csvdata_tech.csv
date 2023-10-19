@@ -1,0 +1,13 @@
+#1. Tech ID,2. Tech Outputs,3. Tech Inputs,4. Tech Impacts,5. Output stoich,6. Input stoich,7. Impact stoich,8. Reference product,9. Operating cost (USD/tonne),10. Capacity,11. alias
+TA1,PlasticBales,Recyclables,CO2,0.2369,1.0,0.0068701,Recyclables,23.392976284584982,506000.0,MRF Scale 1
+TA2,PlasticBales,Recyclables,CO2,0.2369,1.0,0.0068701,Recyclables,21.454810102371543,2.53e6,MRF Scale 2
+TB1,PlasticFlake|rPET|rHDPE,PlasticBales,CO2,0.884|0.068|0.048,1.0,0.199,PlasticBales,149.4441025,400000.0,PRF Scale 2
+TB2,PlasticFlake|rPET|rHDPE,PlasticBales,CO2,0.884|0.068|0.048,1.0,0.199,PlasticBales,143.043325,800000.0,PRF Scale 3
+TC1,PyrolysisOil|Wax|PyrolysisGas,PlasticFlake,CO2,0.6182|0.1546|0.18,1.0,0.436,PlasticFlake,81.4127397260274,365000.0,Pyrolysis Scale 2
+TC2,PyrolysisOil|Wax|PyrolysisGas,PlasticFlake,CO2,0.6182|0.1546|0.18,1.0,0.436,PlasticFlake,60.89767123287671,1.46e6,Pyrolysis Scale 3
+TD1,Ethylene|Propylene|C4|PyrolysisGasoline|FuelGas|FuelOil,PyrolysisOil,CO2,0.2624|0.1601|0.119|0.2163|0.1616|0.0724,1.0,0.570,PyrolysisOil,221.93575930653267,1.99e6,Steam Cracking Scale 2
+TD2,Ethylene|Propylene|C4|PyrolysisGasoline|FuelGas|FuelOil,PyrolysisOil,CO2,0.2624|0.1601|0.119|0.2163|0.1616|0.0724,1.0,0.570,PyrolysisOil,197.17053137211056,3.98e6,Steam Cracking Scale 3
+TE1,LDPE,Ethylene,CO2,0.97,1.0,0.66348,Ethylene,216.0325,400000.0,LDPE Plant Scale 2
+TE2,LDPE,Ethylene,CO2,0.97,1.0,0.66348,Ethylene,181.37125,800000.0,LDPE Plant Scale 3
+TF1,PP,Propylene,CO2,0.96,1.0,0.26208,Propylene,249.24,400000.0,PP Plant Scale 2
+TF2,PP,Propylene,CO2,0.96,1.0,0.26208,Propylene,228.765,800000.0,PP Plant Scale 3

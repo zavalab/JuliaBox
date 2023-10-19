@@ -1,0 +1,17 @@
+#1. Product no.,2. Product name,3. Transportation cost (distance) (USD.tonne^-1.km^-1),4. Transportation cost (time) (USD.tonne^-1.h^-1)
+Recyclables,Recyclables,0.14,0.0
+PlasticBales,Plastic Bales,0.14,0.0
+PlasticFlake,Plastic Flake,0.14,0.0
+PyrolysisOil,Pyrolysis Oil,0.189,0.0
+Wax,Wax,1.0e9,0.0
+PyrolysisGas,Pyrolysis Gas,1.0e9,0.0
+Ethylene,Ethylene,1.0e9,0.0
+Propylene,Propylene,1.0e9,0.0
+C4,C4,1.0e9,0.0
+PyrolysisGasoline,Pyrolysis Gasoline,1.0e9,0.0
+FuelGas,Fuel Gas,1.0e9,0.0
+FuelOil,Fuel Oil,1.0e9,0.0
+LDPE,Low-Density Polyethylene,1.0e9,0.0
+PP,Polypropylene,1.0e9,0.0
+rPET,Recycled PET Bales,1.0e9,0.0
+rHDPE,Recycled HDPE Bales,1.0e9,0.0
