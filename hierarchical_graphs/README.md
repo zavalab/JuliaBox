@@ -1,6 +1,6 @@
 # Hierarchical Graphs
 
-This repository contains scripts for building the 3-layer hierarchical optimization problem presented by [Atakan et al., 2022](https://doi-org.ezproxy.library.wisc.edu/10.1016/j.ejor.2021.12.042). We build this problem in Plasmo.jl and solve with Gurobi. These scripts were used in the manuscript "Hierarchical Graph Modeling for Multi-Scale Optimization of Power Systems". The repository is structured as follows
+This repository contains scripts for building the 3-layer hierarchical optimization problem presented by [Atakan et al., 2022](https://doi-org.ezproxy.library.wisc.edu/10.1016/j.ejor.2021.12.042). We build this problem in Plasmo.jl and solve with Gurobi. These scripts were used in the manuscript "[Hierarchical Graph Modeling for Multi-Scale Optimization of Power Systems](https://arxiv.org/abs/2309.10568)". The repository is structured as follows.
 
 ### datasets/
 This directory contains the datasets from Atakan et al. (originally from the NREL-118 bus system from [Pena et al.](https://doi.org/10.1109/TPWRS.2017.2695963)). Some of these datasets have been processed through the files `HP_process_time_data.jl` and `data_interpolation.pynb`. 
