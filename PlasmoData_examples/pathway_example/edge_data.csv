@@ -1,0 +1,57 @@
+Ethanol,Dehyd.,1.17E+07,-1.642424242
+Ethylene,Ox. & Hyd.,5.33E+06,-0.490845727
+Ethylene,HT Dcmp.,3.41E+07,-0.8976
+Ethylene,Acid Cat.,6.93E+06,-0.264206392
+Benzene,Acid Cat.,1.93E+07,-0.735727674
+Ethylben,Dehydrog.,2.62E+07,-1.049317943
+Ethanol,Ox. Dehyd.,0,-2.02020202
+Sugarcane,Bioref.,5.61E+08,-31.34796238
+Sugar Beets,Ferment.,7.59E+07,-6.46993
+Pet Naphtha,CR Eth.,2.04E+08,-1.316829076
+Pet Naphtha,CR Prop.,6.73E+07,-1.344086022
+Pet Naphtha,CR Xyl.,0,-1.264382349
+Pet Naphtha,CR Ben.,0,-1.307189542
+Natural Gas,Meth. Eth. Proc.,853947.4614,-1.36239782
+Benzene,Hydrog.,910974.9472,-0.937207123
+C.-hexane,Ox. Cobalt,972010.2687,-0.92506938
+C.-hexanone,Ox. Acid,1.05E+06,-0.729980291
+"1,3-But.",Hydcyan,626797.4367,-0.54761442
+p-Xylene,Amoco Proc.,1.95E+07,-0.6727
+Corn Stover,B-to-A Xyl.,8.67E+07,-4.438248922
+Corn Stover,B-to-A Ben.,8.97E+07,-4.438248922
+Ethylene,LDPE Poly.,6.40E+07,-1
+Ethylene,HDPE Poly.,5.20E+07,-1
+Propylene,PP Poly.,6.80E+07,-1
+Chloroethene,PVC Poly.,3.80E+07,-1
+Styrene,PS Poly.,2.50E+07,-1
+Ter. Acid,PET Poly.,2.90E+07,-0.880188776
+Eth. Glycol,PET Poly.,1.09E+07,-0.32885487
+Hex. Meth. Diam.,N Poly.,1.14E+06,-0.513271882
+Ad. Acid,N Poly.,1.44E+06,-0.64547667
+Dehyd.,Ethylene,7.14E+06,1
+Ox. & Hyd.,Eth. Glycol,1.09E+07,1
+HT Dcmp.,Chloroethene,3.80E+07,1
+Acid Cat.,Ethylben,2.62E+07,1
+Dehydrog.,Styrene,2.50E+07,1
+Ox. Dehyd.,"1,3-But.",0,1
+Bioref.,Propylene,1.79E+07,1
+Ferment.,Ethanol,1.17E+07,1
+CR Eth.,Ethylene,1.55E+08,1
+CR Prop.,Propylene,5.01E+07,1
+CR Xyl.,p-Xylene,0,1
+CR Ben.,Benzene,0,1
+Meth. Eth. Proc.,"1,3-But.",626797.4367,1
+Hydrog.,C.-hexane,972010.2687,1
+Ox. Cobalt,C.-hexanone,1.05E+06,1
+Ox. Acid,Ad. Acid,1.44E+06,1
+Hydcyan,Hex. Meth. Diam.,1.14E+06,1
+Amoco Proc.,Ter. Acid,2.90E+07,1
+B-to-A Xyl.,p-Xylene,1.95E+07,1
+B-to-A Ben.,Benzene,2.02E+07,1
+LDPE Poly.,LDPE,6.40E+07,1
+HDPE Poly.,HDPE,5.20E+07,1
+PP Poly.,PP,6.80E+07,1
+PVC Poly.,PVC,3.80E+07,1
+PS Poly.,PS,2.50E+07,1
+PET Poly.,PET,3.30E+07,1
+N Poly.,Nylon,2.23E+06,1
