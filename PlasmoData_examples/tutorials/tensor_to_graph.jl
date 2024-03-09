@@ -1,4 +1,4 @@
-using PlasmoData, Random, DataGraphPlots
+using PlasmoData, Random, PlasmoDataPlots
 
 Random.seed!(15)
 random_tensor = rand(4, 5, 6)

@@ -1,5 +1,5 @@
 using Revise
-using PlasmoData, Random, DataGraphPlots, Plots
+using PlasmoData, Random, PlasmoDataPlots, Plots
 
 function get_cols_from_cgrad(cgrad_name, vec, max_val = maximum(vec); rev = false)
     node_cgrad = cgrad(cgrad_name, rev = rev)
@@ -96,7 +96,7 @@ plot_graph(
     nodecolor = :gray,
     line_z = get_edge_data(matrix_graph)[:],
     rev = false,
-    save_fig = true,
+    save_fig = false,
     framestyle = :none,
     fig_name = (@__DIR__)*"/images/mat_graph_edge_color.pdf"
 )
@@ -118,7 +118,7 @@ plot_graph(
     linewidth = 5,
     nodecolor = :gray,
     linecolor = edge_cols[bool_vec],
-    save_fig = true,
+    save_fig = false,
     framestyle = :none,
     fig_name = (@__DIR__)*"/images/mat_graph_edge_filter1.pdf"
 )
@@ -139,12 +139,10 @@ plot_graph(
     linewidth = 5,
     nodecolor = :gray,
     linecolor = edge_cols[bool_vec],
-    save_fig = true,
+    save_fig = false,
     framestyle = :none,
     fig_name = (@__DIR__)*"/images/mat_graph_edge_filter2.pdf"
 )
-
-
 
 Random.seed!(15)
 random_matrix = rand(12, 12)
@@ -158,7 +156,7 @@ function extreme_vals(a, b)
     return ((a <= .2) || a >= .8)
 end
 
-filter_edges_graph2 = filter_nodes(matrix_graph, .5, "weight", fn = extreme_vals)
+filter_edges_graph2 = filter_nodes(matrix_graph, nothing, "weight", fn = extreme_vals)
 
 Random.seed!(15)
 add_edge_dataset!(matrix_graph, rand(506), "weight")

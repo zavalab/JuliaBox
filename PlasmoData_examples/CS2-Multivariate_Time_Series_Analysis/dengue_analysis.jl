@@ -1,6 +1,6 @@
 using Revise
 using PlasmoData, Graphs, DelimitedFiles, Statistics
-using DataGraphPlots
+using PlasmoDataPlots
 
 # The data and methods in this example are primarily from the paper of
 # Barros de Souze at al., 2022. https://doi.org/10.1088/1742-5468/aca0e5

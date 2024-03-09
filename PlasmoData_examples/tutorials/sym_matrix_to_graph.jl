@@ -1,5 +1,5 @@
 using Revise
-using PlasmoData, Random, DataGraphPlots, LinearAlgebra
+using PlasmoData, Random, PlasmoDataPlots, LinearAlgebra
 
 Random.seed!(5)
 random_matrix = rand(6, 6)

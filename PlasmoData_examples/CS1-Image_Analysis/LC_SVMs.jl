@@ -1,6 +1,6 @@
 using Revise
 using PlasmoData, JLD, MLUtils, LIBSVM, Random, Statistics
-
+a = 1
 ### Construct matrices as graphs and get EC curves ###
 
 # Load in the SO2 data; so2_data is size (288, 134, 134, 3)
