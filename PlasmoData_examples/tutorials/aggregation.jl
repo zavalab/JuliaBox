@@ -1,5 +1,5 @@
 using Revise
-using PlasmoData, Random, DataGraphPlots, Plots
+using PlasmoData, Random, PlasmoDataPlots, Plots
 
 function get_cols_from_cgrad(cgrad_name, vec, max_val = maximum(vec); rev = false)
     node_cgrad = cgrad(cgrad_name, rev = rev)
@@ -44,7 +44,11 @@ plot_graph(
     fig_name = (@__DIR__)*"/images/mat_graph_diags_agg.pdf"
 )
 
-aggregated_graph = aggregate(matrix_graph, nodes_for_aggregation, "agg_node")
+
+ne_data = zeros(length(matrix_graph.edges))
+add_edge_dataset!(matrix_graph, ne_data, "edge_weight")
+
+aggregated_graph = aggregate(matrix_graph, nodes_for_aggregation, "agg_node", save_agg_edge_data = true)
 
 plot_graph(
     aggregated_graph,

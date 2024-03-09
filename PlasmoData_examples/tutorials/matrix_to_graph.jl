@@ -1,4 +1,4 @@
-using PlasmoData, Random, DataGraphPlots
+using PlasmoData, Random, PlasmoDataPlots
 
 Random.seed!(15)
 random_matrix = rand(12, 12)
@@ -6,9 +6,9 @@ random_matrix = rand(12, 12)
 #writedlm((@__DIR__)*"/rand_mat.csv", random_matrix, ',')
 
 matrix_graph_diags = matrix_to_graph(random_matrix; diagonal = true)
-set_matrix_node_positions!(graph_diags, random_matrix)
+set_matrix_node_positions!(matrix_graph_diags, random_matrix)
 plot_graph(
-    graph_diags,
+    matrix_graph_diags,
     nodesize = 12,
     xdim = 500,
     ydim = 500,

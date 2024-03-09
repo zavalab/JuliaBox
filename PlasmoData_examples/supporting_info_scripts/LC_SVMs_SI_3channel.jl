@@ -4,8 +4,8 @@ using PlasmoData, JLD, MLUtils, LIBSVM, Random, Statistics
 ### Construct matrices as graphs and get EC curves ###
 
 # Load in the SO2 data; so2_data is size (288, 134, 134, 3)
-so2_data = load((@__DIR__)*"/../LC_data/so2_data.jld")["data"]
-so2_classes = load((@__DIR__)*"/../LC_data/so2_classes.jld")["classes"]
+so2_data = load((@__DIR__)*"/../CS1-Image_Analysis/LC_data/so2_data.jld")["data"]
+so2_classes = load((@__DIR__)*"/../CS1-Image_Analysis/LC_data/so2_classes.jld")["classes"]
 
 # Define threshold range for each EC curve
 thresh = 0:.005:1
