@@ -28,13 +28,13 @@ dub = [100,200,500]; dub = Dict(zip(D,dub)); # unit
 dbid = [300,300,15]; dbid = Dict(zip(D,dbid)) # $/unit
 
 # Map nodes to technologies
-xiloc = Dict("n1" => [T[1], T[2]], "n2" => [])
+ξloc = Dict("n1" => [T[1], T[2]], "n2" => [])
 
 # Define upper bounds on technology conversions
-xiub = [1000,1000]; xiub = Dict(zip(T,xiub)); # unit
+ξub = [1000,1000]; ξub = Dict(zip(T,ξub)); # unit
 
 # Define cost of converting one unit of product
-xibid = [1,0.5]; xibid = Dict(zip(T,xibid)); # $/unit
+ξbid = [1,0.5]; ξbid = Dict(zip(T,ξbid)); # $/unit
 
 # Product conversion matrices; rows are technologies, columns are products
 γ = [-1.0 0.9 0.0;
@@ -65,12 +65,12 @@ for n in N
     # Define variables based on above mappings
     @variable(nodes[n], s[sloc[n]]>=0)
     @variable(nodes[n], d[dloc[n]]>=0)
-    @variable(nodes[n], xi[xiloc[n]]>=0)
+    @variable(nodes[n], ξ[ξloc[n]]>=0)
 
     # Define upper bounds on variables
     @constraint(nodes[n], [i in sloc[n]], s[i] <= sub[i])
     @constraint(nodes[n], [j in dloc[n]], d[j] <= dub[j])
-    @constraint(nodes[n], [t in xiloc[n]], xi[t] <= xiub[t])
+    @constraint(nodes[n], [t in ξloc[n]], ξ[t] <= ξub[t])
 
     # Define expressions for summing supplies, demands, techs on a node
     @expression(nodes[n], sum_supplies[p in P],
@@ -79,15 +79,15 @@ for n in N
     @expression(nodes[n], sum_demands[p in P],
         sum(d[j] for j in dloc[n] if dprod[j] == p)
     )
-    @expression(nodes[n], sum_techs[p in P], sum(xi[t] * γ[t, p] for t in xiloc[n]))
+    @expression(nodes[n], sum_techs[p in P], sum(ξ[t] * γ[t, p] for t in ξloc[n]))
 
     # Define cost expressions for a node
     scost = @expression(nodes[n], sum(sbid[i] * s[i] for i in sloc[n]))
     dcost = @expression(nodes[n], sum(dbid[j] * d[j] for j in dloc[n]))
-    xicost = @expression(nodes[n], sum(xibid[t] * xi[t] for t in xiloc[n]))
+    ξcost = @expression(nodes[n], sum(ξbid[t] * ξ[t] for t in ξloc[n]))
 
     # Set objective on each node
-    @objective(nodes[n], Max, dcost - scost - xicost)
+    @objective(nodes[n], Max, dcost - scost - ξcost)
 end
 
 # Define variables/constraints/objectives for transport nodes
@@ -130,4 +130,4 @@ optimize!(graph)
 println(objective_value(graph))
 println("Node 1 demand solutions = ", value.(graph[:nodes]["n1"][:d]))
 println("Node 2 demand solutions = ", value.(graph[:nodes]["n2"][:d]))
-println("Technology conversion = ", value.(graph[:nodes]["n1"][:xi]))
+println("Technology conversion = ", value.(graph[:nodes]["n1"][:ξ]))
