@@ -37,10 +37,11 @@ y_opt = value.(y, label = All)
 println("r_1 = ", r_opt[1], ", a_11 = ", a_opt[1, 1], ", a_12 = ", a_opt[1, 2])
 println("r_2 = ", r_opt[2], ", a_21 = ", a_opt[2, 1], ", a_22 = ", a_opt[2, 2])
 plot(t_opt, y_opt, label = ["Species 1" "Species 2"],
-    color = [:blue :red], legend = :best
+    color = [:gray :black], linestyle = [:dash :solid], linewidth = [2 2],  legend = :best,
 )
 scatter!(t_exp, y_exp', label = ["Species 1 (exp)" "Species 2 (exp)"],
-    color = [:blue :red]
+    color = [:gray :black],
+    markershape = [:utriangle :circle]
 )
 xlabel!("Time (hr)")
 ylabel!("Abundance")
