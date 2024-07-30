@@ -32,4 +32,5 @@ graph = OptiGraph()
 
 # Optimize
 set_optimizer(graph, Ipopt.Optimizer)
+set_to_node_objectives(graph)
 optimize!(graph)
