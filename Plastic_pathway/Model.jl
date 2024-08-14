@@ -73,22 +73,14 @@ MOD = JuMP.Model(optimizer_with_attributes(Gurobi.Optimizer))
                  + CO2_raw_dict[R] * s[R] * Ctax/1000 for R in RawMaterials))
 
 @constraint(MOD, ConsSupply[i=RawMaterials], s[i] - sum(f[(ii,t)] for (ii,t) in arcs if ii==i) == 0)
+@constraint(MOD, CapRawMaterial[i=RawMaterials], s[i] <= capacity_raw_dict[i])
 
 @constraint(MOD, ConsIntermediate[j=Intermediates], sum(f[(t,jj)] for (t,jj) in arcs if jj==j) - sum(f[(jj,t)] for (jj,t) in arcs if jj==j) == 0)
 
 @constraint(MOD, ConsDemand[k=Products], sum(f[(t,kk)] for (t,kk) in arcs if kk==k) - d[k] == 0)
-
+@constraint(MOD, CapDemand[k=Products], d[k] >= demand_lower_dict[k])
+    
 @constraint(MOD, ConsTechnology1[t=Technology, m=Materials; (m,t) in arcs], sum(f[(mm,tt)] for (mm,tt) in arcs if tt==t && mm==m) + gamma_dict[m,t] * Tech[t]  == 0)
 @constraint(MOD, ConsTechnology2[t=Technology, m=Materials; (t,m) in arcs], -sum(f[(tt,mm)] for (tt,mm) in arcs if mm==m && tt==t) + gamma_dict[t,m] * Tech[t] == 0)
-
-@constraint(MOD, CapDemand[k=Products], d[k] >= demand_lower_dict[k])
-
-@constraint(MOD, CapRawMaterial[i=RawMaterials], s[i] <= capacity_raw_dict[i])
-
-@objective(MOD, Min,
-              sum(cost_tech_dict[T] * Tech[T]
-             + CO2_tech_dict[T] * Tech[T] * Ctax/1000 for T in Technology)
-             + sum(cost_raw_dict[R] * s[R]
-             + CO2_raw_dict[R] * s[R] * Ctax/1000 for R in RawMaterials))
 
 JuMP.optimize!(MOD)
