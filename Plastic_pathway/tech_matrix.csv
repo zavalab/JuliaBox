@@ -1,0 +1,31 @@
+Technology,Input Material,Output Material,Yield,Tech Cost ($/tonne product),GHG Emissions (kg eqCO2/tonne product)
+Dehydration,Ethanol,Ethylene,-1.642424242,505.3939394,888.33499
+Oxidation & Hydration,Ethylene,Ethylene Glycol,-0.490845727,395.1067589,863.3004148
+Halogenation Thermal Decomposition,Ethylene,Chloroethene,-0.8976,237.572,280.9312
+Acid Catalysis,Ethylene,Ethylbenzene,-0.264206392,260.1679995,582.7471319
+Acid Catalysis,Benzene,Ethylbenzene,-0.735727674,260.1679995,582.7471319
+Dehydrogenation,Ethylbenzene,Styrene,-1.049317943,160.587618,351.5683001
+Oxdiative Dehydration ,Ethanol,"1,3-Butadiene",-2.02020202,642.5888026,1600
+Biorefinery,Sugarcane,Propylene,-31.34796238,1865.031348,1936.5
+Fermentation,Sugar Beets,Ethanol,-6.46993,317.606935,693.41
+Catalytic Reforming for Ethylene,Petroleum Naphtha,Ethylene,-1.316829076,85.22451936,941.8780616
+Catalytic Reforming for Propylene,Petroleum Naphtha,Propylene,-1.344086022,237.8494624,977.2091416
+Catalytic Reforming for Xylene,Petroleum Naphtha,p-Xylene,-1.264382349,137.7945379,1227.738701
+Catalytic Reforming for Benzene,Petroleum Naphtha,Benzene,-1.307189542,264.1830065,1362.452874
+MethanolEthylene Process,Natural Gas,"1,3-Butadiene",-1.36239782,1551.753931,217.772278
+Hydrogenation,Benzene,Cyclohexane,-0.937207123,211.58388,721.7581537
+Oxidation Cobalt,Cyclohexane,Cyclohexanone,-0.92506938,425.9111933,1764.914468
+Oxidation Acid,Cyclohexanone,Adipic Acid,-0.729980291,514.7317322,11443.18271
+Hydrocyanation and Hydrogenation,"1,3-Butadiene",Hexamethylenediamine,-0.54761442,1126.660333,4815.265274
+Amoco Process,p-Xylene,Terephthalic Acid,-0.6727,542.7758849,668.6781324
+Biomass-to-Aromatic Process for Xylene,Corn Stover,p-Xylene,-4.438248922,1069.410129,3372.17
+Biomass-to-Aromatic Process for Benzene,Corn Stover,Benzene,-4.438248922,898.4101294,3372.507217
+LDPE Polymerization,Ethylene,LDPE,-1,987.5,764.7
+HDPE Polymerization,Ethylene,HDPE,-1,552.5,572.65
+PP Polymerization,Propylene,PP,-1,824,543.52731
+PVC Polymerization,Chloroethene,PVC,-1,611.5,931.49
+PS Polymerization,Styrene,PS,-1,674,974.39
+PET Polymerization,Terephthalic Acid,PET,-0.880188776,389.0753947,924.8101423
+PET Polymerization,Ethylene Glycol,PET,-0.32885487,389.0753947,924.8101423
+Nylon66 Polymerization,Hexamethylenediamine,Nylon66,-0.513271882,1598.34,924.9026233
+Nylon66 Polymerization,Adipic Acid,Nylon66,-0.64547667,1598.34,924.9026233

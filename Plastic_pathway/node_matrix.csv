@@ -1,0 +1,28 @@
+Raw Material,Intermediate,Products,Technology
+Sugar Beets,Ethanol,LDPE,Dehydration
+Sugarcane,Ethylene,HDPE,Oxidation & Hydration
+Corn Stover,Ethylene Glycol,PP,Halogenation Thermal Decomposition
+Natural Gas,Chloroethene,PVC,Acid Catalysis
+Petroleum Naphtha,Propylene,PS,Dehydrogenation
+,Benzene,PET,Oxdiative Dehydration 
+,p-Xylene,Nylon66,Biorefinery
+,Ethylbenzene,,Fermentation
+,Styrene,,Catalytic Reforming for Ethylene
+,"1,3-Butadiene",,Catalytic Reforming for Propylene
+,Cyclohexane,,Catalytic Reforming for Xylene
+,Cyclohexanone,,Catalytic Reforming for Benzene
+,Adipic Acid,,MethanolEthylene Process
+,Hexamethylenediamine,,Hydrogenation
+,Terephthalic Acid,,Oxidation Cobalt
+,,,Oxidation Acid
+,,,Hydrocyanation and Hydrogenation
+,,,Amoco Process
+,,,Biomass-to-Aromatic Process for Xylene
+,,,Biomass-to-Aromatic Process for Benzene
+,,,LDPE Polymerization
+,,,HDPE Polymerization
+,,,PP Polymerization
+,,,PVC Polymerization
+,,,PS Polymerization
+,,,PET Polymerization
+,,,Nylon66 Polymerization
