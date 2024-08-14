@@ -1,1 +1,1 @@
-
+This directory contains the Julia code and data for the paper "A Pathway Analysis Framework for Evaluating the Economic and Environmental Viability of Biomass-Based Plastic Production" from Wang et al.
