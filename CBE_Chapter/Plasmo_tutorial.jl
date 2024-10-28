@@ -30,6 +30,9 @@ graph = OptiGraph()
 @linkconstraint(graph, n1[:x] + n2[:x] == 1)
 @linkconstraint(graph, n1[:x] + n2[:x] + n3[:x] == 4)
 
+# Set objective
+set_to_node_objectives(graph)
+
 # Optimize
 set_optimizer(graph, Ipopt.Optimizer)
 set_to_node_objectives(graph)
