@@ -27,14 +27,13 @@ Key Julia package versions (see `Manifest.toml` for the full dependency tree):
 
 ## Setup
 
-This folder currently ships a `Manifest.toml` but no `Project.toml`. To install the exact dependency versions used to generate the paper's results:
+To set up the Julia environment run the following command:
 
 ```julia
 julia --project=.
-] instantiate
 ```
 
-If `instantiate` complains about a missing `Project.toml`, add the packages listed above manually instead:
+If that doesn't work, add the packages listed above manually instead:
 
 ```julia
 ] add JuMP Gurobi DataFrames XLSX Plots CSV JSON CPUTime
