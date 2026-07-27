@@ -1,4 +1,5 @@
-# CI Electrolyzer
+# Carbon Aware Optimization of Grid-Integrated Electrolysis
+Emilia Veum, Kiernan X. Jennings, Styliani Avraamidou, Victor M. Zavala
 
 Mixed-integer optimization models for the techno-economics of a PEM electrolyzer operating under the
 IRA Section 45V clean hydrogen production tax credit, powered by grid electricity, wind, or both. Models
@@ -96,18 +97,18 @@ respectively).
 | Symbol | Description |
 |---|---|
 | $\phi$ | Electrolyzer nominal capacity (MW) |
-| $\alpha_{\max}$ | Hydrogen production coefficient (kg H$_2$/MWh) |
+| $\alpha_{\max}$ | Hydrogen production coefficient (kg H₂/MWh) |
 | $B = 9.66$ | Base/idle hydrogen production term while on |
 | $\rho_{sb}$ | Standby power draw, as a fraction of $\phi$ |
 | $\Delta T = 1$ | Time step length (hours) |
-| $c_t$ | Grid carbon intensity at hour $t$ (kg CO$_2$/MWh) |
+| $c_t$ | Grid carbon intensity at hour $t$ (kg CO₂/MWh) |
 | $\pi_t$ | Day-ahead settlement point price at hour $t$ (\$/MWh) |
 | $\bar{e}_t$ | Available wind energy at hour $t$ (MWh), from turbine physics |
 | $\lambda_H$ | Hydrogen price (\$/kg) |
 | $\lambda_{CAPEX}$ | Plant CAPEX rate (\$/MW) |
 | $\lambda_{OPEX}$ | Annual O&M cost (\$) |
-| $cr_i$ | 45V credit value for tier $i$ (\$/kg H$_2$): $[0,\ 0.60,\ 0.75,\ 1.00,\ 3.00]$ |
-| $\epsilon^u_i,\ \epsilon^l_i$ | Upper/lower emissions-intensity bounds (kg CO$_2$/kg H$_2$) defining tier $i$ |
+| $cr_i$ | 45V credit value for tier $i$ (\$/kg H₂): $[0, 0.60, 0.75, 1.00, 3.00]$ |
+| $\epsilon^u_i, \epsilon^l_i$ | Upper/lower emissions-intensity bounds (kg CO₂/kg H₂) defining tier $i$ |
 | $M$ | Big-M constant ($10^9$) |
 
 $\bar{e}_t$ is computed from a 1 MW reference turbine: with air density $\rho_e = 1.225\ \text{kg/m}^3$,
@@ -130,7 +131,7 @@ $cr_i$, $\epsilon^u_i, \epsilon^l_i$) are the base values scaled by an `Electrol
 | $e^{wind}_t$ | $\geq 0$ | Wind electricity drawn by the electrolyzer (MWh) |
 | $e^{tot}_t$ | $\geq 0$ | Total electricity drawn (MWh) |
 | $e^{sell}_t$ | $\geq 0$ | Excess wind energy sold to the grid (MWh) |
-| $e^{y}_t$ | $\geq 0$ | Emissions attributed to hour $t$ (kg CO$_2$) |
+| $e^{y}_t$ | $\geq 0$ | Emissions attributed to hour $t$ (kg CO₂) |
 | $h_t$ | $\geq 0$ | Hydrogen produced (kg) |
 | $z^{on}_t, z^{off}_t, z^{sb}_t$ | $\{0,1\}$ | On / off / standby state indicators |
 | $z^{start}_t$ | $\{0,1\}$ | Cold-start indicator |
@@ -142,11 +143,7 @@ $cr_i$, $\epsilon^u_i, \epsilon^l_i$) are the base values scaled by an `Electrol
 Maximize annual net profit (implemented as $\min -\text{Net Profit}$):
 
 $$
-\max \; \text{Net Profit} = \underbrace{\sum_{t} \lambda_H\, h_t}_{h_{\text{revenue}}}
-\;+\; \underbrace{\sum_{t} IRA_t}_{IRA_{\text{rev}}}
-\;+\; \underbrace{\sum_{t} \pi_t\, e^{sell}_t}_{e_{\text{rev}}}
-\;-\; \underbrace{\sum_{t} \pi_t\, e^{grid}_t}_{e_{\text{exp}}}
-\;-\; \lambda_{OPEX}
+\max \quad \text{Net Profit} = \underbrace{\sum_{t} \lambda_H\, h_t}_{h_{\text{revenue}}} + \underbrace{\sum_{t} IRA_t}_{IRA_{\text{rev}}} + \underbrace{\sum_{t} \pi_t\, e^{sell}_t}_{e_{\text{rev}}} - \underbrace{\sum_{t} \pi_t\, e^{grid}_t}_{e_{\text{exp}}} - \lambda_{OPEX}
 $$
 
 (Plant CAPEX, $\lambda_{CAPEX}\,\phi$, is computed as `cap_exp` but is not currently subtracted from the
@@ -155,66 +152,78 @@ objective — it is reported alongside the solve, not optimized against.)
 ### Constraints
 
 **Emissions and energy balance**
+
 $$
 e^{y}_t = c_t \, e^{grid}_t \qquad \forall t
 $$
+
 $$
 e^{tot}_t = e^{grid}_t + e^{wind}_t \qquad \forall t
 $$
 
-**Electrolyzer capacity (on/standby power envelope, minimum 20% turndown while on)**
+**Electrolyzer capacity** (on/standby power envelope, minimum 20% turndown while on)
+
 $$
 0.2\,\phi\, z^{on}_t\, \Delta T + \phi\, z^{sb}_t\, \Delta T\, \rho_{sb}
-\;\leq\; e^{tot}_t \;\leq\;
+\ \leq\ e^{tot}_t \ \leq\
 \phi\, z^{on}_t\, \Delta T + \phi\, z^{sb}_t\, \Delta T\, \rho_{sb} \qquad \forall t
 $$
 
 **Wind availability and sell-back**
+
 $$
 e^{wind}_t \leq \bar{e}_t, \qquad e^{sell}_t = \bar{e}_t - e^{wind}_t \qquad \forall t
 $$
 
 **Three-state unit commitment**
+
 $$
 z^{on}_t + z^{off}_t + z^{sb}_t = 1 \qquad \forall t
 $$
 
 **Cold-start logic** ($t \geq 2$; $z^{start}_t = 1$ exactly when the unit turns on from off/standby)
+
 $$
 z^{start}_t \geq z^{on}_t - z^{on}_{t-1} - z^{sb}_{t-1}
 $$
+
 $$
 z^{start}_t \leq z^{on}_t
 $$
+
 $$
 z^{start}_t \leq 1 - z^{on}_{t-1} - z^{sb}_{t-1}
 $$
 
 **Hydrogen production**
+
 $$
 h_t = \alpha_{\max}\, e^{tot}_t\, \Delta T + B\, z^{on}_t\, \Delta T \qquad \forall t
 $$
 
 **45V tier assignment** (exactly one tier per hour)
+
 $$
 \sum_{i=1}^{5} \text{tier}_{t,i} = 1 \qquad \forall t
 $$
 
 **Tier-conditioned emissions-intensity bounds** (big-M: only active when $\text{tier}_{t,i}=1$)
+
 $$
-\epsilon^l_i\, h_t - M(1-\text{tier}_{t,i}) \;\leq\; e^{y}_t \;\leq\; \epsilon^u_i\, h_t + M(1-\text{tier}_{t,i})
+\epsilon^l_i\, h_t - M(1-\text{tier}_{t,i}) \ \leq\ e^{y}_t \ \leq\ \epsilon^u_i\, h_t + M(1-\text{tier}_{t,i})
 \qquad \forall t,\ \forall i
 $$
 
 **Tier-conditioned credit value** (big-M)
+
 $$
-cr_i\, h_t - M(1-\text{tier}_{t,i}) \;\leq\; IRA_t \;\leq\; cr_i\, h_t + M(1-\text{tier}_{t,i})
+cr_i\, h_t - M(1-\text{tier}_{t,i}) \ \leq\ IRA_t \ \leq\ cr_i\, h_t + M(1-\text{tier}_{t,i})
 \qquad \forall t,\ \forall i
 $$
 
 ### 45V tiers
 
-| Tier $i$ | Emissions intensity $\epsilon$ (kg CO$_2$/kg H$_2$) | Credit $cr_i$ (\$/kg H$_2$) |
+| Tier $i$ | Emissions intensity $\epsilon$ (kg CO₂/kg H₂) | Credit $cr_i$ (\$/kg H₂) |
 |---|---|---|
 | 1 | $\epsilon \geq 4.0$ | \$0.00 |
 | 2 | $2.5 \leq \epsilon < 4.0$ | \$0.60 |
