@@ -37,9 +37,6 @@ function run_wind_opt(env::Gurobi.Env, θ::Electrolyzer, spp_array, CI_grid; gap
     diffcp= θ.diffcp
     diffcr= θ.diffcr
     difftier= θ.difftier
-
-    lifetime = 20
-    cap_turbine = 1.125e6   #usd
     
     #wind turbine energy calc for 1 MW turbine
     ρ_e = 1.225  # kg/m3 density of air
@@ -47,7 +44,7 @@ function run_wind_opt(env::Gurobi.Env, θ::Electrolyzer, spp_array, CI_grid; gap
     A_e = 0.25 * pi * D^2  # area of single blade
     v_e = load_windspeeds()
     cp_e =  diffcp * 0.4   # efficiency
-    #cp_e = 0.4
+
     e_avail = (0.5 * ρ_e * A_e * (v_e.^3) * cp_e) / 1e6
 
     α_max= diffeff .* α_max
@@ -101,7 +98,6 @@ function run_wind_opt(env::Gurobi.Env, θ::Electrolyzer, spp_array, CI_grid; gap
     @expression(model, IRA, sum(h[t] * cr for t in T_span))
     @expression(model, e_rev, sum(e_sell[t] * spp_array[t] for t in T_span))
     
-
     @expression(model, Net_Profit,  - op_exp + e_rev + h_revenue + IRA)
     
     # Objective 
@@ -133,15 +129,6 @@ try
         annual_operating_profit = JuMP.value(model[:Net_Profit])
         println("Annual Operating Profit: \$", annual_operating_profit)
 
-        #NPV calculation
-        #total_capex = θ.λ_CAPEX_Plant * θ.ϕ  
-        #lifetime_years = 10
-        #discount_rate = 0.05
-
-        #present_value_of_revenues = sum(annual_operating_profit / (1 + discount_rate)^t for t in 1:lifetime_years)
-
-        #project_NPV = -total_capex + present_value_of_revenues
-        #println("True Project NPV: \$", project_NPV)
     catch e
         println("Error during calculation: ", e)
     end
