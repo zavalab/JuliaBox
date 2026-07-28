@@ -43,9 +43,9 @@ DAM_hr_2024 = vec(mean(reshape(DAM_2024, 8760, 4), dims=2))
     1816*1000,    # Plant CAPEX
     250*1000,     # Stack CAPEX
     0.05,         # Standby load fraction
-    1.0,          # efficiency of turbine
+    1.0,          # efficiency of turbine multiplier
     1.0,          # credit multiplier
-    1.0,          # max efficiency of electrolyzer
+    1.0,          # max efficiency of electrolyzer multiplier
     1.0,          # ci_grid multiplier
     1.0,          # spp_array multiplier
     1.0,          # tier level diff scalar

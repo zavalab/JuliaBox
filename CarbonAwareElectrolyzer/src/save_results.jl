@@ -1,12 +1,10 @@
 using JuMP, DataFrames, JLD2
 include("electrolyzer.jl")
 
-# Keep your mentor's helper function exactly the same
 function get_val(model, var::Symbol)
     return vec(float.(Array(value.(model[var]))))
 end
 
-# Keep your mentor's custom data structure exactly the same
 struct OptimizationResult
     final_value_results::Dict{Symbol, Any}
     mip_gap::Union{Float64, Nothing} 
@@ -17,7 +15,6 @@ struct OptimizationResult
     LCOH::Float64
 end
 
-# Keep your mentor's population logic nearly identical
 function populate_optimization_result(model, solvetime, θ::Electrolyzer)
     # Use NaN instead of nothing so it stays a Float64 if the try block fails
     obj_val = NaN
@@ -53,13 +50,9 @@ function populate_optimization_result(model, solvetime, θ::Electrolyzer)
         stat = :Error
     end
 
-    # Now this will never fail due to a type conversion error
     return OptimizationResult(final_vals, mip_g, obj_val, stat, θ, time, LCOH)
 end
 
-# ==============================================================================
-# THE MAGIC OF JLD2: Massively simplified Save & Read
-# ==============================================================================
 
 function save_optimization_result_to_jld2(result::OptimizationResult, filename::String)
     # JLD2 seamlessly saves the entire custom struct and all sub-structs directly!
@@ -84,7 +77,7 @@ function pop_and_save(model, solvetime, θ::Electrolyzer, filename::String)
 end
 
 # ==============================================================================
-# STATS ANALYSIS FUNCTION (Updated for native struct reading)
+# STATS ANALYSIS FUNCTION 
 # ==============================================================================
 function get_model_stats(filename)
     # Load the native struct back instantly
