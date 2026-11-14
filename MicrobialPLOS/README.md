@@ -1,3 +1,7 @@
+# MicrobialPLOS
+
+This repository includes the Julia/MATLAB scripts used in manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin (sungho.shin@wisc.edu), Ophelia .
+
 This repository includes the Julia/MATLAB scripts used in manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin (sungho.shin@wisc.edu), Ophelia S. Venturelli (venturelli@wisc.edu), and Victor M. Zavala (victor.zavala@wisc.edu).
 
 # Installation
@@ -42,3 +46,27 @@ plot_hmap.m
 plot_inference.m
 
 - run_all runs all the examples.
+
+## Reference
+This code accompanies the paper:
+
+Sungho Shin, Ophelia S. Venturelli, and Victor M. Zavala. "Scalable nonlinear programming framework for parameter estimation in dynamic biological system models." *PLOS Computational Biology* 15, no. 3 (2019): e1006828. https://doi.org/10.1371/journal.pcbi.1006828
+
+Preprint: https://www.biorxiv.org/content/biorxiv/early/2018/09/07/410688.full.pdf
+
+## BibTeX
+```bibtex
+@article{shin2019scalable,
+  title   = {{Scalable nonlinear programming framework for parameter estimation in dynamic biological system models}},
+  author  = {Shin, Sungho and Venturelli, Ophelia S. and Zavala, Victor M.},
+  journal = {PLOS Computational Biology},
+  volume  = {15},
+  number  = {3},
+  pages   = {e1006828},
+  year    = {2019},
+  doi     = {10.1371/journal.pcbi.1006828}
+}
+```
+
+## Authors
+Sungho Shin, Ophelia S. Venturelli, and Victor M. Zavala
