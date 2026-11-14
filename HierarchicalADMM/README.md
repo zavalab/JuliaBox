@@ -1,3 +1,7 @@
+# HierarchicalADMM
+
+This repository includes the Julia/MATLAB scripts used in paper "A Hierarchical Optimization Architecture for Large-Scale Power Networks" by Sungho Shin (sungho.shin@wisc.edu), Philip Hart, Thomas Jahns, Victor M. Zavala.
+
 This repository includes the Julia/MATLAB scripts used in paper "A Hierarchical Optimization Architecture for Large-Scale Power Networks" by Sungho Shin (sungho.shin@wisc.edu), Philip Hart, Thomas Jahns, Victor M. Zavala* (victor.zavala@wisc.edu)
 
 # Installation
@@ -25,3 +29,27 @@ plotter.m
 ```shell
 mpirun -np (number_of_processors) julia example.jl
 ```
+
+## Reference
+This code accompanies the paper:
+
+Sungho Shin, Philip Hart, Thomas Jahns, and Victor M. Zavala. "A Hierarchical Optimization Architecture for Large-Scale Power Networks." *IEEE Transactions on Control of Network Systems* 6, no. 3 (2019): 1004-1014. https://doi.org/10.1109/tcns.2019.2906917
+
+Preprint: https://arxiv.org/abs/2002.09796
+
+## BibTeX
+```bibtex
+@article{shin2019hierarchical,
+  title   = {{A Hierarchical Optimization Architecture for Large-Scale Power Networks}},
+  author  = {Shin, Sungho and Hart, Philip and Jahns, Thomas and Zavala, Victor M.},
+  journal = {IEEE Transactions on Control of Network Systems},
+  volume  = {6},
+  number  = {3},
+  pages   = {1004--1014},
+  year    = {2019},
+  doi     = {10.1109/tcns.2019.2906917}
+}
+```
+
+## Authors
+Sungho Shin, Philip Hart, Thomas Jahns, and Victor M. Zavala
