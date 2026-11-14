@@ -1,6 +1,6 @@
 # Graph-Structured Nonlinear Optimization Code
 
-This repository contains the code of two different nonlinear optimization problems for the manuscript "A Julia Framework for Graph-Structured Nonlinear Optimization" (found [here](https://doi-org.ezproxy.library.wisc.edu/10.1021/acs.iecr.2c01253)). The problems are modeled in Plasmo.jl and solved in MadNLP.jl.
+This repository contains the code of two different nonlinear optimization problems for the manuscript "A Julia Framework for Graph-Structured Nonlinear Optimization" (found [here](https://doi.org/10.1021/acs.iecr.2c01253); preprint [here](https://arxiv.org/abs/2204.05264)). The problems are modeled in Plasmo.jl and solved in MadNLP.jl.
 
 There are four folders containing code, and their contents are described below. Note that several of these scripts use different solves which may require additional setup, such as Ma57. For details on how to complete this setup, please see MadNLP's documentation [here](https://github.com/MadNLP/MadNLP.jl). MadNLP has multiple solvers available that can be used without additional setup. For example, instead of setting `linear_solver=MadNLPMa57` inside the `MadNLP.optimize` function, the user can set `linear_solver=MadNLPUmfpack` to avoid errors when Ma57 is not set up.
 
