@@ -12,7 +12,7 @@ Yue Shao and Victor M. Zavala. "Modularity measures: Concepts, computation, and 
 
 ## BibTeX
 ```bibtex
-@article{allman2020modularity,
+@article{shao2020modularity,
   title   = {{Modularity measures: Concepts, computation, and applications to manufacturing systems}},
   author  = {Shao, Yue and Zavala, Victor M.},
   journal = {AIChE Journal},

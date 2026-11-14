@@ -16,7 +16,7 @@ Preprint: https://arxiv.org/abs/2204.06654
 
 ## BibTeX
 ```bibtex
-@article{zhang2022exploring,
+@article{zhang2023exploring,
   title   = {{Exploring the Impacts of Power Grid Signals on Data Center Operations Using a Receding-Horizon Scheduling Model}},
   author  = {Zhang, Weiqi and Roald, Line and Zavala, Victor},
   journal = {IEEE Transactions on Sustainable Computing},

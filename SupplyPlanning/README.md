@@ -11,7 +11,7 @@ Apoorva M. Sampat, Ranjeet Kumar, Remya Pushpangatha Kurup, Kawa Chiu, Victor M.
 
 ## BibTeX
 ```bibtex
-@article{chu2021multisite,
+@article{sampat2021multisite,
   title   = {{Multisite supply planning for drug products under uncertainty}},
   author  = {Sampat, Apoorva M. and Kumar, Ranjeet and Pushpangatha Kurup, Remya and Chiu, Kawa and Saucedo, Victor M. and Zavala, Victor M.},
   journal = {AIChE Journal},

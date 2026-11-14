@@ -13,7 +13,7 @@ Yue Shao, Jiaze Ma, and Victor M. Zavala. "A spatial superstructure approach to 
 
 ## BibTeX
 ```bibtex
-@article{ma2023spatial,
+@article{shao2023spatial,
   title   = {{A spatial superstructure approach to the optimal design of modular processes and supply chains}},
   author  = {Shao, Yue and Ma, Jiaze and Zavala, Victor M.},
   journal = {Computers \& Chemical Engineering},

@@ -17,7 +17,7 @@ Preprint: https://arxiv.org/abs/2012.06447
 
 ## BibTeX
 ```bibtex
-@article{allman2021mitigating,
+@article{shao2021mitigating,
   title   = {{Mitigating investment risk using modular technologies}},
   author  = {Shao, Yue and Hu, Yicheng and Zavala, Victor M.},
   journal = {Computers \& Chemical Engineering},
