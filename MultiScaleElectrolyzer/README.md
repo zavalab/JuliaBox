@@ -118,3 +118,23 @@ For questions about the code, contact the corresponding author or open an issue 
 
 ---
 *This README was generated with the help of Claude (Anthropic).*
+
+## Reference
+This code accompanies the preprint:
+
+Kiernan X. Jennings, Victor M. Zavala, and Styliani Avraamidou. "A Multi-Scale Optimization Framework for Grid-Integrated Electrolysis." arXiv preprint arXiv:2607.09512 (2026). https://doi.org/10.48550/arXiv.2607.09512
+
+## BibTeX
+```bibtex
+@misc{jennings2026multi,
+  title         = {{A Multi-Scale Optimization Framework for Grid-Integrated Electrolysis}},
+  author        = {Jennings, Kiernan X. and Zavala, Victor M. and Avraamidou, Styliani},
+  year          = {2026},
+  eprint        = {2607.09512},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2607.09512}
+}
+```
+
+## Authors
+Kiernan X. Jennings, Victor M. Zavala, and Styliani Avraamidou
