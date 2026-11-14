@@ -10,7 +10,7 @@ Julia interface and stochastic farmer examples for the clustering-based interior
 ## Reference
 This code accompanies the paper:
 
-Yankai Cao, Carl D. Laird, and Victor M. Zavala. "Clustering-based preconditioning for stochastic programs." *Computational Optimization and Applications* 64, no. 2 (2015): 379-406. https://doi.org/10.1007/s10589-015-9813-x
+Yankai Cao, Carl D. Laird, and Victor M. Zavala. "Clustering-based preconditioning for stochastic programs." *Computational Optimization and Applications* 64, no. 2 (2016): 379-406. https://doi.org/10.1007/s10589-015-9813-x
 
 ## BibTeX
 ```bibtex
@@ -21,7 +21,7 @@ Yankai Cao, Carl D. Laird, and Victor M. Zavala. "Clustering-based preconditioni
   volume  = {64},
   number  = {2},
   pages   = {379--406},
-  year    = {2015},
+  year    = {2016},
   doi     = {10.1007/s10589-015-9813-x}
 }
 ```
