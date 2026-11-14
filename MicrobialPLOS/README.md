@@ -1,6 +1,6 @@
 # MicrobialPLOS
 
-This repository includes the Julia/MATLAB scripts used in manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin (sungho.shin@wisc.edu), Ophelia .
+Scalable nonlinear programming for parameter estimation in dynamic models of microbial communities.
 
 This repository includes the Julia/MATLAB scripts used in manuscript "Scalable Nonlinear Programming Framework for Parameter Estimation in Dynamic Biological System Models" by Sungho Shin (sungho.shin@wisc.edu), Ophelia S. Venturelli (venturelli@wisc.edu), and Victor M. Zavala (victor.zavala@wisc.edu).
 

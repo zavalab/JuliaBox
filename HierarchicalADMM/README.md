@@ -1,6 +1,6 @@
 # HierarchicalADMM
 
-This repository includes the Julia/MATLAB scripts used in paper "A Hierarchical Optimization Architecture for Large-Scale Power Networks" by Sungho Shin (sungho.shin@wisc.edu), Philip Hart, Thomas Jahns, Victor M. Zavala.
+Hierarchical (ADMM-based) optimization architecture for large-scale power networks.
 
 This repository includes the Julia/MATLAB scripts used in paper "A Hierarchical Optimization Architecture for Large-Scale Power Networks" by Sungho Shin (sungho.shin@wisc.edu), Philip Hart, Thomas Jahns, Victor M. Zavala* (victor.zavala@wisc.edu)
 

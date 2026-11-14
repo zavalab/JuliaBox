@@ -1,6 +1,6 @@
 # Plastic_pathway
 
-This directory contains the Julia code and data for the paper "A Pathway Analysis Framework for Evaluating the Economic and Environmental Viability of Biomass-Based Plastic Production" from Wang et al.
+Pathway analysis of the economic and environmental viability of biomass-based plastic production.
 
 This directory contains the Julia code and data for the paper "A Pathway Analysis Framework for Evaluating the Economic and Environmental Viability of Biomass-Based Plastic Production" from Wang et al.
 

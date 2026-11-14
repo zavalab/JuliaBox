@@ -1,6 +1,6 @@
 # SchwarzQPcons
 
-This repository includes the Julia/python scripts used in manuscript "Overlapping Schwarz Decomposition for Constrained Quadratic Programs" by Sungho Shin (sungho.shin@wisc.edu), Mihai Anitescu (anitescu@mcs.anl.gov), an.
+Overlapping Schwarz decomposition for constrained quadratic programs.
 
 This repository includes the Julia/python scripts used in manuscript "Overlapping Schwarz Decomposition for Constrained Quadratic Programs" by Sungho Shin (sungho.shin@wisc.edu), Mihai Anitescu (anitescu@mcs.anl.gov), and Victor M. Zavala (victor.zavala@wisc.edu).
 
