@@ -1,6 +1,6 @@
 # SID_DMD
 
-This repository includes the MATLAB scripts used in manuscript "Unifying Results for Subspace Identification and Dynamic Mode Decomposition" by Sungho Shin (sungho.shin@wisc.edu), Qiugang Lu (glu67@wisc.edu), and Victor .
+MATLAB scripts that establish the connections between subspace identification and dynamic mode decomposition.
 
 This repository includes the MATLAB scripts used in manuscript "Unifying Results for Subspace Identification and Dynamic Mode Decomposition" by Sungho Shin (sungho.shin@wisc.edu), Qiugang Lu (glu67@wisc.edu), and Victor M. Zavala (victor.zavala@wisc.edu).
 
