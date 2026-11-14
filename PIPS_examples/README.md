@@ -11,14 +11,14 @@ Examples for PIPS-NLP: stochastic farmer problems and line-pack dispatch in a na
 ## Reference
 This code accompanies the paper:
 
-Naiyuan Chiang, Cosmin G. Petra, and Victor M. Zavala. "Structured nonconvex optimization of large-scale energy systems using PIPS-NLP." *2014 Power Systems Computation Conference* (2014): 1-7. https://doi.org/10.1109/pscc.2014.7038374
+Naiyuan Chiang, Cosmin G. Petra, and Victor M. Zavala. "Structured nonconvex optimization of large-scale energy systems using PIPS-NLP." In *2014 Power Systems Computation Conference* (2014): 1-7. https://doi.org/10.1109/pscc.2014.7038374
 
 ## BibTeX
 ```bibtex
-@article{chiang2014structured,
+@inproceedings{chiang2014structured,
   title   = {{Structured nonconvex optimization of large-scale energy systems using PIPS-NLP}},
   author  = {Chiang, Naiyuan and Petra, Cosmin G. and Zavala, Victor M.},
-  journal = {2014 Power Systems Computation Conference},
+  booktitle = {2014 Power Systems Computation Conference},
   pages   = {1--7},
   year    = {2014},
   doi     = {10.1109/pscc.2014.7038374}
