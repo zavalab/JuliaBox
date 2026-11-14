@@ -235,3 +235,8 @@ The grid-only formulation (`src/formulate_grid.jl`) is this model with $e^{wind}
 $e^{tot}_t = e^{grid}_t$. The wind-only formulation (`src/formulate_wind.jl`) is this model with
 $e^{grid}_t = 0$, $e^{tot}_t = e^{wind}_t$, and $e^y_t \equiv 0$ (no emissions accounting, since it never
 draws from the grid).
+
+## Authors
+Emilia Veum, Kiernan X. Jennings, Styliani Avraamidou, and Victor M. Zavala
+
+(c) University of Wisconsin-Madison, 2026
