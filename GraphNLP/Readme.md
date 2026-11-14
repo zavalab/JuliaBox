@@ -49,4 +49,21 @@ One of the contributions of this work is highlighting how MadNLP enables solving
 [Line 86](https://github.com/zavalab/JuliaBox/blob/e527eae6b126d9ac803e5db7d4041dc235a0968b/GraphNLP/timed_gasnetwork/run_gas_network.jl#L86) of timed_gasnetwork/run_gas_network.jl shows how to call the solver using `MadNLPSchur` as the linear solver. The `schur_custom_partition` argument is set to `true` because the problem is partitioned into nodes. On [line 62](https://github.com/zavalab/JuliaBox/blob/e527eae6b126d9ac803e5db7d4041dc235a0968b/GraphNLP/timed_gasnetwork/run_gas_network.jl#L62), the problem is aggregated so that it has no subgraphs. Each scenario of the gas network problem is contained on a separate subgraph, and calling `aggregate` turns the subgraph layers (e.g., each scenario) into nodes. MadNLP is able to detect this problem structure and solve in parallel. In other words, aggregating the graph shown in Figure 10 of the above paper would result in five nodes: the master node in the middle, and one node for each scenario subgraph. 
 
 ### Parallelizing Schur Decomposition
-The Schur decomposition can be run in parallel if the problem is set up correctly. Please see the Julia documentation [here](https://docs.julialang.org/en/v1/manual/multi-threading/) for directions on how to run Julia on multiple threads. This must be done to allow running the Schur decomposition in parallel. 
+The Schur decomposition can be run in parallel if the problem is set up correctly. Please see the Julia documentation [here](https://docs.julialang.org/en/v1/manual/multi-threading/) for directions on how to run Julia on multiple threads. This must be done to allow running the Schur decomposition in parallel.
+
+## BibTeX
+```bibtex
+@article{cole2022julia,
+  title   = {{A Julia Framework for Graph-Structured Nonlinear Optimization}},
+  author  = {Cole, David L. and Shin, Sungho and Zavala, Victor M.},
+  journal = {Industrial \& Engineering Chemistry Research},
+  volume  = {61},
+  number  = {26},
+  pages   = {9366--9380},
+  year    = {2022},
+  doi     = {10.1021/acs.iecr.2c01253}
+}
+```
+
+## Authors
+David L. Cole, Sungho Shin, and Victor M. Zavala
