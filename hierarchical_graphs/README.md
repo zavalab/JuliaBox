@@ -32,3 +32,23 @@ To obtain the results in this work, we used the following packages and versions 
  * DataFrames (v1.5.0)
  * LightGraphs (v1.3.5)
  * Graphs (v1.8.0)
+
+## Reference
+This code accompanies the paper:
+
+David L. Cole, Harsha Gangammanavar, and Victor M. Zavala. "Hierarchical Graph Modeling for Multi-Scale Optimization of Power Systems." arXiv preprint arXiv:2309.10568 (2023). https://doi.org/10.48550/arXiv.2309.10568
+
+## BibTeX
+```bibtex
+@misc{cole2023hierarchical,
+  title         = {{Hierarchical Graph Modeling for Multi-Scale Optimization of Power Systems}},
+  author        = {Cole, David L. and Gangammanavar, Harsha and Zavala, Victor M.},
+  year          = {2023},
+  eprint        = {2309.10568},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2309.10568}
+}
+```
+
+## Authors
+David L. Cole, Harsha Gangammanavar, and Victor M. Zavala
